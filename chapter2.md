@@ -47,7 +47,7 @@ zahl0 <- zahl1 + 6
 ```{r}
 
 
-test_function("sqrt", args = "zahl")
+test_function("sqrt", args = "x")
               
 test_object("zahl1")
 test_object("zahl0")
