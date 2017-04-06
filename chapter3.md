@@ -72,14 +72,11 @@ Ersetzen Sie die N.A. Felder in dem Datensatz durch:
 
 *** =pre_exercise_code
 ```{r}
+# Einlesen der Daten
 db_aktie <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie.csv")
 fb_aktie <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie.csv")
 
-# plot(db_aktie$Date, db_aktie$Open, type = "l")
-# lines(db_aktie$Date, db_aktie$Open, col = "black")
-# plot(fb_aktie$Date, fb_aktie$Open, type = "l")
-# lines(fb_aktie$Date, fb_aktie$Open, col = "blue")
-
+# Zusammenführung der Daten
 library(dplyr)
 both <- full_join(fb_aktie, db_aktie, by = "Date")
 names(both) <- gsub("x", "db", names(both))
@@ -87,13 +84,12 @@ names(both) <- gsub("y", "fb", names(both))
 
 aktien <- arrange(both, Date)
 
-
-total <- 1
 ```
 
 *** =sample_code
 ```{r}
 # Geben Sie den Datensatz in der Konsole aus.
+aktien
 
 
 ```
@@ -101,13 +97,14 @@ total <- 1
 *** =solution
 ```{r}
 # Geben Sie den Datensatz in der Konsole aus.
-total
+print(aktien)
+
 
 ```
 
 *** =sct
 ```{r}
-test_object("total")
+test_output_contains("aktien")
 test_error()
 
 ```
