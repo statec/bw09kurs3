@@ -7,6 +7,8 @@ description : Datenimport und grafische Darstellung
 Datensätze kann man in R als `CSV-Datei` einlesen. Eine CSV-Datei erkennt man am Dateieinde `.csv`.
 Ihnen wurde der Preisverlauf der Deutschen Bank Aktien eines Monats in einem Link hinterlegt.
 
+(Quelle: de.finance.yahoo.com)
+
 
 *** =instructions
 
@@ -55,12 +57,17 @@ success_msg("Good work!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:8e8601a726
 ## Die Feiertagsproblematik
 
-Gegeben ist Ihnen ein Datensatz, in dem einige Werte fehlen. Diese Felder sind mit `N.A.` gekennzeichnet. Plotten Sie das Ergebnis einmal um zu sehen, wie die Zahlenreihe aussieht.
+Gegeben ist Ihnen der Datensatz `aktien`. Er besteht aus den Daten von einem Jahr von sowohl der Deutschen Bank (XETRA also Deutsche Börse) und von facebook (NASDAQ also US-Börse). Durch die unterschiedlichen Feiertage in Deutschland und der USA fehlen einige Werte im Datensatz. Diese Felder sind mit `N.A.` gekennzeichnet. Um den Datensatz graphisch darstellen zu können, müssen Sie nun eine geeiegnete Möglichkeit finden, diese Felder zu füllen.
 
+(Quelle: de.finance.yahoo.com)
 
 *** =instructions
+Ersetzen Sie die N.A. Felder in dem Datensatz durch:
+- den Durchschnitt der Zeitreihe
+- den Durchschnitt der umliegenden 10 Tage
 
 *** =hint
+- benutzen Sie `mean()` zur Berechnung des Durchschnitts
 
 
 *** =pre_exercise_code
@@ -77,6 +84,9 @@ library(dplyr)
 both <- full_join(fb_aktie, db_aktie, by = "Date")
 names(both) <- gsub("x", "db", names(both))
 names(both) <- gsub("y", "fb", names(both))
+
+aktien <- arrange(both, Date)
+
 
 total <- 1
 ```
