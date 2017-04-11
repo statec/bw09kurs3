@@ -83,8 +83,8 @@ fb_aktie <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/cou
 # Zusammenführung der Daten
 library(dplyr)
 both <- full_join(fb_aktie, db_aktie, by = "Date")
-names(both) <- gsub("x", "db", names(both))
-names(both) <- gsub("y", "fb", names(both))
+names(both) <- gsub("y", "db", names(both))
+names(both) <- gsub("x", "fb", names(both))
 
 aktien <- arrange(both, Date)
 
