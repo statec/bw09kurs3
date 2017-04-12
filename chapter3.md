@@ -66,7 +66,7 @@ Ersetzen Sie die NA Felder in dem Datensatz durch:
 
 - den Durchschnitt der Zeitreihe.
 
-Nehmen Sie hierbei jeweils die Spalte Open.db und Open.fb.
+Nehmen Sie hierbei jeweils die Spalte db und fb.
 
 *** =hint
 - benutzen Sie `mean()` zur Berechnung des Durchschnitts
@@ -77,24 +77,40 @@ Nehmen Sie hierbei jeweils die Spalte Open.db und Open.fb.
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-db_aktie <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie.csv")
+db_aktie <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/default.csv")
 fb_aktie <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie.csv")
 
 # Zusammenführung der Daten
 library(dplyr)
+library(plyr)
 both <- full_join(fb_aktie, db_aktie, by = "Date")
+
+# Sortieren und Verkleinerung des Datensatzes (Übersichtlichkeit)
 names(both) <- gsub("y", "db", names(both))
 names(both) <- gsub("x", "fb", names(both))
 
 aktien <- arrange(both, Date)
 
+aktien$High.db <- NULL
+aktien$High.fb <- NULL
+aktien$Low.db <- NULL
+aktien$Low.fb <- NULL
+aktien$Close.db <- NULL
+aktien$Close.fb <- NULL
+aktien$Volume.db <- NULL
+aktien$Volume.fb <- NULL
+aktien$Adj.Close.db <- NULL
+aktien$Adj.Close.fb <- NULL
+
+aktien <- rename(aktien, c("Open.fb" = "fb", "Open.db" = "db"))
+
 ```
 
 *** =sample_code
 ```{r}
-# Ersetzen Sie NA in der Spalte Open.db durch den Durchschnitt der Spalte
+# Ersetzen Sie NA in der Spalte db durch den Durchschnitt der Spalte
 
-# Ersetzen Sie NA in der Spalte Open.fb durch den Durchschnitt der Spalte
+# Ersetzen Sie NA in der Spalte fb durch den Durchschnitt der Spalte
 
 # Geben Sie die geänderten Spalten in der Konsole aus
 
@@ -105,15 +121,15 @@ aktien <- arrange(both, Date)
 
 *** =solution
 ```{r}
-# ersetzen Sie NA in der Spalte Open.db
-aktien$Open.db[is.na(aktien$Open.db)] <- mean(aktien$Open.db, na.rm = TRUE)
+# ersetzen Sie NA in der Spalte db
+aktien$db[is.na(aktien$db)] <- mean(aktien$db, na.rm = TRUE)
 
-# ersetzen Sie NA in der Spalte Open.fb
-aktien$Open.fb[is.na(aktien$Open.fb)] <- mean(aktien$Open.fb, na.rm = TRUE)
+# ersetzen Sie NA in der Spalte fb
+aktien$fb[is.na(aktien$fb)] <- mean(aktien$fb, na.rm = TRUE)
 
 # Geben Sie die geänderten Spalten aus
-print(aktien$Open.db)
-print(aktien$Open.fb)
+print(aktien$db)
+print(aktien$fb)
 
 
 
@@ -124,10 +140,10 @@ print(aktien$Open.fb)
 test_function("mean", index = 1)
 test_function("mean", index = 2)
 test_object("aktien")
-test_output_contains("aktien$Open.db")
-test_output_contains("aktien$Open.fb")
+test_output_contains("aktien$db")
+test_output_contains("aktien$fb")
 
-test_data_frame("aktien", columns = "Open.db")
+test_data_frame("aktien", columns = "db")
 
 test_error()
 
@@ -147,7 +163,7 @@ Ersetzen Sie die NA Felder in dem Datensatz durch:
 
 - den Durchschnitt der 10 umliegenden Werte (5 vorher, 5 nachher).
 
-Nehmen Sie hierbei wieder die Spalten Open.db und Open.fb.
+Nehmen Sie hierbei wieder die Spalten db und fb.
 
 *** =hint
 
@@ -159,25 +175,42 @@ Nehmen Sie hierbei wieder die Spalten Open.db und Open.fb.
 ```{r}
 
 # Einlesen der Daten
-db_aktie <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie.csv")
+db_aktie <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/default.csv")
 fb_aktie <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie.csv")
 
 # Zusammenführung der Daten
 library(dplyr)
+library(plyr)
 both <- full_join(fb_aktie, db_aktie, by = "Date")
+
+# Sortieren und Verkleinerung des Datensatzes (Übersichtlichkeit)
 names(both) <- gsub("x", "db", names(both))
 names(both) <- gsub("y", "fb", names(both))
 
 aktien <- arrange(both, Date)
+
+aktien$High.db <- NULL
+aktien$High.fb <- NULL
+aktien$Low.db <- NULL
+aktien$Low.fb <- NULL
+aktien$Close.db <- NULL
+aktien$Close.fb <- NULL
+aktien$Volume.db <- NULL
+aktien$Volume.fb <- NULL
+aktien$Adj.Close.db <- NULL
+aktien$Adj.Close.fb <- NULL
+
+aktien <- rename(aktien, c("Open.fb" = "fb", "Open.db" = "db"))
+
 
 ```
 
 *** =sample_code
 ```{r}
 
-# Ersetzen Sie NA in der Spalte Open.db durch den Durchschnitt der umliegenden 10 Werte
+# Ersetzen Sie NA in der Spalte db durch den Durchschnitt der umliegenden 10 Werte
 
-# Ersetzen Sie NA in der Spalte Open.fb durch den Durchschnitt der umliegenden 10 Werte
+# Ersetzen Sie NA in der Spalte fb durch den Durchschnitt der umliegenden 10 Werte
 
 # Geben Sie die geänderten Spalten in der Konsole aus
 
@@ -188,6 +221,26 @@ aktien <- arrange(both, Date)
 *** =solution
 ```{r}
 
+
+
+```
+
+*** =sct
+```{r}
+
+```
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:32b357f9bd
+## Vergleich der Methoden
+Sie sehen rechts die Zeitreihen der deutschen Bank für ein Jahr geplottet. Einmal wurden die NAs durch den Gesamtdurchschnitt der Zahlenreihe ersetzt, das andere mal durch den gleitenden Mittelwert der umliegenden 10 Tage.
+
+*** =instructions
+Welche Methode halten Sie für sinnvoller?
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
 
 
 ```
