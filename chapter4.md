@@ -133,11 +133,11 @@ aktien$face
 
 *** =sct
 ```{r}
-test_function("mean", args = c("file", "na.rm"), index = 1)
-test_function("mean", args = c("file", "na.rm"), index = 2)
+test_function("mean", args = c("na.rm"), index = 1, not_called_msg = "Are you shure you have called 'mean()'?")
+test_function("mean", args = c("na.rm"), index = 2)
 #test_object("aktien")
-#test_object("aktien$deutsche")
-#test_object("aktien$face")
+test_object("aktien$deutsche")
+test_object("aktien$face")
 #test_output_contains("aktien$deutsche")
 #test_output_contains("aktien$face")
 
