@@ -1,5 +1,5 @@
 ---
-title       : Übung 1.1
+title       : Fail Übung
 description : Datenimport und grafische Darstellung
 --- type:NormalExercise lang:r xp:100 skills:1 key:b94a6935a5
 ## Einlesen von Datensätzen in R
@@ -30,7 +30,7 @@ Ihnen wurde der Preisverlauf der Deutschen Bank Aktien eines Monats in einem Lin
 # die Datei liegt in http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/table.csv
 
 
-# Geben Sie die eingelesenen Daten in der Kosole aus
+# Geben Sie die eingelesenen Daten in der Konsole aus
 
 ```
 
@@ -46,8 +46,7 @@ deutsche_bank
 
 *** =sct
 ```{r}
-# test_function("read.csv", args = "x")
-test_function_result("read.csv")
+test_function("read.csv", args = c("file"))
 test_object("deutsche_bank")
 test_output_contains("deutsche_bank")
 test_error()
@@ -137,8 +136,8 @@ print(aktien$fb)
 
 *** =sct
 ```{r}
-test_function("mean", index = 1)
-test_function("mean", index = 2)
+test_function("mean", args = c("na.rm"), index = 1)
+test_function("mean", args = c("na.rm"), xindex = 2)
 test_object("aktien")
 test_output_contains("aktien$db")
 test_output_contains("aktien$fb")
