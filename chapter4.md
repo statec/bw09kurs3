@@ -2,7 +2,7 @@
 title       : Einheit 1 - inclass
 description : Übungen zum Einlesen, Analysieren und Darstellen von Daten
 --- type:NormalExercise lang:r xp:100 skills:1 key:34f28f22ca
-## Einlesen von Datensätzen in R
+## 1. Einlesen von Datensätzen in R
 
 Datensätze kann man in R als `CSV-Datei` einlesen. Eine CSV-Datei erkennt man am Dateieinde `.csv`.
 Ihnen wurde der Preisverlauf der Deutschen Bank Aktien eines Jahres in einem Link hinterlegt.
@@ -55,7 +55,7 @@ success_msg("Good work!")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:38a63c90da
-## Die Feiertagsproblematik
+## 2 a) Die Feiertagsproblematik
 
 Gegeben ist Ihnen der Datensatz `aktien`. Er besteht aus den Daten von einem Jahr von sowohl der Deutschen Bank (XETRA also Deutsche Börse) und von facebook (NASDAQ also US-Börse). Durch die unterschiedlichen Feiertage in Deutschland und der USA fehlen einige Werte im Datensatz. Diese Felder sind mit `NA` gekennzeichnet. Um den Datensatz grafisch darstellen zu können, müssen Sie eine geeiegnete Möglichkeit finden, diese Felder zu ersetzen.
 
@@ -106,10 +106,10 @@ aktien$Date <- as.Date(aktien$Date)
 aktien$Date[is.na(aktien$fb)]
 aktien$Date[is.na(aktien$db)]
 
-# Ersetzen Sie NA in der Spalte 'deutsche' durch den Durchschnitt der Spalte
+# Ersetzen Sie NA in der Spalte 'db' durch den Durchschnitt der Spalte
 aktien$___[is.na(___)] <- ___(___, na.rm = TRUE)
 
-# Ersetzen Sie NA in der Spalte 'face' durch den Durchschnitt der Spalte
+# Ersetzen Sie NA in der Spalte 'fb' durch den Durchschnitt der Spalte
 
 
 # Geben Sie die geänderten Spalten in der Konsole aus
@@ -123,10 +123,10 @@ aktien$___[is.na(___)] <- ___(___, na.rm = TRUE)
 aktien$Date[is.na(aktien$fb)]
 aktien$Date[is.na(aktien$db)]
 
-# Ersetzen Sie NA in der Spalte 'deutsche' durch den Durchschnitt der Spalte
+# Ersetzen Sie NA in der Spalte 'db' durch den Durchschnitt der Spalte
 aktien$db[is.na(aktien$db)] <- mean(aktien$db, na.rm = TRUE)
 
-# Ersetzen Sie NA in der Spalte 'face' durch den Durchschnitt der Spalte
+# Ersetzen Sie NA in der Spalte 'fb' durch den Durchschnitt der Spalte
 aktien$fb[is.na(aktien$fb)] <- mean(aktien$fb, na.rm = TRUE)
 
 # Geben Sie die geänderten Spalten in der Konsole aus
@@ -151,7 +151,7 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:cc03c69900
-## Die Feiertagsproblematik
+## 2 b) Die Feiertagsproblematik
 Die Daten liegen in der Variable `aktien`. Ersetzen Sie nun die NAs im Datensatz durch den gleitenden Durchschnitt über 10 Tage. Nehmen Sie hierfür den `mean()` von den 5 vorherigen und 5 folgenden Werten. 
 
 Nützliche R Funktionen:
@@ -285,16 +285,17 @@ test_object("index4")
 test_function("mean", index = 1, args = c("x"))
 test_function("mean", index = 2, args = c("x"))
 test_function("mean", index = 3, args = c("x"))
-#test_function("mean", index = 4, args = c("x"))
+test_function("mean", index = 4, args = c("x"))
 test_output_contains("aktien$db[index1]")
 test_output_contains("aktien$db[index2]")
 test_output_contains("aktien$fb[index3]")
-#test_output_contains("aktien$fb[index4]")
+test_output_contains("aktien$fb[index4]")
+text_error()
 ```
 
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:4099c209d4
-## Welche Methode ist sinnvoller?
+## 2 c) Welche Methode ist sinnvoller?
 Ihre Ergebnisse aus der letzten Aufgabe wurden nun geplotted. Sie sehen den entstehenden Plot für die facebook Aktie. Beim ersten Plot wurden die fehlenden Werte durch den gesamten Durchschnitt ersetzt, beim 2. Plot wurden die fehlenden Werte durch den gleitenden 10er-Durchschnitt ersetzt.
 
 Schauen Sie sich beide Plots an und vergleichen Sie die ersetzten Stellen. Die Daten zu diesen Stellen waren 16.01.17 und 20.02.17.
@@ -350,5 +351,164 @@ plot(aktien2$Date, aktien2$fb, type = "l", main = "Facebook Aktie 2016-2017 mit 
 msg_bad <- "Leider falsch!"
 msg_success <- "Richtig!"
 test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:15e17afcbc
+## 3 a) Rendite
+Der Datensatz liegt in `aktien`. Nun sollen die Renditen für jeden Tag berechnet werden. Bedenken Sie, dass man für den ersten Tag keine Rendite berechnen kann.
+Vektoren können in R einfach voneinander subtrahiert werden, solange sie die gleiche Dimension haben. Durch `vektor[5:length(vektor)]` entsteht ein Vektor, der alle Elemente von `vektor` ab dem 5. Element enthält.
+
+Die Formel zur Berechnung der Rendite finden Sie im Skript.
+
+
+*** =instructions
+
+Berechnen Sie die Rendite für die Deutsche Bank für jeden Tag des gegebenen Datensatzes. `aktien$db` gibt Ihnen den Vektor mit den benötigten Daten.
+
+*** =hint
+
+- Achten Sie darauf, dass die beiden Vektoren die gleiche Länge haben müssen.
+- Die Länge eines Vektors bekommen Sie durch `length(vektor)`.
+
+*** =pre_exercise_code
+```{r}
+# Einlesen der Daten
+deutschebank <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie_Feiertage2NA.csv")
+facebook <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie2NA.csv")
+# Zusammenführung der Daten
+library(dplyr)
+# Merging der Datensätze
+aktienjoin <- full_join(facebook, deutschebank, by = "Date")
+# Verkleinerung der Datensätze
+aktien <- select(aktienjoin, Date, fb = Open.x, db = Open.y )
+remove(aktienjoin)
+# class Datum setzen
+aktien$Date <- as.Date(aktien$Date)
+# Nach Datum sortieren
+aktien <- aktien[order(aktien$Date),]
+# Nehme Gletenden Durchschnitt um NAs zu füllen
+index1 <- which(aktien$Date == "2016-04-14")
+aktien$db[index1] <- mean(c(aktien$db[c((index1-5):(index1-1),(index1+1):(index1+5))]))
+index2 <- which(aktien$Date == "2016-10-31")
+aktien$db[index2] <- mean(c(aktien$db[c((index2-5):(index2-1),(index2+1):(index2+5))]))
+
+
+```
+
+*** =sample_code
+```{r}
+# Erstelle einen vektor mit den Einträgen aus aktien$db. Lasse den letzten Eintrag weg.
+x_tminus1 <- 
+# Lasse ersten Eintrag weg, da Rendite erst ab 2. Tag berechenbar
+x_t <- 
+# Berechnung der Rendite
+renditeDB <- 
+# Geben Sie hier die berechnete Rendite in der Konsole aus
+
+```
+
+*** =solution
+```{r}
+# Erstelle einen vektor mit den Einträgen aus aktien$db. Lasse den letzten Eintrag weg.
+x_tminus1 <- aktien$db[1:length(aktien$db)-1]
+# Lasse ersten Eintrag weg, da Rendite erst ab 2. Tag berechenbar
+x_t <- aktien$db[2:length(aktien$db)]
+# Berechnung der Rendite
+renditeDB <- (x_t - x_tminus1) / x_tminus1
+# Geben Sie hier die berechnete Rendite in der Konsole aus
+renditeDB
+
+```
+
+*** =sct
+```{r}
+test_object("x_tminus1")
+test_object("x_t")
+test_object("renditeDB")
+test_output_contains("renditeDB")
+test_error()
+
+
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:48d8b0a0d0
+## 3 b) Logarithmische Rendite
+Der Datensatz liegt in `aktien`. Nun sollen die Logarithmischen-Renditen für jeden Tag berechnet werden.
+Vektoren können in R einfach voneinander subtrahiert werden, solange sie die gleiche Dimension haben. Durch `vektor[5:length(vektor)]` entsteht ein Vektor, der alle Elemente von `vektor` ab dem 5. Element enthält.
+Den natürlichen Logarithmus können Sie in R einfach mit `log(x)` bestimmen. Hierbei kann `x` auch ein Vektor sein, der Logarithmus wird in dem Fall elementeweise ausgeführt.
+
+Die Formel zur Berechnung der log-Rendite finden Sie im Skript.
+
+
+*** =instructions
+
+Berechnen Sie die log-Rendite für die Deutsche Bank für jeden Tag des gegebenen Datensatzes. `aktien$db` gibt Ihnen den Vektor mit den benötigten Daten.
+
+*** =hint
+
+- Achten Sie darauf, dass die beiden Vektoren die gleiche Länge haben müssen.
+- Die Länge eines Vektors bekommen Sie durch `length(vektor)`.
+
+*** =pre_exercise_code
+```{r}
+# Einlesen der Daten
+deutschebank <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie_Feiertage2NA.csv")
+facebook <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie2NA.csv")
+# Zusammenführung der Daten
+library(dplyr)
+# Merging der Datensätze
+aktienjoin <- full_join(facebook, deutschebank, by = "Date")
+# Verkleinerung der Datensätze
+aktien <- select(aktienjoin, Date, fb = Open.x, db = Open.y )
+remove(aktienjoin)
+# class Datum setzen
+aktien$Date <- as.Date(aktien$Date)
+# Nach Datum sortieren
+aktien <- aktien[order(aktien$Date),]
+# Nehme Gletenden Durchschnitt um NAs zu füllen
+index1 <- which(aktien$Date == "2016-04-14")
+aktien$db[index1] <- mean(c(aktien$db[c((index1-5):(index1-1),(index1+1):(index1+5))]))
+index2 <- which(aktien$Date == "2016-10-31")
+aktien$db[index2] <- mean(c(aktien$db[c((index2-5):(index2-1),(index2+1):(index2+5))]))
+
+
+```
+
+*** =sample_code
+```{r}
+# Erstelle einen vektor mit den Einträgen aus aktien$db. Lasse den letzten Eintrag weg.
+x_tminus1 <- 
+# Lasse ersten Eintrag weg, da Rendite erst ab 2. Tag berechenbar
+x_t <- 
+# Berechnung der Rendite
+logRenditeDB <- 
+# Geben Sie hier die berechnete Rendite in der Konsole aus
+
+```
+
+*** =solution
+```{r}
+# Erstelle einen vektor mit den Einträgen aus aktien$db. Lasse den letzten Eintrag weg.
+x_tminus1 <- aktien$db[1:length(aktien$db)-1]
+# Lasse ersten Eintrag weg, da Rendite erst ab 2. Tag berechenbar
+x_t <- aktien$db[2:length(aktien$db)]
+# Berechnung der Rendite
+logRenditeDB <- log(x_t) - log(x_tminus1)
+# Geben Sie hier die berechnete Rendite in der Konsole aus
+logRenditeDB
+
+```
+
+*** =sct
+```{r}
+test_object("x_tminus1")
+test_object("x_t")
+test_object("LogRenditeDB")
+test_output_contains("logRenditeDB")
+test_error()
+
 
 ```
