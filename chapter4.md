@@ -1,6 +1,6 @@
 ---
 title       : Einheit 1 - inclass
-description : Übungen zum Einlesen, Analysieren und Darstellen von Daten
+description : Übungen zum Einlesen, Analysieren und Darstellen von Daten mit R
 --- type:NormalExercise lang:r xp:100 skills:1 key:34f28f22ca
 ## 1. Einlesen von Datensätzen in R
 
