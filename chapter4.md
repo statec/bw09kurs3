@@ -50,7 +50,7 @@ test_function("read.csv", args = c("file"))
 test_object("deutschebank")
 test_output_contains("deutschebank")
 test_error()
-success_msg("Good work!")
+success_msg("Sehr gut!")
 
 ```
 
@@ -147,6 +147,7 @@ test_output_contains("aktien$db")
 test_output_contains("aktien$fb")
 
 test_error()
+success_msg("Sehr gut!")
 
 ```
 
@@ -291,6 +292,7 @@ test_output_contains("aktien$db[index2]")
 test_output_contains("aktien$fb[index3]")
 test_output_contains("aktien$fb[index4]")
 text_error()
+success_msg("Sehr gut!")
 ```
 
 
@@ -428,11 +430,9 @@ test_object("x_t")
 test_object("renditeDB")
 test_output_contains("renditeDB")
 test_error()
-
+success_msg("Sehr gut!")
 
 ```
-
-
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:48d8b0a0d0
 ## 3 b) Logarithmische Rendite
@@ -509,6 +509,7 @@ test_object("x_t")
 test_object("LogRenditeDB")
 test_output_contains("logRenditeDB")
 test_error()
+success_msg("Supi!")
 
 ```
 
@@ -522,7 +523,7 @@ Der Plot sollte folgende Anforderungen erfüllen:
 
 - Die Datenpunkte sollten durch Linien miteinander verbunden sein.
 - Der Plot sollte einen sinnvollen Titel erhalten.
-- Die x-Achse und y-Achse sollten sinnvoll beschriftet werden.
+- Die x-Achse und y-Achse sollten mit "Datum" und "Eroeffnungspreis ($)" beschriftet werden.
 
 *** =hint
 Im Plot Befehl müssen Sie type, main, xlab und ylab füllen. Das tuen Sie durch plot(x,y,type = "l", main = ...)
@@ -550,12 +551,14 @@ aktien <- aktien[order(aktien$Date),]
 *** =solution
 ```{r}
 # Plot erstellen 
-plot(aktien$Date, aktien$Open, type = "l", main = "Facebook Aktie 2016-2017", xlab = "Datum", ylab = "Eröffnungspreis ($)")
+plot(aktien$Date, aktien$Open, type = "l", main = "Facebook Aktie 2016-2017", xlab = "Datum", ylab = "Eroeffnungspreis ($)")
 ```
 
 *** =sct
 ```{r}
-test_function("plot", args = c("x", "y", "type", "main", "xlab", "ylab") )
+test_function("plot", args = c("x", "y", "type", "xlab", "ylab") )
+test_error()
+success_msg("Sehr gut!")
 ```
 
 
@@ -615,4 +618,75 @@ plot(aktien$Date, aktien$Rendite, type = "l", main = "Facebook Aktie 2016-2017",
 msg_bad <- "Das stimmt nicht! Nutze die Konsole und berechne das Datum ganz genau."
 msg_success <- "Richtig!"
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:2cefa138d2
+## 6. Histogramm
+Ein Histogramm zeigt die Häufigkeitsverteilung einer Variablen. Ein Datensatz mit den berechneten Renditen für die Deutsche Bank Aktie liegt unter `aktien`. Erstellen Sie ein Histogramm über die Verteilung der Renditen der Aktie.
+
+
+*** =instructions
+Nutzen Sie `?hist()` um mehr über die Anwendung der Funktion zu erfahren.
+Das Histogramm sollte enthalten: 
+
+- `breaks` um die dicke der Balken anzupassen.
+- die Überschrift "Verteilung der Renditen".
+- `xlab` und `ylab` zur Beschriftung der Achsen, mit "Renditen" und "Haeufigkeit".
+
+
+*** =hint
+
+- An die x-Werte kommen Sie über `aktien$Rendite`
+- Denken Sie daran, die Beschriftungen in Anführungszeichen zu setzen.
+
+
+*** =pre_exercise_code
+```{r}
+# Einlesen der Daten
+aktien <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie.csv")
+# Datum als class Date initialisieren
+aktien$Date <- as.Date(aktien$Date)
+# sortieren Datensatz nach Datum
+aktien <- aktien[order(aktien$Date),]
+
+# Funktion zur Berechnung der Rendite
+rendite <- function(zeitreihe){ 
+  r <- zeitreihe[1:length(zeitreihe)-1];  
+  ren <- zeitreihe[2:length(zeitreihe)];
+  ren <- (ren - r) / r;
+  return(ren)     
+}
+# Rendite von DB Aktien
+rDbAktien <- rendite(aktien$Open)
+# Rendite zum Datensatz hinzufügen
+rDbAktien <- c(0,rDbAktien)
+aktien[ , "Rendite"] <- rDbAktien
+
+```
+
+*** =sample_code
+```{r}
+# Erstellen Sie ein Histogramm und setzen Sie breaks = 20.
+
+# Erstellen Sie das Histogramm mit breaks = 40.
+
+```
+
+*** =solution
+```{r}
+# Erstellen Sie ein Histogramm und setzen Sie breaks = 20.
+hist(aktien$ Rendite, breaks = 20, main = "Verteilung der Renditen", xlab = "Renditen", ylab = "Haeufigkeit")
+# Erstellen Sie das Histogramm mit breaks = 40.
+hist(aktien$ Rendite, breaks = 40, main = "Verteilung der Renditen", xlab = "Renditen", ylab = "Haeufigkeit")
+
+```
+
+*** =sct
+```{r}
+test_function("hist", args = c("x", "breaks", "main", "xlab", "ylab"), index = 1) 
+test_function("hist", args = c("x", "breaks", "main", "xlab", "ylab"), index = 2) 
+test_error()
+success_msg("Gratulation! Sie haben die letzte Aufgabe gemeistert.")
 ```
