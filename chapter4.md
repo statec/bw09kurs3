@@ -510,5 +510,109 @@ test_object("LogRenditeDB")
 test_output_contains("logRenditeDB")
 test_error()
 
+```
 
+--- type:NormalExercise lang:r xp:100 skills:1 key:9fb2b25cdf
+## 4. Grafische Darstellung
+In R gibt es viele Möglichkeiten, Daten grafisch darzustellen. In früheren Aufgaben haben Sie bereits einige Plots gesehen. Solche Plots sollen in dieser Aufgabe nun von Ihnen erstellt werden.
+*** =instructions
+Verwenden Sie `plot(x,y, ...)` um die Zeitreihe der Facebook-Aktie zu plotten. Verwenden Sie den Eröffnungspreis (Open). 
+Hilfe zum `plot` Befehl und den Eingabemöglichkeiten finden Sie, indem Sie `?plot()` in der Konsole eingeben. 
+Der Plot sollte folgende Anforderungen erfüllen:
+
+- Die Datenpunkte sollten durch Linien miteinander verbunden sein.
+- Der Plot sollte einen sinnvollen Titel erhalten.
+- Die x-Achse und y-Achse sollten sinnvoll beschriftet werden.
+
+*** =hint
+Im Plot Befehl müssen Sie type, main, xlab und ylab füllen. Das tuen Sie durch plot(x,y,type = "l", main = ...)
+
+*** =pre_exercise_code
+```{r}
+# Plotten der Zeitreihe aus 1
+# Einlesen der Daten (Daten sind bereits eingelesen)
+aktien <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie.csv")
+
+# Datum als class Date initialisieren
+aktien$Date <- as.Date(aktien$Date)
+
+# sortieren Datensatz nach Datum
+aktien <- aktien[order(aktien$Date),]
+
+```
+
+*** =sample_code
+```{r}
+# Plot erstellen 
+
+```
+
+*** =solution
+```{r}
+# Plot erstellen 
+plot(aktien$Date, aktien$Open, type = "l", main = "Facebook Aktie 2016-2017", xlab = "Datum", ylab = "Eröffnungspreis ($)")
+```
+
+*** =sct
+```{r}
+test_function("plot", args = c("x", "y", "type", "main", "xlab", "ylab") )
+```
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:7ba715318f
+## 5. Analyse der Daten
+Im Datensatz `aktien` haben wir Den Eröffnungspreis und die jeweilige Tagesrendite der Facebook Aktie von einem Jahr. Wir betrachten nun die Volatilität der Zeitreihe. Bei dem Plot der Eröffnungspreise (Plot 1) kann man nur grob schätzen wo die Volatilität am stärksten ist. Im Plot 2 sehen Sie die Rendite der Zeitreihe geplottet. Hier kann man das Ergebnis schon etwas besser heraus lesen.
+
+Wo ist die Volatilität am höchsten? Sie können das Datum mit der höchsten Volatilität berechnen, wenn der Plot kein eindeutiges Ergebnis liefert.
+Hilfe: 
+
+- Um das `Date` mit dem maximalen `wert` aus einem Datensatz `daten` zu bekommen, kann man `daten$Date[daten$wert == max(daten$wert)]` benutzen.
+- Mit `abs(wert)` bekommt man den Absolutwert jedes Elementes des Vektors.
+
+
+*** =instructions
+- Anfang November
+- Ende April
+- Anfang Januar
+- Mitte August
+
+*** =hint
+
+
+*** =pre_exercise_code
+```{r}
+library(dplyr)
+# Plotten der Zeitreihe aus 1
+# Einlesen der Daten (Daten sind bereits eingelesen)
+aktien <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie.csv")
+# Datum als class Date initialisieren
+aktien$Date <- as.Date(aktien$Date)
+# sortieren Datensatz nach Datum
+aktien <- aktien[order(aktien$Date),]
+# Verkleinerung der Datensätze
+aktien <- select(aktien, Date, Open)
+plot(aktien$Date, aktien$Open, type = "l", main = "Facebook Aktie 2016-2017", xlab = "Datum", ylab = "Eröffnungspreis ($)")
+
+# Funktion zur Berechnung der Rendite
+rendite <- function(zeitreihe){ 
+  r <- zeitreihe[1:length(zeitreihe)-1];  
+  ren <- zeitreihe[2:length(zeitreihe)];
+  ren <- (ren - r) / r;
+  return(ren)     
+}
+# Rendite für Eröffnungspreise berechnen
+fbRendite <- rendite(aktien$Open) 
+# Rendite zum Datensatz hizufügen, vorne 0
+fbRen <- c(0,fbRendite)
+aktien[ , "Rendite"] <- fbRen
+
+plot(aktien$Date, aktien$Rendite, type = "l", main = "Facebook Aktie 2016-2017", xlab = "Datum", ylab = "Rendite")
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "Das stimmt nicht! Nutze die Konsole und berechne das Datum ganz genau."
+msg_success <- "Richtig!"
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 ```
