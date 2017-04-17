@@ -378,17 +378,22 @@ Berechnen Sie die Rendite für die Deutsche Bank für jeden Tag des gegebenen Da
 # Einlesen der Daten
 deutschebank <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie_Feiertage2NA.csv")
 facebook <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie2NA.csv")
+
 # Zusammenführung der Daten
 library(dplyr)
 # Merging der Datensätze
 aktienjoin <- full_join(facebook, deutschebank, by = "Date")
+
 # Verkleinerung der Datensätze
 aktien <- select(aktienjoin, Date, fb = Open.x, db = Open.y )
 remove(aktienjoin)
+
 # class Datum setzen
 aktien$Date <- as.Date(aktien$Date)
+
 # Nach Datum sortieren
 aktien <- aktien[order(aktien$Date),]
+
 # Nehme Gletenden Durchschnitt um NAs zu füllen
 index1 <- which(aktien$Date == "2016-04-14")
 aktien$db[index1] <- mean(c(aktien$db[c((index1-5):(index1-1),(index1+1):(index1+5))]))
@@ -414,10 +419,13 @@ renditeDB <-
 ```{r}
 # Erstelle einen vektor mit den Einträgen aus aktien$db. Lasse den letzten Eintrag weg.
 x_tminus1 <- aktien$db[1:length(aktien$db)-1]
+
 # Lasse ersten Eintrag weg, da Rendite erst ab 2. Tag berechenbar
 x_t <- aktien$db[2:length(aktien$db)]
+
 # Berechnung der Rendite
 renditeDB <- (x_t - x_tminus1) / x_tminus1
+
 # Geben Sie hier die berechnete Rendite in der Konsole aus
 renditeDB
 
@@ -457,17 +465,22 @@ Berechnen Sie die log-Rendite für die Deutsche Bank für jeden Tag des gegebene
 # Einlesen der Daten
 deutschebank <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie_Feiertage2NA.csv")
 facebook <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie2NA.csv")
+
 # Zusammenführung der Daten
 library(dplyr)
 # Merging der Datensätze
 aktienjoin <- full_join(facebook, deutschebank, by = "Date")
+
 # Verkleinerung der Datensätze
 aktien <- select(aktienjoin, Date, fb = Open.x, db = Open.y )
 remove(aktienjoin)
+
 # class Datum setzen
 aktien$Date <- as.Date(aktien$Date)
+
 # Nach Datum sortieren
 aktien <- aktien[order(aktien$Date),]
+
 # Nehme Gletenden Durchschnitt um NAs zu füllen
 index1 <- which(aktien$Date == "2016-04-14")
 aktien$db[index1] <- mean(c(aktien$db[c((index1-5):(index1-1),(index1+1):(index1+5))]))
@@ -485,7 +498,7 @@ x_tminus1 <-
 x_t <- 
 # Berechnung der Rendite
 logRenditeDB <- 
-# Geben Sie hier die berechnete Rendite in der Konsole aus
+# Geben Sie hier die berechnete log-Rendite in der Konsole aus
 
 ```
 
@@ -585,13 +598,15 @@ Hilfe:
 *** =pre_exercise_code
 ```{r}
 library(dplyr)
-# Plotten der Zeitreihe aus 1
-# Einlesen der Daten (Daten sind bereits eingelesen)
+# Einlesen der Daten 
 aktien <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie.csv")
+
 # Datum als class Date initialisieren
 aktien$Date <- as.Date(aktien$Date)
+
 # sortieren Datensatz nach Datum
 aktien <- aktien[order(aktien$Date),]
+
 # Verkleinerung der Datensätze
 aktien <- select(aktien, Date, Open)
 plot(aktien$Date, aktien$Open, type = "l", main = "Facebook Aktie 2016-2017", xlab = "Datum", ylab = "Eröffnungspreis ($)")
@@ -603,8 +618,10 @@ rendite <- function(zeitreihe){
   ren <- (ren - r) / r;
   return(ren)     
 }
+
 # Rendite für Eröffnungspreise berechnen
 fbRendite <- rendite(aktien$Open) 
+
 # Rendite zum Datensatz hizufügen, vorne 0
 fbRen <- c(0,fbRendite)
 aktien[ , "Rendite"] <- fbRen
@@ -624,7 +641,7 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:2cefa138d2
 ## 6. Histogramm
-Ein Histogramm zeigt die Häufigkeitsverteilung einer Variablen. Ein Datensatz mit den berechneten Renditen für die Deutsche Bank Aktie liegt unter `aktien`. Erstellen Sie ein Histogramm über die Verteilung der Renditen der Aktie.
+Ein Histogramm zeigt die Häufigkeitsverteilung einer Variablen an. Ein Datensatz mit den berechneten Renditen für die Deutsche Bank Aktie liegt unter `aktien`. Erstellen Sie ein Histogramm über die Verteilung der Renditen der Aktie. Die Funktion zum Erstellen eines Histogramms ist `hist(x,...)`.
 
 
 *** =instructions
@@ -646,8 +663,10 @@ Das Histogramm sollte enthalten:
 ```{r}
 # Einlesen der Daten
 aktien <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie.csv")
+
 # Datum als class Date initialisieren
 aktien$Date <- as.Date(aktien$Date)
+
 # sortieren Datensatz nach Datum
 aktien <- aktien[order(aktien$Date),]
 
@@ -658,8 +677,10 @@ rendite <- function(zeitreihe){
   ren <- (ren - r) / r;
   return(ren)     
 }
+
 # Rendite von DB Aktien
 rDbAktien <- rendite(aktien$Open)
+
 # Rendite zum Datensatz hinzufügen
 rDbAktien <- c(0,rDbAktien)
 aktien[ , "Rendite"] <- rDbAktien
@@ -678,6 +699,7 @@ aktien[ , "Rendite"] <- rDbAktien
 ```{r}
 # Erstellen Sie ein Histogramm und setzen Sie breaks = 20.
 hist(aktien$ Rendite, breaks = 20, main = "Verteilung der Renditen", xlab = "Renditen", ylab = "Haeufigkeit")
+
 # Erstellen Sie das Histogramm mit breaks = 40.
 hist(aktien$ Rendite, breaks = 40, main = "Verteilung der Renditen", xlab = "Renditen", ylab = "Haeufigkeit")
 
