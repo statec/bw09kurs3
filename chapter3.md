@@ -54,7 +54,7 @@ success_msg("Good work!")
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:8e8601a726
-## Die Feiertagsproblematik
+## Die Feiertagsproblematik 1
 
 Gegeben ist Ihnen der Datensatz `aktien`. Er besteht aus den Daten von einem Jahr von sowohl der Deutschen Bank (XETRA also Deutsche Börse) und von facebook (NASDAQ also US-Börse). Durch die unterschiedlichen Feiertage in Deutschland und der USA fehlen einige Werte im Datensatz. Diese Felder sind mit `NA` gekennzeichnet. Um den Datensatz graphisch darstellen zu können, müssen Sie nun eine geeiegnete Möglichkeit finden, diese Felder zu füllen.
 
@@ -150,7 +150,7 @@ test_error()
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:df299a2957
-## Die Feiertagsproblematik
+## Die Feiertagsproblematik 2
 
 Gegeben ist wieder der Datensatz `aktien`. Nun sollen die `NA` Felder mit einer alternativen Möglichkeit gefüllt werden.
 
