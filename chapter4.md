@@ -1,5 +1,5 @@
 ---
-title       : 1. Übung
+title       : Einheit 1 - inclass
 description : Übungen zum Einlesen, Analysieren und Darstellen von Daten
 --- type:NormalExercise lang:r xp:100 skills:1 key:34f28f22ca
 ## Einlesen von Datensätzen in R
@@ -166,6 +166,7 @@ Ersetzen Sie die NAs in beiden Spalten db und fb durch den gleitenden 10er-Durch
 
 Die NA-Stellen finden Sie über: 
 `aktien[is.na(aktien$db)]`
+
 Für Facebook analog.
 
 *** =hint
@@ -176,26 +177,26 @@ NAs facebook (fb): "2017-01-16" "2017-02-20"
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-#deutschebank <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie_Feiertage2NA.csv")
-#facebook <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie2NA.csv")
+deutschebank <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie_Feiertage2NA.csv")
+facebook <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie2NA.csv")
 
 # Zusammenführung der Daten
-#library(dplyr)
+library(dplyr)
 
 # Merging der Datensätze
-#aktienjoin <- full_join(facebook, deutschebank, by = "Date")
+aktienjoin <- full_join(facebook, deutschebank, by = "Date")
 
 # Verkleinerung der Datensätze
-#aktien <- select(aktienjoin, Date, fb = Open.x, db = Open.y )
-#remove(aktienjoin)
-#remove(facebook)
-#remove(deutschebank)
+aktien <- select(aktienjoin, Date, fb = Open.x, db = Open.y )
+remove(aktienjoin)
+remove(facebook)
+remove(deutschebank)
 
 # class Datum setzen
-#aktien$Date <- as.Date(aktien$Date)
+aktien$Date <- as.Date(aktien$Date)
 
 # Nach Datum sortieren
-#aktien <- aktien[order(aktien$Date),]
+aktien <- aktien[order(aktien$Date),]
 
 ```
 
@@ -204,11 +205,11 @@ NAs facebook (fb): "2017-01-16" "2017-02-20"
 
 # deutschebank  (db)
 # Finde den Index und schreibe ihn in index1
-#index1 <- which(___ == "___")
+index1 <- which(___ == "___")
 # durch Durchschnitt ersetzen
-#aktien$db[___] <- ___(c(___[c((index1-___):(index1-___),(index1+___):(index1+___))]))
+aktien$db[___] <- ___(c(___[c((index1-___):(index1-___),(index1+___):(index1+___))]))
 # Neuer Wert
-#aktien$db[___]
+aktien$db[___]
 
 
 # Finde den Index und schreibe ihn in index2
@@ -240,53 +241,105 @@ NAs facebook (fb): "2017-01-16" "2017-02-20"
 ```{r}
 # Deutschebank
 # Finde den Index 1
-#index1 <- which(aktien$Date == "2016-04-14")
+index1 <- which(aktien$Date == "2016-04-14")
 # durch Durchschnitt ersetzen
-#aktien$db[index1] <- mean(c(aktien$db[c((index1-5):(index1-1),(index1+1):(index1+5))]))
+aktien$db[index1] <- mean(c(aktien$db[c((index1-5):(index1-1),(index1+1):(index1+5))]))
 # Neuer Wert
-#aktien$db[index1]
+aktien$db[index1]
 
 # Finde den Index 2
-#index2 <- which(aktien$Date == "2016-10-31")
+index2 <- which(aktien$Date == "2016-10-31")
 # durch Durchschnitt ersetzen
-#aktien$db[index2] <- mean(c(aktien$db[c((index2-5):(index2-1),(index2+1):(index2+5))]))
+aktien$db[index2] <- mean(c(aktien$db[c((index2-5):(index2-1),(index2+1):(index2+5))]))
 # Neuer Wert
-#aktien$db[index2]
+aktien$db[index2]
 
 
 # Facebook 
 # Finde den Index 3
-#index3 <- which(aktien$Date == "2017-01-16")
+index3 <- which(aktien$Date == "2017-01-16")
 # durch Durchschnitt ersetzen
-#aktien$fb[index3] <- mean(c(aktien$fb[c((index3-5):(index3-1),(index3+1):(index3+5))]))
+aktien$fb[index3] <- mean(c(aktien$fb[c((index3-5):(index3-1),(index3+1):(index3+5))]))
 # Neuer Wert
-#aktien$fb[index3]
+aktien$fb[index3]
 
 # Finde den Index 4
-#index4 <- which(aktien$Date == "2017-02-20")
+index4 <- which(aktien$Date == "2017-02-20")
 # durch Durchschnitt ersetzen
-#aktien$fb[index]4 <- mean(c(aktien$fb[c((index4-5):(index4-1),(index4+1):(index4+5))]))
+aktien$fb[index4] <- mean(c(aktien$fb[c((index4-5):(index4-1),(index4+1):(index4+5))]))
 # Neuer Wert
-#aktien$fb[index4]
+aktien$fb[index4]
 
 ```
 
 *** =sct
 ```{r}
-#test_function("which", args = "x", index = 1)
-#test_function("which", args = "x", index = 2)
-#test_function("which", args = "x", index = 3)
-#test_function("which", args = "x", index = 4)
-#test_object("index1")
-#test_object("index2")
-#test_object("index3")
-#test_object("index4")
-#test_function("mean", index = 1, args = c("x"))
-#test_function("mean", index = 22 args = c("x"))
-#test_function("mean", index = 3, args = c("x"))
+test_function("which", args = "x", index = 1)
+test_function("which", args = "x", index = 2)
+test_function("which", args = "x", index = 3)
+test_function("which", args = "x", index = 4)
+test_object("index1")
+test_object("index2")
+test_object("index3")
+test_object("index4")
+test_function("mean", index = 1, args = c("x"))
+test_function("mean", index = 2, args = c("x"))
+test_function("mean", index = 3, args = c("x"))
 #test_function("mean", index = 4, args = c("x"))
-#test_output_contains("aktien$fb[index1]")
-#test_output_contains("aktien$fb[index2]")
-#test_output_contains("aktien$fb[index3]")
+test_output_contains("aktien$db[index1]")
+test_output_contains("aktien$db[index2]")
+test_output_contains("aktien$fb[index3]")
 #test_output_contains("aktien$fb[index4]")
+```
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:4099c209d4
+## Welche Methode ist sinnvoller?
+Ihre Ergebnisse aus der letzten Aufgabe wurden nun geplotted. Sie sehen den entstehenden Plot für die facebook Aktie. Beim ersten Plot wurden die fehlenden Werte durch den gesamten Durchschnitt ersetzt, beim 2. Plot wurden die fehlenden Werte durch den gleitenden 10er-Durchschnitt ersetzt.
+
+*** =instructions
+Schauen Sie sich beide Plots an und vergleichen Sie die ersetzten Stellen. Die Daten zu diesen Stellen waren 16.01.17 und 20.02.17.
+
+*** =hint
+- Gleitender 10er-Durchschnitt
+- Durchschnitt gesamte Spalte
+
+*** =pre_exercise_code
+```{r}
+# Einlesen der Daten
+deutschebank <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie_Feiertage2NA.csv")
+facebook <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie2NA.csv")
+
+# Zusammenführung der Daten
+library(dplyr)
+
+# Merging der Datensätze
+aktienjoin <- full_join(facebook, deutschebank, by = "Date")
+
+# Verkleinerung der Datensätze
+aktien <- select(aktienjoin, Date, fb = Open.x, db = Open.y )
+
+# class Datum setzen
+aktien$Date <- as.Date(aktien$Date)
+
+# Nach Datum sortieren
+aktien <- aktien[order(aktien$Date),]
+
+# Gleitender Durchschnitt setzen
+index3 <- which(aktien$Date == "2017-01-16")
+aktien$fb[index3] <- mean(c(aktien$fb[c((index3-5):(index3-1),(index3+1):(index3+5))]))
+index4 <- which(aktien$Date == "2017-02-20")
+aktien$fb[index4] <- mean(c(aktien$fb[c((index4-5):(index4-1),(index4+1):(index4+5))]))
+
+# Plot von facebook Aktien mit NA durch gleitenden 10er Durchschnitt ersetzt
+plot(aktien$Date, aktien$fb, type = "l", main = "Facebook Aktie 2016-2017", xlab = "Datum", ylab = "Eroeffnungspreis ($)")
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "Leider war es die andere Möglichkeit!"
+msg_success <- "Genau richtig!"
+test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
+
 ```
