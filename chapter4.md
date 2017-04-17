@@ -297,12 +297,15 @@ test_output_contains("aktien$fb[index3]")
 ## Welche Methode ist sinnvoller?
 Ihre Ergebnisse aus der letzten Aufgabe wurden nun geplotted. Sie sehen den entstehenden Plot für die facebook Aktie. Beim ersten Plot wurden die fehlenden Werte durch den gesamten Durchschnitt ersetzt, beim 2. Plot wurden die fehlenden Werte durch den gleitenden 10er-Durchschnitt ersetzt.
 
-*** =instructions
 Schauen Sie sich beide Plots an und vergleichen Sie die ersetzten Stellen. Die Daten zu diesen Stellen waren 16.01.17 und 20.02.17.
+*** =instructions
 
-*** =hint
+
 - Gleitender 10er-Durchschnitt
 - Durchschnitt gesamte Spalte
+
+*** =hint
+
 
 *** =pre_exercise_code
 ```{r}
@@ -324,6 +327,10 @@ aktien$Date <- as.Date(aktien$Date)
 
 # Nach Datum sortieren
 aktien <- aktien[order(aktien$Date),]
+aktien2 <- aktien
+
+# Gesamten durchschnitt setzen
+aktien2$fb[is.na(aktien2$fb)] <- mean(aktien2$fb, na.rm = TRUE)
 
 # Gleitender Durchschnitt setzen
 index3 <- which(aktien$Date == "2017-01-16")
@@ -332,14 +339,16 @@ index4 <- which(aktien$Date == "2017-02-20")
 aktien$fb[index4] <- mean(c(aktien$fb[c((index4-5):(index4-1),(index4+1):(index4+5))]))
 
 # Plot von facebook Aktien mit NA durch gleitenden 10er Durchschnitt ersetzt
-plot(aktien$Date, aktien$fb, type = "l", main = "Facebook Aktie 2016-2017", xlab = "Datum", ylab = "Eroeffnungspreis ($)")
+plot(aktien$Date, aktien$fb, type = "l", main = "Facebook Aktie 2016-2017 mit gleitendem 10er-Durchschnitt", xlab = "Datum", ylab = "Eroeffnungspreis ($)")
+# Plot von facebook Aktien mit NA durch gesamten Durchschnitt ersetzt
+plot(aktien2$Date, aktien2$fb, type = "l", main = "Facebook Aktie 2016-2017 mit gesamt Durchschnitt", xlab = "Datum", ylab = "Eröffnungspreis ($)")
 
 ```
 
 *** =sct
 ```{r}
-msg_bad <- "Leider war es die andere Möglichkeit!"
-msg_success <- "Genau richtig!"
+msg_bad <- "Leider falsch!"
+msg_success <- "Richtig!"
 test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
 
 ```
