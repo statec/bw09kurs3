@@ -621,7 +621,7 @@ Zur Berechnung der maximalen Volatilität müssen sie das Maximum über die Abso
 ```{r}
 library(dplyr)
 # Einlesen der Daten 
-aktien <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie.csv")
+aktien <- read.csv("TOBEREPLACED")
 
 # Datum als class Date initialisieren
 aktien$Date <- as.Date(aktien$Date)
@@ -657,4 +657,79 @@ plot(aktien$Date, aktien$Rendite, type = "l", main = "Exxon Aktie 2016-2017", xl
 msg_bad <- "Das stimmt nicht! Nutze die Konsole und berechne das Datum ganz genau."
 msg_success <- "Richtig!"
 test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad,  msg_success))
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:b5b6b4a1a8
+## 7. Histogramm
+Ein Histogramm zeigt die Häufigkeitsverteilung einer Variablen an. Ein Datensatz mit den berechneten Renditen für Exxon Aktie liegt unter `aktien`. Erstellen Sie ein Histogramm über die Verteilung der Renditen der Aktie. Die Funktion zum Erstellen eines Histogramms ist `hist(x,...)`.
+
+
+*** =instructions
+Nutzen Sie `?hist()` um mehr über die Anwendung der Funktion zu erfahren.
+Das Histogramm sollte enthalten: 
+
+- `breaks` um die dicke der Balken anzupassen.
+- die Überschrift "Verteilung der Renditen Exxon Aktie".
+- `xlab` und `ylab` zur Beschriftung der Achsen, mit "Renditen" und "Haeufigkeit".
+
+
+*** =hint
+
+- An die x-Werte kommen Sie über `aktien$Rendite`
+- Denken Sie daran, die Beschriftungen in Anführungszeichen zu setzen.
+
+
+*** =pre_exercise_code
+```{r}
+# Einlesen der Daten
+aktien <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie.csv")
+
+# Datum als class Date initialisieren
+aktien$Date <- as.Date(aktien$Date)
+
+# sortieren Datensatz nach Datum
+aktien <- aktien[order(aktien$Date),]
+
+# Funktion zur Berechnung der Rendite
+rendite <- function(zeitreihe){ 
+  r <- zeitreihe[1:length(zeitreihe)-1];  
+  ren <- zeitreihe[2:length(zeitreihe)];
+  ren <- (ren - r) / r;
+  return(ren)     
+}
+
+# Rendite von Exxon Aktien
+rDbAktien <- rendite(aktien$Open)
+
+# Rendite zum Datensatz hinzufügen
+rDbAktien <- c(0,rDbAktien)
+aktien[ , "Rendite"] <- rDbAktien
+
+```
+
+*** =sample_code
+```{r}
+# Erstellen Sie ein Histogramm und setzen Sie breaks = 25.
+
+# Erstellen Sie das Histogramm mit breaks = 50.
+
+```
+
+*** =solution
+```{r}
+# Erstellen Sie ein Histogramm und setzen Sie breaks = 25.
+hist(aktien$ Rendite, breaks = 25, main = "Verteilung der Renditen Exxon Aktie", xlab = "Renditen", ylab = "Haeufigkeit")
+
+# Erstellen Sie das Histogramm mit breaks = 50.
+hist(aktien$ Rendite, breaks = 50, main = "Verteilung der Renditen Exxon Aktie", xlab = "Renditen", ylab = "Haeufigkeit")
+
+```
+
+*** =sct
+```{r}
+test_function("hist", args = c("x", "breaks", "main", "xlab", "ylab"), index = 1) 
+test_function("hist", args = c("x", "breaks", "main", "xlab", "ylab"), index = 2) 
+test_error()
+success_msg("Gratulation! Sie haben die letzte Aufgabe gemeistert.")
 ```
