@@ -126,10 +126,10 @@ aktien$Date[is.na(aktien$exxon)]
 aktien$Date[is.na(aktien$henkel)]
 
 # Ersetzen Sie NA in der Spalte 'henkel' durch den Durchschnitt der Spalte
-aktien$db[is.na(aktien$henkel)] <- mean(aktien$henkel, na.rm = TRUE)
+aktien$henkel[is.na(aktien$henkel)] <- mean(aktien$henkel, na.rm = TRUE)
 
 # Ersetzen Sie NA in der Spalte 'exxon' durch den Durchschnitt der Spalte
-aktien$fb[is.na(aktien$exxon)] <- mean(aktien$exxon, na.rm = TRUE)
+aktien$exxon[is.na(aktien$exxon)] <- mean(aktien$exxon, na.rm = TRUE)
 
 # Geben Sie die geänderten Spalten in der Konsole aus
 aktien$henkel
@@ -361,9 +361,9 @@ aktien$henkel[index4] <- mean(c(aktien$henkel[c((index4-5):(index4-1),(index4+1)
 *** =solution
 ```{r}
 # Plot aktien
-plot(aktien$Date, aktien$fb, type = "l", main = "Henkel Aktie 2016-2017 mit gleitendem 10er-Durchschnitt", xlab = "Datum", ylab = "Eroeffnungspreis (€)")
+plot(aktien$Date, aktien$henkel, type = "l", main = "Henkel Aktie 2016-2017 mit gleitendem 10er-Durchschnitt", xlab = "Datum", ylab = "Eroeffnungspreis (€)")
 # Plot aktien2
-plot(aktien2$Date, aktien2$fb, type = "l", main = "Henkel Aktie 2016-2017 mit gesamt Durchschnitt", xlab = "Datum", ylab = "Eröffnungspreis (€)")
+plot(aktien2$Date, aaktien2$henkel, type = "l", main = "Henkel Aktie 2016-2017 mit gesamt Durchschnitt", xlab = "Datum", ylab = "Eröffnungspreis (€)")
 
 ```
 
