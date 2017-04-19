@@ -492,7 +492,7 @@ aktien$db[index2] <- mean(c(aktien$db[c((index2-5):(index2-1),(index2+1):(index2
 
 *** =sample_code
 ```{r}
-# Erstelle einen vektor mit den Einträgen aus aktien$db. Lasse den letzten Eintrag weg.
+# Erstellung Vektor mit Einträgen aus aktien$db. Entferne den letzten Eintrag.
 x_tminus1 <- 
 # Lasse ersten Eintrag weg, da Rendite erst ab 2. Tag berechenbar
 x_t <- 
@@ -504,7 +504,7 @@ logRenditeDB <-
 
 *** =solution
 ```{r}
-# Erstelle einen vektor mit den Einträgen aus aktien$db. Lasse den letzten Eintrag weg.
+# Erstellung Vektor mit Einträgen aus aktien$db. Entferne den letzten Eintrag.
 x_tminus1 <- aktien$db[1:length(aktien$db)-1]
 # Lasse ersten Eintrag weg, da Rendite erst ab 2. Tag berechenbar
 x_t <- aktien$db[2:length(aktien$db)]
