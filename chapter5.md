@@ -593,3 +593,68 @@ test_object("rsum")
 test_error()
 
 ```
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:51e669525f
+## 6. Analyse der Daten
+Im Datensatz `aktien` haben wir Den Eröffnungspreis und die jeweilige Tagesrendite der Exxon Aktie von einem Jahr. Wir betrachten nun die Volatilität der Zeitreihe. Bei dem Plot der Eröffnungspreise (Plot 1) kann man nur grob schätzen wo die Volatilität am stärksten ist. Im Plot 2 sehen Sie die Rendite der Zeitreihe geplottet. Hier kann man das Ergebnis schon etwas besser heraus lesen.
+
+Wo ist die Volatilität am höchsten? Sie können das Datum mit der höchsten Volatilität berechnen, wenn der Plot kein eindeutiges Ergebnis liefert.
+Hilfe: 
+
+- Um das `Date` mit dem maximalen `wert` aus einem Datensatz `daten` zu bekommen, kann man `daten$Date[daten$wert == max(daten$wert)]` benutzen.
+- Mit `abs(wert)` bekommt man den Absolutwert jedes Elementes des Vektors.
+
+
+*** =instructions
+- Am 02. August 2016
+- Am 27. September 2016
+- Am 29. September 2016
+
+*** =hint
+
+Zur Berechnung der maximalen Volatilität müssen sie das Maximum über die Absolutwerte nehmen.
+
+`maxVol <- aktien$Date[___ == ___(abs(___))]`
+
+*** =pre_exercise_code
+```{r}
+library(dplyr)
+# Einlesen der Daten 
+aktien <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie.csv")
+
+# Datum als class Date initialisieren
+aktien$Date <- as.Date(aktien$Date)
+
+# sortieren Datensatz nach Datum
+aktien <- aktien[order(aktien$Date),]
+
+# Verkleinerung der Datensätze
+aktien <- select(aktien, Date, Open)
+plot(aktien$Date, aktien$Open, type = "l", main = "Exxon Aktie 2016-2017", xlab = "Datum", ylab = "Eröffnungspreis ($)")
+
+# Funktion zur Berechnung der Rendite
+rendite <- function(zeitreihe){ 
+  r <- zeitreihe[1:length(zeitreihe)-1];  
+  ren <- zeitreihe[2:length(zeitreihe)];
+  ren <- (ren - r) / r;
+  return(ren)     
+}
+
+# Rendite für Eröffnungspreise berechnen
+exRen <- rendite(aktien$Open) 
+
+# Rendite zum Datensatz hizufügen, vorne 0
+fbRen <- c(0,exRen)
+aktien[ , "Rendite"] <- fbRen
+
+plot(aktien$Date, aktien$Rendite, type = "l", main = "Exxon Aktie 2016-2017", xlab = "Datum", ylab = "Rendite")
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "Das stimmt nicht! Nutze die Konsole und berechne das Datum ganz genau."
+msg_success <- "Richtig!"
+test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad,  msg_success))
+```
