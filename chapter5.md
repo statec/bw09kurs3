@@ -296,19 +296,24 @@ text_error()
 success_msg("Sehr gut!")
 ```
 
-
---- type:NormalExercise lang:r xp:100 skills:1 key:8f09b2617e
+--- type:NormalExercise lang:r xp:100 skills:1 key:ff3ec8324b
 ## 3) Plotte die Ergebnisse
-Ihre Ergebnisse aus der letzten Aufgabe sollen nun zum Vergleich der Methoden geplottet werden. Nehmen Sie hierfür die Daten der Henkel Aktie. Vergleichen Sie die Methoden der Ersetzung (Gleitender 10-er Durchschnitt und gesamt Durchschnitt). 
-Zur Erinnerung: Die manipulierten Tage warem: "2016-10-31" "2016-10-03"
+
+Ihre Ergebnisse aus der letzten Aufgabe sollen nun zum Vergleich der Methoden geplottet werden. Benutzen Sie die Daten der Henkel Aktie. Vergleichen Sie die Methoden der Ersetzung. Der Datensatz bei dem die NAs durch den gesamten Durchschnitt ersetzt wurden ist `aktien2`, der bei dem die NAs durch den gleitenden 10-er Durchschnitt ersetzt wurden, ist `aktien`.
+
+Zur Erinnerung: Die manipulierten Tage warem: "2016-10-31" "2016-10-03". 
+
+Hilfe zur `plot()` bekommen Sie wie immer durch `?plot()`.
+
 *** =instructions
 
-
-- Gleitender 10er-Durchschnitt
-- Durchschnitt gesamte Spalte
+- Plotten Sie die Zahlenreihen 
+- Beschriften Sie die x-Achse mit "Datum"
+- Beschriften Sie die y-Achse mit "Eröffnungspreis (€)"
 
 *** =hint
 
+- `plot(aktien$Date, ___, type = "l", main = "___", xlab = "___", ylab = "___")`
 
 *** =pre_exercise_code
 ```{r}
@@ -320,11 +325,11 @@ exxon <- read.csv("_____________")
 library(dplyr)
 
 # Merging der Datensätze
-aktienjoin <- full_join(facebook, deutschebank, by = "Date")
+aktienjoin <- full_join(exxon, henkel, by = "Date")
 
 # Verkleinerung der Datensätze
-aktien <- select(aktienjoin, Date, fb = Open.x, db = Open.y )
-
+aktien <- select(aktienjoin, Date, exxon = Open.x, henkel = Open.y )
+remove(aktienjoin)
 # class Datum setzen
 aktien$Date <- as.Date(aktien$Date)
 
@@ -333,25 +338,40 @@ aktien <- aktien[order(aktien$Date),]
 aktien2 <- aktien
 
 # Gesamten durchschnitt setzen
-aktien2$fb[is.na(aktien2$fb)] <- mean(aktien2$fb, na.rm = TRUE)
+aktien2$henkel[is.na(aktien2$henkel)] <- mean(aktien2$henkel, na.rm = TRUE)
 
 # Gleitender Durchschnitt setzen
-index3 <- which(aktien$Date == "2017-01-16")
-aktien$fb[index3] <- mean(c(aktien$fb[c((index3-5):(index3-1),(index3+1):(index3+5))]))
-index4 <- which(aktien$Date == "2017-02-20")
-aktien$fb[index4] <- mean(c(aktien$fb[c((index4-5):(index4-1),(index4+1):(index4+5))]))
+index3 <- which(aktien$Date == "2016-10-31")
+aktien$henkel[index3] <- mean(c(aktien$henkel[c((index3-5):(index3-1),(index3+1):(index3+5))]))
+index4 <- which(aktien$Date == "2016-10-03")
+aktien$henkel[index4] <- mean(c(aktien$henkel[c((index4-5):(index4-1),(index4+1):(index4+5))]))
 
-# Plot von facebook Aktien mit NA durch gleitenden 10er Durchschnitt ersetzt
-plot(aktien$Date, aktien$fb, type = "l", main = "Facebook Aktie 2016-2017 mit gleitendem 10er-Durchschnitt", xlab = "Datum", ylab = "Eroeffnungspreis ($)")
-# Plot von facebook Aktien mit NA durch gesamten Durchschnitt ersetzt
-plot(aktien2$Date, aktien2$fb, type = "l", main = "Facebook Aktie 2016-2017 mit gesamt Durchschnitt", xlab = "Datum", ylab = "Eröffnungspreis ($)")
+
+```
+
+*** =sample_code
+```{r}
+# Plot aktien
+
+# Plot aktien2
+
+
+```
+
+*** =solution
+```{r}
+# Plot aktien
+plot(aktien$Date, aktien$fb, type = "l", main = "Henkel Aktie 2016-2017 mit gleitendem 10er-Durchschnitt", xlab = "Datum", ylab = "Eroeffnungspreis (€)")
+# Plot aktien2
+plot(aktien2$Date, aktien2$fb, type = "l", main = "Henkel Aktie 2016-2017 mit gesamt Durchschnitt", xlab = "Datum", ylab = "Eröffnungspreis (€)")
 
 ```
 
 *** =sct
 ```{r}
-msg_bad <- "Leider falsch!"
-msg_success <- "Richtig!"
-test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
+test_function("plot", index = 1, args = c("x", "y", "type", "xlab", "ylab") )
+test_function("plot", index = 2, args = c("x", "y", "type", "xlab", "ylab") )
+test_error()
+success_msg("Sehr gut!")
 
 ```
