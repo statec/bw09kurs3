@@ -220,7 +220,7 @@ aktien$henkel[___]
 # Neuer Wert
 
 
-# facebook (fb)
+# Exxon 
 # Finde den Index und schreibe ihn in index3
 
 # durch Durchschnitt ersetzen
@@ -236,11 +236,12 @@ aktien$henkel[___]
 # Neuer Wert
 
 
+
 ```
 
 *** =solution
 ```{r}
-# Deutschebank
+# Henkel
 # Finde den Index 1
 index1 <- which(aktien$Date == "2016-10-31")
 # durch Durchschnitt ersetzen
@@ -256,7 +257,7 @@ aktien$henkel[index2] <- mean(c(aktien$henkel[c((index2-5):(index2-1),(index2+1)
 aktien$henkel[index2]
 
 
-# Facebook 
+# Exxon 
 # Finde den Index 3
 index3 <- which(aktien$Date == "2016-09-05")
 # durch Durchschnitt ersetzen
@@ -293,4 +294,64 @@ test_output_contains("aktien$exxon[index3]")
 test_output_contains("aktien$exxon[index4]")
 text_error()
 success_msg("Sehr gut!")
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:8f09b2617e
+## 3) Plotte die Ergebnisse
+Ihre Ergebnisse aus der letzten Aufgabe sollen nun zum Vergleich der Methoden geplottet werden. Nehmen Sie hierfür die Daten der Henkel Aktie. Vergleichen Sie die Methoden der Ersetzung (Gleitender 10-er Durchschnitt und gesamt Durchschnitt). 
+Zur Erinnerung: Die manipulierten Tage warem: "2016-10-31" "2016-10-03"
+*** =instructions
+
+
+- Gleitender 10er-Durchschnitt
+- Durchschnitt gesamte Spalte
+
+*** =hint
+
+
+*** =pre_exercise_code
+```{r}
+# Einlesen der Daten
+henkel <- read.csv("____________")
+exxon <- read.csv("_____________")
+
+# Zusammenführung der Daten
+library(dplyr)
+
+# Merging der Datensätze
+aktienjoin <- full_join(facebook, deutschebank, by = "Date")
+
+# Verkleinerung der Datensätze
+aktien <- select(aktienjoin, Date, fb = Open.x, db = Open.y )
+
+# class Datum setzen
+aktien$Date <- as.Date(aktien$Date)
+
+# Nach Datum sortieren
+aktien <- aktien[order(aktien$Date),]
+aktien2 <- aktien
+
+# Gesamten durchschnitt setzen
+aktien2$fb[is.na(aktien2$fb)] <- mean(aktien2$fb, na.rm = TRUE)
+
+# Gleitender Durchschnitt setzen
+index3 <- which(aktien$Date == "2017-01-16")
+aktien$fb[index3] <- mean(c(aktien$fb[c((index3-5):(index3-1),(index3+1):(index3+5))]))
+index4 <- which(aktien$Date == "2017-02-20")
+aktien$fb[index4] <- mean(c(aktien$fb[c((index4-5):(index4-1),(index4+1):(index4+5))]))
+
+# Plot von facebook Aktien mit NA durch gleitenden 10er Durchschnitt ersetzt
+plot(aktien$Date, aktien$fb, type = "l", main = "Facebook Aktie 2016-2017 mit gleitendem 10er-Durchschnitt", xlab = "Datum", ylab = "Eroeffnungspreis ($)")
+# Plot von facebook Aktien mit NA durch gesamten Durchschnitt ersetzt
+plot(aktien2$Date, aktien2$fb, type = "l", main = "Facebook Aktie 2016-2017 mit gesamt Durchschnitt", xlab = "Datum", ylab = "Eröffnungspreis ($)")
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "Leider falsch!"
+msg_success <- "Richtig!"
+test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
+
 ```
