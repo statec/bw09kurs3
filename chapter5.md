@@ -3,7 +3,7 @@ title       : Einheit 1 - homework
 description : Hausaufgabe zum Einlesen, Analysieren und Darstellen von Daten mit R
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:a055bddcaf
-## 1. Einlesen von Datensätzen in R
+## 1. Einlesen von Datensätzen
 
 Datensätze kann man in R als `CSV-Datei` einlesen. Eine CSV-Datei erkennt man am Dateieinde `.csv`.
 Ihnen wurde der Preisverlauf der Henkel Aktien eines Jahres in einem Link hinterlegt.
@@ -28,7 +28,7 @@ Ihnen wurde der Preisverlauf der Henkel Aktien eines Jahres in einem Link hinter
 *** =sample_code
 ```{r}
 
-# die Datei liegt in _________________________
+# die Datei liegt in __________.csv
 
 
 # Geben Sie die eingelesenen Daten in der Konsole aus
@@ -38,7 +38,7 @@ Ihnen wurde der Preisverlauf der Henkel Aktien eines Jahres in einem Link hinter
 *** =solution
 ```{r}
 # der Pfad der Datei ist 
-henkel <- read.csv("__________________")
+henkel <- read.csv("___________.csv")
 
 # Schauen Sie sich die Daten in der Konsole an
 henkel
