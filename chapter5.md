@@ -28,7 +28,7 @@ Ihnen wurde der Preisverlauf der Henkel Aktien eines Jahres in einem Link hinter
 *** =sample_code
 ```{r}
 
-# die Datei liegt in __________.csv
+# die Datei liegt in TOBEREPLACED.csv
 
 
 # Geben Sie die eingelesenen Daten in der Konsole aus
@@ -38,7 +38,7 @@ Ihnen wurde der Preisverlauf der Henkel Aktien eines Jahres in einem Link hinter
 *** =solution
 ```{r}
 # der Pfad der Datei ist 
-henkel <- read.csv("___________.csv")
+henkel <- read.csv("TOBEREPLACED.csv")
 
 # Schauen Sie sich die Daten in der Konsole an
 henkel
@@ -79,8 +79,8 @@ Nehmen Sie hierbei jeweils die Spalten henkel und exxon.
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-exxon <- read.csv("_________________")
-henkel <- read.csv("_________________")
+exxon <- read.csv("TOBEREPLACED")
+henkel <- read.csv("TOBEREPLACED")
 
 # Zusammenführung der Daten
 library(dplyr)
@@ -180,8 +180,8 @@ NAs Exxon: "2016-09-05" "2016-11-24"
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-henkel <- read.csv("_____________________________")
-exxon <- read.csv("______________________________")
+henkel <- read.csv("TOBEREPLACED")
+exxon <- read.csv("TOBEREPLACED")
 
 # Zusammenführung der Daten
 library(dplyr)
@@ -318,8 +318,8 @@ Hilfe zur `plot()` bekommen Sie wie immer durch `?plot()`.
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-henkel <- read.csv("____________")
-exxon <- read.csv("_____________")
+henkel <- read.csv("TOBEREPLACED")
+exxon <- read.csv("TOBEREPLACED")
 
 # Zusammenführung der Daten
 library(dplyr)
@@ -371,6 +371,86 @@ plot(aktien2$Date, aaktien2$henkel, type = "l", main = "Henkel Aktie 2016-2017 m
 ```{r}
 test_function("plot", index = 1, args = c("x", "y", "type", "xlab", "ylab") )
 test_function("plot", index = 2, args = c("x", "y", "type", "xlab", "ylab") )
+test_error()
+success_msg("Sehr gut!")
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:300dee5fac
+## 4 a) Renditenberechnung
+Der Datensatz liegt in `aktien`. In `aktien$henkel` stehen die Eröffnungspreise der Henkelaktien aus dem Jahr 2016-2017. Rechnen Sie die Rendite für jeden Tag des Datensatzes aus. Bedenken Sie, dass man für den ersten Tag keine Rendite berechnen kann.
+
+Vektoren können in R einfach voneinander subtrahiert werden, solange sie die gleiche Dimension haben. 
+
+Durch `vektor[5:length(vektor)]` entsteht ein Vektor, der alle Elemente von `vektor` ab dem 5. Element enthält.
+
+Die Formel zur Berechnung der Rendite finden Sie im Skript.
+
+
+*** =instructions
+
+Berechnen Sie die Rendite für Henkel für jeden Tag des gegebenen Datensatzes. `aktien$henkel` gibt Ihnen den Vektor mit den benötigten Daten.
+
+*** =hint
+
+- Achten Sie darauf, dass die beiden Vektoren die gleiche Länge haben müssen.
+- Die Länge eines Vektors bekommen Sie durch `length(vektor)`.
+
+*** =pre_exercise_code
+```{r}
+# Einlesen der Daten
+aktien <- read.csv("TOBEREPLACED")
+
+
+# Zusammenführung der Daten
+library(dplyr)
+
+# Verkleinerung der Datensätze
+aktien <- select(aktien, Date, henkel = Open )
+
+# class Datum setzen
+aktien$Date <- as.Date(aktien$Date)
+
+# Nach Datum sortieren
+aktien <- aktien[order(aktien$Date),]
+
+
+```
+
+*** =sample_code
+```{r}
+# Erstelle einen vektor mit den Einträgen aus aktien$henkel. Lasse den letzten Eintrag weg.
+x_tminus1 <- 
+# Lasse ersten Eintrag weg, da Rendite erst ab 2. Tag berechenbar
+x_t <- 
+# Berechnung der Rendite
+renditeH <- 
+# Geben Sie hier die berechnete Rendite in der Konsole aus
+
+```
+
+*** =solution
+```{r}
+# Erstelle einen vektor mit den Einträgen aus aktien$henkel. Lasse den letzten Eintrag weg.
+x_tminus1 <- aktien$henkel[1:length(aktien$henkel)-1]
+
+# Lasse ersten Eintrag weg, da Rendite erst ab 2. Tag berechenbar
+x_t <- aktien$henkel[2:length(aktien$henkel)]
+
+# Berechnung der Rendite
+renditeH <- (x_t - x_tminus1) / x_tminus1
+
+# Geben Sie hier die berechnete Rendite in der Konsole aus
+renditeH
+
+```
+
+*** =sct
+```{r}
+test_object("x_tminus1")
+test_object("x_t")
+test_object("renditeH")
+test_output_contains("renditeH")
 test_error()
 success_msg("Sehr gut!")
 
