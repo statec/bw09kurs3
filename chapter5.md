@@ -485,7 +485,6 @@ Berechnen Sie die log-Rendite für Henkel für jeden Tag des gegebenen Datensatz
 # Einlesen der Daten
 aktien <- read.csv("TOBEREPLACED")
 
-
 # Zusammenführung der Daten
 library(dplyr)
 
@@ -534,5 +533,63 @@ test_object("LogRenditeH")
 test_output_contains("logRenditeH")
 test_error()
 success_msg("Super!")
+
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:2a0cf899b1
+## 5. Berechnung des gleitenden Durchschnitts
+
+Die benötigten Daten sind Ihnen in "aktien" zur Verfügung gestellt.
+Benutzen sie hierfür `cumsum(vektor)`. Was der Befehlt macht können Sie durch ausprobieren in der Konsole oder durch `?cumsum()` herausfinden
+
+
+*** =instructions
+
+Berechnen Sie den gleitenden 10-er Durchschnitt von `aktien$henkel` und schreiben Sie ihn in `rsum`
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+aktien <- read.csv("TOBEREPLACED")
+
+# Zusammenführung der Daten
+library(dplyr)
+
+# Verkleinerung der Datensätze
+aktien <- select(aktien, Date, henkel = Open )
+
+# class Datum setzen
+aktien$Date <- as.Date(aktien$Date)
+
+# Nach Datum sortieren
+aktien <- aktien[order(aktien$Date),]
+
+```
+
+*** =sample_code
+```{r}
+n <- 10
+# Berechnen Sie den gleitenden Durchschnitt und speichern Sie ihr Ergebnis unter "rsum".
+
+
+rsum <-
+
+
+```
+
+*** =solution
+```{r}
+n <- 10
+cx <- cumsum(aktien$henkel)
+rsum <- (cx[(n+1):length(aktien$henkel)] - cx[1:(length(aktien$henkel) - n)]) / n	
+
+```
+
+*** =sct
+```{r}
+test_object("rsum")
+test_error()
 
 ```
