@@ -645,8 +645,8 @@ rendite <- function(zeitreihe){
 exRen <- rendite(aktien$Open) 
 
 # Rendite zum Datensatz hizufügen, vorne 0
-fbRen <- c(0,exRen)
-aktien[ , "Rendite"] <- fbRen
+exRen <- c(0,exRen)
+aktien[ , "Rendite"] <- exRen
 
 plot(aktien$Date, aktien$Rendite, type = "l", main = "Exxon Aktie 2016-2017", xlab = "Datum", ylab = "Rendite")
 
@@ -683,7 +683,7 @@ Das Histogramm sollte enthalten:
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-aktien <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie.csv")
+aktien <- read.csv("TOBEREPLACED")
 
 # Datum als class Date initialisieren
 aktien$Date <- as.Date(aktien$Date)
@@ -700,11 +700,11 @@ rendite <- function(zeitreihe){
 }
 
 # Rendite von Exxon Aktien
-rDbAktien <- rendite(aktien$Open)
+renAktien <- rendite(aktien$Open)
 
 # Rendite zum Datensatz hinzufügen
-rDbAktien <- c(0,rDbAktien)
-aktien[ , "Rendite"] <- rDbAktien
+renAktien <- c(0,renAktien)
+aktien[ , "Rendite"] <- renAktien
 
 ```
 
