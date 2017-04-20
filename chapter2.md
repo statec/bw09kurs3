@@ -5,7 +5,7 @@ description : Übungen zum Einlesen, Analysieren und Darstellen von Daten mit R
 ## 1. Einlesen von Datensätzen in R
 
 Datensätze kann man in R als `CSV-Datei` einlesen. Eine CSV-Datei erkennt man am Dateieinde `.csv`.
-Ihnen wurde der Preisverlauf der Deutschen Bank Aktien eines Jahres in einem Link hinterlegt.
+Ihnen wurde der Preisverlauf der Deutschen Bank Aktie eines Jahres in einem Link hinterlegt.
 
 (Quelle: de.finance.yahoo.com)
 
@@ -57,7 +57,7 @@ success_msg("Sehr gut!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:38a63c90da
 ## 2 a) Die Feiertagsproblematik
 
-Gegeben ist Ihnen der Datensatz `aktien`. Er besteht aus den Daten von einem Jahr von sowohl der Deutschen Bank (XETRA also Deutsche Börse) und von facebook (NASDAQ also US-Börse). Durch die unterschiedlichen Feiertage in Deutschland und der USA fehlen einige Werte im Datensatz. Diese Felder sind mit `NA` gekennzeichnet. Um den Datensatz grafisch darstellen zu können, müssen Sie eine geeiegnete Möglichkeit finden, diese Felder zu ersetzen.
+Gegeben ist Ihnen der Datensatz `aktien`. Er besteht aus den Daten eines Jahres von der Deutschen Bank (XETRA also Deutsche Börse) und facebook (NASDAQ also US-Börse). Durch die unterschiedlichen Feiertage in Deutschland und der USA fehlen einige Werte im Datensatz. Diese Felder sind mit `NA` gekennzeichnet. Gesucht ist nun eine geeiegnete Möglichkeit, diese Felder zu ersetzen.
 
 (Quelle der Daten: de.finance.yahoo.com)
 
@@ -67,7 +67,7 @@ Ersetzen Sie die NA Felder in dem Datensatz durch:
 - den Durchschnitt der gesamten Zeitreihe. Hierfür können Sie die `mean()`-Funktion nutzen.
 - in den [ ]-Klammern hinter der Variable stehen die Auswahlbedingungen. Beispielsweise: `spalte[is.na(spalte)]` gibt nur die Felder aus `spalte` zurück, in denen NA steht.
 
-Nehmen Sie hierbei jeweils die Spalten db und fb.
+Nehmen Sie jeweils die Spalten db und fb.
 
 *** =hint
 - `na.rm = TRUE` entfernt die NA Felder, zur Berechnung des Durchschnitts.
@@ -106,10 +106,10 @@ aktien$Date <- as.Date(aktien$Date)
 aktien$Date[is.na(aktien$fb)]
 aktien$Date[is.na(aktien$db)]
 
-# Ersetzen Sie NA in der Spalte 'db' durch den Durchschnitt der Spalte
+# Ersetzen Sie NAs in der Spalte 'db' durch den Durchschnitt der Spalte
 aktien$___[is.na(___)] <- ___(___, na.rm = TRUE)
 
-# Ersetzen Sie NA in der Spalte 'fb' durch den Durchschnitt der Spalte
+# Ersetzen Sie NAs in der Spalte 'fb' durch den Durchschnitt der Spalte
 
 
 # Geben Sie die geänderten Spalten in der Konsole aus
@@ -123,10 +123,10 @@ aktien$___[is.na(___)] <- ___(___, na.rm = TRUE)
 aktien$Date[is.na(aktien$fb)]
 aktien$Date[is.na(aktien$db)]
 
-# Ersetzen Sie NA in der Spalte 'db' durch den Durchschnitt der Spalte
+# Ersetzen Sie NAs in der Spalte 'db' durch den Durchschnitt der Spalte
 aktien$db[is.na(aktien$db)] <- mean(aktien$db, na.rm = TRUE)
 
-# Ersetzen Sie NA in der Spalte 'fb' durch den Durchschnitt der Spalte
+# Ersetzen Sie NAs in der Spalte 'fb' durch den Durchschnitt der Spalte
 aktien$fb[is.na(aktien$fb)] <- mean(aktien$fb, na.rm = TRUE)
 
 # Geben Sie die geänderten Spalten in der Konsole aus
@@ -141,11 +141,9 @@ aktien$fb
 test_function("mean", index = 1, args = c("x", "na.rm"))
 test_function("mean", index = 2, args = c("x", "na.rm"))
 
-test_object("aktien$db")
-test_object("aktien$fb")
 test_output_contains("aktien$db")
 test_output_contains("aktien$fb")
-
+test_object("aktien")
 test_error()
 success_msg("Sehr gut!")
 
@@ -208,7 +206,7 @@ aktien <- aktien[order(aktien$Date),]
 # Finde den Index und schreibe ihn in index1
 index1 <- which(___ == "___")
 # durch Durchschnitt ersetzen
-aktien$db[___] <- ___(c(___[c((index1-___):(index1-___),(index1+___):(index1+___))]))
+aktien$db[___] <- ___(c(aktien$db[c((index1-___):(index1-___),(index1+___):(index1+___))]))
 # Neuer Wert
 aktien$db[___]
 
@@ -291,7 +289,7 @@ test_output_contains("aktien$db[index1]")
 test_output_contains("aktien$db[index2]")
 test_output_contains("aktien$fb[index3]")
 test_output_contains("aktien$fb[index4]")
-text_error()
+test_error()
 success_msg("Sehr gut!")
 ```
 
