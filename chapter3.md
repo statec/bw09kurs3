@@ -375,7 +375,9 @@ success_msg("Sehr gut!")
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:300dee5fac
 ## 4 a) Renditenberechnung
-Der Datensatz liegt in `aktien`. In `aktien$henkel` stehen die Eröffnungspreise der Henkelaktien aus dem Jahr 2016-2017. Rechnen Sie die Rendite für jeden Tag des Datensatzes aus. Bedenken Sie, dass man für den ersten Tag keine Rendite berechnen kann.
+Der Datensatz liegt in `aktien`. In `aktien$henkel` stehen die Eröffnungspreise der Henkel Aktien aus dem Jahr 2016-2017. Rechnen Sie die Rendite für jeden Tag des Datensatzes aus. Bedenken Sie, dass man für den ersten Tag keine Rendite berechnen kann.
+
+Tipps:
 
 Vektoren können in R einfach voneinander subtrahiert werden, solange sie die gleiche Dimension haben. 
 
@@ -526,7 +528,7 @@ logRenditeH
 ```{r}
 test_object("x_tminus1")
 test_object("x_t")
-test_object("LogRenditeH")
+test_object("logRenditeH")
 test_output_contains("logRenditeH")
 test_error()
 success_msg("Super!")
@@ -537,13 +539,13 @@ success_msg("Super!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:2a0cf899b1
 ## 5. Berechnung des gleitenden Durchschnitts
 
-Die benötigten Daten sind Ihnen in "aktien" zur Verfügung gestellt.
-Benutzen sie hierfür `cumsum(vektor)`. Was der Befehlt macht können Sie durch ausprobieren in der Konsole oder durch `?cumsum()` herausfinden
+Die benötigten Daten sind Ihnen in `aktien` zur Verfügung gestellt.
+Benutzen sie für diese Aufgabe `cumsum(vektor)`. Was der Befehlt macht können Sie durch ausprobieren in der Konsole oder durch `?cumsum()` herausfinden.
 
 
 *** =instructions
 
-Berechnen Sie den gleitenden 10-er Durchschnitt von `aktien$henkel` und schreiben Sie ihn in `rsum`
+Berechnen Sie den gleitenden 10-er Durchschnitt von `aktien$henkel` und schreiben Sie ihn in `rsum`.
 
 *** =hint
 
@@ -586,6 +588,7 @@ rsum <- (cx[(n+1):length(aktien$henkel)] - cx[1:(length(aktien$henkel) - n)]) / 
 
 *** =sct
 ```{r}
+test_function("cumsum", args = "x")
 test_object("rsum")
 test_error()
 
@@ -594,9 +597,10 @@ test_error()
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:51e669525f
 ## 6. Analyse der Daten
-Im Datensatz `aktien` haben wir Den Eröffnungspreis und die jeweilige Tagesrendite der Exxon Aktie von einem Jahr. Wir betrachten nun die Volatilität der Zeitreihe. Bei dem Plot der Eröffnungspreise (Plot 1) kann man nur grob schätzen wo die Volatilität am stärksten ist. Im Plot 2 sehen Sie die Rendite der Zeitreihe geplottet. Hier kann man das Ergebnis schon etwas besser heraus lesen.
+Im Datensatz `aktien` haben wir Den Eröffnungspreis und die jeweilige Tagesrendite der Exxon Aktie von einem Jahr. Wir betrachten die Volatilität der Zeitreihe. Bei dem Plot der Eröffnungspreise (Plot 1) kann man nur grob schätzen, wo die Volatilität am stärksten ist. Im Plot 2 sehen Sie die Rendite der Zeitreihe geplottet. Hier kann man das Ergebnis schon etwas besser heraus lesen.
 
 Wo ist die Volatilität am höchsten? Sie können das Datum mit der höchsten Volatilität berechnen, wenn der Plot kein eindeutiges Ergebnis liefert.
+
 Hilfe: 
 
 - Um das `Date` mit dem maximalen `wert` aus einem Datensatz `daten` zu bekommen, kann man `daten$Date[daten$wert == max(daten$wert)]` benutzen.
@@ -605,7 +609,7 @@ Hilfe:
 
 *** =instructions
 - Am 02. August 2016
-- Am 27. September 2016
+- Am 28. September 2016
 - Am 29. September 2016
 
 *** =hint
@@ -659,7 +663,7 @@ test_mc(correct = 3, feedback_msgs = c(msg_bad, msg_bad,  msg_success))
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b5b6b4a1a8
 ## 7. Histogramm
-Ein Histogramm zeigt die Häufigkeitsverteilung einer Variablen an. Ein Datensatz mit den berechneten Renditen für Exxon Aktie liegt unter `aktien`. Erstellen Sie ein Histogramm über die Verteilung der Renditen der Aktie. Die Funktion zum Erstellen eines Histogramms ist `hist(x,...)`.
+Ein Histogramm trägt die Häufigkeit der angenommenen Werte einer Variable auf. Ein Datensatz mit den berechneten Renditen für die Exxon Aktie liegt unter `aktien`. Erstellen Sie ein Histogramm über die Verteilung der Renditen der Aktie. Die Funktion zum Erstellen eines Histogramms ist `hist(x,...)`.
 
 
 *** =instructions
