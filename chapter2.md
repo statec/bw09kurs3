@@ -27,7 +27,7 @@ Ihnen wurde der Preisverlauf der Deutschen Bank Aktien eines Jahres in einem Lin
 *** =sample_code
 ```{r}
 
-# die Datei liegt in http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie_Feiertage2NA.csv
+# die Datei liegt in https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/db_aktie_Feiertage2NA.csv
 
 
 # Geben Sie die eingelesenen Daten in der Konsole aus
@@ -37,7 +37,7 @@ Ihnen wurde der Preisverlauf der Deutschen Bank Aktien eines Jahres in einem Lin
 *** =solution
 ```{r}
 # der Pfad der Datei ist 
-deutschebank <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie_Feiertage2NA.csv")
+deutschebank <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/db_aktie_Feiertage2NA.csv")
 
 # Schauen Sie sich die Daten in der Konsole an
 deutschebank
@@ -77,8 +77,8 @@ Nehmen Sie hierbei jeweils die Spalten db und fb.
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-deutschebank <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie_Feiertage2NA.csv")
-facebook <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie2NA.csv")
+deutschebank <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/db_aktie_Feiertage2NA.csv")
+facebook <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/fb_aktie2NA.csv")
 
 # Zusammenführung der Daten
 library(dplyr)
@@ -178,8 +178,8 @@ NAs facebook (fb): "2017-01-16" "2017-02-20"
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-deutschebank <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie_Feiertage2NA.csv")
-facebook <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie2NA.csv")
+deutschebank <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/db_aktie_Feiertage2NA.csv")
+facebook <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/fb_aktie2NA.csv")
 
 # Zusammenführung der Daten
 library(dplyr)
@@ -313,8 +313,8 @@ Schauen Sie sich beide Plots an und vergleichen Sie die ersetzten Stellen. Die D
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-deutschebank <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie_Feiertage2NA.csv")
-facebook <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie2NA.csv")
+deutschebank <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/db_aktie_Feiertage2NA.csv")
+facebook <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/fb_aktie2NA.csv")
 
 # Zusammenführung der Daten
 library(dplyr)
@@ -376,8 +376,8 @@ Berechnen Sie die Rendite für die Deutsche Bank für jeden Tag des gegebenen Da
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-deutschebank <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie_Feiertage2NA.csv")
-facebook <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie2NA.csv")
+deutschebank <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/db_aktie_Feiertage2NA.csv")
+facebook <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/fb_aktie2NA.csv")
 
 # Zusammenführung der Daten
 library(dplyr)
@@ -463,8 +463,8 @@ Berechnen Sie die log-Rendite für die Deutsche Bank für jeden Tag des gegebene
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-deutschebank <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie_Feiertage2NA.csv")
-facebook <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie2NA.csv")
+deutschebank <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/db_aktie_Feiertage2NA.csv")
+facebook <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/fb_aktie2NA.csv")
 
 # Zusammenführung der Daten
 library(dplyr)
@@ -545,7 +545,7 @@ Im Plot Befehl müssen Sie type, main, xlab und ylab füllen. Das tuen Sie durch
 ```{r}
 # Plotten der Zeitreihe aus 1
 # Einlesen der Daten (Daten sind bereits eingelesen)
-aktien <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie.csv")
+aktien <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/fb_aktie.csv")
 
 # Datum als class Date initialisieren
 aktien$Date <- as.Date(aktien$Date)
@@ -599,7 +599,7 @@ Hilfe:
 ```{r}
 library(dplyr)
 # Einlesen der Daten 
-aktien <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie.csv")
+aktien <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/fb_aktie.csv")
 
 # Datum als class Date initialisieren
 aktien$Date <- as.Date(aktien$Date)

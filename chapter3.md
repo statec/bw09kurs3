@@ -28,7 +28,7 @@ Ihnen wurde der Preisverlauf der Henkel Aktien eines Jahres in einem Link hinter
 *** =sample_code
 ```{r}
 
-# die Datei liegt in TOBEREPLACED.csv
+# die Datei liegt in https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/henkel.csv
 
 
 # Geben Sie die eingelesenen Daten in der Konsole aus
@@ -38,7 +38,7 @@ Ihnen wurde der Preisverlauf der Henkel Aktien eines Jahres in einem Link hinter
 *** =solution
 ```{r}
 # der Pfad der Datei ist 
-henkel <- read.csv("TOBEREPLACED.csv")
+henkel <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/henkel.csv")
 
 # Schauen Sie sich die Daten in der Konsole an
 henkel
@@ -79,8 +79,8 @@ Nehmen Sie hierbei jeweils die Spalten henkel und exxon.
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-exxon <- read.csv("TOBEREPLACED")
-henkel <- read.csv("TOBEREPLACED")
+exxon <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/exxon.csv")
+henkel <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/henkel.csv")
 
 # Zusammenführung der Daten
 library(dplyr)
@@ -180,8 +180,8 @@ NAs Exxon: "2016-09-05" "2016-11-24"
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-henkel <- read.csv("TOBEREPLACED")
-exxon <- read.csv("TOBEREPLACED")
+henkel <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/henkel.csv")
+exxon <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/exxon.csv")
 
 # Zusammenführung der Daten
 library(dplyr)
@@ -318,8 +318,8 @@ Hilfe zur `plot()` bekommen Sie wie immer durch `?plot()`.
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-henkel <- read.csv("TOBEREPLACED")
-exxon <- read.csv("TOBEREPLACED")
+henkel <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/henkel.csv")
+exxon <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/exxon.csv")
 
 # Zusammenführung der Daten
 library(dplyr)
@@ -399,7 +399,7 @@ Berechnen Sie die Rendite für Henkel für jeden Tag des gegebenen Datensatzes. 
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-aktien <- read.csv("TOBEREPLACED")
+aktien <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/henkel.csv")
 
 
 # Zusammenführung der Daten
@@ -483,7 +483,7 @@ Berechnen Sie die log-Rendite für Henkel für jeden Tag des gegebenen Datensatz
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-aktien <- read.csv("TOBEREPLACED")
+aktien <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/henkel.csv")
 
 # Zusammenführung der Daten
 library(dplyr)
@@ -552,7 +552,7 @@ Berechnen Sie den gleitenden 10-er Durchschnitt von `aktien$henkel` und schreibe
 
 *** =pre_exercise_code
 ```{r}
-aktien <- read.csv("TOBEREPLACED")
+aktien <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/henkel.csv")
 
 # Zusammenführung der Daten
 library(dplyr)
@@ -621,7 +621,7 @@ Zur Berechnung der maximalen Volatilität müssen sie das Maximum über die Abso
 ```{r}
 library(dplyr)
 # Einlesen der Daten 
-aktien <- read.csv("TOBEREPLACED")
+aktien <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/exxon.csv")
 
 # Datum als class Date initialisieren
 aktien$Date <- as.Date(aktien$Date)
@@ -683,7 +683,7 @@ Das Histogramm sollte enthalten:
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-aktien <- read.csv("TOBEREPLACED")
+aktien <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/exxon.csv")
 
 # Datum als class Date initialisieren
 aktien$Date <- as.Date(aktien$Date)
