@@ -647,7 +647,7 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad, msg_bad))
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:2cefa138d2
 ## 6. Histogramm
-Ein Histogramm zeigt die Häufigkeitsverteilung einer Variablen an. Ein Datensatz mit den berechneten Renditen für die Deutsche Bank Aktie liegt unter `aktien`. Erstellen Sie ein Histogramm über die Verteilung der Renditen der Aktie. Die Funktion zum Erstellen eines Histogramms ist `hist(x,...)`.
+Ein Histogramm trägt die Häufigkeit der angenommenen Werte einer Variable auf. Ein Datensatz mit den berechneten Renditen für die Deutsche Bank Aktie liegt unter `aktien`. Erstellen Sie ein Histogramm über die Verteilung der Renditen der Aktie. Die Funktion zum Erstellen eines Histogramms ist `hist(x,...)`.
 
 
 *** =instructions
