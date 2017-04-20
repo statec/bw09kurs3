@@ -296,9 +296,11 @@ success_msg("Sehr gut!")
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:4099c209d4
 ## 2 c) Welche Methode ist sinnvoller?
-Ihre Ergebnisse aus der letzten Aufgabe wurden nun geplotted. Sie sehen den entstehenden Plot für die facebook Aktie. Beim ersten Plot wurden die fehlenden Werte durch den gesamten Durchschnitt ersetzt, beim 2. Plot wurden die fehlenden Werte durch den gleitenden 10er-Durchschnitt ersetzt.
+Ihre Ergebnisse aus der letzten Aufgabe wurden geplotted. Sie sehen rechts den Plot für die facebook Aktie. Beim ersten Plot wurden die fehlenden Werte durch den gesamten Durchschnitt ersetzt, beim 2. Plot wurden die fehlenden Werte durch den gleitenden 10er-Durchschnitt ersetzt.
 
-Schauen Sie sich beide Plots an und vergleichen Sie die ersetzten Stellen. Die Daten zu diesen Stellen waren 16.01.17 und 20.02.17.
+Schauen Sie sich beide Plots an und vergleichen Sie die ersetzten Stellen. Die Daten zu diesen Stellen waren 16.01.17 und 20.02.17. 
+
+Welche Methode eignet sich besser zur Ersetzung?
 *** =instructions
 
 
@@ -356,8 +358,10 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:15e17afcbc
 ## 3 a) Rendite
-Der Datensatz liegt in `aktien`. Nun sollen die Renditen für jeden Tag berechnet werden. Bedenken Sie, dass man für den ersten Tag keine Rendite berechnen kann.
-Vektoren können in R einfach voneinander subtrahiert werden, solange sie die gleiche Dimension haben. Durch `vektor[5:length(vektor)]` entsteht ein Vektor, der alle Elemente von `vektor` ab dem 5. Element enthält.
+Der Datensatz liegt in `aktien`. Nun sollen die Renditen für jeden Tag der Zeitreihe berechnet werden. Bedenken Sie, dass man für den ersten Tag keine Rendite berechnen kann.
+Vektoren können in R einfach voneinander subtrahiert werden, solange sie die gleiche Dimension haben. 
+
+Tipp: Durch `vektor[5:length(vektor)]` entsteht ein Vektor, der alle Elemente von `vektor` ab dem 5. Element enthält.
 
 Die Formel zur Berechnung der Rendite finden Sie im Skript.
 
@@ -443,7 +447,11 @@ success_msg("Sehr gut!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:48d8b0a0d0
 ## 3 b) Logarithmische Rendite
 Der Datensatz liegt in `aktien`. Nun sollen die Logarithmischen-Renditen für jeden Tag berechnet werden.
+
+Tipps:
+
 Vektoren können in R einfach voneinander subtrahiert werden, solange sie die gleiche Dimension haben. Durch `vektor[5:length(vektor)]` entsteht ein Vektor, der alle Elemente von `vektor` ab dem 5. Element enthält.
+
 Den natürlichen Logarithmus können Sie in R einfach mit `log(x)` bestimmen. Hierbei kann `x` auch ein Vektor sein, der Logarithmus wird in dem Fall elementeweise ausgeführt.
 
 Die Formel zur Berechnung der log-Rendite finden Sie im Skript.
@@ -517,7 +525,7 @@ logRenditeDB
 ```{r}
 test_object("x_tminus1")
 test_object("x_t")
-test_object("LogRenditeDB")
+test_object("logRenditeDB")
 test_output_contains("logRenditeDB")
 test_error()
 success_msg("Supi!")
