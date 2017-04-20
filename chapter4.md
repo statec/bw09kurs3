@@ -662,7 +662,7 @@ Das Histogramm sollte enthalten:
 *** =pre_exercise_code
 ```{r}
 # Einlesen der Daten
-aktien <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie.csv")
+aktien <- read.csv("https://www.uni-duesseldorf.de/redaktion/fileadmin/redaktion/Fakultaeten/Wirtschaftswissenschaftliche_Fakultaet/Statistik/Kurse/BW_09/db_aktie.csv")
 
 # Datum als class Date initialisieren
 aktien$Date <- as.Date(aktien$Date)
