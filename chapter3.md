@@ -5,7 +5,7 @@ description : Hausaufgabe zum Einlesen, Analysieren und Darstellen von Daten mit
 --- type:NormalExercise lang:r xp:100 skills:1 key:a055bddcaf
 ## 1. Einlesen von Datensätzen
 
-Datensätze kann man in R als `CSV-Datei` einlesen. Eine CSV-Datei erkennt man am Dateieinde `.csv`.
+Datensätze kann man in R als `CSV-Datei` einlesen. 
 Ihnen wurde der Preisverlauf der Henkel Aktien eines Jahres in einem Link hinterlegt.
 
 (Quelle: de.finance.yahoo.com)
@@ -59,7 +59,7 @@ success_msg("Sehr gut!")
 --- type:NormalExercise lang:r xp:100 skills:1 key:97f29a5b16
 ## 2 a) Die Feiertagsproblematik
 
-Gegeben ist Ihnen der Datensatz `aktien`. Er besteht aus den Daten von einem Jahr sowohl von Henkel (Frankfurter Börse) und von Exxon Mobile (NYSE). Durch die unterschiedlichen Feiertage in Deutschland und der USA fehlen einige Werte im Datensatz. Diese Felder sind mit `NA` gekennzeichnet. Um den Datensatz grafisch darstellen zu können, müssen Sie eine geeiegnete Möglichkeit finden, diese Felder zu ersetzen.
+Gegeben ist Ihnen der Datensatz `aktien`. Er besteht aus den Daten von einem Jahr sowohl von Henkel (Frankfurter Börse) und von Exxon Mobile (NYSE). Durch die unterschiedlichen Feiertage in Deutschland und der USA fehlen einige Werte im Datensatz. Diese Felder sind mit `NA` gekennzeichnet. Gesucht ist eine geeiegnete Möglichkeit, zur Ersetzung diese Felder durch passende Werte.
 
 (Quelle der Daten: de.finance.yahoo.com)
 
@@ -142,12 +142,9 @@ aktien$exxon
 
 test_function("mean", index = 1, args = c("x", "na.rm"))
 test_function("mean", index = 2, args = c("x", "na.rm"))
-
-test_object("aktien$henkel")
-test_object("aktien$exxon")
+test_object("aktien")
 test_output_contains("aktien$henkel")
 test_output_contains("aktien$exxon")
-
 test_error()
 success_msg("Sehr gut!")
 
@@ -206,7 +203,7 @@ aktien <- aktien[order(aktien$Date),]
 
 # Henkel 
 # Finde den Index und schreibe ihn in index1
-index1 <- which(___ == "___")
+index1 <- which(___ == ___)
 # durch Durchschnitt ersetzen
 aktien$henkel[___] <- ___(c(___[c((index1-___):(index1-___),(index1+___):(index1+___))]))
 # Neuer Wert
@@ -292,16 +289,16 @@ test_output_contains("aktien$henkel[index1]")
 test_output_contains("aktien$henkel[index2]")
 test_output_contains("aktien$exxon[index3]")
 test_output_contains("aktien$exxon[index4]")
-text_error()
+test_error()
 success_msg("Sehr gut!")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:ff3ec8324b
 ## 3) Plotte die Ergebnisse
 
-Ihre Ergebnisse aus der letzten Aufgabe sollen nun zum Vergleich der Methoden geplottet werden. Benutzen Sie die Daten der Henkel Aktie. Vergleichen Sie die Methoden der Ersetzung. Der Datensatz bei dem die NAs durch den gesamten Durchschnitt ersetzt wurden ist `aktien2`, der bei dem die NAs durch den gleitenden 10-er Durchschnitt ersetzt wurden, ist `aktien`.
+Ihre Ergebnisse aus der letzten Aufgabe sollen nun zum Vergleich der Methoden geplottet werden. Benutzen Sie die Daten der Henkel Aktie. Vergleichen Sie die Methoden der Ersetzung. Der Datensatz bei dem die NAs durch den gesamten Durchschnitt ersetzt wurden ist `aktien2`. Der, bei dem die NAs durch den gleitenden 10-er Durchschnitt ersetzt wurden, ist `aktien`.
 
-Zur Erinnerung: Die manipulierten Tage warem: "2016-10-31" "2016-10-03". 
+Zur Erinnerung: Die manipulierten Tage sind: "2016-10-31" "2016-10-03". 
 
 Hilfe zur `plot()` bekommen Sie wie immer durch `?plot()`.
 
@@ -309,11 +306,11 @@ Hilfe zur `plot()` bekommen Sie wie immer durch `?plot()`.
 
 - Plotten Sie die Zahlenreihen 
 - Beschriften Sie die x-Achse mit "Datum"
-- Beschriften Sie die y-Achse mit "Eröffnungspreis (€)"
+- Beschriften Sie die y-Achse mit "Eroeffnungspreis (€)"
 
 *** =hint
 
-- `plot(aktien$Date, ___, type = "l", main = "___", xlab = "___", ylab = "___")`
+- `plot(aktien$Date, ___, type = "___", main = "___", xlab = "___", ylab = "___")`
 
 *** =pre_exercise_code
 ```{r}
@@ -363,7 +360,7 @@ aktien$henkel[index4] <- mean(c(aktien$henkel[c((index4-5):(index4-1),(index4+1)
 # Plot aktien
 plot(aktien$Date, aktien$henkel, type = "l", main = "Henkel Aktie 2016-2017 mit gleitendem 10er-Durchschnitt", xlab = "Datum", ylab = "Eroeffnungspreis (€)")
 # Plot aktien2
-plot(aktien2$Date, aaktien2$henkel, type = "l", main = "Henkel Aktie 2016-2017 mit gesamt Durchschnitt", xlab = "Datum", ylab = "Eröffnungspreis (€)")
+plot(aktien2$Date, aktien2$henkel, type = "l", main = "Henkel Aktie 2016-2017 mit gesamt Durchschnitt", xlab = "Datum", ylab = "Eroeffnungspreis (€)")
 
 ```
 
