@@ -65,7 +65,7 @@ Gegeben ist Ihnen der Datensatz `aktien`. Er besteht aus den Daten eines Jahres 
 Ersetzen Sie die NA Felder in dem Datensatz durch:
 
 - den Durchschnitt der gesamten Zeitreihe. Hierfür können Sie die `mean()`-Funktion nutzen.
-- in den [ ]-Klammern hinter der Variable stehen die Auswahlbedingungen. Beispielsweise: `spalte[is.na(spalte)]` gibt nur die Felder aus `spalte` zurück, in denen NA steht.
+- in den [ ]-Klammern hinter der Variable stehen die Auswahlbedingungen. Beispielsweise: `spalte$Date[is.na(spalte)]` gibt nur die Felder aus `spalte` zurück, in denen NA steht.
 
 Nehmen Sie jeweils die Spalten db und fb.
 
@@ -420,7 +420,7 @@ renditeDB <-
 *** =solution
 ```{r}
 # Erstelle einen vektor mit den Einträgen aus aktien$db. Lasse den letzten Eintrag weg.
-x_tminus1 <- aktien$db[1:length(aktien$db)-1]
+x_tminus1 <- aktien$db[1:(length(aktien$db)-1)]
 
 # Lasse ersten Eintrag weg, da Rendite erst ab 2. Tag berechenbar
 x_t <- aktien$db[2:length(aktien$db)]
@@ -511,7 +511,7 @@ logRenditeDB <-
 *** =solution
 ```{r}
 # Erstellung Vektor mit Einträgen aus aktien$db. Entferne den letzten Eintrag.
-x_tminus1 <- aktien$db[1:length(aktien$db)-1]
+x_tminus1 <- aktien$db[1:(length(aktien$db)-1)]
 # Lasse ersten Eintrag weg, da Rendite erst ab 2. Tag berechenbar
 x_t <- aktien$db[2:length(aktien$db)]
 # Berechnung der Rendite
@@ -619,7 +619,7 @@ plot(aktien$Date, aktien$Open, type = "l", main = "Facebook Aktie 2016-2017", xl
 
 # Funktion zur Berechnung der Rendite
 rendite <- function(zeitreihe){ 
-  r <- zeitreihe[1:length(zeitreihe)-1];  
+  r <- zeitreihe[1:(length(zeitreihe)-1)];  
   ren <- zeitreihe[2:length(zeitreihe)];
   ren <- (ren - r) / r;
   return(ren)     
@@ -678,7 +678,7 @@ aktien <- aktien[order(aktien$Date),]
 
 # Funktion zur Berechnung der Rendite
 rendite <- function(zeitreihe){ 
-  r <- zeitreihe[1:length(zeitreihe)-1];  
+  r <- zeitreihe[1:(length(zeitreihe)-1)];  
   ren <- zeitreihe[2:length(zeitreihe)];
   ren <- (ren - r) / r;
   return(ren)     
@@ -704,10 +704,10 @@ aktien[ , "Rendite"] <- rDbAktien
 *** =solution
 ```{r}
 # Erstellen Sie ein Histogramm und setzen Sie breaks = 20.
-hist(aktien$ Rendite, breaks = 20, main = "Verteilung der Renditen", xlab = "Renditen", ylab = "Haeufigkeit")
+hist(aktien$Rendite, breaks = 20, main = "Verteilung der Renditen", xlab = "Renditen", ylab = "Haeufigkeit")
 
 # Erstellen Sie das Histogramm mit breaks = 40.
-hist(aktien$ Rendite, breaks = 40, main = "Verteilung der Renditen", xlab = "Renditen", ylab = "Haeufigkeit")
+hist(aktien$Rendite, breaks = 40, main = "Verteilung der Renditen", xlab = "Renditen", ylab = "Haeufigkeit")
 
 ```
 
