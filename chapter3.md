@@ -165,7 +165,7 @@ Nützliche R Funktionen:
 Ersetzen Sie die NAs in beiden Spalten henkel und exxon durch den gleitenden 10er-Durchschnitt der jeweiligen Spalte.
 
 Die NA-Stellen finden Sie über: 
-`aktien[is.na(aktien$exxon)]`
+`aktien$Date[is.na(aktien$exxon)]`
 
 Für Henkel analog.
 
@@ -202,7 +202,7 @@ aktien <- aktien[order(aktien$Date),]
 ```{r}
 
 # Henkel 
-# Finde den Index und schreibe ihn in index1
+# Finde den Index und schreibe ihn in index1 (chronologisch erstes Datum)
 index1 <- which(___ == ___)
 # durch Durchschnitt ersetzen
 aktien$henkel[___] <- ___(c(___[c((index1-___):(index1-___),(index1+___):(index1+___))]))
@@ -210,7 +210,7 @@ aktien$henkel[___] <- ___(c(___[c((index1-___):(index1-___),(index1+___):(index1
 aktien$henkel[___]
 
 
-# Finde den Index und schreibe ihn in index2
+# Finde den Index und schreibe ihn in index2 (chronologisch zweites Datum)
 
 # durch Durchschnitt ersetzen
 
@@ -218,7 +218,7 @@ aktien$henkel[___]
 
 
 # Exxon 
-# Finde den Index und schreibe ihn in index3
+# Finde den Index und schreibe ihn in index3 (chronologisch erstes Datum)
 
 # durch Durchschnitt ersetzen
 
@@ -226,7 +226,7 @@ aktien$henkel[___]
 
 
 
-# Finde den Index und schreibe ihn in index4
+# Finde den Index und schreibe ihn in index4 (chronologisch zweites Datum)
 
 # durch Durchschnitt ersetzen
 
@@ -239,14 +239,14 @@ aktien$henkel[___]
 *** =solution
 ```{r}
 # Henkel
-# Finde den Index 1
+# Finde den Index 1 (chronologisch erstes Datum)
 index1 <- which(aktien$Date == "2016-10-31")
 # durch Durchschnitt ersetzen
 aktien$henkel[index1] <- mean(c(aktien$henkel[c((index1-5):(index1-1),(index1+1):(index1+5))]))
 # Neuer Wert
 aktien$henkel[index1]
 
-# Finde den Index 2
+# Finde den Index 2 (chronologisch zweites Datum)
 index2 <- which(aktien$Date == "2016-10-03")
 # durch Durchschnitt ersetzen
 aktien$henkel[index2] <- mean(c(aktien$henkel[c((index2-5):(index2-1),(index2+1):(index2+5))]))
@@ -255,14 +255,14 @@ aktien$henkel[index2]
 
 
 # Exxon 
-# Finde den Index 3
+# Finde den Index 3 (chronologisch erstes Datum)
 index3 <- which(aktien$Date == "2016-09-05")
 # durch Durchschnitt ersetzen
 aktien$exxon[index3] <- mean(c(aktien$exxon[c((index3-5):(index3-1),(index3+1):(index3+5))]))
 # Neuer Wert
 aktien$exxon[index3]
 
-# Finde den Index 4
+# Finde den Index 4 (chronologisch zweites Datum)
 index4 <- which(aktien$Date == "2016-11-24")
 # durch Durchschnitt ersetzen
 aktien$exxon[index4] <- mean(c(aktien$exxon[c((index4-5):(index4-1),(index4+1):(index4+5))]))
@@ -431,7 +431,7 @@ renditeH <-
 *** =solution
 ```{r}
 # Erstellen Sie einen vektor mit den Einträgen aus aktien$henkel. Lasse den letzten Eintrag weg.
-x_tminus1 <- aktien$henkel[1:length(aktien$henkel)-1]
+x_tminus1 <- aktien$henkel[1:(length(aktien$henkel)-1)]
 
 # Lassen Sie den ersten Eintrag weg, da die Rendite erst ab 2. Tag berechenbar ist.
 x_t <- aktien$henkel[2:length(aktien$henkel)]
@@ -514,7 +514,7 @@ logRenditeH <-
 *** =solution
 ```{r}
 # Erstellen Sie einen vektor mit den Einträgen aus aktien$henkel. Lassen Sie den letzten Eintrag weg.
-x_tminus1 <- aktien$henkel[1:length(aktien$henkel)-1]
+x_tminus1 <- aktien$henkel[1:(length(aktien$henkel)-1)]
 # Lassen Sie den ersten Eintrag weg, da die Rendite erst ab 2. Tag berechenbar ist.
 x_t <- aktien$henkel[2:length(aktien$henkel)]
 # Berechnung der Rendite
@@ -636,7 +636,7 @@ plot(aktien$Date, aktien$Open, type = "l", main = "Exxon Aktie 2016-2017", xlab 
 
 # Funktion zur Berechnung der Rendite
 rendite <- function(zeitreihe){ 
-  r <- zeitreihe[1:length(zeitreihe)-1];  
+  r <- zeitreihe[1:(length(zeitreihe)-1)];  
   ren <- zeitreihe[2:length(zeitreihe)];
   ren <- (ren - r) / r;
   return(ren)     
@@ -694,7 +694,7 @@ aktien <- aktien[order(aktien$Date),]
 
 # Funktion zur Berechnung der Rendite
 rendite <- function(zeitreihe){ 
-  r <- zeitreihe[1:length(zeitreihe)-1];  
+  r <- zeitreihe[1:(length(zeitreihe)-1)];  
   ren <- zeitreihe[2:length(zeitreihe)];
   ren <- (ren - r) / r;
   return(ren)     
@@ -720,10 +720,10 @@ aktien[ , "Rendite"] <- renAktien
 *** =solution
 ```{r}
 # Erstellen Sie ein Histogramm und setzen Sie breaks = 25.
-hist(aktien$ Rendite, breaks = 25, main = "Verteilung der Renditen Exxon Aktie", xlab = "Renditen", ylab = "Haeufigkeit")
+hist(aktien$Rendite, breaks = 25, main = "Verteilung der Renditen Exxon Aktie", xlab = "Renditen", ylab = "Haeufigkeit")
 
 # Erstellen Sie das Histogramm mit breaks = 50.
-hist(aktien$ Rendite, breaks = 50, main = "Verteilung der Renditen Exxon Aktie", xlab = "Renditen", ylab = "Haeufigkeit")
+hist(aktien$Rendite, breaks = 50, main = "Verteilung der Renditen Exxon Aktie", xlab = "Renditen", ylab = "Haeufigkeit")
 
 ```
 
