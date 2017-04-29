@@ -186,7 +186,7 @@ x_tminus1 <-
 
 
 # Berechnen Sie die Rendite und erstellen Sie eine neue Variable "Rendite" im Datensatz. 
-daten <- db %>% mutate(Rendite = (x_t-x_tminus1)/x_tminus1)
+daten <- 
 
 
 ```
