@@ -129,11 +129,15 @@ test_function("filter")
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:cafc5b7402
 ## DPLYR
-In dieser Aufgabe geht es um die verschiedenen Funktionen der Bibliothek `dplyr`, welche bereits für Sie eingebunden wurde.
+In dieser Aufgabe geht es um die verschiedenen Funktionen der Bibliothek `dplyr`, welche bereits für Sie eingebunden wurde. Die Daten der deutschen Bank Aktie liegen im Objekt `db`. Das Datum darin wurde durch `as.date` zum Typ Datum umgewandelt. Die Funktionen, die Sie benötigen, finden Sie in der Vorlesung.
 
 *** =instructions
+- Verkleinern Sie den Datensatz mittels `select()`, sodass er nur noch Date und Open enthält.
+- Sortieren Sie den Datensatz nach dem Datum.
+- Benennen Sie die Spalte "Open" um zu "Rate".
 
 *** =hint
+- ordnen: `arrange(daten, spalte)`
 
 *** =pre_exercise_code
 ```{r}
@@ -141,11 +145,30 @@ library(dplyr)
 
 # Einlesen der Daten
 db <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie.csv")
+db$Date <- as.Date(db$Date)
+
 
 ```
 
 *** =sample_code
 ```{r}
+# Verkleinerung des Datensatzes
+db <- select(db, Date, Open)
+
+# Sortieren nach Date
+db <- arrange(db, Date)
+
+# Umbenennung des Wertes
+db <- rename(db, Rate = Open)
+
+# Erster Wert, letzter Wert
+# head(db, 1)
+# tail(db, 1)
+x_t <- db$Rate[db$Date != "2016-04-06"]
+x_tminus1 <- db$Rate[db$Date != "2017-04-05"]
+db <- filter(db, Date != "2016-04-06")
+db %>% mutate(t = x_t, t_1 = t_minus1 )
+
 
 ```
 
