@@ -131,13 +131,24 @@ test_function("filter")
 ## DPLYR
 In dieser Aufgabe geht es um die verschiedenen Funktionen der Bibliothek `dplyr`, welche bereits für Sie eingebunden wurde. Die Daten der deutschen Bank Aktie liegen im Objekt `db`. Das Datum darin wurde durch `as.date` zum Typ Datum umgewandelt. Die Funktionen, die Sie benötigen, finden Sie in der Vorlesung.
 
+Das Ziel dieser Aufgabe ist es, das am Ende die Rendite als neue Spalte in der Tabelle steht. Gehen Sie hierfür schrittweise vor, um die Daten nach und nach auf zu arbeiten.
+
+Tipp: 
+- `!=` ist ein Vergleichsoperator. `a != 1` ist wahr, wenn a ungleich 1 ist.
+- Durch `select()` können Sie auf bestimmte Spalten, durch `filter()` auf Zeilen. 
+- Schauen Sie für Beispiele in die Vorlesungsfolien.
+
 *** =instructions
 - Verkleinern Sie den Datensatz mittels `select()`, sodass er nur noch Date und Open enthält.
 - Sortieren Sie den Datensatz nach dem Datum.
 - Benennen Sie die Spalte "Open" um zu "Rate".
+- Erstellen Sie eine neue Variable "Rendite" in der die jeweilige Tagesrendite steht.
+- Orientieren Sie sich an den Anweisungen im Beispielcode.
 
 *** =hint
-- ordnen: `arrange(daten, spalte)`
+- ordnen: `arrange(daten, spalte)`.
+- eine neue Spalte erstellen Sie durch `mutate(daten, neueSpalte = vektor)`.
+- das erste bzw. letzte Datum in der sortierten Tabelle bekommen Sie durch `head(db)` bzw. `tail(db)`.
 
 *** =pre_exercise_code
 ```{r}
@@ -147,10 +158,36 @@ library(dplyr)
 db <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie.csv")
 db$Date <- as.Date(db$Date)
 
-
 ```
 
 *** =sample_code
+```{r}
+# Verkleinerung des Datensatzes
+db <- 
+
+# Sortieren nach Date
+db <-
+
+# Umbenennung des Wertes
+db <-
+
+# Erstellung der 2 Vektoren, die für Renditenberechnung notwendig sind
+x_t <- ___[___ != "2016-04-06"]
+x_tminus1 <- 
+
+# Wir brauchen die Daten ohne die Erste Zeile (Keine Rendite berechenbar). Nutzen Sie filter().
+
+
+# Fügen Sie die zwei Hilfsvektoren zu der Tabelle hinzu
+
+
+# Berechnen Sie die Rendite und erstellen Sie eine neue Variable "Rendite" im Datensatz. 
+daten <- db %>% mutate(Rendite = (x_t-x_tminus1)/x_tminus1)
+
+
+```
+
+*** =solution
 ```{r}
 # Verkleinerung des Datensatzes
 db <- select(db, Date, Open)
@@ -161,23 +198,24 @@ db <- arrange(db, Date)
 # Umbenennung des Wertes
 db <- rename(db, Rate = Open)
 
-# Erster Wert, letzter Wert
-# head(db, 1)
-# tail(db, 1)
+# Erstellung der 2 Vektoren, die für Renditenberechnung notwendig sind
 x_t <- db$Rate[db$Date != "2016-04-06"]
 x_tminus1 <- db$Rate[db$Date != "2017-04-05"]
+
+# Wir brauchen die Daten ohne die Erste Zeile (Keine Rendite berechenbar). Nutzen Sie filter().
 db <- filter(db, Date != "2016-04-06")
-db %>% mutate(t = x_t, t_1 = t_minus1 )
 
+# Fügen Sie die zwei Hilfsvektoren zu der Tabelle hinzu
+db <- db %>% mutate(x_t = x_t, x_tminus1 = x_tminus1)
 
-```
+# Berechnen Sie die Rendite und erstellen Sie eine neue Variable "Rendite" im Datensatz.
+daten <- db %>% mutate(Rendite = (x_t-x_tminus1)/x_tminus1)
 
-*** =solution
-```{r}
+head(daten)
 
 ```
 
 *** =sct
 ```{r}
-
+test_object("daten")
 ```
