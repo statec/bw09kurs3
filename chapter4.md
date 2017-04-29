@@ -140,7 +140,6 @@ In dieser Aufgabe geht es um die verschiedenen Funktionen der Bibliothek `dplyr`
 *** =pre_exercise_code
 ```{r}
 library(dplyr)
-library(tidyverse)
 
 # Einlesen der Daten
 db <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie.csv")
