@@ -59,6 +59,8 @@ spalte2 <- select(db, Open)
 test_object("spalte1")
 test_object("spalte2")
 test_function("select", args = c(".data"))
+test_error()
+success_msg("Sehr gut! Einen kleinen Unterschied gab es dann doch zwischen select() und $. Achten Sie bei der nächsten Aufgabe besonders darauf!")
 
 ```
 
@@ -124,24 +126,26 @@ test_object("day1")
 test_object("day2")
 test_function("select")
 test_function("filter")
+test_error()
+success_msg("Sehr schön! Ist Ihnen der Unterschied aufgefallen? filter() belässt das Erbegnis bei dem Typ dataframe, [ ] jedoch erstellt einen Vektor. Genau so bei select() und $.")
 
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:cafc5b7402
 ## DPLYR
-In dieser Aufgabe geht es um die verschiedenen Funktionen der Bibliothek `dplyr`, welche bereits für Sie eingebunden wurde. Die Daten der deutschen Bank Aktie liegen im Objekt `db`. Das Datum darin wurde durch `as.date` zum Typ Datum umgewandelt. Die Funktionen, die Sie benötigen, finden Sie in der Vorlesung.
+In dieser Aufgabe geht es um die verschiedenen Funktionen der Bibliothek `dplyr` (bereits geladen). Die Daten der deutschen Bank Aktie liegen im Objekt `db`. Die Funktionen, welche Sie benötigen, finden Sie in der Vorlesung.
 
-Das Ziel dieser Aufgabe ist es, das am Ende die Rendite als neue Spalte in der Tabelle steht. Gehen Sie hierfür schrittweise vor, um die Daten nach und nach auf zu arbeiten.
+Das Ziel dieser Aufgabe ist es, das am Ende die Rendite als neue Spalte in der Tabelle steht. Gehen Sie hierfür schrittweise vor.
 
 Tipp: 
 - `!=` ist ein Vergleichsoperator. `a != 1` ist wahr, wenn a ungleich 1 ist.
-- Durch `select()` können Sie auf bestimmte Spalten, durch `filter()` auf Zeilen. 
+- Durch `select()` können Sie auf bestimmte Spalten, durch `filter()` auf Zeilen zugreifen. 
 - Schauen Sie für Beispiele in die Vorlesungsfolien.
 
 *** =instructions
 - Verkleinern Sie den Datensatz mittels `select()`, sodass er nur noch Date und Open enthält.
 - Sortieren Sie den Datensatz nach dem Datum.
-- Benennen Sie die Spalte "Open" um zu "Rate".
+- Benennen Sie die Spalte "Open" zu "Rate" um.
 - Erstellen Sie eine neue Variable "Rendite" in der die jeweilige Tagesrendite steht.
 - Orientieren Sie sich an den Anweisungen im Beispielcode.
 
@@ -218,4 +222,5 @@ head(daten)
 *** =sct
 ```{r}
 test_object("daten")
+success_msg("Geschafft!")
 ```
