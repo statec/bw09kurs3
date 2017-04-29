@@ -107,7 +107,7 @@ day2 <-
 
 *** =solution
 ```{r}
-# In den Lösungen werden Pipes benutzt, dies ist jedoch nicht unbedingt notwendig.
+# In den Lösungen werden Pipes benutzt. Pipes können gerne benutzt werden, sind aber nicht notwendig.
 
 # mit $ und []
 day1 <- db$Open[db$Date == "2017-03-17"]
