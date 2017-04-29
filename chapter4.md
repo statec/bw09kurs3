@@ -3,7 +3,7 @@ title       : Einheit 2 - inclass
 description : Tidyverse - Aufbereiten von Datensätzen
 --- type:NormalExercise lang:r xp:100 skills:1 key:4e6279614f
 ## SELECT
-Der Datensatz der deutschen Bank wurde bereits geladen und in dem Objekt `db` gespeichert. Die Bibliotheken "dplyr" und "tidyr" sind in der gesamten Übung bereits für Sie eingebunden. 
+Der Datensatz der deutschen Bank wurde bereits geladen und in dem Objekt `db` gespeichert. Die Bibliothek "dplyr" ist in der gesamten Übung bereits für Sie eingebunden. 
 
 Sie sollen nun durch 2 verschiedene Varianten auf eine bestimmte Spalte des Datensatzes zugreifen. Nutzen Sie dafür `select()`. Schauen Sie zur Funktionsweise der Funktion in den Folien nach, oder führen Sie `?select()` in der Konsole aus.
 
@@ -24,7 +24,6 @@ Nutzen Sie außerdem die Funktion `select()`, um das gleiche Ergebnis zu erziele
 *** =pre_exercise_code
 ```{r}
 library(dplyr)
-library(tidyr)
 
 db <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie.csv")
 
@@ -89,7 +88,6 @@ Speichern Sie ihr Ergebnis in den vorgegebenen Variablen.
 *** =pre_exercise_code
 ```{r}
 library(dplyr)
-library(tidyr)
 
 db <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie.csv")
 
@@ -131,7 +129,7 @@ test_function("filter")
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:cafc5b7402
 ## DPLYR
-In dieser Aufgabe geht es um die verschiedenen Funktionen der Bibliothek `dplyr`, die bereits für Sie eingebunden wurde.
+In dieser Aufgabe geht es um die verschiedenen Funktionen der Bibliothek `dplyr`, welche bereits für Sie eingebunden wurde.
 
 *** =instructions
 
