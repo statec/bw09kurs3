@@ -128,3 +128,36 @@ test_function("select")
 test_function("filter")
 
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:cafc5b7402
+## DPLYR
+In dieser Aufgabe geht es um die verschiedenen Funktionen der Bibliothek `dplyr`, die bereits für Sie eingebunden wurde.
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(dplyr)
+library(tidyverse)
+
+# Einlesen der Daten
+db <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/db_aktie.csv")
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
