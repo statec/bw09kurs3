@@ -280,7 +280,7 @@ success_msg("Sehr gut, Sie können nun Spalten auseinander ziehen.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b29966e91c
-## TIDYR
+## TIDYR 2
 Der von ihnen geänderte Datensatz ist in `daten` gegeben. Nun soll ihre Aktion mittels `unite()` wieder rückgängig gemacht werden.
 Das notwendige Paket aus tidyverse `(tidyr)` wurde für Sie bereits geladen.
  
