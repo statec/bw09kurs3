@@ -451,3 +451,39 @@ test_error()
 success_msg("Sehr gut! kommen wir nun zu relationalen Datensätzen.")
 
 ```
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:916e13138e
+## Primary und foreign key
+Schauen Sie sich die beiden Datensätze einer Firma an. Die Datensätze sind in `firma` und `abteilungen` gespeichert. Geben Sie `print(datensatz)` in der Konsole ein und drücken Sie `Strg`+ `Enter`, um die Tabellen zu begutachten.
+
+Welche Aussage ist korrekt, wenn wir `firma` als die "eigene Tabelle" betrachten?
+
+*** =instructions
+- Das Datum ist hier der primary key.
+- Der primary key der ersten Tabelle (firma) ist die "mitarbeiter_id".
+- Der foreign key in der zweiten Tabelle (abteilungen) ist "abteilung".
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+# Erstellung des Datensatzes
+mitarbeiter_id <- c(123, 134, 122, 167)
+name <- c("Meier", "Kunze", "Schmitz", "Meier")
+gehalt <- c(2580, 3600, 3450, 2900)
+firma <- data.frame(mitarbeiter_id, name, gehalt)
+
+abteilung <- c("marketing", "it", "finance", "it")
+abteilungen <- data.frame(mitarbeiter_id, abteilung)
+#View(firma)
+#View(abteilungen)
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "Leider falsch!"
+msg_success <- "Richtig!"
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad))
+```
