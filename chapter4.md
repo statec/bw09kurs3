@@ -455,7 +455,7 @@ success_msg("Sehr gut! kommen wir nun zu relationalen Datensätzen.")
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:916e13138e
 ## Primary und foreign key
-Schauen Sie sich die beiden Datensätze einer Firma an. Die Datensätze sind in `firma` und `abteilungen` gespeichert. Geben Sie `print(datensatz)` in der Konsole ein und drücken Sie `Strg`+ `Enter`, um die Tabellen zu begutachten.
+Schauen Sie sich die beiden Datensätze einer Firma an. Die Datensätze sind in `firma` und `abteilungen` gespeichert. Geben Sie `print(datensatz)` in der Konsole ein, um die Tabellen zu begutachten.
 
 Welche Aussage ist korrekt, wenn wir `firma` als die "eigene Tabelle" betrachten?
 
@@ -476,8 +476,6 @@ firma <- data.frame(mitarbeiter_id, name, gehalt)
 
 abteilung <- c("marketing", "it", "finance", "it")
 abteilungen <- data.frame(mitarbeiter_id, abteilung)
-#View(firma)
-#View(abteilungen)
 
 ```
 
@@ -486,4 +484,46 @@ abteilungen <- data.frame(mitarbeiter_id, abteilung)
 msg_bad <- "Leider falsch!"
 msg_success <- "Richtig!"
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad))
+```
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:ea430943f2
+## Joins
+Ihnen sind 3 Datensätze gegeben. `table1` und `table2` wurden mit einem bestimmten join Befehl vereinigt. Das Ergebnis können Sie in `mixed` sehen. Für die verschiedenen join Befehle, können Sie einen Blick in die Vorlesungsfolien werfen. Probieren Sie selbst die verschiedenen join Befehl in der Konsole aus, um das richtige Ergebnis zu finden.
+
+Welcher join Befehl wurde hier ausgeführt?
+
+
+*** =instructions
+- full_join
+- right_join
+- left_join
+- inner_join
+
+*** =hint
+- führen Sie `print(datensatz)` in der Konsole aus, um die Tabellen zu sehen.
+- `____join(table1, table1, by = "___")`.
+
+*** =pre_exercise_code
+```{r}
+library(dplyr)
+# Erstellung der Daten
+key <- c(1,2,3)
+val <- c("x1", "y1", "z1")
+table1 <- data.frame(key, val)
+
+key <- c(1,3,4)
+val <- c("x2", "y2", "z2")
+table2 <- data.frame(key, val)
+
+# Vereinigung der Tabellen
+mixed <- inner_join(table1, table2, by = "key")
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "Leider falsch!"
+msg_success <- "Richtig!"
+test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
+
 ```
