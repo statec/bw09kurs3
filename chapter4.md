@@ -11,6 +11,8 @@ Sie sollen nun durch 2 verschiedene Varianten auf eine bestimmte Spalte des Date
 Tipp: 
 Wenn Sie eine Zeile des R-Codes aus dem Skript in der Konsole ausführen möchten, nutzen Sie den shortcut `Strg`+`Enter`, während sich der Cursor in der entsprechenden Zeile befindet. Testen Sie es! Geben Sie `db` im Skript (oben) ein und drücken Sie die beiden Tasten. Schauen Sie, was passiert.
 
+
+(Quelle: yahoo/finance)
 *** =instructions
 Um auf die `Open` Spalte des Datensatzes zuzugreifen, haben Sie lin der letzten Sitzung schon eine Möglichkeit kennen gelernt. Nutzen Sie diese, um die `Open` Spalte des Datensatzes in `spalte1` zu speichern.
 Nutzen Sie außerdem die Funktion `select()`, um das gleiche Ergebnis zu erzielen.
@@ -76,6 +78,8 @@ Genauso funktionieren `select()` + `filter()`. Informationen zu den Funktionen f
 
 Denken Sie an den Shortcut `Strg` + `Enter` für angenehmeres arbeiten. 
 
+
+(Quelle: yahoo/finance)
 *** =instructions
 Wie hoch ist der Eröffnungskurs einer Deutschen Bank Aktie am 17.03.2017?
 Nutzen Sie einmal die altbekannte Variante und einmal `select()` und `filter()`.
@@ -141,6 +145,9 @@ Tipp:
 - `!=` ist ein Vergleichsoperator. `a != 1` ist wahr, wenn a ungleich 1 ist.
 - Durch `select()` können Sie auf bestimmte Spalten, durch `filter()` auf Zeilen zugreifen. 
 - Schauen Sie für Beispiele in die Vorlesungsfolien.
+
+
+(Quelle: yahoo/finance)
 
 *** =instructions
 - Verkleinern Sie den Datensatz mittels `select()`, sodass er nur noch Date und Open enthält.
@@ -231,6 +238,8 @@ success_msg("Geschafft!")
 ## TIDYR
 Gegeben ist ein Datensatz `daten`. Wenn Sie ihn in der Konsole ausgeben, werden Sie merken, dass die zwei Variablen Kontinent und Land gemeinsam in eine Variable geschrieben wurden. Dies sollen Sie nun durch `seperate()` ändern.
 Das notwendige Paket aus tidyverse `(tidyr)` wurde für Sie bereits geladen.
+
+(Quelle: Wikipedia)
  
 *** =instructions
 Erstellen Sie einen neuen Datensatz "tidyTable", in welchem Sie die Spalte ort auf zwei Spalten "land" und "kontinent" aufteilen.
@@ -283,6 +292,8 @@ success_msg("Sehr gut, Sie können nun Spalten auseinander ziehen.")
 ## TIDYR 2
 Der von ihnen geänderte Datensatz ist in `daten` gegeben. Nun soll ihre Aktion mittels `unite()` wieder rückgängig gemacht werden.
 Das notwendige Paket aus tidyverse `(tidyr)` wurde für Sie bereits geladen.
+
+(Quelle: Wikipedia)
  
 *** =instructions
 Erstellen Sie einen neuen Datensatz "untidyTable", in welchem Sie die zwei Spalten "land" und "kontinent" zu einer Spalte "ort" vereinen. Benutzen Sie als Trennsymbol die Leertaste.
@@ -388,5 +399,53 @@ dfTidy <- dfTidy %>%
 test_object("dfTidy")
 test_function("gather")
 test_error()
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:154576692b
+## SPREAD()
+Der Datensatz liegt im objekt `df` und die Bibliotheken sind geladen. Nutzen Sie spread um die Zeilenanzahl zu reduzieren, sodass jedes Jahr seine eigene Spalte im dataframe bekommt.
+
+
+*** =instructions
+- Nutzen Sie die Funktion spread() und speichern Sie das Ergebnis in der Variablen `dfNew`.
+- Vergleichen Sie den alten und neuen Datensatz durch Ausgabe in der Konsole mit `print(df)` bzw. `print(dfNew)`.
+
+*** =hint
+- `spread(df, spalte1, spalte2)`
+
+*** =pre_exercise_code
+```{r}
+library(dplyr)
+library(tidyr)
+# Erstellung des Datensatzes
+wertpapiere <- c("Aktie1", "Aktie2", "Aktie3", "Aktie1", "Aktie2", "Aktie3", "Aktie1", "Aktie2", "Aktie3")
+jahr <- c("Rendite_2015", "Rendite_2015", "Rendite_2015", "Rendite_2016", "Rendite_2016", "Rendite_2016", "Rendite_2017", "Rendite_2017", "Rendite_2017")
+rendite <- c(0.01, 0.03, 0.5, 0.2, 0.06, 0.31, 0.2, 0.08, 0.12)
+df <-  data.frame(wertpapiere, jahr, rendite)
+
+```
+
+*** =sample_code
+```{r}
+# Reduzieren Sie die Zeilenanzahl und speichern Sie ihr Ergebnis in "dfNew".
+
+# Schauen Sie sich beide Datensätze zum Vergleich in der Konsole an.
+
+```
+
+*** =solution
+```{r}
+# Reduzieren Sie die Zeilenanzahl und speichern Sie ihr Ergebnis in "dfNew".
+dfNew <- df %>% spread(jahr, rendite)
+# Schauen Sie sich beide Datensätze zum Vergleich in der Konsole an.
+print(df)
+print(dfNew)
+
+```
+
+*** =sct
+```{r}
+test_object(dfNew)
 
 ```
