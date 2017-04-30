@@ -278,3 +278,54 @@ test_error()
 success_msg("Sehr gut, Sie können nun Spalten auseinander ziehen.")
 
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:b29966e91c
+## TIDYR
+Der von ihnen geänderte Datensatz ist in `daten` gegeben. Nun soll ihre Aktion mittels `unite()` wieder rückgängig gemacht werden.
+Das notwendige Paket aus tidyverse `(tidyr)` wurde für Sie bereits geladen.
+ 
+*** =instructions
+Erstellen Sie einen neuen Datensatz "untidyTable", in welchem Sie die zwei Spalten "land" und "kontinent" zu einer Spalte "ort" vereinen. Benutzen Sie als Trennsymbol die Leertaste.
+
+*** =hint
+- `unite(df, name, spalte1, spalte2, sep = " ")`
+- bei `sep = ` geben Sie das jeweilige Trennsymbol ein.
+
+*** =pre_exercise_code
+```{r}
+library(tidyr)
+library(dplyr)
+# Erstellen der Daten
+unternehmen <- c("BMW", "Sony", "AXA", "IBM", "Toyota", "Lenovo")
+# Hauptsitz
+ort <- c("Europa_Deutschland", "Asien_Japan", "Europa_Frankreich", "Amerika_USA", "Asien_Japan", "Asien_China")
+stadt <- c("Muenchen", "Tokio", "Paris", "Armonk", "Toyota", "Peking")
+# Erstellen dataframe
+daten <- data.frame(unternehmen, ort, stadt)
+# auseinander ziehen
+daten <- daten %>% separate(ort, into = c("kontinent", "land"), sep = "_")
+
+```
+
+*** =sample_code
+```{r}
+# Vereinigen Sie die beiden Spalten zu einer neuen Spalte "ort"
+
+
+```
+
+*** =solution
+```{r}
+# Vereinigen Sie die beiden Spalten zu einer neuen Spalte "ort"
+untidyTable <- daten %>% unite(ort, kontinent, land, sep = " ")
+# Ausgabe
+print(untidyTable)
+
+```
+
+*** =sct
+```{r}
+test_object("untidyTable")
+test_error()
+
+```
