@@ -224,3 +224,52 @@ head(daten)
 test_object("daten")
 success_msg("Geschafft!")
 ```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:3923d161a1
+## TIDYR
+Gegeben ist ein Datensatz `daten`. Wenn Sie ihn in der Konsole ausgeben, werden Sie merken, dass die zwei Variablen Kontinent und Land gemeinsam in eine Variable geschrieben wurden. Dies sollen Sie nun durch `seperate()` ändern.
+Das notwendige Paket aus tidyverse (tidyr) wurde für Sie bereits geladen.
+ 
+*** =instructions
+Erstellen Sie einen neuen Datensatz "tidyTable", in welchem Sie die Spalte ort auf zwei Spalten "land" und "kontinent" aufteilen.
+
+*** =hint
+- `seperate(df, into = c("spalte1", "spalte2"), sep = "_")`
+- bei `sep =` geben Sie das jeweilige Trennsymbol ein.
+
+*** =pre_exercise_code
+```{r}
+library(tidyr)
+library(dplyr)
+# Erstellen der Daten
+unternehmen <- c("BMW", "Sony", "AXA", "IBM", "Toyota Motor", "Lenovo")
+# Hauptsitz
+ort <- c("Europa_Deutschland", "Asien_Japan", "Europa_Frankreich", "Amerika_USA", "Asien_Japan", "Asien_China")
+stadt <- c("Muenchen", "Tokio", "Paris", "Armonk", "Toyota", "Peking")
+daten <- data.frame(unternehmen, ort, stadt)
+
+
+```
+
+*** =sample_code
+```{r}
+# Erstellen Sie die neuen Spalten und speichern Sie ihr Ergebnis unter "tidyTable"
+
+
+```
+
+*** =solution
+```{r}
+# auseinander ziehen
+tidyTable <- daten %>% separate(ort, into = c("kontinent", "land"), sep = "_")
+
+
+```
+
+*** =sct
+```{r}
+test_object("tidyTable")
+
+```
