@@ -403,7 +403,7 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:154576692b
-## SPREAD()
+## SPREAD
 Der Datensatz liegt im objekt `df` und die Bibliotheken sind geladen. Nutzen Sie spread um die Zeilenanzahl zu reduzieren, sodass jedes Jahr seine eigene Spalte im dataframe bekommt.
 
 
@@ -446,6 +446,7 @@ print(dfNew)
 
 *** =sct
 ```{r}
-test_object(dfNew)
+test_object("dfNew")
+test_error()
 
 ```
