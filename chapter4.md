@@ -70,7 +70,7 @@ success_msg("Sehr gut! Einen kleinen Unterschied gab es dann doch zwischen selec
 --- type:NormalExercise lang:r xp:100 skills:1 key:8fb5e293ad
 ## SELECT & FILTER
 Der Datensatz liegt wieder in `db` für Sie bereit.
-Den bereits bekannten Zugriff auf eine Spalte, welche eine bestimmte Bedingung erfüllt mit `daten$spalte[condition]` kennen Sie bereits. Experimentieren Sie ein wenig damit, um sich deren Funktion wieder ins Gedächnis zu rufen. 
+Den bereits bekannten Zugriff auf eine Spalte, welche eine bestimmte Bedingung erfüllt mit `daten$spalte[bedingung]` kennen Sie bereits. Experimentieren Sie ein wenig damit, um sich deren Funktion wieder ins Gedächnis zu rufen. 
 
 
 Genauso funktionieren `select()` + `filter()`. Informationen zu den Funktionen finden Sie im Vorlesungsskript oder wie sonst auch mit `?function()` in der Konsole.
@@ -139,11 +139,11 @@ success_msg("Sehr schön! Ist Ihnen der Unterschied aufgefallen? filter() beläs
 ## DPLYR
 In dieser Aufgabe geht es um die verschiedenen Funktionen der Bibliothek `dplyr` (bereits geladen). Die Daten der deutschen Bank Aktie liegen im Objekt `db`. Die Funktionen, welche Sie benötigen, finden Sie in der Vorlesung.
 
-Das Ziel dieser Aufgabe ist es, das am Ende die Rendite als neue Spalte in der Tabelle steht. Gehen Sie hierfür schrittweise vor.
+Das Ziel dieser Aufgabe ist es, am Ende die Rendite als neue Spalte in der Tabelle zu haben. Gehen Sie hierfür schrittweise vor.
 
 Tipp: 
 - `!=` ist ein Vergleichsoperator. `a != 1` ist wahr, wenn a ungleich 1 ist.
-- Durch `select()` können Sie auf bestimmte Spalten, durch `filter()` auf Zeilen zugreifen. 
+- Durch `select()` können Sie auf bestimmte Spalten, durch `filter()` auf bestimmte Zeilen zugreifen. 
 - Schauen Sie für Beispiele in die Vorlesungsfolien.
 
 
@@ -344,7 +344,7 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:eb9e1eebd4
 ## GATHER
-Die Daten liegen in `df`. Das was bisher oft als Tabelle bezeichnet wurde, nennt man in R "dataframe". Beim gegebenen Datensatz sind die Spaltennamen keine Variablenbezeichnungen, sondern Werte einer Variablen. Nutzen Sie die in der Vorlesung vorgestellte Funktion, um den Datensatz zu ordnen. Die notwendigen Bibliotheken wurden bereits für Sie eingebunden. 
+Die Daten liegen in `df`. Das was bisher oft als Tabelle bezeichnet wurde, nennt man in R "dataframe". Bei dem gegebenen Datensatz sind die Spaltennamen keine Variablenbezeichnungen, sondern Werte einer Variablen. Nutzen Sie die in der Vorlesung vorgestellte Funktion, um den Datensatz zu ordnen. 
 
 
 *** =instructions
@@ -404,11 +404,11 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:154576692b
 ## SPREAD
-Der Datensatz liegt im objekt `df` und die Bibliotheken sind geladen. Nutzen Sie spread um die Zeilenanzahl zu reduzieren, sodass jedes Jahr seine eigene Spalte im dataframe bekommt.
+Der Datensatz liegt im objekt `df`. Nutzen Sie spread um die Zeilenanzahl zu reduzieren, sodass jedes Jahr seine eigene Spalte im dataframe bekommt.
 
 
 *** =instructions
-- Nutzen Sie die Funktion spread() und speichern Sie das Ergebnis in der Variablen `dfNew`.
+- Nutzen Sie die Funktion `spread()` und speichern Sie das Ergebnis in der Variablen `dfNew`.
 - Vergleichen Sie den alten und neuen Datensatz durch Ausgabe in der Konsole mit `print(df)` bzw. `print(dfNew)`.
 
 *** =hint
@@ -530,8 +530,10 @@ test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:8d206b5035
 ## Full & inner join
-Gegeben sind ihnen zwei Datensätze `table1` und `table2`. Diese Datensätze sollen nun von Ihnen auf zwei unterschiedliche Arten zu einem Datensatz vereinigt werden.
+Gegeben sind zwei Datensätze `table1` und `table2`. Diese Datensätze sollen nun von Ihnen auf zwei unterschiedliche Arten zu einem Datensatz vereinigt werden.
 
+
+Tipp: Wenn bei einem join `NAs` entstehen, bekommen Sie in rot eine "warning message" in der Konsole. Diese können Sie aber einfach ignorieren. 
 *** =instructions
 - Nutzen Sie den `inner_join()` und speichern Sie ihr Ergebnis in "inner".
 - Nutzen Sie den `full_join()` und speichern Sie ihr Ergebnis in "full".
@@ -589,8 +591,10 @@ success_msg("Sehr schön! Wir kommen nun zur letzten Aufgabe!")
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:3ce8e31499
 ## Right & left join
-Gegeben sind ihnen zwei Datensätze `table1` und `table2`. Diese Datensätze sollen nun von Ihnen auf zwei unterschiedliche Arten zu einem Datensatz vereinigt werden.
+Gegeben sind zwei Datensätze `table1` und `table2`. Diese Datensätze sollen nun von Ihnen auf zwei unterschiedliche Arten zu einem Datensatz vereinigt werden.
 
+
+Tipp: Wenn bei einem join `NAs` entstehen, bekommen Sie in rot eine "warning message" in der Konsole. Diese können Sie aber einfach ignorieren. 
 *** =instructions
 - Nutzen Sie den `right_join()` und speichern Sie ihr Ergebnis in "right".
 - Nutzen Sie den `left_join()` und speichern Sie ihr Ergebnis in "left".
