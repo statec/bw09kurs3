@@ -527,3 +527,59 @@ msg_success <- "Richtig!"
 test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:8d206b5035
+## Full & inner join
+Gegeben sind ihnen zwei Datensätze `table1` und `table2`. Diese Datensätze sollen nun von Ihnen zu einem Datensatz vereinigt werden.
+
+*** =instructions
+- Nutzen Sie den `inner_join()` und speichern Sie ihr Ergebnis in "inner".
+- Nutzen Sie den `full_join()` und speichern Sie ihr Ergebnis in "full".
+- Vergleichen Sie die Ergebnisse indem Sie sich beide Datensätze in der Konsole ausgeben lassen.
+
+*** =hint
+- `inner_join(table1, table2, by = "___")`
+
+*** =pre_exercise_code
+```{r}
+library(dplyr)
+# Erstellung der Daten
+aktie <- c("aktie1", "aktie2", "aktie3")
+kurs_Open <- c(19.5, 20.2, 7.6)
+table1 <- data.frame(aktie, kurs_Open)
+
+aktie <- c("aktie2", "aktie3", "aktie4")
+kurs_Close <- c(19.9, 7.7, 12.3)
+table2 <- data.frame(aktie, kurs_Close)
+
+```
+
+*** =sample_code
+```{r}
+# inner_join()
+
+# full_join()
+
+
+```
+
+*** =solution
+```{r}
+# inner_join()
+inner <- inner_join(table1, table2, by = "aktie")
+# full_join()
+full <- full_join(table1, table2, by = "aktie")
+# Ausgabe in der Konsole
+inner
+full
+
+```
+
+*** =sct
+```{r}
+test_object("full")
+test_object("inner")
+test_function("inner_join", args = c("x", "y", "by = "))
+test_error()
+
+```
