@@ -333,12 +333,13 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:eb9e1eebd4
 ## GATHER
-Die Daten liegen in `df`. Das was bisher oft als Tabelle bezeichnet wurde, nennt man in R "dataframe". Beim gegebenen Datensatz sind die Spaltennamen keine Variablenbezeichnungen, sondern Werte einer Variablen. Nutzen Sie die in der Vorlesung vorgestellte Funktion, um den Datensatz zu ordnen. Die notwendigen Bibliotheken wurden bereits für Sie eingebunden.
+Die Daten liegen in `df`. Das was bisher oft als Tabelle bezeichnet wurde, nennt man in R "dataframe". Beim gegebenen Datensatz sind die Spaltennamen keine Variablenbezeichnungen, sondern Werte einer Variablen. Nutzen Sie die in der Vorlesung vorgestellte Funktion, um den Datensatz zu ordnen. Die notwendigen Bibliotheken wurden bereits für Sie eingebunden. 
 
 
 *** =instructions
 - Verschönern Sie den Datensatz wie in der Vorlesung
 - Entfernen Sie unnötige Informationen durch die Funktionen, die Sie in den vorherigen Aufgaben bereits gelernt haben.
+- Schauen Sie sich zur Überprüfung den Datensatz durch `print(dfTidy)` in der Konsole an.
 
 *** =hint
 - `gather(df, Wert1, Wert2, key = "___", value = "___" )`.
@@ -371,17 +372,21 @@ dfTidy <-
 ```{r}
 # Hinweis: Die Lösung benutzt Pipes, es kann aber genauso in mehr Schritten ohne Pipes gemacht werden.
 # Speichern Sie ihr Ergebnis in dfTidy
-dfTidy <- df %>% gather(mitarbeiter_2016, mitarbeiter_2017, key = "jahr", value = "mitarbeiter")
+dfTidy <- df %>% 
+    gather(mitarbeiter_2016, mitarbeiter_2017, key = "jahr", value = "mitarbeiter")
 
 # Benutzen Sie separate() um die Spalte aufzuteilen in "uninteressant" und "jahr"
 # Entfernen Sie die Spalte durch select()
-dfTidy <- dfTidy %>% separate(jahr, into = c("uninteressant", "jahr"), sep = "_") %>% select(aktie, jahr, mitarbeiter)
+dfTidy <- dfTidy %>% 
+    separate(jahr, into = c("uninteressant", "jahr"), sep = "_") %>% 
+    select(aktie, jahr, mitarbeiter)
 
 ```
 
 *** =sct
 ```{r}
-test_object(dfTidy)
+test_object("dfTidy")
 test_function("gather")
+test_error()
 
 ```
