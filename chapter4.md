@@ -329,3 +329,59 @@ test_object("untidyTable")
 test_error()
 
 ```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:eb9e1eebd4
+## GATHER
+Die Daten liegen in `df`. Das was bisher oft als Tabelle bezeichnet wurde, nennt man in R "dataframe". Beim gegebenen Datensatz sind die Spaltennamen keine Variablenbezeichnungen, sondern Werte einer Variablen. Nutzen Sie die in der Vorlesung vorgestellte Funktion, um den Datensatz zu ordnen. Die notwendigen Bibliotheken wurden bereits für Sie eingebunden.
+
+
+*** =instructions
+- Verschönern Sie den Datensatz wie in der Vorlesung
+- Entfernen Sie unnötige Informationen durch die Funktionen, die Sie in den vorherigen Aufgaben bereits gelernt haben.
+
+*** =hint
+- `gather(df, Wert1, Wert2, key = "___", value = "___" )`.
+- Hilfe bei Funktionen bekommen Sie mit `?function()` in der Konsole.
+
+*** =pre_exercise_code
+```{r}
+library(tidyr)
+library(dplyr)
+# Erstellen des Datensatzes
+aktie <- c("Firma1", "Firma2", "Firma3")
+mitarbeiter_2016 <- c(983, 1301, 457)
+mitarbeiter_2017 <- c(1003, 1223, 461)
+df <- data.frame(aktie, mitarbeiter_2016, mitarbeiter_2017)
+
+```
+
+*** =sample_code
+```{r}
+# Speichern Sie ihr Ergebnis in dfTidy
+dfTidy <-
+# Benutzen Sie separate() um die Spalte aufzuteilen in "uninteressant" und "jahr"
+dfTidy <-
+# Entfernen Sie die Spalte durch select()
+dfTidy <-
+
+```
+
+*** =solution
+```{r}
+# Hinweis: Die Lösung benutzt Pipes, es kann aber genauso in mehr Schritten ohne Pipes gemacht werden.
+# Speichern Sie ihr Ergebnis in dfTidy
+dfTidy <- df %>% gather(mitarbeiter_2016, mitarbeiter_2017, key = "jahr", value = "mitarbeiter")
+
+# Benutzen Sie separate() um die Spalte aufzuteilen in "uninteressant" und "jahr"
+# Entfernen Sie die Spalte durch select()
+dfTidy <- dfTidy %>% separate(jahr, into = c("uninteressant", "jahr"), sep = "_") %>% select(aktie, jahr, mitarbeiter)
+
+```
+
+*** =sct
+```{r}
+test_object(dfTidy)
+test_function("gather")
+
+```
