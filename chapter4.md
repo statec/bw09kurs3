@@ -454,8 +454,8 @@ Schauen Sie sich die beiden Datensätze einer Firma an. Die Datensätze sind in 
 Welche Aussage ist korrekt, wenn wir `firma` als den eigenen Datensatz und `abteilungen` als Fremddatensatz betrachten?
 
 *** =instructions
-- Das Datum ist hier der primary key.
-- Der primary key des ersten Datensatzes (firma) ist die "mitarbeiter_id".
+- Der "name" ist der primary key
+- Der primary key ist die "mitarbeiter_id".
 - Der foreign key des zweiten Datensatzes (abteilungen) ist "abteilung".
 
 *** =hint
