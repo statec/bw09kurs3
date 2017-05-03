@@ -135,7 +135,7 @@ success_msg("Sehr schön! Ist Ihnen der Unterschied aufgefallen? filter() beläs
 
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:cafc5b7402
+--- type:NormalExercise lang:r xp:300 skills:1 key:cafc5b7402
 ## dplyr - verschiedene Funktionen
 In dieser Aufgabe geht es um die Anwendung verschiedener Funktionen aus dem `dplyr` Packet (bereits geladen). Die Daten der Deutschen Bank Aktie liegen im Objekt `db`. Alle benötigten Funktionen finden Sie in den Vorlesungsunterlagen.
 
@@ -190,8 +190,8 @@ x_tminus1 <-
 
 
 # Fügen Sie die zwei Hilfsvektoren dem Datensatz hinzu
-db$x_t <- x_t
-db$x_tminus1 <- x_tminus1
+#db$x_t <- x_t
+#db$x_tminus1 <- x_tminus1
 
 # Berechnen Sie die Rendite und erstellen Sie eine neue Variable "Rendite" im Datensatz. 
 daten <- 
@@ -211,8 +211,8 @@ db <- arrange(db, Date)
 db <- rename(db, Kurs = Open)
 
 # Erstellung der 2 Vektoren, die für Renditenberechnung notwendig sind
-x_t <- db$Rate[db$Date != "2016-04-06"]
-x_tminus1 <- db$Rate[db$Date != "2017-04-05"]
+x_t <- db$Kurs[db$Date != "2016-04-06"]
+x_tminus1 <- db$Kurs[db$Date != "2017-04-05"]
 
 # Wir brauchen die Daten ohne die Erste Zeile (Keine Rendite berechenbar). Nutzen Sie filter().
 db <- filter(db, Date != "2016-04-06")
