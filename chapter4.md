@@ -151,7 +151,7 @@ Tipp:
 (Quelle: yahoo/finance)
 
 *** =instructions
-- Verkleinern Sie den Datensatz mittels `select()`, sodass er nur noch Date, Open, x_t und x_tminus1 enthält.
+- Verkleinern Sie den Datensatz mittels `select()`, sodass er nur noch Date, Open, x\_t und x\_tminus1 enthält.
 - Sortieren Sie den Datensatz nach dem Datum.
 - Benennen Sie die Spalte "Open" zu "Kurs" um.
 - Erstellen Sie eine neue Variable "Rendite" in der die jeweilige Tagesrendite steht. (Diese muss aus dem Datensatz errechnet werden).
