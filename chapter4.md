@@ -1,20 +1,20 @@
 ---
 title       : Einheit 2 - inclass
-description : Tidyverse - Aufbereiten von Datensätzen
---- type:NormalExercise lang:r xp:100 skills:1 key:4e6279614f
-## SELECT
-Der Datensatz der deutschen Bank wurde bereits geladen und in dem Objekt `db` gespeichert. Die Bibliothek "dplyr" ist in der gesamten Übung bereits für Sie eingebunden. 
+description : Tidyverse - Aufbereitung von Datensätzen
+--- type:NormalExercise lang:r xp:50 skills:1 key:4e6279614f
+## dplyr - SELECT
+Der Datensatz der Deutschen Bank wurde bereits geladen und in dem Objekt `db` gespeichert. Alle benötigten Funktionen aus dem Paket `dplyr` sind in der gesamten Übung bereits eingebunden und verfügbar. 
 
-Sie sollen nun durch 2 verschiedene Varianten auf eine bestimmte Spalte des Datensatzes zugreifen. Nutzen Sie dafür `select()`. Schauen Sie zur Funktionsweise der Funktion in den Folien nach, oder führen Sie `?select()` in der Konsole aus.
+Sie sollen nun durch zwei verschiedene Varianten auf eine bestimmte Spalte des Datensatzes zugreifen. Nutzen Sie dafür `select()`. Schauen Sie zur Funktionsweise der Funktion in den Folien nach, oder führen Sie `?select()` in der Konsole aus.
 
 
 Tipp: 
-Wenn Sie eine Zeile des R-Codes aus dem Skript in der Konsole ausführen möchten, nutzen Sie den shortcut `Strg`+`Enter`, während sich der Cursor in der entsprechenden Zeile befindet. Testen Sie es! Geben Sie `db` im Skript (oben) ein und drücken Sie die beiden Tasten. Schauen Sie, was passiert.
+Wenn Sie eine Zeile des R-Codes aus dem Skript in der Konsole ausführen möchten, nutzen Sie den Shortcut `Strg`+`Enter`, während sich der Cursor in der entsprechenden Zeile befindet. Testen Sie es! Geben Sie `db` im Skript (oben) ein und drücken Sie die beiden Tasten. Schauen Sie, was passiert.
 
 
 (Quelle: yahoo/finance)
 *** =instructions
-Um auf die `Open` Spalte des Datensatzes zuzugreifen, haben Sie lin der letzten Sitzung schon eine Möglichkeit kennen gelernt. Nutzen Sie diese, um die `Open` Spalte des Datensatzes in `spalte1` zu speichern.
+Um auf die `Open` Spalte des Datensatzes zuzugreifen, haben Sie im letzten Termin schon eine Möglichkeit kennen gelernt. Nutzen Sie diese, um die `Open` Spalte des Datensatzes in `spalte1` zu speichern.
 Nutzen Sie außerdem die Funktion `select()`, um das gleiche Ergebnis zu erzielen.
 
 
@@ -68,7 +68,7 @@ success_msg("Sehr gut! Einen kleinen Unterschied gab es dann doch zwischen selec
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:8fb5e293ad
-## SELECT & FILTER
+## dplyr - SELECT & FILTER
 Der Datensatz liegt wieder in `db` für Sie bereit.
 Den bereits bekannten Zugriff auf eine Spalte, welche eine bestimmte Bedingung erfüllt mit `daten$spalte[bedingung]` kennen Sie bereits. Experimentieren Sie ein wenig damit, um sich deren Funktion wieder ins Gedächnis zu rufen. 
 
@@ -76,7 +76,7 @@ Den bereits bekannten Zugriff auf eine Spalte, welche eine bestimmte Bedingung e
 Genauso funktionieren `select()` + `filter()`. Informationen zu den Funktionen finden Sie im Vorlesungsskript oder wie sonst auch mit `?function()` in der Konsole.
 
 
-Denken Sie an den Shortcut `Strg` + `Enter` für angenehmeres arbeiten. 
+Denken Sie an den Shortcut `Strg` + `Enter` für angenehmeres Arbeiten. 
 
 
 (Quelle: yahoo/finance)
@@ -87,7 +87,7 @@ Nutzen Sie einmal die altbekannte Variante und einmal `select()` und `filter()`.
 Speichern Sie ihr Ergebnis in den vorgegebenen Variablen.
 
 *** =hint
-- Wenden Sie zuerst `filter()` und dann `select()`an.
+- Wenden Sie zuerst `filter()` und dann `select()` an.
 - Geben Sie das Datum in der Form "YYYY-MM-DD" an.
 
 
@@ -136,10 +136,10 @@ success_msg("Sehr schön! Ist Ihnen der Unterschied aufgefallen? filter() beläs
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:cafc5b7402
-## DPLYR
-In dieser Aufgabe geht es um die verschiedenen Funktionen der Bibliothek `dplyr` (bereits geladen). Die Daten der deutschen Bank Aktie liegen im Objekt `db`. Die Funktionen, welche Sie benötigen, finden Sie in der Vorlesung.
+## dplyr - verschiedene Funktionen
+In dieser Aufgabe geht es um die Anwendung verschiedener Funktionen aus dem `dplyr` Packet (bereits geladen). Die Daten der Deutschen Bank Aktie liegen im Objekt `db`. Alle benötigten Funktionen finden Sie in den Vorlesungsunterlagen.
 
-Das Ziel dieser Aufgabe ist es, am Ende die Rendite als neue Spalte in der Tabelle zu haben. Gehen Sie hierfür schrittweise vor.
+Das Ziel dieser Aufgabe ist es, die Rendite als neue Variable des Datensatzes `db` zu erstellen. Gehen Sie hierfür schrittweise vor.
 
 Tipp: 
 - `!=` ist ein Vergleichsoperator. `a != 1` ist wahr, wenn a ungleich 1 ist.
@@ -152,7 +152,7 @@ Tipp:
 *** =instructions
 - Verkleinern Sie den Datensatz mittels `select()`, sodass er nur noch Date und Open enthält.
 - Sortieren Sie den Datensatz nach dem Datum.
-- Benennen Sie die Spalte "Open" zu "Rate" um.
+- Benennen Sie die Spalte "Open" zu "Kurs" um.
 - Erstellen Sie eine neue Variable "Rendite" in der die jeweilige Tagesrendite steht.
 - Orientieren Sie sich an den Anweisungen im Beispielcode.
 
@@ -173,13 +173,13 @@ db$Date <- as.Date(db$Date)
 
 *** =sample_code
 ```{r}
-# Verkleinerung des Datensatzes
+# Verkleinerung des Datensatzes mit den Variablen Open und Date
 db <- 
 
-# Sortieren nach Date
+# Sortieren nach Date (Tipp: arrange() )
 db <-
 
-# Umbenennung des Wertes
+# Umbenennung des Wertes (Tipp: rename() )
 db <-
 
 # Erstellung der 2 Vektoren, die für Renditenberechnung notwendig sind
@@ -189,8 +189,9 @@ x_tminus1 <-
 # Wir brauchen die Daten ohne die Erste Zeile (Keine Rendite berechenbar). Nutzen Sie filter().
 
 
-# Fügen Sie die zwei Hilfsvektoren zu der Tabelle hinzu
-
+# Fügen Sie die zwei Hilfsvektoren dem Datensatz hinzu
+db$x_t <- x_t
+db$x_tminus1 <- x_tminus1
 
 # Berechnen Sie die Rendite und erstellen Sie eine neue Variable "Rendite" im Datensatz. 
 daten <- 
@@ -207,7 +208,7 @@ db <- select(db, Date, Open)
 db <- arrange(db, Date)
 
 # Umbenennung des Wertes
-db <- rename(db, Rate = Open)
+db <- rename(db, Kurs = Open)
 
 # Erstellung der 2 Vektoren, die für Renditenberechnung notwendig sind
 x_t <- db$Rate[db$Date != "2016-04-06"]
@@ -217,7 +218,8 @@ x_tminus1 <- db$Rate[db$Date != "2017-04-05"]
 db <- filter(db, Date != "2016-04-06")
 
 # Fügen Sie die zwei Hilfsvektoren zu der Tabelle hinzu
-db <- db %>% mutate(x_t = x_t, x_tminus1 = x_tminus1)
+db$x_t <- x_t
+db$x_tminus1 <- x_tminus1
 
 # Berechnen Sie die Rendite und erstellen Sie eine neue Variable "Rendite" im Datensatz.
 daten <- db %>% mutate(Rendite = (x_t-x_tminus1)/x_tminus1)
@@ -235,17 +237,17 @@ success_msg("Geschafft!")
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:3923d161a1
-## TIDYR
-Gegeben ist ein Datensatz `daten`. Wenn Sie ihn in der Konsole ausgeben, werden Sie merken, dass die zwei Variablen Kontinent und Land gemeinsam in eine Variable geschrieben wurden. Dies sollen Sie nun durch `seperate()` ändern.
+## tidyr - SEPARATE (I)
+Gegeben ist ein Datensatz `daten`. Wenn Sie ihn in der Konsole ausgeben, werden Sie merken, dass die zwei Variablen Kontinent und Land gemeinsam in eine Variable geschrieben wurden. Dies sollen Sie nun durch `separate()` ändern.
 Das notwendige Paket aus tidyverse `(tidyr)` wurde für Sie bereits geladen.
 
 (Quelle: Wikipedia)
  
 *** =instructions
-Erstellen Sie einen neuen Datensatz "tidyTable", in welchem Sie die Spalte ort auf zwei Spalten "land" und "kontinent" aufteilen.
+Erstellen Sie einen neuen Datensatz `tidyTable`, in welchem Sie die Spalte ort auf zwei Spalten "land" und "kontinent" aufteilen.
 
 *** =hint
-- `seperate(df, into = c("spalte1", "spalte2"), sep = "_")`
+- `separate(df, into = c("spalte1", "spalte2"), sep = "_")`
 - bei `sep = ` geben Sie das jeweilige Trennsymbol ein.
 
 *** =pre_exercise_code
@@ -264,7 +266,11 @@ daten <- data.frame(unternehmen, ort, stadt)
 
 *** =sample_code
 ```{r}
+# Schauen Sie sich die Ausgangsdaten in der Konsole an
+print(daten)
+
 # Erstellen Sie die neuen Spalten und speichern Sie ihr Ergebnis unter "tidyTable"
+tidyTable<- 
 
 # Schauen Sie sich das Ergebnis in der Konsole an
 print(tidyTable)
@@ -289,7 +295,7 @@ success_msg("Sehr gut, Sie können nun Spalten auseinander ziehen.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b29966e91c
-## TIDYR 2
+## tidyr - SEPARATE (II)
 Der von ihnen geänderte Datensatz ist in `daten` gegeben. Nun soll ihre Aktion mittels `unite()` wieder rückgängig gemacht werden.
 Das notwendige Paket aus tidyverse `(tidyr)` wurde für Sie bereits geladen.
 
@@ -321,7 +327,7 @@ daten <- daten %>% separate(ort, into = c("kontinent", "land"), sep = "_")
 *** =sample_code
 ```{r}
 # Vereinigen Sie die beiden Spalten zu einer neuen Spalte "ort"
-
+untidyTable <-
 
 ```
 
@@ -343,12 +349,12 @@ test_error()
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:eb9e1eebd4
-## GATHER
-Die Daten liegen in `df`. Das was bisher oft als Tabelle bezeichnet wurde, nennt man in R "dataframe". Bei dem gegebenen Datensatz sind die Spaltennamen keine Variablenbezeichnungen, sondern Werte einer Variablen. Nutzen Sie die in der Vorlesung vorgestellte Funktion, um den Datensatz zu ordnen. 
+## tidyr - GATHER
+Die Daten liegen in `df`. Das was bisher oft als Tabelle bezeichnet wurde, nennt man in R "data.frame". Bei dem gegebenen Datensatz sind die Spaltennamen keine Variablenbezeichnungen, sondern Werte einer Variablen. Nutzen Sie die in der Vorlesung vorgestellte Funktion, um den Datensatz zu ordnen. 
 
 
 *** =instructions
-- Verschönern Sie den Datensatz wie in der Vorlesung
+- Räumen Sie den Datensatz auf (vgl. Vorlesungsunterlagen)
 - Entfernen Sie unnötige Informationen durch die Funktionen, die Sie in den vorherigen Aufgaben bereits gelernt haben.
 - Schauen Sie sich zur Überprüfung den Datensatz durch `print(dfTidy)` in der Konsole an.
 
@@ -403,12 +409,12 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:154576692b
-## SPREAD
-Der Datensatz liegt im objekt `df`. Nutzen Sie spread um die Zeilenanzahl zu reduzieren, sodass jedes Jahr seine eigene Spalte im dataframe bekommt.
+## tidyr - SPREAD
+Der Datensatz liegt im objekt `df`. Nutzen Sie die spread Funktion um die Zeilenanzahl zu reduzieren, sodass jedes Jahr seine eigene Spalte im dataframe bekommt.
 
 
 *** =instructions
-- Nutzen Sie die Funktion `spread()` und speichern Sie das Ergebnis in der Variablen `dfNew`.
+- Nutzen Sie die Funktion `spread()` und speichern Sie das Ergebnis im Objekt `dfNew`.
 - Vergleichen Sie den alten und neuen Datensatz durch Ausgabe in der Konsole mit `print(df)` bzw. `print(dfNew)`.
 
 *** =hint
@@ -454,7 +460,7 @@ success_msg("Sehr gut! kommen wir nun zu relationalen Datensätzen.")
 
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:916e13138e
-## Primary und foreign key
+## Mehrere Datensätze: Keys
 Schauen Sie sich die beiden Datensätze einer Firma an. Die Datensätze sind in `firma` und `abteilungen` gespeichert. Geben Sie `print(datensatz)` in der Konsole ein, um die Tabellen zu begutachten.
 
 Welche Aussage ist korrekt, wenn wir `firma` als die "eigene Tabelle" betrachten?
@@ -487,8 +493,10 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad))
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:ea430943f2
-## Joins
-Ihnen sind 3 Datensätze gegeben. `table1` und `table2` wurden mit einem bestimmten join Befehl vereinigt. Das Ergebnis können Sie in `mixed` sehen. Für die verschiedenen join Befehle, können Sie einen Blick in die Vorlesungsfolien werfen. Probieren Sie selbst die verschiedenen join Befehl in der Konsole aus, um das richtige Ergebnis zu finden.
+## Mehrere Datensätze: Joins
+Ihnen sind 3 Datensätze gegeben. `table1` und `table2` wurden mit einem bestimmten join Befehl vereinigt. Das Ergebnis können Sie in `mixed` sehen. Für die verschiedenen join Befehle, können Sie einen Blick in die Vorlesungsfolien werfen. 
+
+Sollte Ihnen das Prinzip noch nicht ganz klar sein, probieren Sie selbst die verschiedenen join Befehle in der Konsole aus.
 
 Welcher join Befehl wurde hier ausgeführt?
 
@@ -529,7 +537,7 @@ test_mc(correct = 4, feedback_msgs = c(msg_bad, msg_bad, msg_bad, msg_success))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:8d206b5035
-## Full & inner join
+##  Mehrere Datensätze: Full & inner join
 Gegeben sind zwei Datensätze `table1` und `table2`. Diese Datensätze sollen nun von Ihnen auf zwei unterschiedliche Arten zu einem Datensatz vereinigt werden.
 
 
@@ -590,7 +598,7 @@ success_msg("Sehr schön! Wir kommen nun zur letzten Aufgabe!")
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:3ce8e31499
-## Right & left join
+## Mehrere Datensätze: Right & left join
 Gegeben sind zwei Datensätze `table1` und `table2`. Diese Datensätze sollen nun von Ihnen auf zwei unterschiedliche Arten zu einem Datensatz vereinigt werden.
 
 
