@@ -159,7 +159,7 @@ Tipp:
 *** =hint
 - ordnen: `arrange(daten, spalte)`.
 - eine neue Spalte erstellen Sie durch `mutate(daten, neueSpalte = vektor)`.
-- das erste bzw. letzte Datum in der sortierten Tabelle bekommen Sie durch `head(db)` bzw. `tail(db)`.
+- das erste bzw. letzte Datum in des sortierten Datensatzes bekommen Sie durch `head(db)` bzw. `tail(db)`.
 
 *** =pre_exercise_code
 ```{r}
@@ -217,7 +217,7 @@ x_tminus1 <- db$Kurs[db$Date != "2017-04-05"]
 # Wir brauchen die Daten ohne die Erste Zeile (Keine Rendite berechenbar). Nutzen Sie filter().
 db <- filter(db, Date != "2016-04-06")
 
-# Fügen Sie die zwei Hilfsvektoren zu der Tabelle hinzu
+# Fügen Sie die zwei Hilfsvektoren zum Datensatzhinzu
 db$x_t <- x_t
 db$x_tminus1 <- x_tminus1
 
@@ -350,7 +350,7 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:eb9e1eebd4
 ## tidyr - GATHER
-Die Daten liegen in `df`. Das was bisher oft als Tabelle bezeichnet wurde, nennt man in R "data.frame". Bei dem gegebenen Datensatz sind die Spaltennamen keine Variablenbezeichnungen, sondern Werte einer Variablen. Nutzen Sie die in der Vorlesung vorgestellte Funktion, um den Datensatz zu ordnen. 
+Die Daten liegen in `df`. Ein Datensatz in der Form wie er hier betrachtet wird, nennt man in R "data.frame". Bei dem gegebenen Datensatz sind die Spaltennamen keine Variablenbezeichnungen, sondern Werte einer Variablen. Nutzen Sie die in der Vorlesung vorgestellte Funktion, um den Datensatz zu ordnen. 
 
 
 *** =instructions
@@ -461,14 +461,14 @@ success_msg("Sehr gut! kommen wir nun zu relationalen Datensätzen.")
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:916e13138e
 ## Mehrere Datensätze: Keys
-Schauen Sie sich die beiden Datensätze einer Firma an. Die Datensätze sind in `firma` und `abteilungen` gespeichert. Geben Sie `print(datensatz)` in der Konsole ein, um die Tabellen zu begutachten.
+Schauen Sie sich die beiden Datensätze einer Firma an. Die Datensätze sind in `firma` und `abteilungen` gespeichert. Geben Sie `print(datensatz)` in der Konsole ein, um den Datensatz zubegutachten.
 
-Welche Aussage ist korrekt, wenn wir `firma` als die "eigene Tabelle" betrachten?
+Welche Aussage ist korrekt, wenn wir `firma` als den eigenen Datensatz und `abteilungen` als Fremddatensatz betrachten?
 
 *** =instructions
 - Das Datum ist hier der primary key.
-- Der primary key der ersten Tabelle (firma) ist die "mitarbeiter_id".
-- Der foreign key in der zweiten Tabelle (abteilungen) ist "abteilung".
+- Der primary key des ersten Datensatzes (firma) ist die "mitarbeiter_id".
+- Der foreign key des zweiten Datensatzes (abteilungen) ist "abteilung".
 
 *** =hint
 
@@ -508,7 +508,7 @@ Welcher join Befehl wurde hier ausgeführt?
 - inner_join
 
 *** =hint
-- führen Sie `print(datensatz)` in der Konsole aus, um die Tabellen zu sehen.
+- führen Sie `print(datensatz)` in der Konsole aus, um die Datensätze anzuschauen.
 - `____join(table1, table1, by = "___")`.
 
 *** =pre_exercise_code
@@ -523,7 +523,7 @@ key <- c(1,3,4)
 val <- c("x2", "y2", "z2")
 table2 <- data.frame(key, val)
 
-# Vereinigung der Tabellen
+# Vereinigung der Datensätze
 mixed <- inner_join(table1, table2, by = "key")
 
 ```
