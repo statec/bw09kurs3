@@ -84,7 +84,7 @@ Denken Sie an den Shortcut `Strg` + `Enter` für angenehmeres Arbeiten.
 Wie hoch ist der Eröffnungskurs einer Deutschen Bank Aktie am 17.03.2017?
 Nutzen Sie einmal die altbekannte Variante und einmal `select()` und `filter()`.
 
-Speichern Sie ihr Ergebnis in den vorgegebenen Variablen.
+Denken Sie bei letzterem über die richtige Reihenfolge nach und speichern Sie ihr Ergebnis in den vorgegebenen Variablen.
 
 *** =hint
 - Wenden Sie zuerst `filter()` und dann `select()` an.
@@ -101,6 +101,7 @@ db <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_37
 
 *** =sample_code
 ```{r}
+# Format des gesuchten Tages: "2017-03-17"
 # mit $ und []
 day1 <-
 
@@ -116,7 +117,7 @@ day2 <-
 # mit $ und []
 day1 <- db$Open[db$Date == "2017-03-17"]
 
-# mit select() und filter()
+# mit select() und filter() 
 day2 <- db %>%
     filter(Date == "2017-03-17") %>% 
     select(Open)
@@ -131,7 +132,7 @@ test_object("day2")
 test_function("select")
 test_function("filter")
 test_error()
-success_msg("Sehr schön! Ist Ihnen der Unterschied aufgefallen? filter() belässt das Erbegnis bei dem Typ dataframe, [ ] jedoch erstellt einen Vektor. Genau so bei select() und $.")
+success_msg("Sehr schön! Ist Ihnen der Unterschied aufgefallen? filter() belässt das Erbegnis bei dem Typ data.frame, [ ] jedoch erstellt einen Vektor. Genau so bei select() und $.")
 
 ```
 
@@ -143,9 +144,9 @@ Das Ziel dieser Aufgabe ist es, die Rendite als neue Variable des Datensatzes `d
 
 Tipp: 
 
-
+- x\_t und x\_tminus1 sind bereits Bestandteil des Datensatzes
 - Durch `select()` können Sie auf bestimmte Spalten, durch `filter()` auf bestimmte Zeilen zugreifen. 
-- Schauen Sie für Beispiele in die Vorlesungsfolien.
+- Orientieren Sie sich an Beispielen in den Vorlesungsfolien.
 
 
 (Quelle: yahoo/finance)
@@ -186,7 +187,7 @@ db$x_tminus1 <- x_tminus1
 # Verkleinerung des Datensatzes mit den Variablen Open, Date, x_t, x_tminus1
 db <- 
 
-# Sortieren nach Date (Tipp: arrange() )
+# Sortieren aufsteigend nach Date (Tipp: arrange() )
 db <-
 
 # Umbenennung des Wertes (Tipp: rename() )
@@ -225,7 +226,7 @@ success_msg("Geschafft!")
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:3923d161a1
-## tidyr - SEPARATE (I)
+## tidyr - SEPARATE 
 Gegeben ist ein Datensatz `daten`. Wenn Sie ihn in der Konsole ausgeben, werden Sie merken, dass die zwei Variablen Kontinent und Land gemeinsam in eine Variable geschrieben wurden. Dies sollen Sie nun durch `separate()` ändern.
 Das notwendige Paket aus tidyverse `(tidyr)` wurde für Sie bereits geladen.
 
@@ -283,14 +284,14 @@ success_msg("Sehr gut, Sie können nun Spalten auseinander ziehen.")
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b29966e91c
-## tidyr - SEPARATE (II)
-Der von ihnen geänderte Datensatz ist in `daten` gegeben. Nun soll ihre Aktion mittels `unite()` wieder rückgängig gemacht werden.
+## tidyr - UNITE
+Der von Ihnen soeben geänderte Datensatz ist in `daten` gegeben. Nun soll ihre Aktion mittels `unite()` wieder rückgängig gemacht werden.
 Das notwendige Paket aus tidyverse `(tidyr)` wurde für Sie bereits geladen.
 
 (Quelle: Wikipedia)
  
 *** =instructions
-Erstellen Sie einen neuen Datensatz "untidyTable", in welchem Sie die zwei Spalten "land" und "kontinent" zu einer Spalte "ort" vereinen. Benutzen Sie als Trennsymbol die Leertaste.
+Erstellen Sie einen neuen Datensatz "untidyTable", in welchem Sie die zwei Spalten "kontinent" und "land" (in dieser Reihenfolge) zu einer Spalte "ort" vereinen. Benutzen Sie als Trennsymbol das Leerzeichen.
 
 *** =hint
 - `unite(df, name, spalte1, spalte2, sep = " ")`
@@ -364,11 +365,11 @@ df <- data.frame(aktie, mitarbeiter_2016, mitarbeiter_2017)
 
 *** =sample_code
 ```{r}
-# Speichern Sie ihr Ergebnis in dfTidy
+# Aufräumen des Datensatzes unter Benutzung von gather() 
 dfTidy <-
-# Benutzen Sie separate() um die Spalte aufzuteilen in "uninteressant" und "jahr"
+# Benutzen Sie separate() um die betrefffende Spalte aufzuteilen in "uninteressant" und "jahr"
 dfTidy <-
-# Entfernen Sie die Spalte durch select()
+# Entfernen Sie die betrefffende Spalte durch select()
 dfTidy <-
 
 ```
@@ -398,7 +399,7 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:154576692b
 ## tidyr - SPREAD
-Der Datensatz liegt im objekt `df`. Nutzen Sie die spread Funktion um die Zeilenanzahl zu reduzieren, sodass jedes Jahr seine eigene Spalte im dataframe bekommt.
+Der Datensatz liegt im objekt `df`. Nutzen Sie die spread Funktion um die Zeilenanzahl zu reduzieren, sodass jedes Jahr seine eigene Spalte mit Renditen im Datensatz bekommt.
 
 
 *** =instructions
@@ -449,7 +450,7 @@ success_msg("Sehr gut! kommen wir nun zu relationalen Datensätzen.")
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:916e13138e
 ## Mehrere Datensätze: Keys
-Schauen Sie sich die beiden Datensätze einer Firma an. Die Datensätze sind in `firma` und `abteilungen` gespeichert. Geben Sie `print(datensatz)` in der Konsole ein, um den Datensatz zubegutachten.
+Schauen Sie sich die beiden Datensätze einer Firma an. Die Datensätze sind in `firma` und `abteilungen` gespeichert. Geben Sie `print(datensatz)` in der Konsole ein, um den Datensatz zu begutachten.
 
 Welche Aussage ist korrekt, wenn wir `firma` als den eigenen Datensatz und `abteilungen` als Fremddatensatz betrachten?
 
@@ -555,9 +556,9 @@ table2 <- data.frame(aktie, kurs_Close)
 *** =sample_code
 ```{r}
 # inner_join()
-
+inner <- 
 # full_join()
-
+full <-
 
 ```
 
@@ -616,9 +617,9 @@ table2 <- data.frame(aktie, kurs_Close)
 *** =sample_code
 ```{r}
 # right_join()
-
+right <-
 # left_join()
-
+left <-
 
 ```
 
