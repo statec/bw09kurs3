@@ -62,15 +62,17 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:7a690271fe
 ## 2. Basis Funktionen dplyr
-Der Datensatz liegt in `evaluation`, die Bibliothek "dplyr" wurde bereits eingebunden. Dort wurden verschiedene Studiengänge evaluiert. Nun soll von Ihnen der Durchschnitt errechnet werden.
+Der Datensatz liegt in `evaluation`. Es wurden verschiedene Studiengänge evaluiert. Nun soll von Ihnen der Durchschnitt errechnet werden.
+Die Bibliothek "dplyr" wurde bereits eingebunden.
 
 
 *** =instructions
-Erstellen Sie mit `mutate()` eine neue Spalte, in welcher die Durchschnittsnote des jeweiligen Studienganges steht. Die Berechnung können Sie direkt in der Funktion mutate ausführen:
+Erstellen Sie mit `mutate()` eine neue Spalte, in welcher die Durchschnittsnote des jeweiligen Studienganges steht. Die Berechnung können Sie direkt in der Funktion `mutate()` ausführen:
+
 `mutate(datensatz, name = (1*spalte1 + 2*spalte2 + ...))`.
 
 *** =hint
-Da Sie hier Zeilenweise und nicht Spaltenweise den Schnitt berechnen, können Sie nicht `mean()` benutzen, da diese einen Vektor als Eingabe erwartet.
+Da Sie hier Zeilenweise und nicht Spaltenweise den Schnitt berechnen, können Sie nicht `mean()` benutzen, da diese Funktion einen Vektor als Eingabe erwartet.
 
 *** =pre_exercise_code
 ```{r}
@@ -96,7 +98,7 @@ evaluation1 <-
 ```{r}
 # Lösung
 evaluation1 <- evaluation %>%
-    mutate(durchschnitt = (note_1 + 2*note_2 + 3*note_3 + 4*note_4)/(note_1 + note_2 + note_3 + note_4)) >%> 
+    mutate(durchschnitt = (note_1 + 2*note_2 + 3*note_3 + 4*note_4)/(note_1 + note_2 + note_3 + note_4)) %>%
     arrange(durchschnitt)
 
 ```
