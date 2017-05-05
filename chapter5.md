@@ -55,6 +55,9 @@ aktuell <- filter(kurse, klausurtermin_2017 > "2017-05-01") %>%
 
 *** =sct
 ```{r}
+test_function("select")
+test_function("filter")
+test_function("arrange")
 test_object("aktuell")
 test_error()
 
@@ -100,6 +103,60 @@ evaluation1 <-
 evaluation1 <- evaluation %>%
     mutate(durchschnitt = (note_1 + 2*note_2 + 3*note_3 + 4*note_4)/(note_1 + note_2 + note_3 + note_4)) %>%
     arrange(durchschnitt)
+
+```
+
+*** =sct
+```{r}
+test_function("mutate")
+test_function("arrange")
+test_object("evaluation1")
+test_error()
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:c95c4d616c
+## 3. Pipes
+Gegeben ist der ihnen schon bekannte Datensatz `evaluation`. Die Bibliothek "dplyr" wurde eingelesen.
+
+*** =instructions
+- Verkleinern Sie den Datensatz, sodass nur noch die der Studiengang und die Durchschnittsnote ethalten sind. 
+- Nennen Sie die Spalte "durschnitt" zu "Bewertung" um.
+- Bei dieser Aufgabe sollen Sie pipes `%>%` benutzen. Zur Funktionsweise schauen Sie bitte in die Folien.
+
+*** =hint
+- um bestimmte Spalten auszuwählen können Sie `select(df, Spalte)` nutzen.
+- Zum Umbenennen können Sie `rename(df, Name = alter_Name)` nutzen.
+
+
+*** =pre_exercise_code
+```{r}
+library(dplyr)
+# Erstellung der Daten
+studiengang <- c("lehramt", "mathe", "physik", "medizin", "wirtschaft", "jura", "chemie")
+note_1 <- c(32, 40, 25, 33, 144, 54, 22)
+note_2 <- c(201, 89, 67, 166, 244, 98, 167)
+note_3 <- c(102, 23, 89, 31, 129, 77, 33)
+note_4 <- c(12, 3, 33, 12, 29, 54, 19)
+evaluation <- data.frame(studiengang, note_1, note_2, note_3, note_4)
+evaluation <- evaluation %>%
+    mutate(durchschnitt = (note_1 + 2*note_2 + 3*note_3 + 4*note_4)/(note_1 + note_2 + note_3 + note_4)) %>%
+    arrange(durchschnitt)
+
+```
+
+*** =sample_code
+```{r}
+# nutzen Sie zuerst select() und dann rename()
+evaluation1 <- evaluation %>%  
+
+```
+
+*** =solution
+```{r}
+evaluation1 <- evaluation %>% 
+    select(studiengang, durchschnitt) %>% 
+    rename(Bewertung = durchschnitt)
 
 ```
 
