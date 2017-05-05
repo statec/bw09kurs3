@@ -56,5 +56,6 @@ aktuell <- filter(kurse, klausurtermin_2017 > "2017-05-01") %>%
 *** =sct
 ```{r}
 test_object("aktuell")
+test_error()
 
 ```
