@@ -190,6 +190,7 @@ library(tidyr)
 library(dplyr)
 # Erstellen der Daten
 Mitarbeiter_id <- c(3462, 9305, 3894, 4539, 3205, 4995, 3202, 1847, 5566)
+Vorname <- c("Luisa", "Christina", "Heinrich", "Xenia", "Kim", "Murat", "Simon", "Larissa", "Joseph")
 Mitarbeiter_Abteilung <- c("Kamm_IT", "Donner_IT", "Lohrer_EDV", "Warm_IT", "Bose_IT", "Gustavo_HR", "Mueller_EDV", "Schnabel_EDV", "Hust_HR") 
 Geburtsjahr <- c(1986, 1990, 1974, 1977, 1964, 1981, 1960, 1959, 1974)
 Geschlecht <- c("W", "W", "M", "W", "M",  "M",  "M", "W", "M")
