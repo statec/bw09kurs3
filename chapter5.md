@@ -166,3 +166,58 @@ test_object("evaluation1")
 test_error()
 
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:545c855428
+## 4. tidyr
+Gegeben ist ein Datensatz `firma`. Sie sehen im Datensatz dass die Spalte Mitarbeiter_Abteilung aus zwei verschiedenen Variablen besteht. Dies soll nun geändert werden.
+
+Das notwendige Paket aus tidyverse "tidyr" wurde für Sie bereits geladen, ebenso wie "dplyr".
+
+ 
+*** =instructions
+- Erstellen Sie für jede der zwei Variablen eine eigene Spalte. 
+- Fügen Sie eine Spalte zum Datensatz hinzu, der das Alter der Mitarbeiter anzeigt. 
+
+
+*** =hint
+- `separate(df, into = c("spalte1", "spalte2"), sep = "_")`
+- bei `sep = ` geben Sie das jeweilige Trennsymbol ein.
+- `mutate()` erstellt eine neue Variable im Datensatz.
+
+*** =pre_exercise_code
+```{r}
+library(tidyr)
+library(dplyr)
+# Erstellen der Daten
+Mitarbeiter_id <- c(3462, 9305, 3894, 4539, 3205, 4995, 3202, 1847, 5566)
+Mitarbeiter_Abteilung <- c("Kamm_IT", "Donner_IT", "Lohrer_EDV", "Warm_IT", "Bose_IT", "Gustavo_HR", "Mueller_EDV", "Schnabel_EDV", "Hust_HR") 
+Geburtsjahr <- c(1986, 1990, 1974, 1977, 1964, 1981, 1960, 1959, 1974)
+Geschlecht <- c("W", "W", "M", "W", "M",  "M",  "M", "W", "M")
+firma <- data.frame(Mitarbeiter_id, Mitarbeiter_Abteilung, Geschlecht, Geburtsjahr)
+
+
+```
+
+*** =sample_code
+```{r}
+# Erstellen Sie die neuen Spalten und errechnen Sie das Alter der Personen (Die Tage/Monate sind hierbei zu vernachlässigen)
+firma <- 
+
+```
+
+*** =solution
+```{r}
+# auseinander ziehen
+firma <- firma %>% 
+    separate(Mitarbeiter_Abteilung, into = c("Mitarbeiter", "Abteilung"), sep = "_") %>%
+    mutate(Alter = 2017 - Geburtsjahr)
+
+
+```
+
+*** =sct
+```{r}
+test_object("firma")
+test_error()
+
+```
