@@ -231,7 +231,7 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b24f8a3cc7
-## gather()
+## gather( )
 Ihnen liegt der schon bekannte Datensatz `evaluation` vor. Die Bibliothek "tidyr" ist bereits geladen. Der Datensatz soll so verändert werden, dass man möglichst schnell sehen kann, welche Note am seltensten und welche am häufigsten vergeben wurde.
 
 *** =instructions
@@ -330,5 +330,67 @@ ev <- spread(evaluation, Note, Anzahl)
 test_function("spread")
 test_object("ev")
 test_error()
+
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:60a2a30685
+## joins
+Ihnen Sind 2 Datensätze einer Firma gegeben, `kunden` und `kreditkarten`. Schauen Sie sich die beiden Datensätze in der Konsole an.
+
+Die Bibliothek ist bereits eingebunden.
+
+*** =instructions
+- Vereinigen Sie die Datensätze so, dass man direkt den Namen des Kunden neben seiner Kreditkarte in einem Datensatz sehen kann.
+- Beachten Sie, dass in dem neuen Datensatz nur Kunden stehen sollen, die auch eine Kreditkarte besitzen.
+
+*** =hint
+- Schauen Sie nochmal auf die Folien mit den join()-Funktionen.
+
+*** =pre_exercise_code
+```{r}
+# Einbinden der Bibliotheken
+library(dplyr)
+library(tidyr)
+
+# Erstellung der Datensätze
+# Kunden
+Kundennr <- c(1000, 1001, 1003, 1002, 1004, 1005, 1006, 1007, 1008, 1009)
+Nachname <- c("Schindler", "Schmidt", "Meier", "Kanda", "Hoven", "Karlsmann", "Bernardt", "Toelkes", "Schubert", "Bach")
+Vorname <- c("Marie", "Johann", "Lukas", "Ernst", "Sophie", "Helene","Jan", "Julia", "Sandra", "Anna")
+Ort <- c("Muenster", "Hamm", "Bonn", "Duesseldorf", "Berlin", "Bonn", "Bitburg", "Duesseldorf", "Koeln", "Duesseldorf")
+kunden <- data.frame(Kundennr, Nachname, Vorname, Ort)
+
+# Kreditkarten
+Kartennr <- c(2003, 4635, 3246, 3464, 3455, 9342)
+Firma <- c("VISA", "Mastercard", "VISA", "VISA", "American Express", "Mastercard")
+Kundennr <- c(1003, 1002, 1008, 1006, 1000, 1009)
+kreditkarten <- data.frame(Kartennr, Firma, Kundennr)
+
+```
+
+*** =sample_code
+```{r}
+# Nennen Sie den neuen Datensatz kk
+kk <- 
+```
+
+*** =solution
+```{r}
+# Vereinigung der Datensätze
+kk <- right_join(kunden, kreditkarten, by = "Kundennr")
+# Genauso möglich:
+# left_join(kreditkarten, kunden, by = "Kundennr")
+# oder
+# inner_join(kreditkarten, kunden, by = "Kundennr")
+
+```
+
+*** =sct
+```{r}
+test_object("kk")
+test_error()
+success_msg("Sehr gut! Sie hätten in diesem Fall drei verschiedenen joins nutzen können: right_join, left_join oder inner_join")
 
 ```
