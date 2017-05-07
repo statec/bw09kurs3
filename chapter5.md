@@ -231,7 +231,7 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b24f8a3cc7
-## gather( )
+## 5. tidyr - gather( )
 Ihnen liegt der schon bekannte Datensatz `evaluation` vor. Die Bibliothek "tidyr" ist bereits geladen. Der Datensatz soll so verändert werden, dass man möglichst schnell sehen kann, welche Note am seltensten und welche am häufigsten vergeben wurde.
 
 *** =instructions
@@ -284,7 +284,7 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:cf9655bc74
-## spread( )
+## 6. tidyr - spread( )
 Ihr Ergebnis von der vorherigen Aufgabe liegt nun in `evaluation`. Der Anfangsdatensatz wurde unglücklicherweise überschrieben. 
 
 
@@ -336,7 +336,7 @@ test_error()
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:60a2a30685
-## joins
+## 7. joins
 Ihnen Sind 2 Datensätze einer Firma gegeben, `kunden` und `kreditkarten`. Schauen Sie sich die beiden Datensätze in der Konsole an.
 
 Die Bibliothek ist bereits eingebunden.
@@ -398,30 +398,118 @@ success_msg("Sehr gut! Sie hätten in diesem Fall drei verschiedenen joins nutze
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:f64a4481af
-## joins mit n:n Beziehungen
-Gegeben sind ihnen die Datensätze einer Universität 
+## 8. joins 
+Gegeben sind ihnen die Datensätze einer Universität `professor`, `zuteilung` und `kurse`. Schauen Sie sich die Datensätze in der Konsole an. 
+
+In dieser und der folgenden Aufgabe sollen nun der Datensatz `professor` und `kurse` in einen gemeinsamen Datensatz gebracht werden. Das geht in diesem Zustand noch nicht, da die beiden Datensätze noch keine gemeinsamen "key" haben.
+
+In dieser Aufgabe sollen Sie nun die Vorarbeit leisten und 2 neue Datensätze schaffen. Denken Sie bei der Auswahl des join-Befehls daran, dass keine Informationen verloren gehen sollen.
+
+Die Bibliothek wurde bereits eingebunden.
 
 
 *** =instructions
+- Erstellen Sie den Datensatz "kursinfo" der aus `zuteilung` und `kurse` entstehen soll.
+- Genauso sollen die beiden Datensätze `professor` und `zuteilung` vereinigt werden. Nennen Sie den neuen Datensatz "prof_kurs".
 
 *** =hint
+- Schauen Sie in die Vorlesung, um zu entscheiden, welchen join Sie benutzen.
 
 *** =pre_exercise_code
 ```{r}
+library(dplyr)
+# Professor
+Namenskuerzel <- c("HW", "JO", "GD", "FF", "SL", "ER")
+Prof_id <- c(903, 923, 932, 987, 900, 911)
+professor <- data.frame(Namenskuerzel, Prof_id)
+
+# proffesor_kurs
+Prof_id <- c(903, 923, 932, 987, 900, 911, 923, 987, 900)
+Kurs_id <- c(100, 106, 102, 103, 103, 104, 105, 106, 109)
+zuteilung <- data.frame(Prof_id, Kurs_id)
+
+# Kurs
+Studenten <- c(79, 233, 302, 148, 32, 27, 21, 177, 255, 198)
+Semester <- c("SoSe", "WiSe", "SoSe", "SoSe", "WiSe", "SoSe", "SoSe", "WiSe", "WiSe", "WiSe")
+Kurs_id <- c(100, 101, 102, 103, 104, 105, 106, 107, 108, 109)
+Kursname <- c("Geldpolitik", "Marketing", "Statistische Methoden", "Recht_1", "Englisch_1", "Englisch_2", "Franzoesisch", "Recht_2", "Mathe_1", "Mathe_2")
+kurse <- data.frame(Kursname, Kurs_id, Studenten, Semester)
 
 ```
 
 *** =sample_code
 ```{r}
-
+# Joinen Sie zuerst die beiden Datensätze "zuteilung" und "kurse"
+kursinfo <- 
+# Joinen Sie die beiden Datensätze "professor" und "zuteilung"
+prof_kurs <- 
 ```
 
 *** =solution
 ```{r}
+kursinfo <- full_join(zuteilung, kurse, by = "Kurs_id")
+prof_kurs <- full_join(professor, zuteilung, by = "Prof_id")
 
 ```
 
 *** =sct
 ```{r}
+test_object("kursinfo")
+test_error()
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:8d700a2a96
+## 9. joins
+Sie haben nun die beiden Datensätze `kursinfo` und `prof_kurs` gegeben, die Sie in der vorherigen Aufgabe erstellt haben. 
+
+Die "dplyr" Bibliothek wurde bereits eingebunden.
+
+
+*** =instructions
+- Vereinigen Sie die beiden Datensätze 
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(dplyr)
+# Professor
+Namenskuerzel <- c("HW", "JO", "GD", "FF", "SL", "ER")
+Prof_id <- c(903, 923, 932, 987, 900, 911)
+professor <- data.frame(Namenskuerzel, Prof_id)
+
+# proffesor_kurs
+Prof_id <- c(903, 923, 932, 987, 900, 911, 923, 987, 900)
+Kurs_id <- c(100, 106, 102, 103, 103, 104, 105, 106, 109)
+zuteilung <- data.frame(Prof_id, Kurs_id)
+
+# Kurs
+Studenten <- c(79, 233, 302, 148, 32, 27, 21, 177, 255, 198)
+Semester <- c("SoSe", "WiSe", "SoSe", "SoSe", "WiSe", "SoSe", "SoSe", "WiSe", "WiSe", "WiSe")
+Kurs_id <- c(100, 101, 102, 103, 104, 105, 106, 107, 108, 109)
+Kursname <- c("Geldpolitik", "Marketing", "Statistische Methoden", "Recht_1", "Englisch_1", "Englisch_2", "Franzoesisch", "Recht_2", "Mathe_1", "Mathe_2")
+kurse <- data.frame(Kursname, Kurs_id, Studenten, Semester)
+
+# gemeinsamen key:
+kursinfo <- full_join(zuteilung, kurse, by = "Kurs_id")
+prof_kurs <- full_join(professor, zuteilung, by = "Prof_id")
+
+```
+
+*** =sample_code
+```{r}
+# Vereinigen Sie die beiden Datensätze so, dass keine Informationen verloren gehen.
+
+```
+
+*** =solution
+```{r}
+# Vereinigung ohne Informationsverlust
+gesamt <- full_join(prof_kurs, kursinfo, by = c("Prof_id", "Kurs_id"))
+```
+
+*** =sct
+```{r}
+# test_object("gesamt")
 
 ```
