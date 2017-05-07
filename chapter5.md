@@ -284,12 +284,15 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:cf9655bc74
-## spread()
-Ihr Ergebnis von der vorherigen Aufgabe liegt nun in `evaluation`. Der Anfangsdatensatz wurde unglücklicherweise überschrieben. Machen Sie die Aktion rückgängig, indem Sie spread benutzen.
+## spread( )
+Ihr Ergebnis von der vorherigen Aufgabe liegt nun in `evaluation`. Der Anfangsdatensatz wurde unglücklicherweise überschrieben. 
+
+
+dplyr wurde bereits geladen.
 
 
 *** =instructions
--  Machen Sie die Aktion rückgängig, indem Sie spread benutzen.
+-  Machen Sie die Aktion rückgängig, indem Sie `spread()` benutzen.
 
 *** =hint
 - `spread(df, Spalte1, Spalte2)`
@@ -326,5 +329,6 @@ ev <- spread(evaluation, Note, Anzahl)
 ```{r}
 test_function("spread")
 test_object("ev")
+test_error()
 
 ```
