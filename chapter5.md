@@ -229,3 +229,44 @@ test_object("firma_alt")
 test_error()
 
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:b24f8a3cc7
+## gather()
+Ihnen liegt der schon bekannte Datensatz `evaluation` vor. Die Bibliothek "tidyr" ist schon geladen.
+
+*** =instructions
+- Verändern Sie den Datensatz so, dass statt der 4 Spalten für die Noten nur noch 2 Spalten nötig sind, in der einen sollte der Notenwert stehen (Bsp. note_2) und in der andere die Anzahl an Stimmen für diese Note.
+
+*** =hint
+- `gather(df, spalte1, spalte2, spalte3, ..., key = "___", value = "___")`
+
+*** =pre_exercise_code
+```{r}
+library(tidyr)
+studiengang <- c("lehramt", "mathe", "physik", "medizin", "wirtschaft", "jura", "chemie")
+note_1 <- c(32, 40, 25, 33, 144, 54, 22)
+note_2 <- c(201, 89, 67, 166, 244, 98, 167)
+note_3 <- c(102, 23, 89, 31, 129, 77, 33)
+note_4 <- c(12, 3, 33, 12, 29, 54, 19)
+evaluation <- data.frame(studiengang, note_1, note_2, note_3, note_4)
+
+```
+
+*** =sample_code
+```{r}
+# Nutzen Sie gather um 2 Spalten zu erhalten. Schreiben Sie ihr Ergebnis in ev.
+ev <- 
+
+```
+
+*** =solution
+```{r}
+ev <- gather(evaluation, note_1, note_2, note_3, note_4, key = "Note", value = "Anzahl")
+```
+
+*** =sct
+```{r}
+test_object("ev")
+test_function("gather")
+test_error()
+```
