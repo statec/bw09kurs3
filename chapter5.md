@@ -466,7 +466,8 @@ Die "dplyr" Bibliothek wurde bereits eingebunden.
 
 
 *** =instructions
-- Vereinigen Sie die beiden Datensätze 
+- Vereinigen Sie die beiden Datensätze ohne Informationsverlust.
+- Vereinigen Sie die Datensätze so, dass Kurse ohne zugeteilten Professor nicht im Datensatz vorkommen.
 
 *** =hint
 
@@ -499,17 +500,27 @@ prof_kurs <- full_join(professor, zuteilung, by = "Prof_id")
 *** =sample_code
 ```{r}
 # Vereinigen Sie die beiden Datensätze so, dass keine Informationen verloren gehen.
+gesamt1 <-
+
+# Vereinigung in der nur Kurse auftauchen, für die auch ein Professor zugeteilt wurde.
+gesamt2 <- 
+
 
 ```
 
 *** =solution
 ```{r}
 # Vereinigung ohne Informationsverlust
-gesamt <- full_join(prof_kurs, kursinfo, by = c("Prof_id", "Kurs_id"))
+gesamt1 <- full_join(prof_kurs, kursinfo, by = c("Prof_id", "Kurs_id"))
+
+# Vereinigung ohne NAs
+gesamt2 <- inner_join(prof_kurs, kursinfo, by = c("Prof_id", "Kurs_id"))
 ```
 
 *** =sct
 ```{r}
-# test_object("gesamt")
+test_object("gesamt1")
+test_object("gesamt2")
+test_error()
 
 ```
