@@ -177,12 +177,14 @@ Das notwendige Paket aus tidyverse "tidyr" wurde für Sie bereits geladen, ebens
 *** =instructions
 - Erstellen Sie für jede der zwei Variablen eine eigene Spalte. 
 - Fügen Sie eine Spalte zum Datensatz hinzu, der das Alter der Mitarbeiter anzeigt. 
+- Führen Sie `unite()` aus und speichern Sie das Ergebnis unter "firma_alt". Benutzen Sie ein Leerzeichen als Trennsymbol.
 
 
 *** =hint
 - `separate(df, into = c("spalte1", "spalte2"), sep = "_")`
 - bei `sep = ` geben Sie das jeweilige Trennsymbol ein.
 - `mutate()` erstellt eine neue Variable im Datensatz.
+- `unite(df, name, spalte1, spalte2, sep = " ")`
 
 *** =pre_exercise_code
 ```{r}
@@ -204,6 +206,9 @@ firma <- data.frame(Mitarbeiter_id, Vorname, Mitarbeiter_Abteilung, Geschlecht, 
 # Erstellen Sie die neuen Spalten und errechnen Sie das Alter der Personen (Die Tage/Monate sind hierbei zu vernachlässigen)
 firma <- 
 
+# Wenden Sie unite() an und speichern Sie das Ergebnis in firma_alt
+firma_alt <-
+
 ```
 
 *** =solution
@@ -212,13 +217,15 @@ firma <-
 firma <- firma %>% 
     separate(Mitarbeiter_Abteilung, into = c("Mitarbeiter", "Abteilung"), sep = "_") %>%
     mutate(Alter = 2017 - Geburtsjahr)
-
+# unite() anwenden
+firma_alt <- unite(firma, "Mitarbeiter Abteilung", Mitarbeiter, Abteilung, sep = " ")
 
 ```
 
 *** =sct
 ```{r}
 test_object("firma")
+test_object("firma_alt")
 test_error()
 
 ```
