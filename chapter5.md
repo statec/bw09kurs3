@@ -232,13 +232,16 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b24f8a3cc7
 ## gather()
-Ihnen liegt der schon bekannte Datensatz `evaluation` vor. Die Bibliothek "tidyr" ist schon geladen.
+Ihnen liegt der schon bekannte Datensatz `evaluation` vor. Die Bibliothek "tidyr" ist bereits geladen. Der Datensatz soll so verändert werden, dass man möglichst schnell sehen kann, welche Note am seltensten und welche am häufigsten vergeben wurde.
 
 *** =instructions
-- Verändern Sie den Datensatz so, dass statt der 4 Spalten für die Noten nur noch 2 Spalten nötig sind, in der einen sollte der Notenwert stehen (Bsp. note_2) und in der andere die Anzahl an Stimmen für diese Note.
+- Verändern Sie den Datensatz so, dass statt der 4 Spalten für die Noten nur noch 2 Spalten nötig sind.
+- in der einen Spalte sollte der Notenwert stehen (Bsp. note_2) und in der anderen die Anzahl an Stimmen für diese Note.
+- sortieren Sie den Datensatz mit `arrange()`
 
 *** =hint
 - `gather(df, spalte1, spalte2, spalte3, ..., key = "___", value = "___")`
+- Aus welcher Bibliothek ist `arrange()`?
 
 *** =pre_exercise_code
 ```{r}
@@ -257,16 +260,25 @@ evaluation <- data.frame(studiengang, note_1, note_2, note_3, note_4)
 # Nutzen Sie gather um 2 Spalten zu erhalten. Schreiben Sie ihr Ergebnis in ev.
 ev <- 
 
+# Sortieren Sie ev nach der Anzahl (kleinste Anzahl oben)
+
+
 ```
 
 *** =solution
 ```{r}
+# Umsortieren
 ev <- gather(evaluation, note_1, note_2, note_3, note_4, key = "Note", value = "Anzahl")
+# Bibliothek für arrange einbinden
+library(dplyr)
+# nach Anzahl sortieren
+ev <- arrange(ev, Anzahl)
 ```
 
 *** =sct
 ```{r}
 test_object("ev")
+test_function("library")
 test_function("gather")
 test_error()
 ```
