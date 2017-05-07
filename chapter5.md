@@ -282,3 +282,49 @@ test_function("library")
 test_function("gather")
 test_error()
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:cf9655bc74
+## spread()
+Ihr Ergebnis von der vorherigen Aufgabe liegt nun in `evaluation`. Der Anfangsdatensatz wurde unglücklicherweise überschrieben. Machen Sie die Aktion rückgängig, indem Sie spread benutzen.
+
+
+*** =instructions
+-  Machen Sie die Aktion rückgängig, indem Sie spread benutzen.
+
+*** =hint
+- `spread(df, Spalte1, Spalte2)`
+
+*** =pre_exercise_code
+```{r}
+library(tidyr)
+library(dplyr)
+studiengang <- c("lehramt", "mathe", "physik", "medizin", "wirtschaft", "jura", "chemie")
+note_1 <- c(32, 40, 25, 33, 144, 54, 22)
+note_2 <- c(201, 89, 67, 166, 244, 98, 167)
+note_3 <- c(102, 23, 89, 31, 129, 77, 33)
+note_4 <- c(12, 3, 33, 12, 29, 54, 19)
+evaluation <- data.frame(studiengang, note_1, note_2, note_3, note_4)
+# Umsortieren
+evaluation <- gather(evaluation, note_1, note_2, note_3, note_4, key = "Note", value = "Anzahl")
+evaluation <- arrange(evaluation, Anzahl)
+
+```
+
+*** =sample_code
+```{r}
+# Nutzen Sie spread um jeder Note wieder ihre eigene Spalte zu geben.
+ev <- 
+
+```
+
+*** =solution
+```{r}
+ev <- spread(evaluation, Note, Anzahl)
+```
+
+*** =sct
+```{r}
+test_function("spread")
+test_object("ev")
+
+```
