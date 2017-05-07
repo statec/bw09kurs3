@@ -394,3 +394,34 @@ test_error()
 success_msg("Sehr gut! Sie hätten in diesem Fall drei verschiedenen joins nutzen können: right_join, left_join oder inner_join")
 
 ```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:f64a4481af
+## joins mit n:n Beziehungen
+Gegeben sind ihnen die Datensätze einer Universität 
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
