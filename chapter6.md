@@ -34,7 +34,7 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad))
 ## 2. if-Abfrage
 Gegeben ist ihnen im Beispielcode eine if-Abfrage. Führen Sie diese aus.
 
-Tipp: Wenn Sie bestimmte Codeabschnitte, also mehrere Zeilen auf einmal in der Konsole ausführen möchten, markieren Sie den gewünschten Codeabschnitt und drücken Sie gleichzeitig `Strg` und `Enter`.
+Tipp: Wenn Sie bestimmte Codeabschnitte, also mehrere Zeilen auf einmal, in der Konsole ausführen möchten, markieren Sie den gewünschten Codeabschnitt und drücken Sie gleichzeitig `Strg` und `Enter`.
 
 
 *** =instructions
@@ -56,13 +56,11 @@ text_else <- "ich bin in dem else-Teil entstanden"
 ```{r}
 # Führe die Abfrage durch und gebe a in der Konsole aus.
 if(FALSE){
-    a <- text_if}
-else { a<- text_else }
+    a <- text_if} else { a<- text_else }
 a
 # Ändere Bedingung zu TRUE und geben erneut a aus.
 if(___){
-    a <- text_if}
-else { a<- text_else }
+    a <- text_if} else { a<- text_else }
 a
 ```
 
