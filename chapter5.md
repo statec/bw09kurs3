@@ -335,11 +335,13 @@ Ihnen Sind 2 Datensätze einer Firma gegeben, `kunden` und `kreditkarten`. Schau
 `tidyr` und `dplyr` sind bereits eingebunden.
 
 *** =instructions
-- Vereinigen Sie die Datensätze so, dass man direkt den Namen des Kunden neben seiner Kreditkarte in einem Datensatz sehen kann.
-- Beachten Sie, dass in dem neuen Datensatz nur Kunden stehen sollen, die auch eine Kreditkarte besitzen.
+- Vereinigen Sie die beiden Datensätze so, dass man direkt den Namen des Kunden neben seiner Kreditkarte in einem Datensatz sehen kann.
+- Beachten Sie, dass in dem neuen Datensatz nur Kunden stehen sollen, die auch eine Kreditkarte besitzen. 
+- Es sollen keine Spalten verschwinden, der Datensatz soll am Ende aus 6 Spaten bestehen. 
 
 *** =hint
 - Schauen Sie nochmal auf die Folien mit den join()-Funktionen.
+- Der gemeinsame Schlüssel der beiden Datensätze ist hier nicht gleich benannt. Beachten Sie dies bei ihrem join-Befehl.
 
 *** =pre_exercise_code
 ```{r}
@@ -396,14 +398,14 @@ Gegeben sind ihnen die Datensätze einer Universität `professor`, `zuteilung` u
 
 In dieser und der folgenden Aufgabe sollen nun der Datensatz `professor` und `kurse` in einen gemeinsamen Datensatz gebracht werden. Das geht in diesem Zustand noch nicht, da die beiden Datensätze noch keinen gemeinsamen "key" haben.
 
-In dieser Aufgabe sollen Sie nun die Vorarbeit leisten und 2 neue Datensätze schaffen. Denken Sie bei der Auswahl des join-Befehls daran, dass keine Informationen verloren gehen dürfen.
+In dieser Aufgabe sollen Sie nun die Vorarbeit leisten und 2 neue Datensätze schaffen. Denken Sie bei der Auswahl des join-Befehls daran, dass keine Informationen verloren gehen dürfen. Benutzen Sie die jeweils gemeinsame Variable, um die Datensätze zu vereinigen.
 
 `tidyr` wurde bereits eingebunden.
 
 
 *** =instructions
-- Erstellen Sie den Datensatz "kursinfo" der aus `zuteilung` und `kurse` entstehen soll.
-- Genauso sollen die beiden Datensätze `professor` und `zuteilung` vereinigt werden. Nennen Sie den neuen Datensatz "prof_kurs".
+- Erstellen Sie den Datensatz "kursinfo" der aus `zuteilung` und `kurse` entstehen soll. Das Ergebnis sollte 5 Spalten haben. Die gemeinsame Variable ist `Kurs_id`.
+- Genauso sollen die beiden Datensätze `professor` und `zuteilung` vereinigt werden. Nennen Sie den neuen Datensatz "prof\_kurs". Dass Ergebnis sollte 3 Spalten haben. Die gemeinsame Variable ist `Prof_id`.
 
 *** =hint
 - Schauen Sie in die Vorlesung, um zu entscheiden, welchen join Sie benutzen.
@@ -462,6 +464,7 @@ Das "dplyr" Paket wurde bereits eingebunden.
 *** =instructions
 - Vereinigen Sie die beiden Datensätze ohne Informationsverlust.
 - Vereinigen Sie die Datensätze so, dass Kurse ohne zugeteilten Professor nicht im Datensatz vorkommen.
+- Benutzen Sie für die Vereinigung der Datensätze die gemeinsame Variable. Beachten Sie, dass beide Ergebnisse am Ende 6 Spalten haben sollten, aber eine unterschiedliche Anzahl von Zeilen.
 
 *** =hint
 
