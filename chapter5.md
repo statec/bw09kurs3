@@ -4,7 +4,7 @@ description : Hausaufgabe dataframes & joins
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:567d7068ae
 ## 1. Basis Funktionen dplyr
-Gegeben ist ein Datensatz `kurse`. Schauen Sie sich den Datensatz in der Konsole an. Der Datensatz ist nicht mehr aktuell und soll nun von Ihnen aktualisiert werden. Die benötigte Bibliothek "dplyr" ist bereits für Sie eingebunden.
+Gegeben ist ein Datensatz `kurse`. Schauen Sie sich den Datensatz in der Konsole an. Der Datensatz ist nicht mehr aktuell und soll nun von Ihnen aktualisiert werden. Das benötigte Paket "dplyr" ist bereits für Sie eingebunden.
 
 Tipp: 
 
@@ -14,10 +14,11 @@ Bsp: `Datum < "2017-05-01"`.
 
 
 *** =instructions
-Verkleinern und aktualisieren Sie den Datensatz nach folgenden Vorgaben:
+Verkleinern und aktualisieren Sie den Datensatz nach folgenden Vorgaben und mit den in Termin 2 diskutierten Funktionen:
 
 - Erstellen Sie einen Datensatz `aktuell` mit allen Klausurterminen, die vor "2017-05-01" stattgefunden haben. 
 - Ordnen Sie den Datensatz nach den Klausurterminen, welche noch im Datensatz vorhanden sind.
+
 
 *** =hint
 - `filter()` wählt bestimmte Zeilen nach angegebenen Bedingung aus. 
@@ -66,13 +67,11 @@ test_error()
 --- type:NormalExercise lang:r xp:100 skills:1 key:7a690271fe
 ## 2. Basis Funktionen dplyr
 Der Datensatz liegt in `evaluation`. Es wurden verschiedene Studiengänge evaluiert. Nun soll von Ihnen der Durchschnitt errechnet werden.
-Die Bibliothek "dplyr" wurde bereits eingebunden.
+Das Paket "dplyr" wurde bereits eingebunden.
 
 
 *** =instructions
-Erstellen Sie mit `mutate()` eine neue Spalte, in welcher die Durchschnittsnote des jeweiligen Studienganges steht. Die Berechnung können Sie direkt in der Funktion `mutate()` ausführen:
-
-`mutate(datensatz, name = (1*spalte1 + 2*spalte2 + ...))`.
+Erstellen Sie mit `mutate()` eine neue Spalte, in welcher die Durchschnittsnote des jeweiligen Studienganges steht. 
 
 *** =hint
 Da Sie hier Zeilenweise und nicht Spaltenweise den Schnitt berechnen, können Sie nicht `mean()` benutzen, da diese Funktion einen Vektor als Eingabe erwartet.
@@ -117,11 +116,11 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:c95c4d616c
 ## 3. Pipes
-Gegeben ist der ihnen schon bekannte Datensatz `evaluation`. Die Bibliothek "dplyr" wurde eingelesen.
+Gegeben ist der ihnen schon bekannte Datensatz `evaluation`. Das Paket "dplyr" wurde eingelesen.
 
 *** =instructions
 - Verkleinern Sie den Datensatz, sodass nur noch die der Studiengang und die Durchschnittsnote ethalten sind. 
-- Nennen Sie die Spalte "durschnitt" zu "Bewertung" um.
+- Nennen Sie die Spalte "durchschnitt" zu "Bewertung" um.
 - Bei dieser Aufgabe sollen Sie pipes `%>%` benutzen. Zur Funktionsweise schauen Sie bitte in die Folien.
 
 *** =hint
@@ -168,8 +167,8 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:545c855428
-## 4. tidyr
-Gegeben ist ein Datensatz `firma`. Sie sehen im Datensatz dass die Spalte Mitarbeiter_Abteilung aus zwei verschiedenen Variablen besteht. Dies soll nun geändert werden.
+## 4. tidyr 
+Gegeben ist ein Datensatz `firma`. Sie sehen im Datensatz, dass die Spalte Mitarbeiter_Abteilung aus zwei verschiedenen Variablen besteht. Dies soll nun geändert werden.
 
 Das notwendige Paket aus tidyverse "tidyr" wurde für Sie bereits geladen, ebenso wie "dplyr".
 
@@ -177,7 +176,6 @@ Das notwendige Paket aus tidyverse "tidyr" wurde für Sie bereits geladen, ebens
 *** =instructions
 - Erstellen Sie für jede der zwei Variablen eine eigene Spalte. 
 - Fügen Sie eine Spalte zum Datensatz hinzu, der das Alter der Mitarbeiter anzeigt. 
-- Führen Sie `unite()` aus und speichern Sie das Ergebnis unter "firma_alt". Benutzen Sie ein Leerzeichen als Trennsymbol.
 
 
 *** =hint
@@ -203,11 +201,8 @@ firma <- data.frame(Mitarbeiter_id, Vorname, Mitarbeiter_Abteilung, Geschlecht, 
 
 *** =sample_code
 ```{r}
-# Erstellen Sie die neuen Spalten und errechnen Sie das Alter der Personen (Die Tage/Monate sind hierbei zu vernachlässigen)
+# Erstellen Sie die neuen Spalten und errechnen Sie das Alter der Personen ausgehend vom Jahr 2017 (Tage/Monate sind hierbei zu vernachlässigen)
 firma <- 
-
-# Wenden Sie unite() an und speichern Sie das Ergebnis in firma_alt
-firma_alt <-
 
 ```
 
@@ -217,22 +212,21 @@ firma_alt <-
 firma <- firma %>% 
     separate(Mitarbeiter_Abteilung, into = c("Mitarbeiter", "Abteilung"), sep = "_") %>%
     mutate(Alter = 2017 - Geburtsjahr)
-# unite() anwenden
-firma_alt <- unite(firma, "Mitarbeiter Abteilung", Mitarbeiter, Abteilung, sep = " ")
 
 ```
 
 *** =sct
 ```{r}
 test_object("firma")
-test_object("firma_alt")
 test_error()
 
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:b24f8a3cc7
 ## 5. tidyr - gather( )
-Ihnen liegt der schon bekannte Datensatz `evaluation` vor. Die Bibliothek "tidyr" ist bereits geladen. Der Datensatz soll so verändert werden, dass man möglichst schnell sehen kann, welche Note am seltensten und welche am häufigsten vergeben wurde.
+Ihnen liegt der schon bekannte Datensatz `evaluation` vor. Die Pakete "tidyr" und "dplyr" sind bereits geladen. 
+
+Der Datensatz soll so verändert werden, dass man möglichst schnell sehen kann, welche Note am seltensten und welche am häufigsten vergeben wurde.
 
 *** =instructions
 - Verändern Sie den Datensatz so, dass statt der 4 Spalten für die Noten nur noch 2 Spalten nötig sind.
@@ -241,11 +235,13 @@ Ihnen liegt der schon bekannte Datensatz `evaluation` vor. Die Bibliothek "tidyr
 
 *** =hint
 - `gather(df, spalte1, spalte2, spalte3, ..., key = "___", value = "___")`
-- Aus welcher Bibliothek ist `arrange()`?
+- Aus welchem Paket ist `arrange()`?
 
 *** =pre_exercise_code
 ```{r}
 library(tidyr)
+# Paket für arrange einbinden
+library(dplyr)
 studiengang <- c("lehramt", "mathe", "physik", "medizin", "wirtschaft", "jura", "chemie")
 note_1 <- c(32, 40, 25, 33, 144, 54, 22)
 note_2 <- c(201, 89, 67, 166, 244, 98, 167)
@@ -269,8 +265,6 @@ ev <-
 ```{r}
 # Umsortieren
 ev <- gather(evaluation, note_1, note_2, note_3, note_4, key = "Note", value = "Anzahl")
-# Bibliothek für arrange einbinden
-library(dplyr)
 # nach Anzahl sortieren
 ev <- arrange(ev, Anzahl)
 ```
@@ -278,7 +272,6 @@ ev <- arrange(ev, Anzahl)
 *** =sct
 ```{r}
 test_object("ev")
-test_function("library")
 test_function("gather")
 test_error()
 ```
@@ -339,7 +332,7 @@ test_error()
 ## 7. joins
 Ihnen Sind 2 Datensätze einer Firma gegeben, `kunden` und `kreditkarten`. Schauen Sie sich die beiden Datensätze in der Konsole an.
 
-Die Bibliothek ist bereits eingebunden.
+`tidyr` und `dplyr` sind bereits eingebunden.
 
 *** =instructions
 - Vereinigen Sie die Datensätze so, dass man direkt den Namen des Kunden neben seiner Kreditkarte in einem Datensatz sehen kann.
@@ -350,7 +343,7 @@ Die Bibliothek ist bereits eingebunden.
 
 *** =pre_exercise_code
 ```{r}
-# Einbinden der Bibliotheken
+# Einbinden der Pakete
 library(dplyr)
 library(tidyr)
 
@@ -401,11 +394,11 @@ success_msg("Sehr gut! Sie hätten in diesem Fall drei verschiedenen joins nutze
 ## 8. joins 
 Gegeben sind ihnen die Datensätze einer Universität `professor`, `zuteilung` und `kurse`. Schauen Sie sich die Datensätze in der Konsole an. 
 
-In dieser und der folgenden Aufgabe sollen nun der Datensatz `professor` und `kurse` in einen gemeinsamen Datensatz gebracht werden. Das geht in diesem Zustand noch nicht, da die beiden Datensätze noch keine gemeinsamen "key" haben.
+In dieser und der folgenden Aufgabe sollen nun der Datensatz `professor` und `kurse` in einen gemeinsamen Datensatz gebracht werden. Das geht in diesem Zustand noch nicht, da die beiden Datensätze noch keinen gemeinsamen "key" haben.
 
-In dieser Aufgabe sollen Sie nun die Vorarbeit leisten und 2 neue Datensätze schaffen. Denken Sie bei der Auswahl des join-Befehls daran, dass keine Informationen verloren gehen sollen.
+In dieser Aufgabe sollen Sie nun die Vorarbeit leisten und 2 neue Datensätze schaffen. Denken Sie bei der Auswahl des join-Befehls daran, dass keine Informationen verloren gehen dürfen.
 
-Die Bibliothek wurde bereits eingebunden.
+`tidyr` wurde bereits eingebunden.
 
 
 *** =instructions
@@ -462,7 +455,7 @@ test_error()
 ## 9. joins
 Sie haben nun die beiden Datensätze `kursinfo` und `prof_kurs` gegeben, die Sie in der vorherigen Aufgabe erstellt haben. 
 
-Die "dplyr" Bibliothek wurde bereits eingebunden.
+Das "dplyr" Paket wurde bereits eingebunden.
 
 
 *** =instructions
