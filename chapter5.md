@@ -359,32 +359,32 @@ kunden <- data.frame(Kundennr, Nachname, Vorname, Ort)
 Kartennr <- c(2003, 4635, 3246, 3464, 3455, 9342)
 Firma <- c("VISA", "Mastercard", "VISA", "VISA", "American Express", "Mastercard")
 Kunde <- c(1003, 1002, 1008, 1006, 1000, 1009)
-kreditkarten <- data.frame(Kartennr, Firma, Kundennr)
+kreditkarten <- data.frame(Kartennr, Firma, Kunde)
 
 ```
 
 *** =sample_code
 ```{r}
 # Nennen Sie den neuen Datensatz kk
-kk <- 
+kk <- right_join(kunden, kreditkarten, by = c("Kundennr" = "Kunde"))
 ```
 
 *** =solution
 ```{r}
 # Vereinigung der Datensätze
-# kk <- right_join(kunden, kreditkarten, by = "Kundennr")
+kk <- right_join(kunden, kreditkarten, by = c("Kundennr" = "Kunde"))
 # Genauso möglich:
-# left_join(kreditkarten, kunden, by = "Kundennr")
+# left_join(kreditkarten, kunden, by = c("Kunde" = "Kundennr"))
 # oder
-# inner_join(kreditkarten, kunden, by = "Kundennr")
+# inner_join(kreditkarten, kunden, by = c("Kunde" = "Kundennr"))
 
 ```
 
 *** =sct
 ```{r}
-#test_object("kk")
-#test_error()
-#success_msg("Sehr gut! Sie hätten in diesem Fall drei verschiedenen joins nutzen können: right_join, left_join oder inner_join")
+test_object("kk")
+test_error()
+success_msg("Sehr gut! Sie hätten in diesem bestimmten Fall drei verschiedenen joins nutzen können: right_join, left_join oder inner_join")
 
 ```
 
