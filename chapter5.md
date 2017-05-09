@@ -335,8 +335,9 @@ Ihnen Sind 2 Datensätze einer Firma gegeben, `kunden` und `kreditkarten`. Schau
 `tidyr` und `dplyr` sind bereits eingebunden.
 
 *** =instructions
-- Vereinigen Sie die beiden Datensätze so, dass man direkt den Namen des Kunden neben seiner Kreditkarte in einem Datensatz sehen kann.
-- Beachten Sie, dass in dem neuen Datensatz nur Kunden stehen sollen, die auch eine Kreditkarte besitzen. 
+- Vereinigen Sie die beiden Datensätze so, dass man direkt den Namen des Kunden neben seiner Kreditkarte in einem Datensatz sehen kann. 
+- Die Variable "Kundennr" im Datensatz `kunden` entspricht der Variable "Kunde" im Datensatz `kreditkarten`.
+- Beachten Sie, dass in dem neuen Datensatz nur Kunden stehen sollen, die auch eine Kreditkarte besitzen. Sie können davon ausgehen, dass jeder Kunde, der eine Kreditkarte besitzt, im Datensatz `kreditkarten` enthalten ist.
 - Es sollen keine Spalten verschwinden, der Datensatz soll am Ende aus 6 Spaten bestehen. 
 
 *** =hint
@@ -398,7 +399,7 @@ Gegeben sind ihnen die Datensätze einer Universität `professor`, `zuteilung` u
 
 In dieser und der folgenden Aufgabe sollen nun der Datensatz `professor` und `kurse` in einen gemeinsamen Datensatz gebracht werden. Das geht in diesem Zustand noch nicht, da die beiden Datensätze noch keinen gemeinsamen "key" haben.
 
-In dieser Aufgabe sollen Sie nun die Vorarbeit leisten und 2 neue Datensätze schaffen. Denken Sie bei der Auswahl des join-Befehls daran, dass keine Informationen verloren gehen dürfen. Benutzen Sie die jeweils gemeinsame Variable, um die Datensätze zu vereinigen.
+In dieser Aufgabe sollen Sie nun die Vorarbeit leisten und 2 neue Datensätze schaffen. Denken Sie bei der Auswahl des join-Befehls daran, dass keine Informationen verloren gehen dürfen (d.h. Ihre Lösung wirdn NAs enthalten). Benutzen Sie die jeweils gemeinsame Variable, um die Datensätze zu vereinigen.
 
 `tidyr` wurde bereits eingebunden.
 
@@ -457,6 +458,8 @@ test_error()
 --- type:NormalExercise lang:r xp:100 skills:1 key:8d700a2a96
 ## 9. joins
 Sie haben nun die beiden Datensätze `kursinfo` und `prof_kurs` gegeben, die Sie in der vorherigen Aufgabe erstellt haben. 
+
+Tipp: Nehmen Sie das Matching anhand zweier Variablen vor.
 
 Das "dplyr" Paket wurde bereits eingebunden.
 
