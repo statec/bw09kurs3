@@ -369,7 +369,7 @@ kreditkarten <- data.frame(Kartennr, Firma, Kunde)
 *** =sample_code
 ```{r}
 # Nennen Sie den neuen Datensatz kk
-kk <- right_join(kunden, kreditkarten, by = c("Kundennr" = "Kunde"))
+kk <- 
 ```
 
 *** =solution
