@@ -227,6 +227,8 @@ Gegeben ist ihnen ein Vektor `fib`. Sie sollen nun mit Hilfe einer for-Schleife 
 Tipp: der erste Wert in Summe `summe[1]` soll gleich 2 sein, da `fib[1]+fib[2]` 1+1 = 2 ergibt. 
 
 *** =instructions
+- Setzen Sie die Indexvariable.
+- Erstellen Sie den Vektor `summe`.
 
 *** =hint
 
