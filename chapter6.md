@@ -94,17 +94,20 @@ test_error()
 ## 3. if-Bedingung
 Ihnen ist wieder eine if-Abfrage gegeben, nur die Bedingung fehlt. 
 
-Wenn die Variable `note` kleiner oder gleich 4 ist, soll ausgegeben werden "Die Prüfung ist bestanden", sonst soll ausgegeben werden "Die Prüfung muss wiederholt werden."
+Wenn die Variable `note` kleiner oder gleich 4 ist, soll ausgegeben werden "Die Prüfung ist bestanden", sonst soll ausgegeben werden "Die Prüfung muss wiederholt werden"
 
 *** =instructions
 - setzen Sie die Bedingung für die if-Abfrage.
-- Füllen Sie die Lücken im Code
+- Füllen Sie die Lücken im Code, indem Sie die jewilige Ausgabe in `print("___")` einfügen.
 
 *** =hint
+- Für die Vergleichsoperatoren schauen Sie in die Vorlesung.
+- 
 
 *** =pre_exercise_code
 ```{r}
 note = 3
+success = "Die Prüfung ist bestanden"
 ```
 
 *** =sample_code
@@ -125,7 +128,53 @@ if(note <= 4){
 
 *** =sct
 ```{r}
-test_output_contains("Die Prüfung ist bestanden")
+test_output_contains("success")
 test_error()
 
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:9dcf2f1327
+## 4. if-Abfrage selber schreiben
+Nun sollen Sie ihre erste eigene if-Abfrage schreiben. Gegeben sind die Variablen a und b. Die Variable c soll die Differenz von a und b sein. Da c keine negative Zahl werden soll, muss vorher getestet werden, ob a oder b größer ist.
+
+Schauen Sie in die Vorlesung oder in den "Hint" um zu sehen, wie das Gerüst aufgebaut ist.
+
+
+*** =instructions
+- Schreiben Sie eine if-Abfrage, die abfragt ob `a` kleiner gleich `b` ist.
+- Wenn das der Fall ist, setzen Sie `c` auf `b-a`.
+- Falls nicht, greift der else-Teil: dann soll c = a-b sein.
+
+*** =hint
+- `if(Bedingung){c <- ___}else{c <- ___}`
+
+*** =pre_exercise_code
+```{r}
+a = 2
+b = 5
+```
+
+*** =sample_code
+```{r}
+# schreiben Sie eine if-Abfrage
+
+    
+# Geben Sie das Ergebnis c aus.
+
+```
+
+*** =solution
+```{r}
+# schreiben Sie eine if-Abfrage
+if(a <= b){
+    c <- b-a} else{ c <- a-b }
+    
+# Geben Sie das Ergebnis c aus.
+c
+```
+
+*** =sct
+```{r}
+test_output_contains("c")
+test_error()
 ```
