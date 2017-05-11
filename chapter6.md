@@ -178,3 +178,86 @@ c
 test_output_contains("c")
 test_error()
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:4cc9a15a6f
+## 5. if Abfrage
+Gegeben ist ihnen eine Variable `a`. Wenn `a` ungleich null ist, dann soll eine Zahl `b` durch `a` geteilt werden. 
+
+
+*** =instructions
+- Schreiben Sie eine if-Abfrage die TRUE ist, wenn `a` ungleich Null ist.
+- Wenn das der Fall ist, soll `b` durch `a` geteilt werden.
+
+*** =hint
+- `if(Bedingung){___}`
+*** =pre_exercise_code
+```{r}
+a <- 2
+b <- 10
+c <- b/a
+
+```
+
+*** =sample_code
+```{r}
+# Falls a nicht gleich 0, soll b durch a gerechnet werden.
+
+
+```
+
+*** =solution
+```{r}
+# Falls a nicht gleich 0, soll b/a gerechnet werden.
+if(a != 0){
+    b/a} 
+
+```
+
+*** =sct
+```{r}
+test_output_contains("c")
+test_error()
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:4ed9623928
+## 6. for-Schleife
+Gegeben ist ihnen ein Vektor `fib`. Sie sollen nun mit Hilfe einer for-Schleife einen Vektor Summe erstellen, der jeweils aus der Summe zweier im Vektor benachbarter Zahlen steht. 
+
+Tipp: der erste Wert in Summe `summe[1]` soll gleich 2 sein, da `fib[1]+fib[2]` 1+1 = 2 ergibt. 
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+fib <- c(1,1,2,3,5,8,13,21)
+summe <- c()
+```
+
+*** =sample_code
+```{r}
+# Berechnen Sie den Verktor "summe" in einer for-Schleife.
+for(___ in 2:8){
+    summe[___] <- ___ + ___}
+# Geben Sie "summe" in der Konsole aus.
+
+
+```
+
+*** =solution
+```{r}
+# Berechnen Sie den Verktor "summe" in einer for-Schleife.
+for(i in 2:8){
+    summe[i-1] <- fib[i] + fib[i-1]}
+# Geben Sie "summe" in der Konsole aus.
+summe
+
+```
+
+*** =sct
+```{r}
+test_output_contains("summe")
+test_error()
+```
