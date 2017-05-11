@@ -263,3 +263,31 @@ summe
 test_output_contains("summe")
 test_error()
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:6e2eab47f2
+## 7. While-Schleife
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
