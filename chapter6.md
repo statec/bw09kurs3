@@ -38,9 +38,9 @@ Tipp: Wenn Sie bestimmte Codeabschnitte, also mehrere Zeilen auf einmal, in der 
 
 
 *** =instructions
-- Führen Sie die if-Abfrage aus und geben Sie a in der Konsole aus.
+- Führen Sie die if-Abfrage aus und geben Sie `a` in der Konsole aus.
 - Ändern Sie anschließend die Bedingung von "FALSE" auf "TRUE" und führen Sie die Abfrage erneut aus. 
-- Schauen Sie sich wieder a in der Konsole an.
+- Schauen Sie sich wieder `a` in der Konsole an.
 
 
 *** =hint
@@ -57,10 +57,13 @@ text_else <- "ich bin in dem else-Teil entstanden"
 # Führe die Abfrage durch und gebe a in der Konsole aus.
 if(FALSE){
     a <- text_if} else { a<- text_else }
+# Ausgabe
 a
+
 # Ändere Bedingung zu TRUE und geben erneut a aus.
 if(___){
     a <- text_if} else { a<- text_else }
+# Ausgabe
 a
 ```
 
@@ -83,6 +86,46 @@ print(a)
 ```{r}
 test_output_contains("text_if")
 test_output_contains("text_else")
+test_error()
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:fe02cb131f
+## 3. if-Bedingung
+Ihnen ist wieder eine if-Abfrage gegeben, nur die Bedingung fehlt. 
+
+Wenn die Variable `note` kleiner oder gleich 4 ist, soll ausgegeben werden "Die Prüfung ist bestanden", sonst soll ausgegeben werden "Die Prüfung muss wiederholt werden."
+
+*** =instructions
+- setzen Sie die Bedingung für die if-Abfrage.
+- Füllen Sie die Lücken im Code
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+note = 3
+```
+
+*** =sample_code
+```{r}
+# Abfrage der Note
+if(note ___){
+    print("___")}else{print("___")}
+
+```
+
+*** =solution
+```{r}
+# Abfrage
+if(note <= 4){
+    print("Die Prüfung ist bestanden")}else{print("Die Prüfung muss wiederholt werden")}
+
+```
+
+*** =sct
+```{r}
+test_output_contains("Die Prüfung ist bestanden")
 test_error()
 
 ```
