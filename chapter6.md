@@ -266,28 +266,58 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:6e2eab47f2
 ## 7. While-Schleife
+Hier sehen Sie eine While-Schleife, die die Fakultät von `zahl` berechnet. Füllen Sie die Lücken im vorgegebenen Code.
 
+Tipp:
+- Denken Sie daran - um einen Teil des Codes auszuprobieren, können Sie diesen Teil markieren und gleichzeitig `Strg` und `Enter` betätigen.
 
 *** =instructions
+- Ergänzen Sie den Code so, dass in der whileschleife die Fakultät der `zahl` berechnet wird und in `fak` gespeichert wird.
 
 *** =hint
+- Die Fakultät berechnet sich bsp. für 4! = 1\*2\*3*4 
 
 *** =pre_exercise_code
 ```{r}
+ergebnis <- 120
 
 ```
 
 *** =sample_code
 ```{r}
+# Testen Sie ihre Schleife mit der Zahl 5
+i <- 1
+zahl <- ___
+fak <- 1
+# while 
+while(i <= ___){
+  fak <- ___*___
+  i <- ___
+}
+# Ergebnis Ausgabe
+print(fak)
+
 
 ```
 
 *** =solution
 ```{r}
+# Testen Sie ihre Schleife mit der Zahl 5
+i <- 1
+zahl <- 5
+fak <- 1
+# while 
+while(i <= zahl){
+  fak <- fak * i
+  i <- i+1
+}
+print(fak)
 
 ```
 
 *** =sct
 ```{r}
+test_output_contains("ergebnis")
+test_error()
 
 ```
