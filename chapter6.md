@@ -325,3 +325,49 @@ test_output_contains("ergebnis")
 test_error()
 
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:bc6c49a486
+## 8. Funktionen
+In den Folien haben Sie gesehen, wie man den Absolutwert einer Zahl berechnen kann. Um eine solche Abfrage immer wieder nutzen zu können, ist es sinnvoll, Sie in eine Funktion einzubetten.
+
+Funktionen haben Eingabeparameter und Ausgabeparameter. Als Eingabe soll ein beliebiger `wert` gelesen werden, die Ausgabe soll den Absolutbetrag `absolut_wert` zurück geben.
+
+
+*** =instructions
+- Erstellen Sie eine Funktion `absolut()` mit Eingabeparameter `wert`.
+- Die Funktion fragt über eine if-Abfrage ab, ob der Wert negativ ist oder nicht und wandelt ihn zu einer positiven Zahl um (dieser Teil kann vollständig aus den Folien übernommen werden).
+- Sie gibt den berechneten `absolut_wert` zurück.
+- Testen Sie ihre Funktion an mehreren Beispielen.
+
+*** =hint
+- Die Struktur einer Funktion: 
+- `neue_funktion <- function(Eingabeparameter){...working ...return (Ausgabeparameter)}`
+
+*** =pre_exercise_code
+```{r}
+wert <- -10
+```
+
+*** =sample_code
+```{r}
+# Erstellung der Funktion
+absolut <- function(wert){
+    if(wert<0){
+        absolut_wert <- -wert
+    }else {
+        absolut_wert <- wert
+    }
+    return(absolut_wert)
+}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
