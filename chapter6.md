@@ -400,35 +400,39 @@ In den Folien haben Sie gesehen, wie eine Funktion für den gleitenden 5-er Durc
 - Schreiben Sie eine Funktion `gleitender_durchschnitt`, die als Eingabe einen Vektor `zeitreihe` und einen ungeraden Wert `x` erwartet.
 - Die Funktion soll den gleitenden x-er Durchschnitt berechnet. Sie können sich hier weitestgehend an der Funktion aus der Vorlesung orientieren.
 - Sie gibt am Ende ein `ergebnis` zurück.
+- Testen Sie ihre Funktion an dem gegebenen Vektor `reihe`.
 
 *** =hint
 - Die Struktur einer Funktion: 
 - `neue_funktion <- function(Eingabeparameter){...working ...return (Ausgabeparameter)}`
+- Berechnen Sie zuerst den Abstand nach links und rechts in der Zeitreihe und speichern Sie diesen in einer neuen Variable in der Funktion.
+- Bedenken Sie, dass z.B. der gleitende 9-er Durchschnitt für die ersten und letzten 4 Zahlen nicht berechnet werden kann.
 
 *** =pre_exercise_code
 ```{r}
 reihe <- c(11, 12, 13, 16, 18, 20, 33, 66, 54, 67, 89, 102, 133, 150, 120, 110, 60, 78, 90, 101, 50, 37, 21, 2)
-
+yqw <- c( 11, 12, 13, 17.57143,  25.42857,  31.42857 , 39.14286 , 49.57143,  61.57143 , 77.71429  ,94.42857 ,102.14286 ,110.14286 ,109.14286, 107.57143,  105.85714, 101.28571, 87.00000, 75.14286, 62.42857, 50.00000, 37.00000, 21.00000, 2.00000)
 
 ```
 
 *** =sample_code
 ```{r}
 # Funktion Berechnung gleitender Durchschnitt
-gleitender_durchschnitt <- function(zeitreihe, x){
-    laenge <- length(zeitreihe)
-    ergebnis <- c()
-    n <- (x-1)/2
-    for(i in 1:laenge){
-        if( i <= n | i >= (laenge-n)){
-            ergebnis[i] <- zeitreihe[i]
+gleitender_durchschnitt <- function(___){
+    laenge <- ___
+    ergebnis <- ___
+    
+    for(i in ___){
+        if( i <= ___ | i >= ___){
+            ergebnis[i] <- ___
         }else{
-            ergebnis[i] <- mean( zeitreihe [(i - n) : (i + n)])
+            ergebnis[i] <- ___
         }
     }
-    return(ergebnis)
+    return(___)
 }
 # Testen Sie ihre Funktion an der Zeitreihe "reihe" für x=7
+gleitender_durchschnitt(reihe, 7)
 
 ```
 
@@ -438,8 +442,10 @@ gleitender_durchschnitt <- function(zeitreihe, x){
 gleitender_durchschnitt <- function(zeitreihe, x){
     laenge <- length(zeitreihe)
     ergebnis <- c()
+    # Berechnung des Abstandes nach links und rechts
     n <- (x-1)/2
     for(i in 1:laenge){
+        # Darf nicht für die ersten n Zahlen berechnet werden
         if( i <= n | i >= (laenge-n)){
             ergebnis[i] <- zeitreihe[i]
         }else{
@@ -456,6 +462,7 @@ gleitender_durchschnitt(reihe, 7)
 
 *** =sct
 ```{r}
-#test_output_contains("")
+test_output_contains("yqw")
+test_error()
 
 ```
