@@ -456,5 +456,6 @@ gleitender_durchschnitt(reihe, 7)
 
 *** =sct
 ```{r}
+#test_output_contains("")
 
 ```
