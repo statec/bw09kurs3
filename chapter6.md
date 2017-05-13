@@ -207,7 +207,7 @@ c <- b/a
 
 *** =solution
 ```{r}
-# Falls a nicht gleich 0, soll b/a gerechnet werden.
+# Falls a ungleich 0, soll b/a gerechnet werden.
 if(a != 0){
     b/a} 
 
@@ -266,16 +266,19 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:6e2eab47f2
 ## 7. While-Schleife
-Hier sehen Sie eine While-Schleife, die die Fakultät von `zahl` berechnet. Füllen Sie die Lücken im vorgegebenen Code.
+Hier sehen Sie eine while-Schleife, die die Fakultät von `zahl` berechnet. Füllen Sie die Lücken im vorgegebenen Code.
 
 Tipp:
+
 - Denken Sie daran - um einen Teil des Codes auszuprobieren, können Sie diesen Teil markieren und gleichzeitig `Strg` und `Enter` betätigen.
+- Denken Sie dran, dass keine Endlosschleifen entstehen dürfen.
 
 *** =instructions
-- Ergänzen Sie den Code so, dass in der whileschleife die Fakultät der `zahl` berechnet wird und in `fak` gespeichert wird.
+- Ergänzen Sie den Code so, dass in der while-Schleife die Fakultät der `zahl` berechnet wird und in `fak` gespeichert wird.
 
 *** =hint
 - Die Fakultät berechnet sich bsp. für 4! = 1\*2\*3*4 
+- Um die while-Schleife auf jeden Fall terminieren zu lassen, muss sichergestellt werden, dass die Zählvariable `i` in der while-Schleife um eins erhöht wird.
 
 *** =pre_exercise_code
 ```{r}
@@ -289,9 +292,9 @@ ergebnis <- 120
 i <- 1
 zahl <- ___
 fak <- 1
-# while 
+# while Schleife zur Fakultätsberechnung
 while(i <= ___){
-  fak <- ___*___
+  fak <- ___*i
   i <- ___
 }
 # Ergebnis Ausgabe
@@ -302,15 +305,16 @@ print(fak)
 
 *** =solution
 ```{r}
-# Testen Sie ihre Schleife mit der Zahl 5
+# Initialisierung der Werte
 i <- 1
 zahl <- 5
 fak <- 1
-# while 
+# Fakultätsberechnung
 while(i <= zahl){
   fak <- fak * i
   i <- i+1
 }
+# Ausgabe des Ergebnisses
 print(fak)
 
 ```
