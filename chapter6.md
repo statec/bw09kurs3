@@ -390,3 +390,71 @@ test_output_contains("ergebnis")
 test_error()
 
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:c45d01f88e
+## 9. Moving Average
+In den Folien haben Sie gesehen, wie eine Funktion für den gleitenden 5-er Durchschnitt aussieht. In dieser Aufgabe sollen Sie eine Funktion schreiben, die den gleitenden x-er Durchschnitt für eine beliebige ungerade Zahl x berechnet und zurück gibt. Als Eingabe soll diese Funktion einen vektor `zahlenreihe` und einen Wert `x` erhalten. Es soll davon ausgegangen werden, dass x ein natürliche ungerade Zahl ist (muss nicht extra geprüft werden). 
+
+
+*** =instructions
+- Schreiben Sie eine Funktion `gleitender_durchschnitt`, die als Eingabe einen Vektor `zeitreihe` und einen ungeraden Wert `x` erwartet.
+- Die Funktion soll den gleitenden x-er Durchschnitt berechnet. Sie können sich hier weitestgehend an der Funktion aus der Vorlesung orientieren.
+- Sie gibt am Ende ein `ergebnis` zurück.
+
+*** =hint
+- Die Struktur einer Funktion: 
+- `neue_funktion <- function(Eingabeparameter){...working ...return (Ausgabeparameter)}`
+
+*** =pre_exercise_code
+```{r}
+reihe <- c(11, 12, 13, 16, 18, 20, 33, 66, 54, 67, 89, 102, 133, 150, 120, 110, 60, 78, 90, 101, 50, 37, 21, 2)
+
+
+```
+
+*** =sample_code
+```{r}
+# Funktion Berechnung gleitender Durchschnitt
+gleitender_durchschnitt <- function(zeitreihe, x){
+    laenge <- length(zeitreihe)
+    ergebnis <- c()
+    n <- (x-1)/2
+    for(i in 1:laenge){
+        if( i <= n | i >= (laenge-n)){
+            ergebnis[i] <- zeitreihe[i]
+        }else{
+            ergebnis[i] <- mean( zeitreihe [(i - n) : (i + n)])
+        }
+    }
+    return(ergebnis)
+}
+# Testen Sie ihre Funktion an der Zeitreihe "reihe" für x=7
+
+```
+
+*** =solution
+```{r}
+# Funktion Berechnung gleitender Durchschnitt
+gleitender_durchschnitt <- function(zeitreihe, x){
+    laenge <- length(zeitreihe)
+    ergebnis <- c()
+    n <- (x-1)/2
+    for(i in 1:laenge){
+        if( i <= n | i >= (laenge-n)){
+            ergebnis[i] <- zeitreihe[i]
+        }else{
+            ergebnis[i] <- mean( zeitreihe [(i - n) : (i + n)])
+        }
+    }
+    return(ergebnis)
+}
+# Test an reihe mit x=7
+gleitender_durchschnitt(reihe, 7)
+
+
+```
+
+*** =sct
+```{r}
+
+```
