@@ -181,7 +181,7 @@ c
 
 *** =sct
 ```{r}
-test_output_contains("c")
+test_object("c")
 test_error()
 ```
 
@@ -228,45 +228,56 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:4ed9623928
 ## 6. for-Schleife
-Gegeben ist ein Vektor `fib`. Sie sollen nun mit Hilfe einer for-Schleife einen Vektor Summe erstellen, der jeweils aus der Summe zweier im Vektor benachbarter Zahlen steht. 
+Die Fibonaccifolge eine Zahlenfolge von natürlichen Zahlen, die mit zwei Einsen beginnt. Die weiteren Zahlen der Folge sind immer die Summe der beiden vorangegangenen Zahlen, 
 
-Tipp: der erste Wert in Summe `summe[1]` soll gleich 2 sein, da `fib[1]+fib[2]` 1+1 = 2 ergibt. 
+
+also 1, 1, 2, 3, ...
 
 *** =instructions
-- Setzen Sie die Indexvariable.
-- Erstellen Sie den Vektor `summe`.
+- Berechnen Sie in einer for-Schleife die 3. bis 10. Fibonaccizahl.
+- Speichern Sie die Zahlen im Verktor `fib`.
 
 *** =hint
+- `for(Bedingung){Ausführung}`
 
 *** =pre_exercise_code
 ```{r}
-fib <- c(1,1,2,3,5,8,13,21)
-summe <- c()
 ```
 
 *** =sample_code
 ```{r}
-# Berechnen Sie den Verktor "summe" in einer for-Schleife.
-for(___ in 2:8){
-    summe[___] <- ___ + ___}
-# Geben Sie "summe" in der Konsole aus.
+# Vektor "fib" initialisieren
+fib <- c()
+# Erste beiden Werte Setzen
+fib[1]<- 
+fib[2]<- 
+# Berechnen Sie den Verktor "fib" bis zur 10. Stelle in einer for-Schleife
+
+
+# Geben Sie "fib" in der Konsole aus.
 
 
 ```
 
 *** =solution
 ```{r}
-# Berechnen Sie den Verktor "summe" in einer for-Schleife.
-for(i in 2:8){
-    summe[i-1] <- fib[i] + fib[i-1]}
-# Geben Sie "summe" in der Konsole aus.
-summe
+# Vektor "fib" initialisieren
+fib <- c()
+# Erste beiden Werte Setzen
+fib[1]<- 1
+fib[2]<- 1
+# Berechnen Sie den Verktor "fib" bis zur 10. Stelle in einer for-Schleife
+for(i in 3:10){
+  fib[i] <- fib[i-1] + fib[i-2]}
+# Geben Sie "fib" in der Konsole aus.
+fib
+
 
 ```
 
 *** =sct
 ```{r}
-test_output_contains("summe")
+test_object("fib")
 test_error()
 ```
 
@@ -333,8 +344,60 @@ test_error()
 
 ```
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:be80e0c720
+## 8. Positive Differenz Funktion
+In der 4. Aufgabe haben Sie die positive Differenz zweier Zahlen gebildet. Betten Sie diese Abfrage nun in eine Funktion ein.
+
+Eine Funktion bekommt die Zahlen `a` und `b` als Eingabeparameter und soll nun die positive Differenz der beiden berechnen. 
+
+
+*** =instructions
+- Schreiben Sie die Funktion "pos_differenz()", welche die Eingabeparameter `a` und `b` bekommt.
+- Testen Sie, welches der beiden größer ist und bilden Sie die positive Differenz.
+- Speichern Sie diese als `c` ab.
+- `c` ist der Rückgabewert der Funktion
+
+*** =hint
+- `neue_funktion <- function(Eingabeparameter){...working ...return (Ausgabeparameter)}`
+
+*** =pre_exercise_code
+```{r}
+ergebnis = 8
+```
+
+*** =sample_code
+```{r}
+# Schreiben Sie die Funktion
+pos_differenz <- function(___){
+    
+    
+    
+    return(___)
+}
+# Testen Sie die Funktion an a=2, b=10
+```
+
+*** =solution
+```{r}
+# Funktion
+pos_differenz <- function(a,b){
+    if(a <= b){
+    c <- b-a} else{ 
+    c <- a-b }
+    return(c)
+}
+# Testen Sie die Funktion an a=2, b=10
+pos_differenz(2,10)
+```
+
+*** =sct
+```{r}
+test_output_contains("ergebnis")
+test_error()
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:bc6c49a486
-## 8. Funktionen
+## 9. Absolutwert Funktion
 In den Folien haben Sie gesehen, wie man den Absolutwert einer Zahl berechnen kann. Um eine solche Abfrage immer wieder nutzen zu können, ist es sinnvoll, Sie in eine Funktion einzubetten.
 
 Funktionen haben Eingabeparameter und Ausgabeparameter. Als Eingabe soll ein beliebiger `wert` gelesen werden, die Ausgabe soll den Absolutbetrag `absolut_wert` zurück geben.
@@ -399,7 +462,7 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:c45d01f88e
-## 9. Moving Average
+## 10. Moving Average
 In den Folien haben Sie gesehen, wie eine Funktion für den gleitenden 5-er Durchschnitt aussieht. In dieser Aufgabe sollen Sie eine Funktion schreiben, die den gleitenden x-er Durchschnitt für eine beliebige ungerade Zahl x berechnet und zurück gibt. 
 
 Als Eingabe soll diese Funktion einen vektor `zahlenreihe` und einen Wert `x` erhalten. Es soll davon ausgegangen werden, dass x ein natürliche ungerade Zahl ist (muss nicht extra geprüft werden). 
