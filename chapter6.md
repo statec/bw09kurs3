@@ -101,10 +101,8 @@ Je nachdem ob die Variable `note` kleiner oder gleich 4 ist, soll die Variable `
 
 *** =instructions
 - setzen Sie die Bedingung für die if-Abfrage.
-- 
 *** =hint
-- Für die Vergleichsoperatoren nehmen Sie in die Vorlesungsunterlagen zur Hilfe.
-- 
+- Für die Vergleichsoperatoren nehmen Sie die Vorlesungsunterlagen zur Hilfe.
 
 *** =pre_exercise_code
 ```{r}
@@ -362,12 +360,12 @@ ergebnis <- 10
 ```{r}
 # Erstellung der Funktion
 absolut <- function(wert){
-    if(wert<0){
-        absolut_wert <- -wert
+    if(wert___){
+        
     }else {
-        absolut_wert <- wert
+        
     }
-    return(absolut_wert)
+    return(___)
 }
 # Testen Sie ihre Funktion aus, in dem Sie z.B. absolut(-4) testen.
 absolut(-4)
