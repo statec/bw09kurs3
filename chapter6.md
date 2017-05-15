@@ -4,11 +4,11 @@ description : Insert the chapter description here
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:a89b75f3c5
 ## 1. if-Abfragen
-Gegeben ist der vollgende Code:
+Gegeben ist der folgende R-Code:
 
 `a <- 1`
 
-`if(FALSE) {sqrt(-4)} else {a <- 3}`
+`if(FALSE) {a <- sqrt(-4)} else {a <- 3}`
 
 *** =instructions
 - a ist 1
@@ -32,7 +32,7 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad))
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:a545b07906
 ## 2. if-Abfrage
-Gegeben ist ihnen im Beispielcode eine if-Abfrage. Führen Sie diese aus.
+Im Beispielcode ist eine if-Abfrage gegeben. Führen Sie diese aus und überlegen Sie, was passiert ist.
 
 Tipp: Wenn Sie bestimmte Codeabschnitte, also mehrere Zeilen auf einmal, in der Konsole ausführen möchten, markieren Sie den gewünschten Codeabschnitt und drücken Sie gleichzeitig `Strg` und `Enter`.
 
@@ -54,13 +54,16 @@ text_else <- "ich bin in dem else-Teil entstanden"
 
 *** =sample_code
 ```{r}
+# text_if und text_else sind bereits existierende Variablennamen
+
 # Führe die Abfrage durch und gebe a in der Konsole aus.
-if(FALSE){
-    a <- text_if} else { a<- text_else }
+if( FALSE ){
+  a <- text_if
+} else { a<- text_else }
 # Ausgabe
 a
 
-# Ändere Bedingung zu TRUE und geben erneut a aus.
+# Ändere Bedingung so, dass text_if ausgegeben wird
 if(___){
     a <- text_if} else { a<- text_else }
 # Ausgabe
@@ -94,48 +97,52 @@ test_error()
 ## 3. if-Bedingung
 Ihnen ist wieder eine if-Abfrage gegeben, nur die Bedingung fehlt. 
 
-Wenn die Variable `note` kleiner oder gleich 4 ist, soll ausgegeben werden "Die Prüfung ist bestanden", sonst soll ausgegeben werden "Die Prüfung muss wiederholt werden"
+Je nachdem ob die Variable `note` kleiner oder gleich 4 ist, soll die Variable `ergebnis` den Wert "bestanden" oder "nicht bestanden" beinhalten.
 
 *** =instructions
 - setzen Sie die Bedingung für die if-Abfrage.
-- Füllen Sie die Lücken im Code, indem Sie die jewilige Ausgabe in `print("___")` einfügen.
-
+- 
 *** =hint
-- Für die Vergleichsoperatoren schauen Sie in die Vorlesung.
+- Für die Vergleichsoperatoren nehmen Sie in die Vorlesungsunterlagen zur Hilfe.
 - 
 
 *** =pre_exercise_code
 ```{r}
 note = 3
-success = "Die Prüfung ist bestanden"
+ergebnis = "bestanden"
 ```
 
 *** =sample_code
 ```{r}
 # Abfrage der Note
-if(note ___){
-    print("___")}else{print("___")}
+if(note ____ ){
+  ergebnis <- ____ }else{ }
 
+# Ausgabe von Note (bereits eingelesen) und Ergebnis
+note
+ergebnis
 ```
 
 *** =solution
 ```{r}
 # Abfrage
 if(note <= 4){
-    print("Die Prüfung ist bestanden")}else{print("Die Prüfung muss wiederholt werden")}
+    ergebnis <- "bestanden" }else{ ergebnis <- "nicht bestanden"}
 
 ```
 
 *** =sct
 ```{r}
-test_output_contains("success")
+test_object("ergebnis")
 test_error()
 
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:9dcf2f1327
 ## 4. if-Abfrage selber schreiben
-Nun sollen Sie ihre erste eigene if-Abfrage schreiben. Gegeben sind die Variablen a und b. Die Variable c soll die Differenz von a und b sein. Da c keine negative Zahl werden soll, muss vorher getestet werden, ob a oder b größer ist.
+Nun sollen Sie Ihre erste eigene if-Abfrage schreiben. Gegeben sind die Variablen a und b. 
+
+Die Variable c ist die Differenz von a und b und soll in unserem Beispiel nur positive Werte annehmen. Es muss daher vor der Berechnung getestet werden, ob a oder b größer ist.
 
 Schauen Sie in die Vorlesung oder in den "Hint" um zu sehen, wie das Gerüst aufgebaut ist.
 
@@ -146,7 +153,7 @@ Schauen Sie in die Vorlesung oder in den "Hint" um zu sehen, wie das Gerüst auf
 - Falls nicht, greift der else-Teil: dann soll c = a-b sein.
 
 *** =hint
-- `if(Bedingung){c <- ___}else{c <- ___}`
+- `if(Bedingung){c <- ___ }else{c <- ___ }`
 
 *** =pre_exercise_code
 ```{r}
@@ -156,11 +163,12 @@ b = 5
 
 *** =sample_code
 ```{r}
+# a und b sind bereits eingelesen
 # schreiben Sie eine if-Abfrage
 
     
 # Geben Sie das Ergebnis c aus.
-
+c
 ```
 
 *** =solution
@@ -181,7 +189,7 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:4cc9a15a6f
 ## 5. if Abfrage
-Gegeben ist ihnen eine Variable `a`. Wenn `a` ungleich null ist, dann soll eine Zahl `b` durch `a` geteilt werden. 
+Gegeben ist Ihnen die Variablen `a` und `b`. Wenn `a` ungleich null ist, dann soll `b` durch `a` geteilt werden. 
 
 
 *** =instructions
@@ -222,7 +230,7 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:4ed9623928
 ## 6. for-Schleife
-Gegeben ist ihnen ein Vektor `fib`. Sie sollen nun mit Hilfe einer for-Schleife einen Vektor Summe erstellen, der jeweils aus der Summe zweier im Vektor benachbarter Zahlen steht. 
+Gegeben ist ein Vektor `fib`. Sie sollen nun mit Hilfe einer for-Schleife einen Vektor Summe erstellen, der jeweils aus der Summe zweier im Vektor benachbarter Zahlen steht. 
 
 Tipp: der erste Wert in Summe `summe[1]` soll gleich 2 sein, da `fib[1]+fib[2]` 1+1 = 2 ergibt. 
 
@@ -289,16 +297,17 @@ ergebnis <- 120
 *** =sample_code
 ```{r}
 # Testen Sie ihre Schleife mit der Zahl 5
-i <- 1
-zahl <- ___
+i <- 
+zahl <- 5
 fak <- 1
 # while Schleife zur Fakultätsberechnung
 while(i <= ___){
   fak <- ___*i
   i <- ___
 }
+
 # Ergebnis Ausgabe
-print(fak)
+fak
 
 
 ```
@@ -393,7 +402,9 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:c45d01f88e
 ## 9. Moving Average
-In den Folien haben Sie gesehen, wie eine Funktion für den gleitenden 5-er Durchschnitt aussieht. In dieser Aufgabe sollen Sie eine Funktion schreiben, die den gleitenden x-er Durchschnitt für eine beliebige ungerade Zahl x berechnet und zurück gibt. Als Eingabe soll diese Funktion einen vektor `zahlenreihe` und einen Wert `x` erhalten. Es soll davon ausgegangen werden, dass x ein natürliche ungerade Zahl ist (muss nicht extra geprüft werden). 
+In den Folien haben Sie gesehen, wie eine Funktion für den gleitenden 5-er Durchschnitt aussieht. In dieser Aufgabe sollen Sie eine Funktion schreiben, die den gleitenden x-er Durchschnitt für eine beliebige ungerade Zahl x berechnet und zurück gibt. 
+
+Als Eingabe soll diese Funktion einen vektor `zahlenreihe` und einen Wert `x` erhalten. Es soll davon ausgegangen werden, dass x ein natürliche ungerade Zahl ist (muss nicht extra geprüft werden). 
 
 
 *** =instructions
