@@ -363,7 +363,8 @@ Eine Funktion bekommt die Zahlen `a` und `b` als Eingabeparameter und soll nun d
 
 *** =pre_exercise_code
 ```{r}
-ergebnis = 8
+ergebnis1 = 8
+ergebnis2 = 6
 ```
 
 *** =sample_code
@@ -376,6 +377,9 @@ pos_differenz <- function(___){
     return(___)
 }
 # Testen Sie die Funktion an a=2, b=10
+pos_differenz(2,10)
+# Testen Sie die Funktion an a=10, b=4
+pos_differenz(10,4)
 ```
 
 *** =solution
@@ -389,11 +393,14 @@ pos_differenz <- function(a,b){
 }
 # Testen Sie die Funktion an a=2, b=10
 pos_differenz(2,10)
+# Testen Sie die Funktion an a=10, b=4
+pos_differenz(10,4)
 ```
 
 *** =sct
 ```{r}
-test_output_contains("ergebnis")
+test_output_contains("ergebnis1")
+test_output_contains("ergebnis2")
 test_error()
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:bc6c49a486
