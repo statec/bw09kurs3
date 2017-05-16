@@ -101,3 +101,56 @@ for(i in 1:length(v)){
 test_object("r")
 test_error()
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:4973089211
+## 3. Ganzzahlige Division
+Sie sollen nun mit Hilfe einer while Schleife berechnen, wie oft 5 in eine Zahl passt, und welcher Rest übrig bleibt. Sie dürfen von Natürlichen Zahlen (0 inklusive) ausgehen.
+
+
+*** =instructions
+- Ziehen Sie innerhalb der while-Schleife immer 5 von der Zahl ab.
+- Setzen Sie anschließend des Zähler `x` eins hoch.
+- Überlegen Sie bis wohin die while Schleife sinnvollerweise gehen kann, damit `zahl` niemals negativ wird. 
+- In Zahl soll am Ende der Rest stehen, der aus der ganzzahligen Division übrig geblieben ist.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+# zahl setzen
+zahl <- 63
+```
+
+*** =sample_code
+```{r}
+# Zähler auf Null setzen
+x <- 0
+# Schleife 
+
+# Ausgabe von x und zahl
+x
+zahl
+
+```
+
+*** =solution
+```{r}
+# Zähler setzen
+x <- 0
+# Schleife
+while(zahl >= 5){
+  zahl <- zahl - 5
+  x <- x + 1
+}
+# Ausgabe
+x
+zahl
+
+```
+
+*** =sct
+```{r}
+test_object("zahl")
+test_error()
+
+```
