@@ -255,7 +255,7 @@ fib[2]<-
 
 
 # Geben Sie "fib" in der Konsole aus.
-
+fib
 
 ```
 
@@ -306,7 +306,7 @@ ergebnis <- 120
 *** =sample_code
 ```{r}
 # Testen Sie ihre Schleife mit der Zahl 5
-i <- 
+i <- 1
 zahl <- 5
 fak <- 1
 # while Schleife zur Fakultätsberechnung
