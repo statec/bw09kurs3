@@ -423,7 +423,9 @@ Funktionen haben Eingabeparameter und Ausgabeparameter. Als Eingabe soll ein bel
 *** =pre_exercise_code
 ```{r}
 wert1 <- -10
-ergebnis <- 10
+ergebnis1 <- 10
+wert2 <- 5
+ergebnis2 <- 5
 ```
 
 *** =sample_code
@@ -440,6 +442,9 @@ absolut <- function(wert){
 # Testen Sie ihre Funktion aus, in dem Sie z.B. absolut(-4) testen.
 absolut(-4)
 # Testen Sie ihre Funktion für "wert1"
+
+# Testen Sie ihre Funktion für "wert2"
+
 
 ```
 
@@ -458,12 +463,15 @@ absolut <- function(wert){
 absolut(-4)
 # Testen Sie ihre Funktion für "wert1"
 absolut(wert1)
+# Testen Sie ihre Funktion für "wert2"
+absolut(wert2)
 
 ```
 
 *** =sct
 ```{r}
-test_output_contains("ergebnis")
+test_output_contains("ergebnis1")
+test_output_contains("ergebnis2")
 test_error()
 
 ```
