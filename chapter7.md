@@ -4,7 +4,7 @@ description : If Abfragen, Schleifen und Funktionen
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:e390410b37
 ## 1. if Abfragen
-In `wurf` und `wurf2` sind die Ergebnisse eines Würfelwurfes gespeichert. Bei einer Zahl die echt größer als 1 und echt kleiner als 5 ist, gewinnt man. 
+In `wurf` ist das Ergebnis eines Würfelwurfes gespeichert. Bei einer Zahl die echt größer als 1 und echt kleiner als 5 ist, gewinnt man. 
 
 
 *** =instructions
@@ -21,10 +21,6 @@ wurf <- 3
 *** =sample_code
 ```{r}
 # Fragen Sie in einer if-Abfrage ab, ob der wurf gewonnen oder verloren hat und setzen Sie das ergebnis dementsprechend
-if(wurf > 1 & wurf <5){
-    gewonnen <- TRUE}else {
-    gewonnen <- FALSE
-    }
 
 
 ```
@@ -51,13 +47,13 @@ test_error()
 ## 2. for-Schleife
 Gegeben ist ein Vektor `v`. Sie sollen mit Hilfe einer for-Schleife einen Vektor `r` erstellen, der die Elemente von v in umgekehrter Reihenfolge enthält. Der leere Vektor r existiert bereits.
 
-Der Aufbau einer for Schleife:
+Der Aufbau einer for-Schleife:
 
 
 - `for(Bedingung){Führe das aus}`.
 
 *** =instructions
-- Erstellen Sie in einer for Schleife einen Vektor r, welcher die Elemente von v in umgekehrter Reihenfolge enthält.
+- Erstellen Sie in einer for-Schleife einen Vektor `r`, welcher die Elemente von `v` in umgekehrter Reihenfolge enthält.
 - Denken Sie daran, dass sie die Funktion `length(vector)` benutzen können, um die Länge eines Vektors zu erhalten.
 
 
@@ -406,7 +402,9 @@ test_error()
 In den Übungen haben Sie bereits eine Funktion geschrieben, welche den gleitenden x-er Durchschnitt berechnet. Sie durften jedoch davon ausgehen, dass x eine ungerade natürliche Zahl war. Nun Soll x zwar eine natürliche Zahl sein, aber auch gerade Zahlen sollen akzeptiert werden. 
 Wenn x gerade ist, sollen Sie erst x in eine ungerade Zahl umwandeln indem Sie x auf x+1 setzen.
 
-Tipp: Benutzen Sie den Modulo-Operator `%%` um zu überprüfen, ob x gerade ist. Dieser zeigt den Rest einer Ganzzahligen Division an.
+Tipp: 
+
+Benutzen Sie den Modulo-Operator `%%` um zu überprüfen, ob x gerade ist. Dieser zeigt den Rest einer Ganzzahligen Division an.
 
 - Bsp: 7 %% 2 = 1 oder 4 %% 2 = 0
 
