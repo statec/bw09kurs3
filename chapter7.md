@@ -160,19 +160,24 @@ test_error()
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:1d44ff1436
-## Funktionen 
-In einer Firma reicht ein Mitarbeiter seine gewünschten Urlaubstage ein. Es gibt allerdings einige Tage im Jahr, an denen Sie auf keinen Mitarbeiter verzichten können. Diese Tage sind der 20.07.2017 und die Zeit zwischen dem 28. und dem 30. Dezember 2017.
+## 4. Funktionen 
+In einer Firma reicht ein Mitarbeiter seine gewünschten Urlaubstage für das Jahr 2017 ein. Diese liegen im Vektor `daten`. Es gibt allerdings einige Tage in diesem Jahr, an denen Sie auf keinen Mitarbeiter verzichten können. Diese Tage sind der 20.07.2017 und die Zeit zwischen dem 28. und dem 30. Dezember 2017.
 Schreiben Sie eine Funktion, welche dieses Problem löst.
 
-Info: Die Vektoren `daten` und `possible` sind bereits als Typ "Date" initialisiert und müssen daher beide übergeben werden.
+Info: 
+
+- Die Vektoren `daten` und `possible` sind bereits als Typ "Date" initialisiert und müssen daher beide der Funktion übergeben werden.
+- `possible` ist anfangs leer.
+- Ein Datum sieht folgendermaßen aus: "JJJJ-MM-TT", also z.B. "2017-04-03" 
 
 *** =instructions
 - Schreiben Sie eine Funktion `urlaub`, welche die Vektoren `daten` und `possible` als Eingabe bekommt.
-- in Daten stehen die Daten, an denen der Mitarbeiter Urlaub nehmen will.
+- in `daten` stehen die Tage, an denen der Mitarbeiter Urlaub nehmen will.
 - Vergleichen Sie jeden Wert im Vektor mit den "verbotenen" Tagen. 
 - Die Ausgabe soll ein Vektor mit den Daten sein, die nicht kollidieren.
 *** =hint
 - Die Daten im Vektor `daten` wurden mit as.Date als Typ "Date" gesetzt. Sie können Sie deshalb ganz normal mit Vergleichsoperatoren vergleichen. 
+- Verwenden Sie eine for-Schleife, welche den Vektor durchläuft und eine if-Abfrage, welche die Bedingung überprüft.
 
 *** =pre_exercise_code
 ```{r}
@@ -191,19 +196,15 @@ xoxo <- c("2017-10-03", "2017-10-04", "2017-10-05", "2017-10-06", "2017-07-21", 
 ```{r}
 #  Schreibe Funktion Urlaub
 urlaub <- function(daten, possible){
-# Setze die Zählvariable für den neuen Vektor
-  j = 1
-  # Gehe den ganzen daten Vektor durch
-  for(i in 1:length(daten)){
-  # Bedingung - ist es ein Kollisionstag?
-    if(daten[i] != "2017-07-20" & (daten[i] < "2017-12-28" | daten[i] > "2017-12-30") ){
-    # kein Kollisionstag, also kann Datum in Vektor possible geschrieben werden.
-      possible[j] <- daten[i]
-      # Zählvariable hochzählen
-      j <- j+1
-    }
-  }
-  # possible zurückgeben
+
+
+
+
+
+
+
+
+
   return(possible)
 }
 
