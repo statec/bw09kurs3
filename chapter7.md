@@ -212,6 +212,7 @@ multiply(12,14)
 
 *** =sct
 ```{r}
+test_function("multiply")
 test_output_contains("x")
 test_error()
 ```
@@ -219,16 +220,20 @@ test_error()
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:3001214d29
-## 5. Aufgabe
-
+## 5. Positive Wurzel
+Schreiben Sie eine Funktion, welche die Wurzel einer Zahl ausgibt. Wenn die Eingabe negativ ist, soll die Wurzel aus dem Absolutwert der Zahl gezogen werden.
 
 *** =instructions
+- die Funktion `wurzel()` soll als Eingabeparameter eine Zahl bekommen
+- Wenn die eingegebene Zahl negativ ist, soll der Absolutwert der Zahl betrachtet werden.
+- Als Ausgabe soll sie `ergebnis` liefern.
 
 *** =hint
+- mit `sqrt()` kann man die Wurzel einer Zahl ziehen. 
 
 *** =pre_exercise_code
 ```{r}
-
+n <- 2
 ```
 
 *** =sample_code
@@ -238,20 +243,42 @@ test_error()
 
 *** =solution
 ```{r}
+# Funktion
+wurzel <- function(zahl){
+  if(zahl < 0 ){ ergebnis <- sqrt(-zahl)}
+  else {ergebnis <- sqrt(zahl)}
+  return(ergebnis)
+}
+# Ausgabe Test für 4 und -4
+wurzel(4)
+wurzel(-4)
 
 ```
 
 *** =sct
 ```{r}
+test_function("wurzel")
+test_output_contains("n")
+test_error()
 
 ```
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:a1c62f9c45
-## 6. Aufgabe
+## 6. Teilbar
+Schreiben Sie eine Funktion, die zwei Zahlen `teiler1` und `teiler2` übergeben bekommt und für die Zahlen 1 bis 100 testet, ob sie durch BEIDE teilbar sind. Geben Sie innerhalb der Schleife immer die Zahl selbst aus, wenn sie nicht teilbar ist und "Zahl ist teilbar" wenn die Zahl sowohl durch `teiler1` als auch durch `teiler2` ohne Rest teilbar ist.
+Nutzen Sie für die Ausgabe `print("gewünschter Text")`.
 
+Tipp: 
+
+Benutzen Sie den Modulo-Operator `%%` um zu überprüfen, ob eine Zahl ohne Rest durch eine andere Zahl teilbar ist. Dieser zeigt den Rest einer Ganzzahligen Division an.
+
+- Bsp: 7 %% 2 = 1 oder 6 %% 2 = 0
 
 *** =instructions
+- Schreiben Sie die Funktion `teilbar`, welche 2 Zahlen als Eingabe erwartet.
+- Benutzen Sie eine Schleife, um den Test für alle Zahlen zwischen 1 und 100 durchzuführen.
+- Testen Sie in einer if-Abfrage, ob die momentane Zahl sowohl durch `teiler1` als auch durch `teiler2` ganzzahlig teilbar ist.
+- Wenn dies der Fall ist, printen Sie "Zahl ist teilbar". Sonst soll einfach die Zahl ausgegeben werden.
+- Die Funktion hat keinen Rückgabewert, da Sie ihr Ergebnis direkt in der Konsole ausgibt.
 
 *** =hint
 
@@ -267,11 +294,24 @@ test_error()
 
 *** =solution
 ```{r}
+# Funktion, die ausgibt, welche Zahlen von 1 bis 100 durch zahl1 und zahl2 ganzzahlig teilbar sind
+teilbar <- function(teiler1, teiler2){
+  for(i in 1:100){
+    if(i %% teiler1 == 0 & i %% teiler2 == 0){
+      print("Zahl ist teilbar")} else{
+        print(i)
+      }
+  }
+}
+# Test an 2 und 3
+teilbar(2,3)
 
 ```
 
 *** =sct
 ```{r}
+test_function("teilbar")
+test_error()
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:1d44ff1436
@@ -356,6 +396,7 @@ urlaub(daten, possible)
 
 *** =sct
 ```{r}
+test_function("urlaub")
 test_output_contains("xoxo")
 test_error()
 
@@ -436,6 +477,7 @@ gleitender_durchschnitt(reihe, 7)
 
 *** =sct
 ```{r}
+test_function("gleitender_durchschnitt")
 test_output_contains("xyz")
 test_error()
 
