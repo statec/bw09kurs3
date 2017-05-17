@@ -159,8 +159,64 @@ test_error()
 
 
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:2312b5b5e8
+## 4. Funktion
+Schreiben Sie eine Funktion, welche zwei Objekte `a` und `b` als Eingabe erhält. Die Funktion soll als Ausgabe das Produkt der beiden Zahlen ausgeben. Sie sollen innerhalb der Funktion das Produkt berechnen, ohne eine Multiplikation `*` zu benutzen. Benutzen Sie statt dessen Schleifen und Addition.
+
+Tipp: 
+
+Die Multiplikation 3 * 4 kann genauso als Addition gesehen werden - man addiert 3 mal die 4 aufeinander (4 + 4 + 4).
+
+*** =instructions
+- Schreiben Sie die Funktion `multiply` 
+- Sie soll als Eingabeparameter `a` und `b` zwei Zahlen bekommen.
+- Benutzen Sie statt eine Multiplikation eine Addition (siehe Tipp).
+- Die Funktion soll das `product` der beiden Zahlen zurück geben.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+x = 12*14
+
+```
+
+*** =sample_code
+```{r}
+# Funktion erstellen
+
+
+
+
+
+# Testen Sie ihre Funktion für a = 12 und b = 14
+
+
+```
+
+*** =solution
+```{r}
+# Funktion erstellen
+multiply <- function(a,b){
+  product <- 0
+  while(a>0){
+    product <- product + b
+    a <- a - 1}
+  return(product)
+}
+# Testen Sie ihre Funktion für a = 12 und b = 14
+multiply(12,14)
+
+```
+
+*** =sct
+```{r}
+test_output_contains("x")
+test_error()
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:1d44ff1436
-## 4. Funktionen 
+## 5. Funktionen 
 In einer Firma reicht ein Mitarbeiter seine gewünschten Urlaubstage für das Jahr 2017 ein. Diese liegen im Vektor `daten`. Es gibt allerdings einige Tage in diesem Jahr, an denen Sie auf keinen Mitarbeiter verzichten können. Diese Tage sind der 20.07.2017 und die Zeit zwischen dem 28. und dem 30. Dezember 2017.
 Schreiben Sie eine Funktion, welche dieses Problem löst.
 
