@@ -161,8 +161,8 @@ test_error()
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:2312b5b5e8
-## 4. Funktion
-Schreiben Sie eine Funktion, welche zwei Objekte `a` und `b` als Eingabe erhält. Die Funktion soll als Ausgabe das Produkt der beiden Zahlen ausgeben. Sie sollen innerhalb der Funktion das Produkt berechnen, ohne eine Multiplikation `*` zu benutzen. Benutzen Sie statt dessen Schleifen und Addition.
+## 4. Multiply
+Schreiben Sie eine Funktion, welche zwei Zahlen `a` und `b` als Eingabe erhält. Die Funktion soll als Ausgabe das Produkt der beiden Zahlen ausgeben. Sie sollen innerhalb der Funktion das Produkt berechnen, ohne eine Multiplikation `*` zu benutzen. Benutzen Sie statt dessen Schleifen und Addition.
 
 Tipp: 
 
@@ -215,8 +215,67 @@ multiply(12,14)
 test_output_contains("x")
 test_error()
 ```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:3001214d29
+## 5. Aufgabe
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:a1c62f9c45
+## 6. Aufgabe
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:1d44ff1436
-## 5. Funktionen 
+## 7. Urlaubstage 
 In einer Firma reicht ein Mitarbeiter seine gewünschten Urlaubstage für das Jahr 2017 ein. Diese liegen im Vektor `daten`. Es gibt allerdings einige Tage in diesem Jahr, an denen Sie auf keinen Mitarbeiter verzichten können. Diese Tage sind der 20.07.2017 und die Zeit zwischen dem 28. und dem 30. Dezember 2017.
 Schreiben Sie eine Funktion, welche dieses Problem löst.
 
@@ -302,7 +361,7 @@ test_error()
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:a7e56ceac1
-## Moving Average
+## 8. Moving Average
 In den Übungen haben Sie bereits eine Funktion geschrieben, welche den gleitenden x-er Durchschnitt berechnet. Sie durften jedoch davon ausgehen, dass x eine ungerade natürliche Zahl war. Nun Soll x zwar eine natürliche Zahl sein, aber auch gerade Zahlen sollen akzeptiert werden. 
 Wenn x gerade ist, sollen Sie erst x in eine ungerade Zahl umwandeln indem Sie x auf x+1 setzen.
 
