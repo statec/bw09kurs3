@@ -156,6 +156,8 @@ test_error()
 
 ```
 
+
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:a7e56ceac1
 ## Moving Average
 In den Übungen haben Sie bereits eine Funktion geschrieben, welche den gleitenden x-er Durchschnitt berechnet. Sie durften jedoch davon ausgehen, dass x eine ungerade natürliche Zahl war. Nun Soll x zwar eine natürliche Zahl sein, aber auch gerade Zahlen sollen akzeptiert werden. 
@@ -180,9 +182,8 @@ Tipp: Benutzen Sie den Modulo-Operator `%%` um zu überprüfen, ob x gerade ist.
 
 *** =pre_exercise_code
 ```{r}
-reihe <- c(11, 12, 13, 16, 18, 20, 33, 66, 54, 67, 89, 102, 133, 150, 120, 110, 60, 78, 90, 101, 50, 37, 21, 2)
-xyz <- c(11.00000,  12.00000,  13.00000,  17.57143,  25.42857,  31.42857,  39.14286,  49.57143,  61.57143,  77.71429,  94.42857, 102.14286, 110.14286, 109.14286,
- 107.57143, 105.85714, 101.28571,  87.00000,  75.14286,  62.42857,  50.00000,  37.00000,  21.00000,   2.00000)
+reihe <- c(1, 33, 45, 33, 4, 66, 78, 98, 98, 99, 102, 103, 45, 304, 255, 32, 6, 78, 12, 3, 4, 56, 7, 1, 0)
+xyz <- c(1.00000,  33.00000,  45.00000,  37.14286,  51.00000,  60.28571,  68.00000,  77.85714,  92.00000,  89.00000, 121.28571, 143.71429, 134.28571, 121.00000, 117.57143, 104.57143,  98.57143,  55.71429,  27.28571,  23.71429,  23.00000,  56.00000,   7.00000,   1.00000,  0.00000)
 
 
 
