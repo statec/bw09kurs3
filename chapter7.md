@@ -247,8 +247,8 @@ abswurzel <- function(zahl){
   return(ergebnis)
 }
 # Ausgabe Test für 4 und -4
-wurzel(4)
-wurzel(-4)
+abswurzel(4)
+abswurzel(-4)
 
 ```
 
