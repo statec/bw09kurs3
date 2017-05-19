@@ -345,7 +345,7 @@ xoxo <- c("2017-10-03", "2017-10-04", "2017-10-05", "2017-10-06", "2017-07-21", 
 *** =sample_code
 ```{r}
 #  Schreibe Funktion Urlaub
-check_urlaub <- function( daten ){
+check_urlaub <- function( wunsch_urlaub ){
 
 
 
@@ -359,7 +359,7 @@ check_urlaub <- function( daten ){
 }
 
 # Funktion ausführen
-check_urlaub( daten )
+check_urlaub( wunsch_urlaub )
 
 
 ```
