@@ -374,7 +374,7 @@ check_urlaub <- function(daten){
   for(i in 1:length(daten)){
  # Bedingung - ist es ein Kollisionstag?
     if(daten[i] != "2017-07-20" & (daten[i] < "2017-12-28" | daten[i] > "2017-12-30") ){
-    # kein Kollisionstag, also kann Datum in Vektor possible geschrieben werden.
+    # kein Kollisionstag, also kann Datum in Vektor output geschrieben werden.
       output[i] <- daten[i]
       } else {
       output[i] <- "abgelehnt"
@@ -386,7 +386,7 @@ check_urlaub <- function(daten){
 }
 
 # Funktion ausführen
-check_urlaub(daten)
+check_urlaub(wunsch_urlaub)
 
 ```
 
