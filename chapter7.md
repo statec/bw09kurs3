@@ -260,7 +260,7 @@ test_error()
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:a1c62f9c45
-## 6. Funktionen (II)
+## 6. Funktionen (III)
 Schreiben Sie eine Funktion, die für jede Zahl von 1 bis 100 testet, ob sie durch `teiler1` und `teiler2` (Funktionsargumente) teilbar sind. Geben Sie innerhalb der Schleife immer die Zahl selbst aus, wenn sie nicht teilbar ist und "Zahl ist teilbar" wenn die Zahl sowohl durch `teiler1` als auch durch `teiler2` ohne Rest teilbar ist.
 Nutzen Sie für die Ausgabe `print("gewünschter Text")`.
 
@@ -312,7 +312,7 @@ test_error()
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:1d44ff1436
-## 7. Urlaubstage 
+## 7. Funktionen(IV) 
 In einer Firma reicht ein Mitarbeiter seine gewünschten Urlaubstage für das Jahr 2017 ein (diese liegen im Vektor `wunsch_urlaub`). Am 20.07.2017 und die Zeit zwischen dem 28. und dem 30. Dezember 2017 besteht eine Urlaubssperre.
 
 Schreiben Sie eine Funktion, welche mögliche Terminkonflikte erkennt.
@@ -398,7 +398,7 @@ test_error()
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:a7e56ceac1
-## 8. Moving Average
+## 8. Funktionen(V) 
 Aus der Übungen kennen Sie bereits eine Funktion geschrieben, die den gleitenden Durchschnitt für ein beliebiges Fenster berechnet. 
 
 Bisher durften Sie davon ausgehen, dass die eingegebene Länge des Fensters eine ungerade natürliche Zahl ist. 
