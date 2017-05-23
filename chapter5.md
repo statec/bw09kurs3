@@ -1,6 +1,6 @@
 ---
 title       : Einheit 2 - homework
-description : Hausaufgabe dataframes & joins
+description : Tidyverse - Aufbereitung von Datensätzen
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:567d7068ae
 ## 1. Basis Funktionen dplyr
