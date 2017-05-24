@@ -55,7 +55,7 @@ text_else <- "ich bin in dem else-Teil entstanden"
 *** =sample_code
 ```{r}
 # text_if und text_else sind bereits existierende Variablennamen
-testtesttest
+
 # Führe die Abfrage durch und gebe a in der Konsole aus.
 if( FALSE ){
   a <- text_if
