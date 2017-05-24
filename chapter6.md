@@ -72,7 +72,14 @@ a
 
 *** =solution
 ```{r}
+if(FALSE){
+    a <- text_if} else { a<- text_else }
+print(a)
 
+# Ändere Bedingung zu TRUE und geben erneut a aus.
+if(TRUE){
+    a <- text_if} else { a<- text_else }
+print(a)
 
 ```
 
