@@ -199,3 +199,35 @@ test_function("ggplot", args = c("data"))
 test_function("geom_bar", args = c("mapping"))
 test_error()
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:182b668adc
+## 5. Geoms
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+data("diamonds")
+diamonds <- as.data.frame(diamonds)
+```
+
+*** =sample_code
+```{r}
+# Erstellen Sie eine 
+ggplot()
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
