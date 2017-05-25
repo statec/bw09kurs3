@@ -55,9 +55,9 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:f9dcd5853c
 ## 2. Plot
-Ihnen ist wieder der "diamonds" Datensatz gegeben. Bei großen Datensätze wie diesen, kann man sehr schön mit dem Parameter `alpha` arbeiten. Dieser verändert die Transparenz der Datenpunkte. 
+Im folgenden sollen Sie nur noch mit ggplot arbeiten. Die Bibliothek ist in allen folgenden Aufgaben bereits eingebunden.
+Ihnen ist wieder der "diamonds" Datensatz gegeben.Bei großen Datensätze wie diesen, kann man sehr schön mit dem Parameter `alpha` arbeiten. Dieser verändert die Transparenz der Datenpunkte. 
 
-Die Bibliothek "ggplot2" ist bereits eingebunden.
 
 *** =instructions
 - Erstellen Sie drei Plots und variieren Sie jeweils den Wert der Transparenz (`alpha`).
@@ -116,20 +116,30 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:e53d6f01e4
-## <<<New Exercise>>>
-
+## 3. Geoms
+Sie sollen nun verschiedene Geoms ausprobieren. 
 
 *** =instructions
+- Erstellen Sie einen Plot über die Karatzahl auf der x-Achse und dem Preis auf der y-Achse.
+- Fügen Sie ein "geom_line" hinzu, färben Sie diese blau.
+- Betiteln Sie die x-Achse mit "Karat" und die y-Achse mit "Preis".
 
 *** =hint
+- Die Achsen können durch eigene geoms betitelt werden.
 
 *** =pre_exercise_code
 ```{r}
-
+library(ggplot2)
+data("diamonds")
+diamonds <- as.data.frame(diamonds)
 ```
 
 *** =sample_code
 ```{r}
+ggplot(data = diamonds, mapping = aes(x = carat, y = price) )+
+  geom_line(color = "blue")+
+  xlab("Karat")+
+  ylab("Preis")
 
 ```
 
