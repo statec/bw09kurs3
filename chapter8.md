@@ -136,10 +136,48 @@ diamonds <- as.data.frame(diamonds)
 
 *** =sample_code
 ```{r}
+# Plotten Sie mit ggplot()
+
+
+
+
+
+```
+
+*** =solution
+```{r}
+# Plotten Sie mit ggplot()
 ggplot(data = diamonds, mapping = aes(x = carat, y = price) )+
   geom_line(color = "blue")+
   xlab("Karat")+
   ylab("Preis")
+
+```
+
+*** =sct
+```{r}
+test_function("ggplot", args = c("data", "mapping"))
+test_function("geom_line", args = c("color"))
+test_function("xlab")
+test_function("ylab")
+test_error()
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:d84eccfab0
+## 4. Geoms
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
 
 ```
 
