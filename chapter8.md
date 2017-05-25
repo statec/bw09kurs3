@@ -202,9 +202,14 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:182b668adc
 ## 5. Geoms
+Erstellen Sie eine Grafik, welche die jeweiligen Datenpunkte (Karat zu Preis) darstellt. Durch eine lineare Regression können Sie nun die Abhängigkeit zwischen den beiden Variablen erkennen.
 
+Um mehr über die Eingabeparameter von geom\_smooth zu erfahren, geben Sie `?geom_smooth()` in der Konsole ein.
 
 *** =instructions
+- Erstellen Sie einen Punkte-Plot mit der Karat Zahl auf der x-Achse und de Preis auf der y Achse.
+- Fügen Sie das geom hinzu, was für eine Glättung der Funktion sorgt.
+- Um eine lineare Regression zu bekommen, müssen Sie als Methode "lm" wählen.
 
 *** =hint
 
@@ -218,16 +223,24 @@ diamonds <- as.data.frame(diamonds)
 *** =sample_code
 ```{r}
 # Erstellen Sie eine 
-ggplot()
+
+
+
 
 ```
 
 *** =solution
 ```{r}
-
+# Erstellen Sie eine 
+ggplot(data = diamonds, aes(x = carat, y = price))+
+  geom_point()+
+  geom_smooth(method = "lm")
 ```
 
 *** =sct
 ```{r}
-
+test_function("ggplot", args = c("data", "aes"))
+test_function("geom_point")
+test_function("geom_smooth", args = c("method"))
+test_error()
 ```
