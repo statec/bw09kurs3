@@ -165,28 +165,37 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:d84eccfab0
 ## 4. Geoms
-
+Die Qualität der Diamanten ist in der Variable "cut" gespeichert. Diese soll nun in der nächsten Grafik verwendet werden.
 
 *** =instructions
+- Erstellen Sie ein Balkendiagramm, welches die Häufigkeit der verschiedenen Qualitäten der Edelsteine zeigt.
 
 *** =hint
+- Benutzen Sie `geom_bar`
 
 *** =pre_exercise_code
 ```{r}
-
+library(ggplot2)
+data("diamonds")
+diamonds <- as.data.frame(diamonds)
 ```
 
 *** =sample_code
 ```{r}
+# Erstellen Sie ein Balkendiagramm über cut
 
 ```
 
 *** =solution
 ```{r}
-
+# Plotten Sie mit ggplot()
+ggplot(data = diamonds)+
+    geom_bar(mapping = aes(x = cut))
 ```
 
 *** =sct
 ```{r}
-
+test_function("ggplot", args = c("data"))
+test_function("geom_bar", args = c("mapping"))
+test_error()
 ```
