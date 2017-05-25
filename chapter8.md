@@ -7,10 +7,119 @@ description : ggplot
 Sie kennen bereits die plot-Funktion, mit der Sie Datenreihen grafisch darstellen können. Nun wurde in der Vorlesung die ggplot Bibliothek eingeführt. 
 Gegeben ist ihnen der Datensatz "diamonds". Darin sind verschiedene Informationen gegeben, wie zum Beispiel Karatzahl, Preis und Qualität. Schauen Sie ihn sich in der Konsole an und erstellen Sie 2 Plots - die Bibliothek ist bereits eingebunden.
 
+Hilfe zum `plot` Befehl und den verschiedene Eingabeparametern finden Sie, indem Sie `?plot()` in der Konsole eingeben. 
+
 
 *** =instructions
-- Erstellen Sie einen Plot der die Karatzahl und den Preis aus dem dataframe "diamonds". Benutzen Sie die plot() Funktion.
-- Erstellen Sie den gleichen Plot mit der ggplot Funktion.
+- Erstellen Sie einen Punkte-Plot der die Karatzahl und den Preis aus dem dataframe "diamonds". Benutzen Sie `plot()`.
+- Erstellen Sie den gleichen Plot mit der ggplot-Funktion. Benutzen Sie `geom_point()`.
+
+*** =hint
+- Schauen Sie für die ggplot-Funktion ins Skript oder benutzen Sie `?ggplot()` um mehr zu erfahren.
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+data("diamonds")
+diamonds <- as.data.frame(diamonds)
+```
+
+*** =sample_code
+```{r}
+# Plot mit plot(), type = "p" erstellt einen Punkteplot.
+plot(___, ___, type = "p", main = "diamonds", xlab = "price", ylab = "carat")
+# Plot mit ggplot() mit geom_point()
+ggplot(data = ___, mapping = ___)
+  
+
+```
+
+*** =solution
+```{r}
+# Plot mit plot() 
+plot(diamonds$price, diamonds$carat, type = "p", main = "diamonds", xlab = "price", ylab = "carat")
+# Plot mit ggplot() mit geom_point()
+ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
+  geom_point()
+
+```
+
+*** =sct
+```{r}
+test_function("plot", args = c("x", "y", "type", "main", "xlab", "ylab") )
+test_function("ggplot", args = c("data", "mapping"))
+test_function("geom_point")
+test_error()
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:f9dcd5853c
+## 2. Plot
+Ihnen ist wieder der "diamonds" Datensatz gegeben. Bei großen Datensätze wie diesen, kann man sehr schön mit dem Parameter `alpha` arbeiten. Dieser verändert die Transparenz der Datenpunkte. 
+
+Die Bibliothek "ggplot2" ist bereits eingebunden.
+
+*** =instructions
+- Erstellen Sie drei Plots und variieren Sie jeweils den Wert der Transparenz (`alpha`).
+- Benutzen Sie für `alpha` jeweils 1/10, 1/20 und 1/100.
+- Schauen Sie sich die Unterschiede in den drei Plots an.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+data("diamonds")
+diamonds <- as.data.frame(diamonds)
+
+```
+
+*** =sample_code
+```{r}
+# Plot mit alpha = 1/10
+
+
+# Plot mit alpha = 1/20
+
+  
+# Plot mit alpha = 1/100
+
+
+```
+
+*** =solution
+```{r}
+# Plot mit alpha = 1/10
+ggplot(data = diamonds, mapping = aes(x = carat, y = price) )+
+  geom_point(alpha = 1/10)
+
+# Plot mit alpha = 1/20
+ggplot(data = diamonds, mapping = aes(x = carat, y = price) )+
+  geom_point(alpha = 1/20)
+  
+# Plot mit alpha = 1/100
+ggplot(data = diamonds, mapping = aes(x = carat, y = price) )+
+  geom_point(alpha = 1/100)
+
+```
+
+*** =sct
+```{r}
+test_function("ggplot", args = c("data", "mapping"), index = 1)
+test_function("geom_point", args = c("alpha"), index = 1)
+test_function("ggplot", args = c("data", "mapping"), index = 2)
+test_function("geom_point", args = c("alpha"), index = 2)
+test_function("ggplot", args = c("data", "mapping"), index = 3)
+test_function("geom_point", args = c("alpha"), index = 3)
+test_error()
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:e53d6f01e4
+## <<<New Exercise>>>
+
+
+*** =instructions
 
 *** =hint
 
