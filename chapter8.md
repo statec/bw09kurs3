@@ -247,10 +247,16 @@ test_error()
 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:9039fe0643
-## 6. Lineare Regression
+## 6. geom_smooth
+Ihnen liegt in diamonds ein verkürzter Datensatz vor. Sie sollen wieder eine Glättungsfunktion über ihre Daten legen.
 
+Info: Bei der span Eingabe von span = 0.1 werden Warnungen in der Konsole ausgegeben. Diese können Sie einfach ignorieren.
 
 *** =instructions
+- Erstellen sie einen geom_line Plot.
+- Glätten Sie die Funktion mit geom_smooth.
+- Setzen Sie den span-Wert einmal auf 0.9 und einmal auf 0.1 (Warnungen ignorieren)
+- Vergleichen Sie die Ergebnisplots und achten Sie besonders auf die Wirkung der verschiedenen Eingaben für den "span"-Parameter.
 
 *** =hint
 
@@ -265,27 +271,77 @@ diamonds <- filter(diamonds, diamonds$table < 54)
 
 *** =sample_code
 ```{r}
-# Span auf 0.5
-ggplot(data = diamonds, aes(x = carat, y = price))+
-  geom_line()+
-  geom_smooth(span = 0.5)
-# Span auf 0.1
-ggplot(data = diamonds, aes(x = carat, y = price))+
-  geom_line()+
-  geom_smooth(span = 0.1)
+# Span auf 0.8
+
+
+
+# Span auf 0.1 (Warnungen ignorieren)
+
 
 ```
 
 *** =solution
 ```{r}
-
+# Span auf 0.8
+ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
+  geom_line()+
+  geom_smooth(span = 0.8)
+# Span auf 0.1 (Warnungen ignorieren)
+ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
+  geom_line()+
+  geom_smooth(span = 0.1)
 ```
 
 *** =sct
 ```{r}
 
+test_function("ggplot", args = c("data", "mapping"), index = 1)
+test_function("geom_line", index = 1)
+test_function("geom_smooth", args = c("span"), index = 1)
+test_function("ggplot", args = c("data", "mapping"), index = 2)
+test_function("geom_line", index = 2)
+test_function("geom_smooth", args = c("span"), index = 2)
+test_error()
 ```
 
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:0a648e1e7d
+## 7. span
+Was bewirkt ein hoher Wert für den span-Parameter bei der geom_smooth Funktion?
+
+Zur Erinnerung sind ihnen die beiden von ihnen vorher erstellten Plots gegeben - Plot 1 mit span=0.8 und Plot 2 mit span=0.1
+
+*** =instructions
+- Die Funktion wird "unruhiger".
+- Die Funktion wird glatter.
+- Punkte in der direkten Nachbarschaft werden stärker berücksichtigt.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+library(dplyr)
+data("diamonds")
+diamonds <- as.data.frame(diamonds)
+diamonds <- filter(diamonds, diamonds$table < 54)
+# Span auf 0.8
+ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
+  geom_line()+
+  geom_smooth(span = 0.8)
+# Span auf 0.1 (Warnungen ignorieren)
+ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
+  geom_line()+
+  geom_smooth(span = 0.1)
+
+```
+
+*** =sct
+```{r}
+msg_bad <- "Leider falsch!"
+msg_success <- "Richtig!"
+test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad))
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:8d133ae583
 ## 10. Funktion 
 Sie haben bereits gelernt eigene Funktionen zu schreiben. Nun sollen Sie das bisherige Wissen mit dem neu gelernten verknüpfen.
