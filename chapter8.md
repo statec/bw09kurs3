@@ -257,12 +257,22 @@ test_error()
 *** =pre_exercise_code
 ```{r}
 library(ggplot2)
+library(dplyr)
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
+diamonds <- filter(diamonds, diamonds$table < 54)
 ```
 
 *** =sample_code
 ```{r}
+# Span auf 0.5
+ggplot(data = diamonds, aes(x = carat, y = price))+
+  geom_line()+
+  geom_smooth(span = 0.5)
+# Span auf 0.1
+ggplot(data = diamonds, aes(x = carat, y = price))+
+  geom_line()+
+  geom_smooth(span = 0.1)
 
 ```
 
