@@ -390,7 +390,5 @@ mean_compare(diamonds, diamonds$carat, diamonds$price)
 
 *** =sct
 ```{r}
-#test_function("ggplot", args = c("data"))
-#test_function("mean_compare")
-#test_error()
+
 ```
