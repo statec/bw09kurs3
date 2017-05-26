@@ -373,6 +373,8 @@ mean_compare <- function(daten, a, b){
 }
 # Ausführung der Funktion an diamonds
 mean_compare(diamonds, diamonds$carat, diamonds$price)
+# Speichern Sie das Ergebnis in plot1
+plot1 <- mean_compare(diamonds, diamonds$carat, diamonds$price)
 
 ```
 
@@ -384,11 +386,15 @@ ggplot(data = daten)+
   geom_point(mapping = aes(x = a, y = b))+
   geom_line(mapping = aes(x = a, y = mean(b)),  color = "red")
 }
-# Ausführung der Funktion an diamonds
+# Ausgabe des Plots an diamonds
 mean_compare(diamonds, diamonds$carat, diamonds$price)
+# Speichern Sie das Ergebnis in plot1
+plot1 <- mean_compare(diamonds, diamonds$carat, diamonds$price)
 ```
 
 *** =sct
 ```{r}
-
+test_function("mean_compare", args = c("daten", "a", "b"))
+test_object("plot1")
+test_error()
 ```
