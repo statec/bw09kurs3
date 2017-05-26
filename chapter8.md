@@ -369,8 +369,7 @@ xxxplot <- ggplot(data = diamonds, mapping = aes(x = carat, y = price, group = c
 *** =sample_code
 ```{r}
 # Erstellen Sie einen Plot mit den Variablen carat, price und cut.
-ggplot(data = diamonds, mapping = aes(x = carat, y = price, group = cut, color = cut))+
-  geom_point()
+
 
 ```
 
@@ -379,12 +378,15 @@ ggplot(data = diamonds, mapping = aes(x = carat, y = price, group = cut, color =
 # Erstellen Sie einen Plot mit den Variablen carat, price und cut.
 ggplot(data = diamonds, mapping = aes(x = carat, y = price, group = cut, color = cut))+
   geom_point()
+
+ 
 ```
 
 *** =sct
 ```{r}
-test_output_contains("xxxplot")
 test_function("ggplot", args = c("data", "mapping"))
+test_function("aes")
+test_function("geom_point")
 test_error()
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:b9786438e0
