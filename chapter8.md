@@ -342,6 +342,78 @@ msg_bad <- "Leider falsch!"
 msg_success <- "Richtig!"
 test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad))
 ```
+
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:cf02c17c22
+## 8. Grafiken mit mehreren Variablen
+Bisher haben Sie Plots mit 2  Variablen erstellt. Nun sollen Sie eine Grafik mit 3 Variablen erstellen. Ein Beispiel dazu haben Sie bereits in der Vorlesung gesehen - schauen Sie in diesem Beispiel wie Sie die Aufgabe lösen können. Gegeben ist Ihnen wieder der Datensatz `diamonds`.
+
+*** =instructions
+- Erstellen Sie ein Punktediagramm mit "carat" auf der x-Achse und "price" auf der y-Achse.
+- Die Punkte sollen die Datenpunkte farblich nach ihrer Qualität ("cut") trennen.
+*** =hint
+- setzen Sie im mapping: `group = VARIABLE` und `color = VARIABLE`
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+data("diamonds")
+diamonds <- as.data.frame(diamonds)
+xxxplot <- ggplot(data = diamonds, mapping = aes(x = carat, y = price, group = cut, color = cut))+
+  geom_point()
+
+```
+
+*** =sample_code
+```{r}
+# Erstellen Sie einen Plot mit den Variablen carat, price und cut.
+ggplot(data = diamonds, mapping = aes(x = carat, y = price, group = cut, color = cut))+
+  geom_point()
+
+```
+
+*** =solution
+```{r}
+# Erstellen Sie einen Plot mit den Variablen carat, price und cut.
+ggplot(data = diamonds, mapping = aes(x = carat, y = price, group = cut, color = cut))+
+  geom_point()
+```
+
+*** =sct
+```{r}
+test_output_contains("xxxplot")
+test_function("ggplot", args = c("data", "mapping"))
+test_error()
+```
+--- type:NormalExercise lang:r xp:100 skills:1 key:b9786438e0
+## 9. Geom
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:8d133ae583
 ## 10. Funktion 
 Sie haben bereits gelernt eigene Funktionen zu schreiben. Nun sollen Sie das bisherige Wissen mit dem neu gelernten verknüpfen.
