@@ -239,7 +239,7 @@ ggplot(data = diamonds, aes(x = carat, y = price))+
 
 *** =sct
 ```{r}
-test_function("ggplot", args = c("data", "aes"))
+test_function("ggplot", args = c("data", "mapping"))
 test_function("geom_point")
 test_function("geom_smooth", args = c("method"))
 test_error()
