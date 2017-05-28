@@ -57,7 +57,7 @@ test_error()
 --- type:NormalExercise lang:r xp:100 skills:1 key:f9dcd5853c
 ## 2. Plot
 Im folgenden sollen Sie nur noch mit ggplot arbeiten. Die Bibliothek ist in allen folgenden Aufgaben bereits eingebunden.
-Ihnen ist wieder der "diamonds" Datensatz gegeben.Bei großen Datensätze wie diesen, kann man sehr schön mit dem Parameter `alpha` arbeiten. Dieser verändert die Transparenz der Datenpunkte. 
+Ihnen ist wieder der "diamonds" Datensatz gegeben. Bei großen Datensätze wie diesem, kann man sehr schön mit dem Parameter `alpha` arbeiten. Dieser verändert die Transparenz der Datenpunkte. 
 
 
 *** =instructions
@@ -350,7 +350,10 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad))
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:cf02c17c22
 ## 8. Grafiken mit mehreren Variablen
-Bisher haben Sie Plots mit 2  Variablen erstellt. Nun sollen Sie eine Grafik mit 3 Variablen erstellen. Ein Beispiel dazu haben Sie bereits in der Vorlesung gesehen - schauen Sie in diesem Beispiel wie Sie die Aufgabe lösen können. Gegeben ist Ihnen wieder der Datensatz `diamonds`.
+Bisher haben Sie Plots mit 2  Variablen erstellt. Nun sollen Sie eine Grafik mit 3 Variablen erstellen. Ein Beispiel dazu haben Sie bereits in der Vorlesung gesehen - schauen Sie in diesem Beispiel, wie Sie die Aufgabe lösen können.
+
+
+Gegeben ist Ihnen wieder der Datensatz `diamonds`.
 
 *** =instructions
 - Erstellen Sie ein Punktediagramm mit "carat" auf der x-Achse und "price" auf der y-Achse.
@@ -435,6 +438,8 @@ test_error()
 --- type:NormalExercise lang:r xp:100 skills:1 key:8d133ae583
 ## 10. Funktion 
 Sie haben bereits gelernt eigene Funktionen zu schreiben. Nun sollen Sie das bisherige Wissen mit dem neu Gelernten verknüpfen.
+
+
 Für die Funktion brauchen Sie ein geom, welches ihnen eine horizontale Linie liefert. Googeln Sie, um den passenden Befehl zu finden.
 
 *** =instructions
