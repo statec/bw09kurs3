@@ -13,6 +13,7 @@ Hilfe zum `plot` Befehl und den verschiedene Eingabeparametern finden Sie, indem
 *** =instructions
 - Erstellen Sie einen Punkte-Plot der die Karatzahl und den Preis aus dem dataframe "diamonds". Benutzen Sie `plot()`.
 - Erstellen Sie den gleichen Plot mit der ggplot-Funktion. Benutzen Sie `geom_point()`.
+- Die Karatzahl soll jeweils auf der x-Achse und der Preis auf der y-Achse dargestellt werden.
 
 *** =hint
 - Schauen Sie für die ggplot-Funktion ins Skript oder benutzen Sie `?ggplot()` um mehr zu erfahren.
@@ -27,7 +28,7 @@ diamonds <- as.data.frame(diamonds)
 *** =sample_code
 ```{r}
 # Plot mit plot(), type = "p" erstellt einen Punkteplot.
-plot(___, ___, type = "p", main = "diamonds", xlab = "price", ylab = "carat")
+plot(___, ___, type = "p", main = "diamonds", xlab = "carat", ylab = "price")
 # Plot mit ggplot() mit geom_point()
 ggplot(data = ___, mapping = ___)
   
@@ -37,7 +38,7 @@ ggplot(data = ___, mapping = ___)
 *** =solution
 ```{r}
 # Plot mit plot() 
-plot(diamonds$price, diamonds$carat, type = "p", main = "diamonds", xlab = "price", ylab = "carat")
+plot(diamonds$carat, diamonds$price, type = "p", main = "diamonds", xlab = "carat", ylab = "price")
 # Plot mit ggplot() mit geom_point()
 ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
   geom_point()
