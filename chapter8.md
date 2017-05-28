@@ -361,8 +361,6 @@ Bisher haben Sie Plots mit 2  Variablen erstellt. Nun sollen Sie eine Grafik mit
 library(ggplot2)
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
-xxxplot <- ggplot(data = diamonds, mapping = aes(x = carat, y = price, group = cut, color = cut))+
-  geom_point()
 
 ```
 
@@ -419,15 +417,16 @@ test_error()
 --- type:NormalExercise lang:r xp:100 skills:1 key:8d133ae583
 ## 10. Funktion 
 Sie haben bereits gelernt eigene Funktionen zu schreiben. Nun sollen Sie das bisherige Wissen mit dem neu gelernten verknüpfen.
+Für die Funktion brauchen Sie ein geom, welches ihnen eine horizontale Linie liefert. Googeln Sie um den passenden Befehl zu finden.
 
 *** =instructions
 - Schreiben Sie eine Funktion "mean_compare"
 - Die Funktion erwartet 3 Eingabeparameter: `daten`, `a` und `b`.
 - Die Funktion erstellt einen Punkteplot mit `x = a` und `y = b`.
-- Außerdem soll der Plot als rote Konstante über dem Punkeplot den Mittelwert des y-Wertes anzeigen. 
+- Außerdem soll der Plot als rote Konstante über dem Punkeplot den Mittelwert des y-Wertes anzeigen (Geom muss recherchiert werden.)
 - Führen Sie die Funktion mit dem Datensatz "diamonds" aus. Die Eingabeparameter sind bereits vorgegeben.
 *** =hint
-- Sie können den Mittelwert mit `mean(vektor)` berechnen.
+- Sie können den Mittelwert mit `mean(vektor)` berechnen. Setzen Sie `yintercept` auf diesen Wert.
 - Sie können die mean-Funktion innerhalb des ggplot-geoms aufrufen.
 
 *** =pre_exercise_code
@@ -456,9 +455,9 @@ plot1 <- mean_compare(diamonds, diamonds$carat, diamonds$price)
 ```{r}
 # Funktion welche einen Punkteplot angibt und die Mittelwertkonstante
 mean_compare <- function(daten, a, b){
-ggplot(data = daten)+
-  geom_point(mapping = aes(x = a, y = b))+
-  geom_line(mapping = aes(x = a, y = mean(b)),  color = "red")
+ggplot(data = daten, mapping = aes(x = a, y = b))+
+  geom_point()+
+  geom_hline(yintercept = mean(b),  color = "red")
 }
 # Ausgabe des Plots an diamonds
 mean_compare(diamonds, diamonds$carat, diamonds$price)
