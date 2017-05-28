@@ -165,10 +165,10 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:d84eccfab0
 ## 4. Geoms
-Die Qualität der Diamanten ist in der Variable "cut" gespeichert. Diese soll nun in der nächsten Grafik verwendet werden.
+Die Qualität der Diamanten ist in der Variable "cut" gespeichert. Diese soll nun in der nächsten Grafik verwendet werden, um ein Histogramm zu erstellen.
 
 *** =instructions
-- Erstellen Sie ein Balkendiagramm, welches die Häufigkeit der verschiedenen Qualitäten der Edelsteine zeigt.
+- Erstellen Sie ein Balkendiagramm, welches die Häufigkeit der verschiedenen Qualitäten der Edelsteine zeigt (Histogramm).
 
 *** =hint
 - Benutzen Sie `geom_bar`
@@ -389,35 +389,51 @@ test_error()
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:b9786438e0
 ## 9. Geom
-
+Ein Boxplot ist ein Diagramm, welches die Verteilung einer oder mehrerer Merkmale grafisch darstellt. Man sieht so auf den ersten Blick den Median, das obere und untere Quantil und die Ausreißer.
 
 *** =instructions
+- Erstellen Sie mit ggplot einen Boxplot, welcher die Verteilung der Gewichte (carat) pro Farbe (color) erstellt.
+- Finden Sie eigenständig das geom, welches einen Boxplot erstellt
+- Färben Sie die Ausreißer rot (`oulier.color = "red"`).
 
 *** =hint
+- `geom_boxplot(mapping = aes(x  = ___, y = ___), outlier.color = "red")`
 
 *** =pre_exercise_code
 ```{r}
-
+library(ggplot2)
+data("diamonds")
+diamonds <- as.data.frame(diamonds)
 ```
 
 *** =sample_code
 ```{r}
+# Boxplot erstellen
+
+
 
 ```
 
 *** =solution
 ```{r}
+# Boxplot erstellen
+ggplot(data = diamonds)+
+  geom_boxplot(mapping = aes(x = color, y = carat), outlier.color = "red")
 
 ```
 
 *** =sct
 ```{r}
+test_function("ggplot", args = c("data"))
+test_function("geom_boxplot", args = c("mapping", "outlier.color"))
+test_function("aes")
+test_error()
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:8d133ae583
 ## 10. Funktion 
-Sie haben bereits gelernt eigene Funktionen zu schreiben. Nun sollen Sie das bisherige Wissen mit dem neu gelernten verknüpfen.
-Für die Funktion brauchen Sie ein geom, welches ihnen eine horizontale Linie liefert. Googeln Sie um den passenden Befehl zu finden.
+Sie haben bereits gelernt eigene Funktionen zu schreiben. Nun sollen Sie das bisherige Wissen mit dem neu Gelernten verknüpfen.
+Für die Funktion brauchen Sie ein geom, welches ihnen eine horizontale Linie liefert. Googeln Sie, um den passenden Befehl zu finden.
 
 *** =instructions
 - Schreiben Sie eine Funktion "mean_compare"
