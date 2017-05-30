@@ -1,17 +1,18 @@
 ---
 title       : Einheit 4 - inclass
-description : ggplot
+description : Grafische Analysen mit ggplot 
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:04384eb4ed
-## 1. Plot
-Sie kennen bereits die plot-Funktion, mit der Sie Datenreihen grafisch darstellen können. Nun wurde in der Vorlesung die ggplot Bibliothek eingeführt. 
-Gegeben ist ihnen der Datensatz "diamonds". Darin sind verschiedene Informationen gegeben, wie zum Beispiel Karatzahl, Preis und Qualität. Schauen Sie ihn sich in der Konsole an und erstellen Sie 2 Plots - die Bibliothek ist bereits eingebunden.
+## plot und ggplot (I)
+Vergleichen Sie die bereits bekannte Funktion `plot()` mit der Funktionalität des ggplot Packets.
+
+Gegeben ist der Datensatz "diamonds", der Informationen wie die Karatzahl, Preis und Qualität von Diamanten enthält. Verschaffen Sie sich einen Überblich und erstellen Sie zwei Plots gemäß der Vorgaben.
 
 Hilfe zum `plot` Befehl und den verschiedene Eingabeparametern finden Sie, indem Sie `?plot()` in der Konsole eingeben. 
 
 
 *** =instructions
-- Erstellen Sie einen Punkte-Plot der die Karatzahl und den Preis aus dem dataframe "diamonds". Benutzen Sie `plot()`.
+- Erstellen Sie einen Punkte-Plot der die Karatzahl und den Preis aus dem dataframe "diamonds" enthält. Benutzen Sie `plot()`.
 - Erstellen Sie den gleichen Plot mit der ggplot-Funktion. Benutzen Sie `geom_point()`.
 - Die Karatzahl soll jeweils auf der x-Achse und der Preis auf der y-Achse dargestellt werden.
 
@@ -20,17 +21,18 @@ Hilfe zum `plot` Befehl und den verschiedene Eingabeparametern finden Sie, indem
 
 *** =pre_exercise_code
 ```{r}
-library(ggplot2)
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
 ```
 
 *** =sample_code
 ```{r}
+library(ggplot2) 
+
 # Plot mit plot(), type = "p" erstellt einen Punkteplot.
 plot(___, ___, type = "p", main = "diamonds", xlab = "carat", ylab = "price")
 # Plot mit ggplot() mit geom_point()
-ggplot(data = ___, mapping = ___)
+ggplot(data = ___, mapping = ___) +
   
 
 ```
@@ -55,9 +57,11 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:f9dcd5853c
-## 2. Plot
-Im folgenden sollen Sie nur noch mit ggplot arbeiten. Die Bibliothek ist in allen folgenden Aufgaben bereits eingebunden.
-Ihnen ist wieder der "diamonds" Datensatz gegeben. Bei großen Datensätze wie diesem, kann man sehr schön mit dem Parameter `alpha` arbeiten. Dieser verändert die Transparenz der Datenpunkte. 
+## plot und ggplot (II)
+
+Arbeiten Sie ab jetzt nur noch mit ggplot. 
+
+Ihnen ist wieder der "diamonds" Datensatz gegeben. Bei großen Datensätze wie diesem, kann man sehr schön mit dem Transparenzparameter `alpha` arbeiten. Testen Sie verschiedene Werte. 
 
 
 *** =instructions
@@ -69,7 +73,6 @@ Ihnen ist wieder der "diamonds" Datensatz gegeben. Bei großen Datensätze wie d
 
 *** =pre_exercise_code
 ```{r}
-library(ggplot2)
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
 
@@ -77,6 +80,7 @@ diamonds <- as.data.frame(diamonds)
 
 *** =sample_code
 ```{r}
+library(ggplot2)
 # Plot mit alpha = 1/10
 
 
@@ -117,8 +121,9 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:e53d6f01e4
-## 3. Geoms
-Sie sollen nun verschiedene Geoms ausprobieren. 
+## geoms (I)
+
+Probieren Sie nun das geom `geom_line` aus.
 
 *** =instructions
 - Erstellen Sie einen Plot über die Karatzahl auf der x-Achse und dem Preis auf der y-Achse.
@@ -130,13 +135,15 @@ Sie sollen nun verschiedene Geoms ausprobieren.
 
 *** =pre_exercise_code
 ```{r}
-library(ggplot2)
+
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
 ```
 
 *** =sample_code
 ```{r}
+library(ggplot2)
+
 # Plotten Sie mit ggplot()
 
 
@@ -165,8 +172,11 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:d84eccfab0
-## 4. Geoms
-Die Qualität der Diamanten ist in der Variable "cut" gespeichert. Diese soll nun in der nächsten Grafik verwendet werden, um ein Histogramm zu erstellen.
+## geoms (II)
+
+Die Qualität der Diamanten ist in der Variable "cut" gespeichert. 
+
+Erstellen Sie ein Histogramm.
 
 *** =instructions
 - Erstellen Sie ein Balkendiagramm, welches die Häufigkeit der verschiedenen Qualitäten der Edelsteine zeigt (Histogramm).
@@ -176,13 +186,14 @@ Die Qualität der Diamanten ist in der Variable "cut" gespeichert. Diese soll nu
 
 *** =pre_exercise_code
 ```{r}
-library(ggplot2)
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
 ```
 
 *** =sample_code
 ```{r}
+library(ggplot2)
+
 # Erstellen Sie ein Balkendiagramm über cut
 
 ```
@@ -202,8 +213,11 @@ test_error()
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:182b668adc
-## 5. Lineare Regression
-Erstellen Sie eine Grafik, welche die jeweiligen Datenpunkte (Karat zu Preis) darstellt. Durch eine lineare Regression können Sie herausfinden, ob eine Abhängigkeit zwischen den beiden Variablen existiert.
+## geoms (III)
+
+Erstellen Sie eine Grafik, welche die jeweiligen Datenpunkte (Karat zu Preis) darstellt. 
+
+Erweitern Sie die Grafik durch einen linearen Trend um einen Eindruck über die Abhängigkeit zwischen den beiden Variablen zu erhalten.
 
 Um mehr über die Eingabeparameter von geom\_smooth zu erfahren, geben Sie `?geom_smooth()` in der Konsole ein.
 
@@ -217,13 +231,14 @@ Um mehr über die Eingabeparameter von geom\_smooth zu erfahren, geben Sie `?geo
 
 *** =pre_exercise_code
 ```{r}
-library(ggplot2)
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
 ```
 
 *** =sample_code
 ```{r}
+library(ggplot2)
+
 # Erstellen Sie eine lineare Regression
 
 
@@ -247,74 +262,14 @@ test_function("geom_smooth", args = c("method"))
 test_error()
 ```
 
-
---- type:NormalExercise lang:r xp:100 skills:1 key:9039fe0643
-## 6. geom_smooth
-Ihnen liegt in diamonds ein verkürzter Datensatz vor. Sie sollen wieder eine Glättungsfunktion über ihre Daten legen.
-
-Info: Bei der span Eingabe von span = 0.1 werden Warnungen in der Konsole ausgegeben. Diese können Sie einfach ignorieren.
-
-*** =instructions
-- Erstellen sie einen geom_line Plot.
-- Glätten Sie die Funktion mit geom_smooth.
-- Setzen Sie den span-Wert einmal auf 0.9 und einmal auf 0.1 (Warnungen ignorieren)
-- Vergleichen Sie die Ergebnisplots und achten Sie besonders auf die Wirkung der verschiedenen Eingaben für den "span"-Parameter.
-
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-library(ggplot2)
-library(dplyr)
-data("diamonds")
-diamonds <- as.data.frame(diamonds)
-diamonds <- filter(diamonds, diamonds$table < 54)
-```
-
-*** =sample_code
-```{r}
-# Span auf 0.8
-
-
-
-# Span auf 0.1 (Warnungen ignorieren)
-
-
-```
-
-*** =solution
-```{r}
-# Span auf 0.8
-ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
-  geom_line()+
-  geom_smooth(span = 0.8)
-# Span auf 0.1 (Warnungen ignorieren)
-ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
-  geom_line()+
-  geom_smooth(span = 0.1)
-```
-
-*** =sct
-```{r}
-
-test_function("ggplot", args = c("data", "mapping"), index = 1)
-test_function("geom_line", index = 1)
-test_function("geom_smooth", args = c("span"), index = 1)
-test_function("ggplot", args = c("data", "mapping"), index = 2)
-test_function("geom_line", index = 2)
-test_function("geom_smooth", args = c("span"), index = 2)
-test_error()
-```
-
-
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:0a648e1e7d
-## 7. span
-Was bewirkt ein hoher Wert für den span-Parameter bei der geom_smooth Funktion?
+## geoms (IV)
+Was bewirkt ein hoher Wert für den span-Parameter bei der `geom_smooth` Funktion?
 
-Zur Erinnerung sind ihnen die beiden von ihnen vorher erstellten Plots gegeben - Plot 1 mit span=0.8 und Plot 2 mit span=0.1
+Nehmen Sie die Beispielplots zur Hilfe.
 
 *** =instructions
-- Die Funktion wird "unruhiger".
+
 - Die Funktion wird glatter.
 - Punkte in der direkten Nachbarschaft werden stärker berücksichtigt.
 
@@ -329,11 +284,11 @@ diamonds <- as.data.frame(diamonds)
 diamonds <- filter(diamonds, diamonds$table < 54)
 # Span auf 0.8
 ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
-  geom_line()+
+  geom_points()+
   geom_smooth(span = 0.8)
 # Span auf 0.1 (Warnungen ignorieren)
 ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
-  geom_line()+
+  geom_points()+
   geom_smooth(span = 0.1)
 
 ```
@@ -342,28 +297,91 @@ ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
 ```{r}
 msg_bad <- "Leider falsch!"
 msg_success <- "Richtig!"
-test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad))
+test_mc(correct = 1, feedback_msgs = c(msg_bad, msg_success, msg_bad))
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:9039fe0643
+## geoms (V)
+
+Nutzen Sie eine Glättungsfunktion für eine Teilstichprobe von `diamonds` .  
+
+Info: Bei der span Eingabe von span = 0.1 werden Warnungen in der Konsole ausgegeben. Diese können Sie ignorieren.
+
+*** =instructions
+- Erstellen Sie einen Plot mit `geom_line`.
+- Glätten Sie die Funktion mit `geom_smooth`.
+- Setzen Sie das span Argument einmal auf 0.8 und einmal auf 0.1 (Warnungen ignorieren)
+- Vergleichen Sie die Ergebnisplots und achten Sie besonders auf die Wirkung der verschiedenen Eingaben für den "span"-Parameter.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+library(dplyr)
+data("diamonds")
+diamonds <- as.data.frame(diamonds)
+diamonds <- filter(diamonds, diamonds$table < 54)
+```
+
+*** =sample_code
+```{r}
+library(ggplot2)
+
+# Span auf 0.8
+
+
+
+# Span auf 0.1 (Warnungen ignorieren)
+
+
+```
+
+*** =solution
+```{r}
+# Span auf 0.8
+ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
+  geom_point()+
+  geom_smooth(span = 0.8)
+# Span auf 0.1 (Warnungen ignorieren)
+ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
+  geom_point()+
+  geom_smooth(span = 0.1)
+```
+
+*** =sct
+```{r}
+
+test_function("ggplot", args = c("data", "mapping"), index = 1)
+test_function("geom_point", index = 1)
+test_function("geom_smooth", args = c("span"), index = 1)
+test_function("ggplot", args = c("data", "mapping"), index = 2)
+test_function("geom_point", index = 2)
+test_function("geom_smooth", args = c("span"), index = 2)
+test_error()
 ```
 
 
 
 
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:cf02c17c22
-## 8. Grafiken mit mehreren Variablen
-Bisher haben Sie Plots mit 2  Variablen erstellt. Nun sollen Sie eine Grafik mit 3 Variablen erstellen. Ein Beispiel dazu haben Sie bereits in der Vorlesung gesehen - schauen Sie in diesem Beispiel, wie Sie die Aufgabe lösen können.
+## Grafiken mit mehreren Variablen (I)
 
+Bisher haben Sie Grafiken mit zwei Variablen erstellt. 
 
-Gegeben ist Ihnen wieder der Datensatz `diamonds`.
+Ein Beispiel für eine Grafik mit drei Variablen finden Sie in Ihren Unterlagen - orientieren Sie sich bei der Bearbeitung des  `diamonds` Datensatzen an diesem Beispiel.
 
 *** =instructions
-- Erstellen Sie ein Punktediagramm mit "carat" auf der x-Achse und "price" auf der y-Achse.
-- Die Punkte sollen die Datenpunkte farblich nach ihrer Qualität ("cut") trennen.
+- Erstellen Sie ein Punktediagramm mit `carat` auf der x-Achse und `price` auf der y-Achse.
+- Die Punkte sollen die Datenpunkte farblich nach ihrer Qualität (`cut`) trennen.
 *** =hint
 - setzen Sie im mapping: `group = VARIABLE` und `color = VARIABLE`
 
 *** =pre_exercise_code
 ```{r}
-library(ggplot2)
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
 
@@ -371,6 +389,8 @@ diamonds <- as.data.frame(diamonds)
 
 *** =sample_code
 ```{r}
+library(ggplot2)
+
 # Erstellen Sie einen Plot mit den Variablen carat, price und cut.
 
 
@@ -393,8 +413,11 @@ test_function("geom_point")
 test_error()
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:b9786438e0
-## 9. Geom
-Ein Boxplot ist ein Diagramm, welches die Verteilung einer oder mehrerer Merkmale grafisch darstellt. Man sieht so auf den ersten Blick den Median, das obere und untere Quantil und die Ausreißer.
+## Grafiken mit mehreren Variablen (II)
+
+Erstellen Sie ein Boxplot über das Gewicht für die verschiedenen Farbkategorien.
+
+Zur Erinnerung: Ein Boxplot ist ein Diagramm, welches die Verteilung einer oder mehrerer Merkmale grafisch darstellt. Man sieht so z.B. auf einen Blick Median, Quartile und Ausreißer.
 
 *** =instructions
 - Erstellen Sie mit ggplot einen Boxplot, welcher die Verteilung der Gewichte (carat) pro Farbe (color) erstellt.
@@ -406,13 +429,15 @@ Ein Boxplot ist ein Diagramm, welches die Verteilung einer oder mehrerer Merkmal
 
 *** =pre_exercise_code
 ```{r}
-library(ggplot2)
+
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
 ```
 
 *** =sample_code
 ```{r}
+library(ggplot2)
+
 # Boxplot erstellen
 
 
@@ -436,9 +461,12 @@ test_error()
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:8d133ae583
-## 10. Funktion 
-Sie haben bereits gelernt eigene Funktionen zu schreiben. Nun sollen Sie das bisherige Wissen mit dem neu Gelernten verknüpfen.
+## ggplot und Termin 3
 
+Definieren Sie eine Funktion (Termin 3), die dem Anwender das mühsame Definieren von `aes` und geoms abnimmt.
+
+Folgende Funktionalität soll bereitgestellt werden:
+xxx
 
 Für die Funktion brauchen Sie ein geom, welches ihnen eine horizontale Linie liefert. Googeln Sie, um den passenden Befehl zu finden.
 
@@ -454,13 +482,14 @@ Für die Funktion brauchen Sie ein geom, welches ihnen eine horizontale Linie li
 
 *** =pre_exercise_code
 ```{r}
-library(ggplot2)
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
 ```
 
 *** =sample_code
 ```{r}
+library(ggplot2)
+
 # Funktion welche einen Punkteplot angibt und die Mittelwertkonstante
 mean_compare <- function(daten, a, b){
 
