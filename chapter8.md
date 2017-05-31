@@ -288,11 +288,11 @@ diamonds <- as.data.frame(diamonds)
 diamonds <- filter(diamonds, diamonds$table < 54)
 # Span auf 0.8
 ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
-  geom_points()+
+  geom_point()+
   geom_smooth(span = 0.8)
 # Span auf 0.1 (Warnungen ignorieren)
 ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
-  geom_points()+
+  geom_point()+
   geom_smooth(span = 0.1)
 
 ```
@@ -301,7 +301,7 @@ ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
 ```{r}
 msg_bad <- "Leider falsch!"
 msg_success <- "Richtig!"
-test_mc(correct = 1, feedback_msgs = c(msg_bad, msg_success, msg_bad))
+test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad))
 ```
 
 
