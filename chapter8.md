@@ -21,6 +21,7 @@ Hilfe zum `plot` Befehl und den verschiedene Eingabeparametern finden Sie, indem
 
 *** =pre_exercise_code
 ```{r}
+library(ggplot2) 
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
 ```
@@ -73,6 +74,7 @@ Ihnen ist wieder der "diamonds" Datensatz gegeben. Bei großen Datensätze wie d
 
 *** =pre_exercise_code
 ```{r}
+library(ggplot2)
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
 
@@ -135,7 +137,7 @@ Probieren Sie nun das geom `geom_line` aus.
 
 *** =pre_exercise_code
 ```{r}
-
+library(ggplot2)
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
 ```
@@ -186,6 +188,7 @@ Erstellen Sie ein Histogramm.
 
 *** =pre_exercise_code
 ```{r}
+library(ggplot2)
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
 ```
@@ -231,6 +234,7 @@ Um mehr über die Eingabeparameter von geom\_smooth zu erfahren, geben Sie `?geo
 
 *** =pre_exercise_code
 ```{r}
+library(ggplot2)
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
 ```
@@ -319,7 +323,7 @@ Info: Bei der span Eingabe von span = 0.1 werden Warnungen in der Konsole ausgeg
 
 *** =pre_exercise_code
 ```{r}
-
+library(ggplot2)
 library(dplyr)
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
@@ -382,6 +386,7 @@ Ein Beispiel für eine Grafik mit drei Variablen finden Sie in Ihren Unterlagen 
 
 *** =pre_exercise_code
 ```{r}
+library(ggplot2)
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
 
@@ -429,7 +434,7 @@ Zur Erinnerung: Ein Boxplot ist ein Diagramm, welches die Verteilung einer oder 
 
 *** =pre_exercise_code
 ```{r}
-
+library(ggplot2)
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
 ```
@@ -482,6 +487,7 @@ Für die Funktion brauchen Sie ein geom, welches ihnen eine horizontale Linie li
 
 *** =pre_exercise_code
 ```{r}
+library(ggplot2)
 data("diamonds")
 diamonds <- as.data.frame(diamonds)
 ```
