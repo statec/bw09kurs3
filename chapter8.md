@@ -289,11 +289,13 @@ diamonds <- filter(diamonds, diamonds$table < 54)
 # Span auf 0.8
 ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
   geom_point()+
-  geom_smooth(span = 0.8)
+  geom_smooth(span = 0.8)+
+  ggtitle("Span = 0.8", subtitle = NULL)
 # Span auf 0.1 (Warnungen ignorieren)
 ggplot(data = diamonds, mapping = aes(x = carat, y = price))+
   geom_point()+
-  geom_smooth(span = 0.1)
+  geom_smooth(span = 0.1)+
+  ggtitle("Span = 0.1", subtitle = NULL)
 
 ```
 
