@@ -488,8 +488,7 @@ Testen Sie Ihre Funktion mit dem (eingelesenen) Datensatz `aktien_daten`.
 
 *** =pre_exercise_code
 ```{r}
-library(tidyr)
-library(ggplot2)
+library(tidyverse)
 # random Zahlen
 anzahl <- 50
 preis_apple <- c()
@@ -499,13 +498,19 @@ preis_fb <- runif(anzahl, 5.5, 9)
 preis_henkel <- c()
 preis_henkel <- runif(anzahl, 3, 4)
 
-aktien_daten <- data.frame( datum= c(1:anzahl), preis_apple , preis_fb, preis_henkel) 
+aktien_daten <- data.frame( tag = c(1:anzahl), preis_apple , preis_fb, preis_henkel) 
 ``` 
 
 *** =sample_code
 ```{r}
-library(tidyr)
-library(ggplot2)
+library(tidyverse)
+
+# Beispiel für Funktionen mit dplyr 
+#test_func <- function( daten,  x , y){
+#    ggplot(data = daten, mapping = aes(x = get(x) , y = get(y) ) )+
+#     ...
+#}
+
 # Funktion
 erstelle_grafik <- function( daten , xAchse,  var1, var2, var3){
 
@@ -514,7 +519,8 @@ erstelle_grafik <- function( daten , xAchse,  var1, var2, var3){
   
 }
 
-#erstelle_grafik( aktien_daten, "datum", "preis_apple" , "preis_fb", "preis_henkel" )
+#teste die Funktion
+erstelle_grafik( aktien_daten, "tag", "preis_apple" , "preis_fb", "preis_henkel" )
 ```
 
 *** =solution
@@ -526,7 +532,7 @@ erstelle_grafik <- function( daten , xAchse,  var1, var2, var3){
   geom_line()
 }
 # Ausführen an aktien_daten
-erstelle_grafik( aktien_daten, "datum", "preis_apple" , "preis_fb", "preis_henkel" )
+erstelle_grafik( aktien_daten, "tag", "preis_apple" , "preis_fb", "preis_henkel" )
 
 ```
 
