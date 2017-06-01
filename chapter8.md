@@ -468,61 +468,63 @@ test_error()
 
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:8d133ae583
-## ggplot und Termin 3
+## ggplot und Funktionen
 
-Definieren Sie eine Funktion (Termin 3), die dem Anwender das mühsame Definieren von `aes` und geoms abnimmt.
+Definieren Sie eine Funktion (siehe Termin 3), die dem Anwender das mühsame Definieren von `aes` und geoms abnimmt.
 
-Folgende Funktionalität soll bereitgestellt werden:
-xxx
+Dabei beinhalten die Spalten des Datensatzes mehrere Variablen, die in der Grafik erscheinen sollen.
 
-Für die Funktion brauchen Sie ein geom, welches ihnen eine horizontale Linie liefert. Googeln Sie, um den passenden Befehl zu finden.
+Testen Sie Ihre Funktion mit dem (eingelesenen) Datensatz `aktien_daten`. 
 
 *** =instructions
-- Schreiben Sie eine Funktion "mean_compare"
-- Die Funktion erwartet 3 Eingabeparameter: `daten`, `a` und `b`.
-- Die Funktion erstellt einen Punkteplot mit `x = a` und `y = b`.
-- Außerdem soll der Plot als rote Konstante über dem Punkeplot den Mittelwert des y-Wertes anzeigen (Geom muss recherchiert werden.)
-- Führen Sie die Funktion mit dem Datensatz "diamonds" aus. Die Eingabeparameter sind bereits vorgegeben.
+- gehen Sie von drei Variablen aus, die in einer Grafik verarbeitet werden
+- bei der Übergabe sollen nur Variablennamen aus dem Datensatz als Argument übergeben werden
+- verwenden Sie die `gather` Befehl um die korrekte Form herzustellen
+- wichtig: beachten Sie die korrekte Anwendung des `get()` Befehls wie im Beispiel.  
+- rufen Sie die ggplot Funktionen innerhalb der Funktion auf
+
 *** =hint
-- Sie können den Mittelwert mit `mean(vektor)` berechnen. Setzen Sie `yintercept` auf diesen Wert.
-- Sie können die mean-Funktion innerhalb des ggplot-geoms aufrufen.
+
 
 *** =pre_exercise_code
 ```{r}
-library(ggplot2)
-data("diamonds")
-diamonds <- as.data.frame(diamonds)
-```
+library(tidyverse)
+
+bsp_funktion <- function( daten , x, y ){
+# Variablenbezeichner, die als Argument an dplyr Funktionen übergeben werden,
+# müssen in get() eingesetzt werden
+ ggplot(data = daten, mapping = aes(x = get(x) , y = get(y))+
+    geom_point()
+}
+
+# hier kannst du noch einen schönen datensatz basteln... so dass man es nicht mehr manuell lösen kann
+aktien_daten <- data.frame( datum= c(1,2,3), preis_apple = c(2,3,4) , preis_fb = c(5,6,7), preis_henkel = c(4,7,1)) 
+``` 
 
 *** =sample_code
 ```{r}
-library(ggplot2)
-
-# Funktion welche einen Punkteplot angibt und die Mittelwertkonstante
-mean_compare <- function(daten, a, b){
-
-
-
-}
-# Ausführung der Funktion an diamonds
-mean_compare(diamonds, diamonds$carat, diamonds$price)
-# Speichern Sie das Ergebnis in plot1
-plot1 <- mean_compare(diamonds, diamonds$carat, diamonds$price)
 
 ```
 
 *** =solution
 ```{r}
-# Funktion welche einen Punkteplot angibt und die Mittelwertkonstante
-mean_compare <- function(daten, a, b){
-ggplot(data = daten, mapping = aes(x = a, y = b))+
-  geom_point()+
-  geom_hline(yintercept = mean(b),  color = "red")
+library(tidyverse)
+
+ 
+
+erstelle_grafik <- function( daten , xAchse,  var1, var2, var3){
+  
+  daten_mod <- gather( daten, get(var1), get(var2), get(var3), key = "kategorie" , value = "werte")
+  
+  ggplot(data = daten_mod, mapping = aes(x = get(xAchse) , y = werte, group = kategorie, color = kategorie))+
+    geom_line()
+  
+  
+  
 }
-# Ausgabe des Plots an diamonds
-mean_compare(diamonds, diamonds$carat, diamonds$price)
-# Speichern Sie das Ergebnis in plot1
-plot1 <- mean_compare(diamonds, diamonds$carat, diamonds$price)
+
+erstelle_grafik( aktien_daten, "datum", "preis_apple" , "preis_fb", "preis_henkel" )
+
 ```
 
 *** =sct
