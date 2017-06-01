@@ -477,11 +477,11 @@ Dabei beinhalten die Spalten des Datensatzes mehrere Variablen, die in der Grafi
 Testen Sie Ihre Funktion mit dem (eingelesenen) Datensatz `aktien_daten`. 
 
 *** =instructions
-- gehen Sie von drei Variablen aus, die in einer Grafik verarbeitet werden
-- bei der Übergabe sollen nur Variablennamen aus dem Datensatz als Argument übergeben werden
-- verwenden Sie die `gather` Befehl um die korrekte Form herzustellen
+- gehen Sie von drei Variablen aus, die in einer Grafik verarbeitet werden.
+- bei der Übergabe sollen nur Variablennamen aus dem Datensatz als Argument übergeben werden.
+- verwenden Sie die `gather` Befehl um die korrekte Form herzustellen.
 - wichtig: beachten Sie die korrekte Anwendung des `get()` Befehls wie im Beispiel.  
-- rufen Sie die ggplot Funktionen innerhalb der Funktion auf
+- rufen Sie die ggplot Funktionen innerhalb der Funktion auf.
 
 *** =hint
 
@@ -489,45 +489,53 @@ Testen Sie Ihre Funktion mit dem (eingelesenen) Datensatz `aktien_daten`.
 *** =pre_exercise_code
 ```{r}
 library(tidyr)
+library(ggplot2)
+# random Zahlen
+anzahl <- 50
+preis_apple <- c()
+preis_apple <- runif(anzahl, 4.5, 8)
+preis_fb  <- c()
+preis_fb <- runif(anzahl, 5.5, 9)
+preis_henkel <- c()
+preis_henkel <- runif(anzahl, 3, 4)
 
-bsp_funktion <- function( daten , x, y ){
-# Variablenbezeichner, die als Argument an dplyr Funktionen übergeben werden,
-# müssen in get() eingesetzt werden
- ggplot(data = daten, mapping = aes(x = get(x) , y = get(y))+
-    geom_point()
-}
-
-# hier kannst du noch einen schönen datensatz basteln... so dass man es nicht mehr manuell lösen kann
-aktien_daten <- data.frame( datum= c(1,2,3), preis_apple = c(2,3,4) , preis_fb = c(5,6,7), preis_henkel = c(4,7,1)) 
+aktien_daten <- data.frame( datum= c(1:anzahl), preis_apple , preis_fb, preis_henkel) 
 ``` 
 
 *** =sample_code
 ```{r}
-
-```
-
-*** =solution
-```{r}
 library(tidyr)
-
- 
-
+library(ggplot2)
+# Funktion
 erstelle_grafik <- function( daten , xAchse,  var1, var2, var3){
-  
-  daten_mod <- gather( daten, get(var1), get(var2), get(var3), key = "kategorie" , value = "werte")
-  
-  ggplot(data = daten_mod, mapping = aes(x = get(xAchse) , y = werte, group = kategorie, color = kategorie))+
-    geom_line()
+
   
   
   
 }
 
+#erstelle_grafik( aktien_daten, "datum", "preis_apple" , "preis_fb", "preis_henkel" )
+```
+
+*** =solution
+```{r}
+# Funktion
+erstelle_grafik <- function( daten , xAchse,  var1, var2, var3){
+  daten_mod <- gather( daten, get(var1), get(var2), get(var3), key = "kategorie" , value = "werte")
+  ggplot(data = daten_mod, mapping = aes(x = get(xAchse) , y = werte, group = kategorie, color = kategorie))+
+  geom_line()
+}
+# Ausführen an aktien_daten
 erstelle_grafik( aktien_daten, "datum", "preis_apple" , "preis_fb", "preis_henkel" )
 
 ```
 
 *** =sct
 ```{r}
+test_function("gather")
+test_function("ggplot")
+test_function("geom_line")
+test_function_result("erstelle_grafik")
+test_function_definition("erstelle_grafik")
 test_error()
 ```
