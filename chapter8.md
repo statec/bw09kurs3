@@ -488,7 +488,7 @@ Testen Sie Ihre Funktion mit dem (eingelesenen) Datensatz `aktien_daten`.
 
 *** =pre_exercise_code
 ```{r}
-library(tidyverse)
+library(tidyr)
 
 bsp_funktion <- function( daten , x, y ){
 # Variablenbezeichner, die als Argument an dplyr Funktionen übergeben werden,
@@ -508,7 +508,7 @@ aktien_daten <- data.frame( datum= c(1,2,3), preis_apple = c(2,3,4) , preis_fb =
 
 *** =solution
 ```{r}
-library(tidyverse)
+library(tidyr)
 
  
 
@@ -529,7 +529,5 @@ erstelle_grafik( aktien_daten, "datum", "preis_apple" , "preis_fb", "preis_henke
 
 *** =sct
 ```{r}
-test_function("mean_compare", args = c("daten", "a", "b"))
-test_object("plot1")
 test_error()
 ```
