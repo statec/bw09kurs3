@@ -488,7 +488,8 @@ Testen Sie Ihre Funktion mit dem (eingelesenen) Datensatz `aktien_daten`.
 
 *** =pre_exercise_code
 ```{r}
-library(tidyverse)
+library(ggplot)
+library(dplyr)
 # random Zahlen
 anzahl <- 50
 preis_apple <- c()
@@ -503,7 +504,8 @@ aktien_daten <- data.frame( tag = c(1:anzahl), preis_apple , preis_fb, preis_hen
 
 *** =sample_code
 ```{r}
-library(tidyverse)
+library(ggplot)
+library(dplyr)
 
 # Beispiel für Funktionen mit dplyr 
 #test_func <- function( daten,  x , y){
