@@ -104,10 +104,14 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:3a1d2c4e79
 ## ggplot(III)
-Erstellen Sie einen Boxplot mit ggplot.
+Erstellen sie einen Boxplot mit ggplot.
+
+Zum Datensatz: Im mtcars Datensatz steht in der `am` Variable eine 0 für automatik und eine 1 für manuel.
 
 *** =instructions
-
+- Erstellen sie  jeweils für Automatik und Manuelle Fahrzeuge einen Boxplot, der die Verteilung der beiden Merkmale auf die Variable "mpg" anzeigt.
+- Trennen Sie durch `group = VAR` die beiden Boxplots.
+- Benennen Sie die y-Achse zu "miles per gallon".
 *** =hint
 
 *** =pre_exercise_code
@@ -119,15 +123,21 @@ cars <- as.data.frame(cars)
 
 *** =sample_code
 ```{r}
-
+# Boxplot
 ```
 
 *** =solution
 ```{r}
-
+ggplot(data = mtcars)+
+  geom_boxplot(mapping = aes(x = am, y= mpg, group = am))+
+  ylab("Miles per Gallon")
 ```
 
 *** =sct
 ```{r}
+test_function("ggplot", args = c("data"))
+test_function("geom_boxplot", args = c("mapping"))
+test_function("ylab")
+test_error()
 
 ```
