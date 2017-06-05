@@ -264,10 +264,14 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:f3e019f723
 ## ggplot(V)
+Sie sehen rechts im Bild eine Grafik. 
 
+Tipp: Das geom `geom_density` eignet sich zur Häufigkeitsverteilung von stetigen Variablen.
 
 *** =instructions
-
+- Schreiben Sie den Code, der genau diese Grafik erzeugt.
+- Achten Sie auch auf Kleinigkeiten wie Beschriftungen.
+- der alpha-Wert muss auf 0.4 gesetzt werden.
 *** =hint
 
 *** =pre_exercise_code
@@ -275,21 +279,33 @@ test_error()
 library(ggplot2)
 data("cars")
 cars <- as.data.frame(cars)
+ggplot(mtcars, mapping = aes(x = mpg))+
+    geom_density(aes(group = cyl, color = cyl, fill = cyl), alpha = 0.4)+
+    ggtitle("Haeufigkeitsverteilung")+
+    xlab("Miles per gallon")
+
 ```
 
 *** =sample_code
 ```{r}
-ggplot(data = mtcars, mapping = aes(x = wt , y = mpg, group = cyl, color = cyl))+
-  geom_line()
+# Density Plot
 
 ```
 
 *** =solution
 ```{r}
-
+# Density Plot
+ggplot(data = mtcars, mapping = aes(x = mpg))+
+    geom_density(aes(group = cyl, color = cyl, fill = cyl), alpha = 0.4)+
+    ggtitle("Haeufigkeitsverteilung")+
+    xlab("Miles per gallon")
 ```
 
 *** =sct
 ```{r}
-
+test_function("ggplot", args = c("data", "mapping"))
+test_function("geom_density", args = c("mapping", "alpha"))
+test_function("ggtitle")
+test_function("xlab")
+test_error()
 ```
