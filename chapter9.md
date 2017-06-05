@@ -329,26 +329,39 @@ test_error()
 
 
 *** =instructions
-
+- Die Funktion bekommt als Eingabeparameter 2 Datensätze
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
 library(ggplot2)
-
+library(dplyr)
+library(tidyr)
+# Datensätze erstellt und eingelesen für einen join
+besucher1 <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/besucher1.csv")
+besucher2 <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/besucher2.csv")
+besucher1 <- besucher1 %>% rename(besucheranzahl1 = besucheranzahl)
+besucher2 <- besucher2 %>% rename(besucheranzahl2 = besucheranzahl)
 ```
 
 *** =sample_code
 ```{r}
 library(ggplot2)
 
-ggplot(data = mtcars, mapping = aes(x = wt, y = mpg, group = am, color = am))+
-  geom_line()
-
 ```
 
 *** =solution
 ```{r}
+library(ggplot2)
+joinplot <- function(dataset1, dataset2, xwert, ywert1, ywert2){
+  dataset <- inner_join(besucher1, besucher2, by = xwert)
+  ggplot(data = dataset)+
+    geom_line(mapping = aes(x = get(xwert), y = get(ywert1)), color = "blue")+
+    geom_line(mapping = aes(x = get(xwert), y = get(ywert2)), color = "red")+
+    xlab("x")+
+    ylab("y")
+}
+joinplot(besucher1, besucher2, "tag", "besucheranzahl1", "besucheranzahl2")
 
 ```
 
