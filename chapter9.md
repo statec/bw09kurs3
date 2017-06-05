@@ -189,25 +189,37 @@ test_error()
 Erstellen Sie eine Regression, welche die nächsten Nachbarpunkte stärker berücksichtigt.
 
 *** =instructions
+- Erstellen Sie einen Punkteplot über das Gewicht (wt) auf der x-Achse und miles per gallon (mpg) auf der y-Achse.
+- Erstellen Sie im Plot eine Regressionsgeraden.
+- Benutzen Sie einen Span-Wert von 0.4.
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-
+library(ggplot2)
+data("cars")
+cars <- as.data.frame(cars)
 ```
 
 *** =sample_code
 ```{r}
+# Regressionsplot
 
 ```
 
 *** =solution
 ```{r}
+ggplot(data = mtcars, mapping = aes(x = wt, y = mpg))+
+  geom_point()+
+  geom_smooth(span = 0.4)
 
 ```
 
 *** =sct
 ```{r}
-
+test_function("ggplot", args = c("data", "mapping"))
+test_function("geom_point")
+test_function("geom_smooth")
+test_error()
 ```
