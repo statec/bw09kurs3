@@ -142,6 +142,43 @@ test_error()
 
 ```
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:f716f27f34
+## ggplot(IV)
+Erstellen Sie ein Histogramm über die Verteilung der Cylinderzahl (cyl).
+
+*** =instructions
+- Arbeiten Sie mit verschiedenen aesthetics:
+- Färben Sie die Balken außen mit rot und innen mit blau.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+data("cars")
+cars <- as.data.frame(cars)
+```
+
+*** =sample_code
+```{r}
+# Histogramm
+
+
+```
+
+*** =solution
+```{r}
+ggplot(data = mtcars, mapping = aes(x = cyl))+
+  geom_bar(color = "red", fill = "blue")
+```
+
+*** =sct
+```{r}
+test_function("ggplot", args = c("data", "mapping"))
+test_function("geom_bar", args = c("color", "fill"))
+test_error()
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:2c68925ce4
 ## Regression (I)
 Erstellen Sie eine lineare Regression und prüfen Sie den Zusammenhang der Variablen "wt" (Gewicht) und "mpg" (miles per gallon) aus dem Datensatz "mtcars".
@@ -222,4 +259,37 @@ test_function("ggplot", args = c("data", "mapping"))
 test_function("geom_point")
 test_function("geom_smooth")
 test_error()
+```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:f3e019f723
+## ggplot(V)
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+data("cars")
+cars <- as.data.frame(cars)
+```
+
+*** =sample_code
+```{r}
+ggplot(data = mtcars, mapping = aes(x = wt , y = mpg, group = cyl, color = cyl))+
+  geom_line()
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
 ```
