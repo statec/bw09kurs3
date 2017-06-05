@@ -26,6 +26,7 @@ cars <- as.data.frame(cars)
 
 *** =sample_code
 ```{r}
+library(ggplot2)
 # Plot
 
 
@@ -82,6 +83,7 @@ cars <- as.data.frame(cars)
 
 *** =sample_code
 ```{r}
+library(ggplot2)
 # Plot
 
 
@@ -123,7 +125,12 @@ cars <- as.data.frame(cars)
 
 *** =sample_code
 ```{r}
+library(ggplot2)
 # Boxplot
+
+
+
+
 ```
 
 *** =solution
@@ -161,6 +168,7 @@ cars <- as.data.frame(cars)
 
 *** =sample_code
 ```{r}
+library(ggplot2)
 # Histogramm
 
 
@@ -199,6 +207,7 @@ cars <- as.data.frame(cars)
 
 *** =sample_code
 ```{r}
+library(ggplot2)
 # lineare Regression
 
 
@@ -241,6 +250,7 @@ cars <- as.data.frame(cars)
 
 *** =sample_code
 ```{r}
+library(ggplot2)
 # Regressionsplot
 
 ```
@@ -288,7 +298,11 @@ ggplot(mtcars, mapping = aes(x = mpg))+
 
 *** =sample_code
 ```{r}
+library(ggplot2)
 # Density Plot
+
+
+
 
 ```
 
@@ -308,4 +322,37 @@ test_function("geom_density", args = c("mapping", "alpha"))
 test_function("ggtitle")
 test_function("xlab")
 test_error()
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:7aa40d06a6
+## function(I)
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+
+```
+
+*** =sample_code
+```{r}
+library(ggplot2)
+
+ggplot(data = mtcars, mapping = aes(x = wt, y = mpg, group = am, color = am))+
+  geom_line()
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
 ```
