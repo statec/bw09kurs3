@@ -141,3 +141,73 @@ test_function("ylab")
 test_error()
 
 ```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:2c68925ce4
+## Regression (I)
+Erstellen Sie eine lineare Regression und prüfen Sie den Zusammenhang der Variablen "wt" (Gewicht) und "mpg" (miles per gallon) aus dem Datensatz "mtcars".
+
+
+*** =instructions
+- Erstellen Sie einen Punkteplot mit dem Gewicht des Autos auf der x-Achse, und "miles per gallon" auf der y-Achse.
+- Benutzen Sie eine lineare Regression, um einen Möglichen Zusammenhang zu entdecken.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+data("cars")
+cars <- as.data.frame(cars)
+```
+
+*** =sample_code
+```{r}
+# lineare Regression
+
+
+```
+
+*** =solution
+```{r}
+# lineare Regression
+ggplot(data = mtcars, mapping = aes(x = wt, y = mpg)) +
+    geom_point() + 
+    geom_smooth(method = 'lm')
+
+```
+
+*** =sct
+```{r}
+test_function("ggplot", args = c("data", "mapping"))
+test_function("geom_point")
+test_function("geom_smooth", args = c("method"))
+test_error()
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:d340cf399a
+## Regression (II)
+Erstellen Sie eine Regression, welche die nächsten Nachbarpunkte stärker berücksichtigt.
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
