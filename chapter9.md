@@ -5,7 +5,106 @@ description : Homework zum ggplot Kapitel
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:4262a8c0ff
 ## ggplot(I)
+Erstellen Sie einen Plot mit ggplot.
 
+Die Daten liegen im Datensatz "cars".
+
+*** =instructions
+- Erstellen Sie einen Punkteplot mit der Geschwindigkeit `dist` auf der x-Achse und `speed` auf der y-Achse.
+- Beschriften Sie die x-Achse mit "Distanz" und die y-Achse mit Geschwindigkeit.
+- Schreiben Sie über die Grafik den Titel "cars"
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+data("cars")
+cars <- as.data.frame(cars)
+
+```
+
+*** =sample_code
+```{r}
+# Plot
+
+
+
+    
+```
+
+*** =solution
+```{r}
+# Plot
+ggplot(data = cars, mapping = aes(x = dist, y = speed))+
+    geom_point()+
+    xlab("Distanz")+
+    ylab("Geschwindigkeit")+
+    ggtitle("cars")
+
+```
+
+*** =sct
+```{r}
+test_function("ggplot", args = c("data", "mapping"))
+test_function("xlab")
+test_function("ylab")
+test_function("ggtitle")
+test_error()
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:19545c4dd1
+## ggplot(II)
+Gegeben ist der Datensatz mtcars.
+
+Erstellen Sie einen ggplot. 
+
+
+
+*** =instructions
+- Plotten Sie das Gewicht "wt" auf x  und auf "mpg" (miles per gallon) auf y.
+- Stellen Sie anhand der Größe der Quadrate die Beschleudigung "qsec" dar. (Quadrate haben die Kennzahl 15)
+- Unterstützen Sie die qsec Darstellung durch die Färbung nach Beschleunigung.
+
+*** =hint
+- nutzen Sie für die Größe in `aes(..., size = VARIABLE,...)`
+- nutzen Sie für die Färbung `aes(..., group = VAR, color = VAR)`
+- setzen Sie die Form durch `shape = 15`
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+data("cars")
+cars <- as.data.frame(cars)
+
+```
+
+*** =sample_code
+```{r}
+# Plot
+
+
+```
+
+*** =solution
+```{r}
+ggplot(data = mtcars, mapping = aes(x = wt, y = mpg, size = qsec, group = qsec, color = qsec))+
+  geom_point(shape = 15)
+
+```
+
+*** =sct
+```{r}
+test_function("ggplot", args = c("data", "mapping"))
+test_function("geom_point", args = c("shape"))
+test_error()
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:3a1d2c4e79
+## ggplot(III)
+Erstellen Sie einen Boxplot mit ggplot.
 
 *** =instructions
 
@@ -14,7 +113,8 @@ description : Homework zum ggplot Kapitel
 *** =pre_exercise_code
 ```{r}
 library(ggplot2)
-
+data("cars")
+cars <- as.data.frame(cars)
 ```
 
 *** =sample_code
