@@ -326,10 +326,14 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:7aa40d06a6
 ## function(I)
+Schreiben Sie eine Funktion, die 2 Datensätze erst mischen muss, bevor Sie sie grafisch darstellt.
 
+Überlegen Sie sich, welcher join sinnvoll ist: es sollen weder Doppelungen noch NAs auftreten. (Es sollen also nur Punkte geplottet werden, die in beiden Datensätzen enthalten sind.)
 
 *** =instructions
-- Die Funktion bekommt als Eingabeparameter 2 Datensätze
+- Die Funktion bekommt als Eingabeparameter 2 Datensätze, den x-Wert und beide y-Werte.
+- Sie vereinigt die beiden Datensätze anhand von xwert.
+- 
 *** =hint
 
 *** =pre_exercise_code
@@ -337,10 +341,11 @@ test_error()
 library(ggplot2)
 library(dplyr)
 
-Erstellung der Datensätze
+#Erstellung der Datensätze
 tag <- c(1,2,3,5,8,9,10,11:20, 25, 27, 31:42, 45, 48, 50)
 einnahmen <- c(1050, 1280, 3422, 2504, 6123, 1231, 2242, 1624, 1242, 1543, 3746, 8987, 2365, 4425, 2741, 3486, 1334, 5475, 3346, 2335, 2334, 2474, 3444, 6766, 1233, 3142, 2774, 2245, 3426, 1354,2735, 2234, 1623, 5322)
 einnahmenDF <- data.frame(tag, einnahmen)
+
 tag <- c(1,3:8,10:22, 25, 26, 31:46, 50)
 besucher <- c(100, 180, 322, 204, 123, 131, 242, 124, 124, 543, 346, 897, 235, 425, 241, 346, 134, 475, 346, 235, 234, 244, 444, 666, 123, 142, 274, 245, 326, 134,235, 234, 123, 532, 135, 344, 364, 263, 99)
 besucherDF <- data.frame(tag, besucher)
@@ -351,6 +356,14 @@ besucherDF <- data.frame(tag, besucher)
 ```{r}
 library(ggplot2)
 library(dplyr)
+# Funktion
+joingrafik <- 
+
+
+
+
+# Ausführung der Funktion am Beispiel
+joingrafik(besucherDF, einnahmenDF, "tag", "besucher", "einnahmen")
 ```
 
 *** =solution
