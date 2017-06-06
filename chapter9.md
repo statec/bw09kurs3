@@ -326,14 +326,16 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:7aa40d06a6
 ## function(I)
-Schreiben Sie eine Funktion, die 2 Datensätze erst mischen muss, bevor Sie sie grafisch darstellt.
+Schreiben Sie eine Funktion, die 2 Datensätze erst vereinigen muss, bevor Sie sie grafisch darstellt.
 
 Überlegen Sie sich, welcher join sinnvoll ist: es sollen weder Doppelungen noch NAs auftreten. (Es sollen also nur Punkte geplottet werden, die in beiden Datensätzen enthalten sind.)
 
 *** =instructions
-- Die Funktion bekommt als Eingabeparameter 2 Datensätze, den x-Wert und beide y-Werte.
+- Die Funktion soll folgendermaßen aussehen:
+- `joingrafik <- function(dataset1, dataset2, xwert, ywert1, ywert2)`
 - Sie vereinigt die beiden Datensätze anhand von xwert.
-- 
+- Erstellen sie einen Punkteplot, der den einen ywert1 auf der y-Achse, und den ywert2 sowohl farblich als auch durch die Größe der Punkte darstellt. 
+- Testen Sie ihre Funktion anhand der beiden Datensätze "besucherDF" und "einnahmenDF".
 *** =hint
 
 *** =pre_exercise_code
@@ -357,24 +359,24 @@ besucherDF <- data.frame(tag, besucher)
 library(ggplot2)
 library(dplyr)
 # Funktion
-joingrafik <- 
+joingrafik <- function(dataset1, dataset2, xwert, ywert1, ywert2){
 
 
 
-
+}
 # Ausführung der Funktion am Beispiel
-joingrafik(besucherDF, einnahmenDF, "tag", "besucher", "einnahmen")
+joingrafik(besucherDF, einnahmenDF, ___, ___, ___)
 ```
 
 *** =solution
 ```{r}
 # Funktion
 joingrafik <- function(dataset1, dataset2, xwert, ywert1, ywert2){
-# joining der Datensaetze anhand von tag
+# joining der Datensaetze anhand von tag mit INNERJOIN
   dataset <- inner_join(dataset1, dataset2, by = xwert)
   # Plotten der Daten
   ggplot(data = dataset)+
-    geom_point(mapping = aes(x = get(xwert), y = get(ywert1), group = get(ywert2), size = get(ywert2), color = get(ywert2)))+
+    geom_point(mapping = aes(x = get(xwert), y = get(ywert1), size = get(ywert2), color = get(ywert2)))+
     xlab("x")+
     ylab("y")
 }
@@ -385,5 +387,7 @@ joingrafik(besucherDF, einnahmenDF, "tag", "besucher", "einnahmen")
 
 *** =sct
 ```{r}
-
+test_function_result("joingrafik")
+test_function_definition("joingrafik")
+test_error()
 ```
