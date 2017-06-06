@@ -336,32 +336,37 @@ test_error()
 ```{r}
 library(ggplot2)
 library(dplyr)
-library(tidyr)
-# Datensätze erstellt und eingelesen für einen join
-besucher1 <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/besucher1.csv")
-besucher2 <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/besucher2.csv")
-besucher1 <- besucher1 %>% rename(besucheranzahl1 = besucheranzahl)
-besucher2 <- besucher2 %>% rename(besucheranzahl2 = besucheranzahl)
+
+Erstellung der Datensätze
+tag <- c(1,2,3,5,8,9,10,11:20, 25, 27, 31:42, 45, 48, 50)
+einnahmen <- c(1050, 1280, 3422, 2504, 6123, 1231, 2242, 1624, 1242, 1543, 3746, 8987, 2365, 4425, 2741, 3486, 1334, 5475, 3346, 2335, 2334, 2474, 3444, 6766, 1233, 3142, 2774, 2245, 3426, 1354,2735, 2234, 1623, 5322)
+einnahmenDF <- data.frame(tag, einnahmen)
+tag <- c(1,3:8,10:22, 25, 26, 31:46, 50)
+besucher <- c(100, 180, 322, 204, 123, 131, 242, 124, 124, 543, 346, 897, 235, 425, 241, 346, 134, 475, 346, 235, 234, 244, 444, 666, 123, 142, 274, 245, 326, 134,235, 234, 123, 532, 135, 344, 364, 263, 99)
+besucherDF <- data.frame(tag, besucher)
+
 ```
 
 *** =sample_code
 ```{r}
 library(ggplot2)
-
+library(dplyr)
 ```
 
 *** =solution
 ```{r}
-library(ggplot2)
-joinplot <- function(dataset1, dataset2, xwert, ywert1, ywert2){
-  dataset <- inner_join(besucher1, besucher2, by = xwert)
+# Funktion
+joingrafik <- function(dataset1, dataset2, xwert, ywert1, ywert2){
+# joining der Datensaetze anhand von tag
+  dataset <- inner_join(dataset1, dataset2, by = xwert)
+  # Plotten der Daten
   ggplot(data = dataset)+
-    geom_line(mapping = aes(x = get(xwert), y = get(ywert1)), color = "blue")+
-    geom_line(mapping = aes(x = get(xwert), y = get(ywert2)), color = "red")+
+    geom_point(mapping = aes(x = get(xwert), y = get(ywert1), group = get(ywert2), size = get(ywert2), color = get(ywert2)))+
     xlab("x")+
     ylab("y")
 }
-joinplot(besucher1, besucher2, "tag", "besucheranzahl1", "besucheranzahl2")
+
+joingrafik(besucherDF, einnahmenDF, "tag", "besucher", "einnahmen")
 
 ```
 
