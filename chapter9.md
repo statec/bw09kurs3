@@ -287,8 +287,8 @@ Tipp: Das geom `geom_density` eignet sich zur Häufigkeitsverteilung von stetige
 *** =pre_exercise_code
 ```{r}
 library(ggplot2)
-data("cars")
-cars <- as.data.frame(cars)
+data("mtcars")
+mtcars <- as.data.frame(mtcars)
 ggplot(mtcars, mapping = aes(x = mpg))+
     geom_density(aes(group = cyl, color = cyl, fill = cyl), alpha = 0.4)+
     ggtitle("Haeufigkeitsverteilung")+
@@ -389,5 +389,63 @@ joingrafik(besucherDF, einnahmenDF, "tag", "besucher", "einnahmen")
 ```{r}
 test_function_result("joingrafik")
 test_function_definition("joingrafik")
+test_error()
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:dd0d7d678a
+## function(II)
+Gesucht ist eine Funktion, die einen Teil des Datenstatzes anhand einer bestimmten Bedingung auswählt und nur diesen Teil plottet.
+
+
+
+*** =instructions
+- Schreiben sie die Funtkion `partplot <- function(datensatz, xwert, ywert, filterwert, bedingung)`
+- filtern Sie den Datensatzes anhand der Filtervariable und der Bedingung.
+- Testen Sie ihre Funktion am mtcars Datensatz.
+- Plotten Sie "wt" auf x und "mpg" auf y, aber nur von den automatischen Fahrzeugen (am = 0).
+- Info: der Filterwert MUSS als datensatz$name eingegeben werden.
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+library(ggplot2)
+library(dplyr)
+data("mtcars")
+mtcars <- as.data.frame(mtcars)
+```
+
+*** =sample_code
+```{r}
+# Funktion die nur einen Teil des Datensatzes plottet
+
+
+
+
+# Ausfürhrung der Funktion für Automatische Fahrzeuge
+partplot(mtcars, "wt", "mpg", mtcars$am, 0)
+```
+
+*** =solution
+```{r}
+# Funktion die nur einen Teil des Datensatzes plottet
+# und zwar wird nur der Teil geplottet, bei denen der filterwert == Bedingung ist
+partplot <- function(datensatz, xwert, ywert, filterwert, bedingung){
+# Auswahl des Datensatzes, der die Bedingung erfüllt
+  part <- filter(datensatz, filterwert == bedingung)
+  # Plot
+  ggplot(data = part)+
+    geom_line(mapping = aes(x = get(xwert), y = get(ywert)))
+}
+
+# Ausfürhrung der Funktion für Automatische Fahrzeuge
+partplot(mtcars, "wt", "mpg", mtcars$am, 0)
+
+```
+
+*** =sct
+```{r}
+test_function_result("partplot")
+test_function_definition("partplot")
 test_error()
 ```
