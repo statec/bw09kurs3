@@ -70,7 +70,7 @@ Erstellen Sie einen ggplot.
 
 *** =hint
 - nutzen Sie für die Größe in `aes(..., size = VARIABLE,...)`
-- nutzen Sie für die Färbung `aes(..., group = VAR, color = VAR)`
+- nutzen Sie für die Färbung `aes(..., color = VAR)`
 - setzen Sie die Form durch `shape = 15`
 
 *** =pre_exercise_code
@@ -91,7 +91,7 @@ library(ggplot2)
 
 *** =solution
 ```{r}
-ggplot(data = mtcars, mapping = aes(x = wt, y = mpg, size = qsec, group = qsec, color = qsec))+
+ggplot(data = mtcars, mapping = aes(x = wt, y = mpg, size = qsec, color = qsec))+
   geom_point(shape = 15)
 
 ```
@@ -372,7 +372,7 @@ joingrafik(besucherDF, einnahmenDF, ___, ___, ___)
 ```{r}
 # Funktion
 joingrafik <- function(dataset1, dataset2, xwert, ywert1, ywert2){
-# joining der Datensaetze anhand von tag mit INNERJOIN
+# joining der Datensaetze anhand von tag mit inner_join
   dataset <- inner_join(dataset1, dataset2, by = xwert)
   # Plotten der Daten
   ggplot(data = dataset)+
