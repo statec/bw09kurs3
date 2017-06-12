@@ -83,8 +83,13 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad))
 --- type:NormalExercise lang:r xp:100 skills:1 key:039e472d47
 ## Test auf Mittelwert
 Die Annahmeprüfung für eine Produktion von Sicherungen wird auf Stichprobenbasis durchgeführt.
-Der Hersteller bahuptet, der Anteil der nicht funktionsfähigen Sicherungen beträgt höchstens 7.5%. 
+
+Der Hersteller behauptet, der Anteil der nicht funktionsfähigen Sicherungen beträgt höchstens 7.5%. 
+
+
 Die Prüfung von 400 zufällig ausgewählten Sicherungen ergab, dass 367 funktionsfähig waren.
+
+
 Wir können annehmen, dass wir eine Binominalverteilung vorliegen haben.
 
 *** =instructions
@@ -101,7 +106,7 @@ xyb <- pbinom(q = 359, size = 400, prob = 0.925)
 *** =sample_code
 ```{r}
 # p-Wert berechnen
-pwert <- pbinom(q = 359, size = 400, prob = 0.925)
+pwert <-
 # Ergebnis ausgeben 
 pwert
 
