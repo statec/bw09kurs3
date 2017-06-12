@@ -116,6 +116,38 @@ test_output_contains("xxx")
 test_error()
 
 ```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:635ecf6689
+## Normalverteilung (II)
+Die mittleren Jahreseinkommen einer Großstadt betragen 33000€ mit einer Standardabweichung von 6500€.
+Man entnimmt eine Zufallsstichprobe mit 500 Haushalten.
+
+Runden Sie nicht! Arbeiten Sie mit den exkten Werten.
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+qnorm <- (p = 0.9, mean = 33000, sd = 6500)
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:039e472d47
 ## Test auf Mittelwert
 Die Annahmeprüfung für eine Produktion von Sicherungen wird auf Stichprobenbasis durchgeführt.
