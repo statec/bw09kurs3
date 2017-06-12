@@ -5,7 +5,9 @@ description : probability distributions
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:18badc89d0
 ## distributions (I)
-Sei X eine normalverteilte Zufallsvariable mit Mittelwert 10 und Standardabweichung 1.
+Sei X eine normalverteilte Zufallsvariable mit Mittelwert 10 und Standardabweichung 1. 
+
+Geben Sie `?dnorm()` in der Konsole ein, um die Eingabeparameter der Funktionen korrekt zu wählen.
 
 
 *** =instructions
@@ -45,5 +47,9 @@ rnorm(n = 10, mean = 10, sd = 1)
 
 *** =sct
 ```{r}
-
+test_function("dnorm", args = c("x", "mean", "sd"))
+test_function("pnorm", args = c("q", "mean", "sd"))
+test_function("qnorm", args = c("p", "mean", "sd"))
+test_function("rnorm", args = c("n", "mean", "sd"))
+test_error()
 ```
