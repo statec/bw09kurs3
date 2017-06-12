@@ -109,15 +109,24 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad))
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:20e949d5dc
 ## ZGS (II)
-Replizieren Sie die Grafik aus der VL für n = 30  un n = 100.
+Replizieren Sie die Grafik aus der VL für n = 30  un n = 100 (Folien 18 & 19).
+
 Gehen Sie weiterhin von 1 Freiheitsgrad aus.
 
-*** =instructions
-- BeaSetze die korrekte Standardabweichung für der ChiQuadrath verteilung
+Tipp: Informieren Sie sich über die Standardabweichung der Chiquadrat Verteilung.
 
+*** =instructions
+- Setze die korrekte Standardabweichung für der ChiQuadrath verteilung. 
+- Überprüfen Sie selbst, ob die von Ihnen erstellte Grafik den entsprechenden Grafiken im Skript entsprechen.
 *** =hint
 
 *** =pre_exercise_code
+```{r}
+
+
+```
+
+*** =sample_code
 ```{r}
 check_zgs <- function(groesse, freiheitsgrade){
   mittelwerte <- c()
@@ -128,50 +137,60 @@ check_zgs <- function(groesse, freiheitsgrade){
   return(mittelwerte)
 }
 
-# Anwenden der Funktion
-g1 = 30
-mw <- check_zgs(groesse, freiheitsgrade = 1)
-# Darin sind jetzt 10000 Mittwelwerte von Stichproben der Größe 5 mit der Varianz 2
+# Anwenden der Funktion für n = 30
+mw <- check_zgs(groesse = 30, freiheitsgrade = 1)
 plot(density(mw))
-# Festsetzen der Werte (Varianz = 2* df)
+# Setzen Sie die korrekte Standardabweichung
+sd_test <- ___
+# Vergleich zur asymptotischen Verteilung laut ZGS
+curve(dnorm(x, mean = 1, sd = sd_test), from = -5, to = 5, col = "red", lwd = 2, add = TRUE)
+legend("topright", c("check_zgs", "ZGS"), col=c("black", "red"))
+
+# Anwenden der Funktion für n = 100
+mw <- check_zgs(groesse = 100, freiheitsgrade = 1)
+plot(density(mw))
+# Setzen Sie die korrekte Standardabweichung
+sd_test <- ___
+# Vergleich zur asymptotischen Verteilung laut ZGS 
+curve(dnorm(x, mean = 1, sd = sd_test), from = -5, to = 5, col = "red", lwd = 2, add = TRUE)
+legend("topright", c("check_zgs", "ZGS"), col=c("black", "red"))
+
+
+```
+
+*** =solution
+```{r}
+check_zgs <- function(groesse, freiheitsgrade){
+  mittelwerte <- c()
+  for(i in 1:10000){
+    stichprobe_i <- rchisq(n = groesse, df = freiheitsgrade)
+    mittelwerte[i] <- mean(stichprobe_i)
+  }
+  return(mittelwerte)
+}
+
+# Anwenden der Funktion für n = 30
+groesse = 30
+freiheitsgrade = 1
+# Varianz = 2*df
 varianz = 2
-# Woher kommt der mean?
+mw <- check_zgs(groesse, freiheitsgrade)
+plot(density(mw))
+# Setzen Sie die korrekte Standardabweichung
 sd_test <- sqrt(varianz/groesse)
 # vergleich zur asymptotischen Verteilung laut ZGS (norm)
 curve(dnorm(x, mean = 1, sd = sd_test), from = -5, to = 5, col = "red", lwd = 2, add = TRUE)
 legend("topright", c("check_zgs", "ZGS"), col=c("black", "red"))
 
-```
-
-*** =sample_code
-```{r}
-check_zgs <- function(groesse, freiheitsgrade){
-  mittelwerte <- c()
-  for(i in 1:10000){
-    stichprobe_i <- rchisq(n = groesse, df = freiheitsgrade)
-    mittelwerte[i] <- mean(stichprobe_i)
-  }
-  return(mittelwerte)
-}
-
-# Anwenden der Funktion
-
-mw <- check_zgs(___, freiheitsgrade = 1)
-
+# Anwenden der Funktion für n = 100
+groesse = 100
+mw <- check_zgs(groesse, freiheitsgrade)
 plot(density(mw))
 # Setzen Sie die korrekte Standardabweichung
-sd_test <- ___
-
+sd_test <- sqrt(varianz/groesse)
 # vergleich zur asymptotischen Verteilung laut ZGS (norm)
 curve(dnorm(x, mean = 1, sd = sd_test), from = -5, to = 5, col = "red", lwd = 2, add = TRUE)
 legend("topright", c("check_zgs", "ZGS"), col=c("black", "red"))
-
-
-```
-
-*** =solution
-```{r}
-
 ```
 
 *** =sct
@@ -179,12 +198,19 @@ legend("topright", c("check_zgs", "ZGS"), col=c("black", "red"))
 
 ```
 
---- type:NormalExercise lang:r xp:100 skills:1 key:d116af166c
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:a015e94bb1
 ## ZGS(III)
+Welche Standartabweichung hätten wir bei einer Chiquadrat Verteilung mit folgenden Parametern:
+
+groesse = 100
 
 
+freiheitsgrade = 2
 
 *** =instructions
+- 1/5
+- 2/100
+- 1/10
 
 *** =hint
 
@@ -193,17 +219,9 @@ legend("topright", c("check_zgs", "ZGS"), col=c("black", "red"))
 
 ```
 
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
-```
-
 *** =sct
 ```{r}
-
+msg_bad <- "Leider falsch!"
+msg_success <- "Richtig! Hier muss man sich merken Varianz = 2*freiheitsgrade."
+test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad))
 ```
