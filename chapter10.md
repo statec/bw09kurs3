@@ -95,7 +95,7 @@ Runden Sie nicht! Arbeiten Sie mit den exkten Werten.
 
 *** =pre_exercise_code
 ```{r}
-xxx <- pnorm(abs(sqrt(500)*(32800-33000)/6500))
+xxx <- 1 -pnorm(abs(sqrt(500)*(32800-33000)/6500))
 ```
 
 *** =sample_code
@@ -107,7 +107,8 @@ xxx <- pnorm(abs(sqrt(500)*(32800-33000)/6500))
 *** =solution
 ```{r}
 Zn  <- abs(sqrt(500)*(32800-33000)/6500)
-pnorm(Zn)
+gegen_p <- pnorm(Zn)
+p <- 1 - gegen_p
 ```
 
 *** =sct
