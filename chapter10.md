@@ -127,27 +127,37 @@ Man entnimmt eine Zufallsstichprobe mit 500 Haushalten.
 Runden Sie nicht! Arbeiten Sie mit den exkten Werten.
 
 *** =instructions
+- Berechnen Sie die Wahrscheinlichkeit dafür, dass der Stichprobenmittelwert zwischen 32750 und 33250 liegt. Geben Sie das Ergebnis in der Konsole aus.
 
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
+ax <- pnorm(abs(sqrt(500)*(33250-33000)/6500))
+bx <- 1 -pnorm(abs(sqrt(500)*(32750-33000)/6500))
+pkl <- ax - bx
+rm(ax)
+rm(bx)
 
 ```
 
 *** =sample_code
 ```{r}
-qnorm <- (p = 0.9, mean = 33000, sd = 6500)
+
 ```
 
 *** =solution
 ```{r}
+upperbound <- pnorm(abs(sqrt(500)*(33250-33000)/6500))
+lowerbound <- 1 -pnorm(abs(sqrt(500)*(32750-33000)/6500))
+upperbound - lowerbound
 
 ```
 
 *** =sct
 ```{r}
-
+test_output_contains("pkl")
+test_error()
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:039e472d47
 ## Test auf Mittelwert
