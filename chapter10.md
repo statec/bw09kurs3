@@ -159,8 +159,10 @@ upperbound - lowerbound
 test_output_contains("pkl")
 test_error()
 ```
---- type:NormalExercise lang:r xp:100 skills:1 key:039e472d47
-## Test auf Mittelwert
+
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:fcb503360c
+## Signifikanz
 Die Annahmeprüfung für eine Produktion von Sicherungen wird auf Stichprobenbasis durchgeführt.
 
 Der Hersteller behauptet, der Anteil der nicht funktionsfähigen Sicherungen beträgt höchstens 7.5%. 
@@ -169,29 +171,15 @@ Der Hersteller behauptet, der Anteil der nicht funktionsfähigen Sicherungen bet
 Die Prüfung von 400 zufällig ausgewählten Sicherungen ergab, dass 367 funktionsfähig waren.
 
 
-Wir können annehmen, dass wir eine Binominalverteilung vorliegen haben.
+Wir können annehmen, dass wir eine Binominalverteilung vorliegen haben. Ablehnung deer Hypothese?
 
 *** =instructions
-- Können Sie aufgrund dieser Stichprobe die Aussage des Herstellers wiederlegen?
-- Gehen Sie von einem Signifikanzniveau von 2% aus.
-
+- Ablehnung der Hypothese auf Signifikanzniveau 2%
+- Ablehnung der Hypothese auf Signifikanzniveau 5%
+- Ablehnung der Hypothese auf Signifikanzniveau 10%
 *** =hint
 
 *** =pre_exercise_code
-```{r}
-xyb <- pbinom(q = 359, size = 400, prob = 0.925)
-```
-
-*** =sample_code
-```{r}
-# p-Wert berechnen
-pwert <-
-# Ergebnis ausgeben 
-pwert
-
-```
-
-*** =solution
 ```{r}
 pwert <- pbinom(q = 359, size = 400, prob = 0.925)
 # Ergebnis ausgeben 
@@ -200,9 +188,11 @@ pwert
 
 *** =sct
 ```{r}
-test_output_contains("xyb")
-test_error()
+msg_bad <- "Leider falsch!"
+msg_success <- "Richtig!"
+test_mc(correct = 2, feedback_msgs = c(msg_success, msg_bad, msg_bad))
 ```
+
 --- type:NormalExercise lang:r xp:100 skills:1 key:20e949d5dc
 ## ZGS (I)
 Replizieren Sie die Grafik aus der VL für n = 30  un n = 100 (Folien 18 & 19).
