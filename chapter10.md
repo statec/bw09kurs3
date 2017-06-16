@@ -95,13 +95,16 @@ Runden Sie nicht! Arbeiten Sie mit den exkten Werten.
 
 *** =pre_exercise_code
 ```{r}
-xxx <- 1 -pnorm(abs(sqrt(500)*(32800-33000)/6500))
+
 ```
 
 *** =sample_code
 ```{r}
 
 
+
+# Ergebnis
+p <- ___
 ```
 
 *** =solution
@@ -113,7 +116,7 @@ p <- 1 - gegen_p
 
 *** =sct
 ```{r}
-test_output_contains("xxx")
+test_object("p")
 test_error()
 
 ```
