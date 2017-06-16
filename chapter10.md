@@ -219,7 +219,7 @@ uhi <- qbinom(p =0.07 , size = 500, prob = 0.95 )
 
 *** =sample_code
 ```{r}
-qbinom(p =0.07 , size = 500, prob = 0.95 )
+
 
 ```
 
@@ -355,4 +355,36 @@ freiheitsgrade = 2
 msg_bad <- "Leider falsch!"
 msg_success <- "Richtig! Hier muss man sich merken Varianz = 2*freiheitsgrade."
 test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad))
+```
+
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:fab21df09c
+## T-Test
+Führen Sie einen Test auf Mittelwert durch. Benutzen Sie den t-test.
+
+*** =instructions
+- Prüfen Sie anhand des Mittelwertes der Stichprobe `sp`, ob der Mittelwert der Grundgesamtheit kleiner als der Wert ist.
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+sp <- sample(20:34, 30, replace=T)
+erg <- t.test(x = sp, mu = 26, alternative = "less")
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+t.test(x = sp, mu = 26, alternative = "less")
+```
+
+*** =sct
+```{r}
+test_output_contains("erg")
+test_error()
 ```
