@@ -124,7 +124,7 @@ test_error()
 Die mittleren Jahreseinkommen einer Großstadt betragen 33000€ mit einer Standardabweichung von 6500€.
 Man entnimmt eine Zufallsstichprobe mit 500 Haushalten.
 
-Runden Sie nicht! Arbeiten Sie mit den exkten Werten.
+Runden Sie nicht! Arbeiten Sie mit den exakten Werten.
 
 *** =instructions
 - Berechnen Sie die Wahrscheinlichkeit dafür, dass der Stichprobenmittelwert zwischen 32750 und 33250 liegt. Geben Sie das Ergebnis in der Konsole aus.
@@ -162,16 +162,16 @@ test_error()
 
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:fcb503360c
-## Signifikanz
+## Hypothesentest(I)
 Die Annahmeprüfung für eine Produktion von Sicherungen wird auf Stichprobenbasis durchgeführt.
 
 Der Hersteller behauptet, der Anteil der nicht funktionsfähigen Sicherungen beträgt höchstens 7.5%. 
 
 
-Die Prüfung von 400 zufällig ausgewählten Sicherungen ergab, dass 367 funktionsfähig waren.
+Die Prüfung von 400 zufällig ausgewählten Sicherungen ergab, dass 359 funktionsfähig waren.
 
 
-Wir können annehmen, dass wir eine Binominalverteilung vorliegen haben. Ablehnung deer Hypothese?
+Wir können annehmen, dass wir eine Binominalverteilung vorliegen haben. Ablehnung der Hypothese?
 
 *** =instructions
 - Ablehnung der Hypothese auf Signifikanzniveau 2%
@@ -181,18 +181,63 @@ Wir können annehmen, dass wir eine Binominalverteilung vorliegen haben. Ablehnu
 
 *** =pre_exercise_code
 ```{r}
-pwert <- pbinom(q = 359, size = 400, prob = 0.925)
-# Ergebnis ausgeben 
-pwert
+# Berechnung durch
+# pwert <- pbinom(q = 359, size = 400, prob = 0.925)
+
 ```
 
 *** =sct
 ```{r}
 msg_bad <- "Leider falsch!"
 msg_success <- "Richtig!"
-test_mc(correct = 2, feedback_msgs = c(msg_success, msg_bad, msg_bad))
+test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad))
 ```
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:2cccffc667
+## Hyptothesentest (II)
+Die Annahmeprüfung für eine Produktion von Sicherungen wird auf Stichprobenbasis durchgeführt.
+
+Der Hersteller behauptet, der Anteil der nicht funktionsfähigen Sicherungen beträgt höchstens 5%. 
+
+
+Es wird eine Stichprobe von 500 Stück geprüft.
+
+
+Wir können annehmen, dass wir eine Binominalverteilung vorliegen haben.
+
+*** =instructions
+- Wie viele Lampen müssen funktionstüchtig sein, um unter einem Signifikanzniveau von 7% die Hypothese des Herstellers abzulehnen?
+- Geben Sie den Wert in der Konsole aus.
+- Hier stimmt irgendwas mit der Logik nicht...
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+uhi <- qbinom(p =0.07 , size = 500, prob = 0.95 )
+```
+
+*** =sample_code
+```{r}
+qbinom(p =0.07 , size = 500, prob = 0.95 )
+
+```
+
+*** =solution
+```{r}
+# Berechnung durch inverse Verteilungsfunktion
+qbinom(p =0.07 , size = 500, prob = 0.95 )
+# Veranschaulicht - Test Zwischenwerte: 
+pbinom(q = 467, size = 500, prob = 0.95)
+pbinom(q = 468, size = 500, prob = 0.95)
+```
+
+*** =sct
+```{r}
+test_output_contains("uhi")
+test_error()
+
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:20e949d5dc
 ## ZGS (I)
 Replizieren Sie die Grafik aus der VL für n = 30  un n = 100 (Folien 18 & 19).
