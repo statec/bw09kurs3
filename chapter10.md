@@ -210,9 +210,8 @@ Es wird eine Stichprobe von 500 Stück geprüft.
 Wir können annehmen, dass wir eine Binominalverteilung vorliegen haben.
 
 *** =instructions
-- Wie viele Lampen müssen funktionstüchtig sein, um unter einem Signifikanzniveau von 7% die Hypothese des Herstellers abzulehnen?
+- Wie viele Lampen müssen funktionstüchtig sein, um unter einem Signifikanzniveau von 7% anzunehmen, dass die Hypothese des Herstellers korrekt ist?
 - Geben Sie den Wert in der Konsole aus.
-- Hier stimmt irgendwas mit der Logik nicht...
 *** =hint
 
 *** =pre_exercise_code
