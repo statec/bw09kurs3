@@ -79,8 +79,6 @@ test_mc(correct = 2, feedback_msgs = c(msg_bad, msg_success, msg_bad))
 
 
 
-
-
 --- type:NormalExercise lang:r xp:100 skills:1 key:51172fb546
 ## Statistische Verteilungen (III)
 
@@ -105,7 +103,7 @@ Tipp: Um nachzuvollziehen um welche Wahrscheinlichkeiten es geht, ist eine grafi
 
 
 
-# Ergebnis
+# Speichern Sie Ihr Ergebnis unter dem folgendem Objekt
 p <- _____
 ```
 
@@ -142,17 +140,17 @@ Sei X eine binomialverteilte Zufallsvariable mit n=50 und p= 0.1 .
 
 
 
-# Ergebnis
+# Speichern Sie Ihr Ergebnis unter dem folgendem Objekt
 p <- _____
 ```
-```
+
 
 *** =solution
 ```{r}
 # Speichern Sie das Ergebnis unter folgendem Objekt
 p <- dbinom( x = 3 , size = 50, prob = 0.1) +     dbinom( x = 6 , size = 50, prob = 0.1) + dbinom( x = 10 , size = 50, prob = 0.1)
 ```
-```
+
 
 *** =sct
 ```{r}
