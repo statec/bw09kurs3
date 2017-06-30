@@ -3,7 +3,7 @@ title       : Einheit 6 - inclass
 description : Varianzanalyse und Modellierung
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:82ad91f31b
-## Varianzanalyse
+## ANOVA (I)
 Ihnen ist ein  `datensatz` gegeben, über den Sie nun eine Varianzanalyse machen sollen.
 
 *** =instructions
@@ -50,4 +50,32 @@ summary(res)
 ```{r}
 test_function("aov")
 test_error()
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:920fd7379a
+## ANOVA (II)
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
 ```
