@@ -102,7 +102,7 @@ zaehler <- ___
 ```{r}
 # Anzahl der Gruppen
 l <- 4
-# Anzahl der Beobachtungen
+# Anzahl der Beobachtungen pro Gruppe
 n_i <- 100
 # means berechnen
 m_g1 <- mean(gruppe_1)
@@ -128,7 +128,7 @@ test_error()
 --- type:NormalExercise lang:r xp:100 skills:1 key:b3ecb8c0b2
 ## ANOVA (III)
 Weiter in der schrittweisen Varianzanalyse. Nun sollen Sie den Nenner des F-Wertes berechnen. Dieser entspricht der Varianz innerhalb der Gruppen.
-Die Daten liegen in `datensatz`.
+Die Daten liegen in `datensatz`. Ihr Ergebnis von der vorherigen Aufgabe steht in `zaehler`.
 
 Tipp: Um die Summen über die korrekten vektoren zu bilden, müssen Sie den Datensatz erst anhand der Gruppen aufteilen. 
 
@@ -136,6 +136,7 @@ Tipp: Um die Summen über die korrekten vektoren zu bilden, müssen Sie den Date
 - Berechnen Sie die Varianz innerhalb der Gruppen.
 - Speichern Sie das Ergebnis in `nenner`.
 - Benutzen Sie `filter()` um die Gruppen aufzuteilen.
+- Berechnen Sie F.
 *** =hint
 
 *** =pre_exercise_code
@@ -151,6 +152,22 @@ gruppe_4 <- rnorm(n, mean = 3, sd = 5)
 werte <- c(gruppe_1, gruppe_2, gruppe_3, gruppe_4)
 gruppenname <- c(rep("g1", n), rep("g2", n), rep("g3",n), rep("g4",n))
 datensatz <- data.frame(werte, gruppenname)
+
+# Anzahl der Gruppen
+l <- 4
+# Anzahl der Beobachtungen pro Gruppe
+n_i <- 100
+# means berechnen
+m_g1 <- mean(gruppe_1)
+m_g2 <- mean(gruppe_2)
+m_g3 <- mean(gruppe_3)
+m_g4 <- mean(gruppe_4)
+m_all <- mean(c(gruppe_1, gruppe_2, gruppe_3, gruppe_4))
+# Abweichung im Gruppenmittelwert
+zaehler <- 1/(l-1) * (  n_i* ( m_g1 - m_all )^2 +
+                        n_i* ( m_g2 - m_all )^2 +
+                        n_i* ( m_g3 - m_all )^2 +
+                        n_i* ( m_g4 - m_all )^2 )
 ```
 
 *** =sample_code
@@ -169,7 +186,10 @@ nenner <- ___
 
 
 
-
+# Ergebnis
+F_wert = zaehler/nenner
+# Vergleich mit aov()
+summary(aov(werte ~ gruppenname, data = datensatz))
 ```
 
 *** =solution
@@ -177,8 +197,8 @@ nenner <- ___
 library(dplyr)
 # Anzahl der Gruppen
 l <- 4
-# Anzahl der Beobachtungen
-n_i <- 100
+# Anzahl Beobachtungen von allen Gruppen
+n <- 400
 # Gruppentrennung
 g1 <- filter(datensatz, gruppenname == "g1")
 g2 <- filter(datensatz, gruppenname == "g2")
@@ -189,18 +209,51 @@ m_g1 <- mean(g1$werte)
 m_g2 <- mean(g2$werte)
 m_g3 <- mean(g3$werte)
 m_g4 <- mean(g4$werte)
-m_all <- mean(c(g1$werte, g2$werte, g3$werte, g4$werte))
 # Varianz innerhalb der Gruppen
-nenner <- 1/( n_i - l ) * ( sum( ( g1$werte - m_g1 )^2 ) +
+nenner <- 1/( n - l ) * ( sum( ( g1$werte - m_g1 )^2 ) +
                             sum( ( g2$werte - m_g2 )^2 ) +
                             sum( ( g3$werte - m_g3 )^2 ) +
                             sum( ( g4$werte - m_g4 )^2 ) )
+# Ergebnis
+F_wert = zaehler/nenner
+# Vergleich mit aov()
+summary(aov(werte ~ gruppenname, data = datensatz))
 ```
 
 *** =sct
 ```{r}
 test_object("nenner")
+test_object("F_wert")
+test_function("aov")
 test_error()
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:872e0ec346
+## ANOVA (IV)
+Schreiben Sie eine Funktion, welche eine Teststatistik für 
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
 ```
 --- type:NormalExercise lang:r xp:100 skills:1 key:374cb2ecaa
 ## Annahmen Überprüfung
