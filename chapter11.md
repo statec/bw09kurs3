@@ -317,3 +317,74 @@ legend("topright", c("test_stats", "vorhergesagte Verteilung"), col = c("black",
 test_function("anova_check2")
 test_error()
 ```
+
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:9a4690dabe
+## Lineare Regression
+Berechnen Sie mittels lm() eine lineare Regression für den Eröffnungskurs der facebook Aktie. Diese liegt in `facebook`.
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+facebook <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie.csv")
+facebook$Date<- as.Date(facebook$Date)
+```
+
+*** =sample_code
+```{r}
+head(facebook)
+facebook$Date<- as.Date(facebook$Date)
+facebook$newvar<- 253:1
+
+linreg <- lm( Open ~ newvar , data=facebook)
+summary(linreg)
+    
+plot( facebook$newvar , facebook$Open, type = "l" , lwd= 3, xlab="Datum", ylab="Open" , xaxt='n')
+curve( coefficients(linreg)[1] + coefficients(linreg)[2]*x , add=TRUE , col="red", lty= 2 , lwd= 2)
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
+
+```
+
+--- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:bf8c35aafe
+## lineare Regression
+Sie sehen links das Ergebnis der vorherigen Aufgabe. Nun sollen Sie die Koeffizienten ablesen.
+
+Welchen Wert hat der Koeffizient beta_0?
+
+*** =instructions
+- ca. 113
+- ca. 107
+- ca. 123
+- ca. 97
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+facebook <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie.csv")
+facebook$Date<- as.Date(facebook$Date)
+facebook$Date<- as.Date(facebook$Date)
+facebook$newvar<- 253:1
+linreg <- lm( Open ~ newvar , data=facebook)
+plot( facebook$newvar , facebook$Open, type = "l" , lwd= 3, xlab="Datum", ylab="Open" , xaxt='n')
+curve( coefficients(linreg)[1] + coefficients(linreg)[2]*x , add=TRUE , col="red", lty= 2 , lwd= 2)
+```
+
+*** =sct
+```{r}
+msg_bad <- "Leider falsch!"
+msg_success <- "Richtig!"
+test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
+
+```
