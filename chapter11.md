@@ -503,7 +503,7 @@ curve( coefficients(reg2)[1] + coefficients(reg2)[2]*x,  add = TRUE, col="red")
 ```{r}
 reg2 <- glm(Sex ~ Alter, data = titanic, family=binomial(link='logit'))
 summary(reg2)
-# Plot (Kurve wird ncoh nciht hunzugefügt)
+# Plot (Kurve wird noch nicht hinzugefügt)
 plot( titanic$Alter , titanic$Sex, type = "p", xlab="Alter", ylab="Geschlecht" )
 curve( coefficients(reg2)[1] + coefficients(reg2)[2]*x,  add = TRUE, col="red")
 
