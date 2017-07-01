@@ -230,12 +230,15 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:872e0ec346
 ## ANOVA (IV)
-Schreiben Sie eine Funktion, welche eine Teststatistik für 
+Schreiben Sie eine Funktion `anova_check2`, welche eine Teststatistik erstellt, um die Normalverteilungsannahme zu prüfen, welche wir bisher unterstellt haben. Bedenken Sie, dass es eine Einteilung in 4 Gruppen gibt. 
 
 *** =instructions
-
+- Schreiben Sie die Funktion `anova_check2`.
+- Orientieren Sie sich an der Funktion im Skript.
+- Beachten Sie, dass es 4 Gruppen gibt.
+- Erstellen Sie die Teststatistiken und überprüfen Sie anhand eines Plottes die Normalverteilungsannahme.
 *** =hint
-
+- Arbeiten Sie mit `plot(density())` und dem `curve()` Befehl.
 *** =pre_exercise_code
 ```{r}
 
@@ -243,44 +246,74 @@ Schreiben Sie eine Funktion, welche eine Teststatistik für
 
 *** =sample_code
 ```{r}
+# Erstellung der Funktion
+anova_check2 <- function(n){
+
+
+
+
+
+
+
+
+
+
+  return(___)
+}
+
+# Erstellung der Teststatistik (vorgegeben)
+test_stats <- c()
+for(i in 1:10000){
+  test_stats[i] <- anova_check2(5)
+}
+
+# Plotten um Normalverteilungsannahme zu überprüfen
+
+
+
 
 ```
 
 *** =solution
 ```{r}
+anova_check2 <- function(n){
+  g1 <- rnorm(n)
+  g2 <- rnorm(n)
+  g3 <- rnorm(n)
+  g4 <- rnorm(n)
+  m_g1 <- mean(g1)
+  m_g2 <- mean(g2)
+  m_g3 <- mean(g3)
+  m_g4 <- mean(g4)
+  m_all <- mean(c(g1, g2, g3, g4))
+  #
+  zaehler <- 1/3 * (n*(m_g1 - m_all)^2 +
+                    n*(m_g2 - m_all)^2 +
+                    n*(m_g3 - m_all)^2 + 
+                    n*(m_g4 - m_all)^2 )
+  nenner <- 1/(4*n-4)* (sum((g1-m_g1)^2)+
+                        sum((g2-m_g2)^2)+
+                        sum((g3-m_g2)^2)+
+                        sum((g4-m_g3)^2))
+  teststat <- zaeler / nenner 
+  return(teststat)
+}
 
+# Erstellung der Teststatistiken
+test_stats <- c()
+for(i in 1:10000){
+  test_stats[i] <- anova_check2(5)
+}
+
+# Plotten um Normalverteilungsannahme zu überprüfen
+plot(density(test_stats))
+curve(df(x, df1 = 3, df2 = 4*5 -4), from = -1, to = 30, n = 10000, col = "red", lwd = 2, add = TRUE)
+legend("topright", c("test_stats", "vorhergesagte Verteilung"), col = c("black", "red"), lty = c(1,1))
+# Problem: Der Plot bestätigt eher nicht die Normalverteilungsannahme? Habe ich einen Parameter vergessen, falsche ingegeben?
 ```
 
 *** =sct
 ```{r}
-
-```
---- type:NormalExercise lang:r xp:100 skills:1 key:374cb2ecaa
-## Annahmen Überprüfung
-Überprüfen Sie die Normalverteilungsannahme.
-
-
-*** =instructions
-- Erstellen Sie einen Plot, um die Normalverteilungsannahme zu überprüfen!
-- Orientieren Sie sich am Skript.
-*** =hint
-
-*** =pre_exercise_code
-```{r}
-
-```
-
-*** =sample_code
-```{r}
-
-```
-
-*** =solution
-```{r}
-
-```
-
-*** =sct
-```{r}
-
+test_function("anova_check2")
+test_error()
 ```
