@@ -459,7 +459,7 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
 ## Logit (I)
 Ihnen ist der Datensatz `titanic` gegeben. 
 
-Untersuchen Sie den Zusammenhang zwischen dem Alter und der Anzahl
+Untersuchen Sie den Zusammenhang zwischen dem Alter und dem Geschlecht.
     
 
 *** =instructions
@@ -468,20 +468,49 @@ Untersuchen Sie den Zusammenhang zwischen dem Alter und der Anzahl
 
 *** =pre_exercise_code
 ```{r}
-titanic = Titanic
+titanic <- Titanic
+
+titanic <- data.frame(titanic)
+# Alter zuweisen
+Alter <- c()
+for(i in 1:length(titanic$Age)){
+  if(titanic$Age[i] == "Child"){
+    Alter[i] <- sample(1:17, 1)
+  }else{
+    Alter[i] <- sample(18:75, 1)
+  }
+}
+# Spalte hunzufügen
+titanic$Alter <- Alter
+titanic$Age <- NULL
+
 ```
 
 *** =sample_code
 ```{r}
+# lineare Schaetzung
+reg2 <- ___
+# summary()
+
+
+# Plot
+plot( titanic$Alter , titanic$Sex, type = "p", xlab="Alter", ylab="Geschlecht" )
+curve( coefficients(reg2)[1] + coefficients(reg2)[2]*x,  add = TRUE, col="red")
 
 ```
 
 *** =solution
 ```{r}
+reg2 <- glm(Sex ~ Alter, data = titanic, family=binomial(link='logit'))
+summary(reg2)
+# Plot (Kurve wird ncoh nciht hunzugefügt)
+plot( titanic$Alter , titanic$Sex, type = "p", xlab="Alter", ylab="Geschlecht" )
+curve( coefficients(reg2)[1] + coefficients(reg2)[2]*x,  add = TRUE, col="red")
 
 ```
 
 *** =sct
 ```{r}
-
+test_object("reg2")
+test_error()
 ```
