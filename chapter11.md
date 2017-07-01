@@ -321,10 +321,15 @@ test_error()
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:9a4690dabe
 ## Lineare Regression
-Berechnen Sie mittels lm() eine lineare Regression für den Eröffnungskurs der facebook Aktie. Diese liegt in `facebook`.
+Berechnen Sie mittels `lm()` eine lineare Regression für den Eröffnungskurs der facebook Aktie. Diese liegt in `facebook`.
+
+
+Tipp: sie können per `coefficients(linreg)[i]` auf den i-ten Koeffizienten zugreifen.
 
 
 *** =instructions
+- Speichern Sie die lineare Regressionsgerade in `linreg`.
+- Plotten Sie ihr Ergebnis, sodass der Plot wie der vorgegebene aussieht.
 
 *** =hint
 
@@ -332,29 +337,39 @@ Berechnen Sie mittels lm() eine lineare Regression für den Eröffnungskurs der 
 ```{r}
 facebook <- read.csv("http://s3.amazonaws.com/assets.datacamp.com/production/course_3722/datasets/fb_aktie.csv")
 facebook$Date<- as.Date(facebook$Date)
+facebook$newvar<- 253:1
+linreg <- lm( Open ~ newvar , data=facebook)
+plot( facebook$newvar , facebook$Open, type = "p" , lwd= 3, xlab="Datum", ylab="Open" , xaxt='n')
+curve( coefficients(linreg)[1] + coefficients(linreg)[2]*x , add=TRUE , col="red", lty= 2 , lwd= 2)
 ```
 
 *** =sample_code
 ```{r}
-head(facebook)
-facebook$Date<- as.Date(facebook$Date)
-facebook$newvar<- 253:1
 
-linreg <- lm( Open ~ newvar , data=facebook)
-summary(linreg)
-    
-plot( facebook$newvar , facebook$Open, type = "l" , lwd= 3, xlab="Datum", ylab="Open" , xaxt='n')
-curve( coefficients(linreg)[1] + coefficients(linreg)[2]*x , add=TRUE , col="red", lty= 2 , lwd= 2)
+
+
+linreg <- ___
+plot(___, lwd= 3, xlab="Datum", ylab="Open" , xaxt='n')
+curve( ___ , add=TRUE , ___, lty= 2 , lwd= 2)
 ```
 
 *** =solution
 ```{r}
+facebook$Date<- as.Date(facebook$Date)
+facebook$newvar<- 253:1
 
+linreg <- lm( Open ~ newvar , data=facebook)
+# Pltten der Punkte und der linearen regressionskurve  
+plot( facebook$newvar , facebook$Open, type = "p" , lwd= 3, xlab="Datum", ylab="Open" , xaxt='n')
+curve( coefficients(linreg)[1] + coefficients(linreg)[2]*x , add=TRUE , col="red", lty= 2 , lwd= 2)
 ```
 
 *** =sct
 ```{r}
-
+test_object("linreg")
+test_function("curve")
+test_function("plot")
+test_error()
 ```
 
 --- type:MultipleChoiceExercise lang:r xp:50 skills:1 key:bf8c35aafe
@@ -377,7 +392,7 @@ facebook$Date<- as.Date(facebook$Date)
 facebook$Date<- as.Date(facebook$Date)
 facebook$newvar<- 253:1
 linreg <- lm( Open ~ newvar , data=facebook)
-plot( facebook$newvar , facebook$Open, type = "l" , lwd= 3, xlab="Datum", ylab="Open" , xaxt='n')
+plot( facebook$newvar , facebook$Open, type = "p" , lwd= 3, xlab="Datum", ylab="Open" , xaxt='n')
 curve( coefficients(linreg)[1] + coefficients(linreg)[2]*x , add=TRUE , col="red", lty= 2 , lwd= 2)
 ```
 
@@ -386,5 +401,34 @@ curve( coefficients(linreg)[1] + coefficients(linreg)[2]*x , add=TRUE , col="red
 msg_bad <- "Leider falsch!"
 msg_success <- "Richtig!"
 test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
+
+```
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:3c4f6d0b92
+## <<<New Exercise>>>
+
+
+*** =instructions
+
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+
+```
+
+*** =sample_code
+```{r}
+library(car)
+linearHypothesis(linreg, c("newvar=0"))
+```
+
+*** =solution
+```{r}
+
+```
+
+*** =sct
+```{r}
 
 ```
