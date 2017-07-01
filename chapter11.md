@@ -295,7 +295,7 @@ anova_check2 <- function(n){
                         sum((g2-m_g2)^2)+
                         sum((g3-m_g2)^2)+
                         sum((g4-m_g3)^2))
-  teststat <- zaeler / nenner 
+  teststat <- zaehler / nenner 
   return(teststat)
 }
 
@@ -319,6 +319,57 @@ test_error()
 ```
 
 
+
+--- type:NormalExercise lang:r xp:100 skills:1 key:b03912de68
+## ANOVA (V)
+Gegeben ist der `datensatz`.
+
+Nach der Normalverteilungsannahme muss nun noch die Varianzhomogenität überprüft werden. 
+
+*** =instructions
+- Überprüfen Sie die Varianzhomogenität über die Boxplot Funktion.
+- Erstellen Sie die Boxplots für die jeweiligen Gruppen nebeneinander, sodass Sie die Abweichungen innerhalb der Gruppen mit denen der anderen vergleichen können.
+- Gilt die Annahme?
+*** =hint
+
+*** =pre_exercise_code
+```{r}
+n <- 100
+set.seed(2)
+# Erstellt Zufallszahlen
+gruppe1 <- rnorm(n, mean = 0, sd = 5)
+gruppe2 <- rnorm(n, mean = 1, sd = 5)
+gruppe3 <- rnorm(n, mean = 2, sd = 5)
+gruppe4 <- rnorm(n, mean = 3, sd = 5)
+# Liste der Gruppen
+werte <- c(gruppe1, gruppe2, gruppe3, gruppe4)
+gruppenname <- c(rep("g1", n), rep("g2", n), rep("g3",n), rep("g4", n))
+datensatz <- data.frame(werte, gruppenname)
+```
+
+*** =sample_code
+```{r}
+library(ggplot2)
+# Test auf Varianzhomogenität
+
+
+
+```
+
+*** =solution
+```{r}
+library(ggplot2)
+# Test auf Varianzhomogenität
+ggplot(data = datensatz)+
+  geom_boxplot(mapping = aes(x = gruppenname, y = werte))
+
+```
+
+*** =sct
+```{r}
+test_function("geom_boxplot", args = c("mapping"))
+test_error()
+```
 --- type:NormalExercise lang:r xp:100 skills:1 key:9a4690dabe
 ## Lineare Regression
 Berechnen Sie mittels `lm()` eine lineare Regression für den Eröffnungskurs der facebook Aktie. Diese liegt in `facebook`.
@@ -405,22 +456,24 @@ test_mc(correct = 1, feedback_msgs = c(msg_success, msg_bad, msg_bad, msg_bad))
 ```
 
 --- type:NormalExercise lang:r xp:100 skills:1 key:3c4f6d0b92
-## <<<New Exercise>>>
+## Logit (I)
+Ihnen ist der Datensatz `titanic` gegeben. 
 
+Untersuchen Sie den Zusammenhang zwischen dem Alter und der Anzahl
+    
 
 *** =instructions
-
+- Führen Sie eine nicht lineare Schätzung mit dem logistischen Regressionsmodell durch.
 *** =hint
 
 *** =pre_exercise_code
 ```{r}
-
+titanic = Titanic
 ```
 
 *** =sample_code
 ```{r}
-library(car)
-linearHypothesis(linreg, c("newvar=0"))
+
 ```
 
 *** =solution
