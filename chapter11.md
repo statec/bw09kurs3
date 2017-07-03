@@ -34,7 +34,7 @@ datensatz <- data.frame(werte, gruppenname)
 *** =sample_code
 ```{r}
 # ANOVA Analyse
-res <- 
+res <- ______
 
 # Summary
 summary(res)
